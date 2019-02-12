@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JRED PhD Job Fair : pushing boundaries always further</title>
+	</head>
+	<body>
+		<nav>
+    		<ul>
+        		<li><a href="/">Home</a></li>
+	        	<li><a href="/Programme">Programme</a></li>
+        		<li><a href="/about">About US</a></li>
+        		<li><a href="/map">Access \& Map</a></li>
+    		</ul>
+		</nav>
+		<div class="container">
+    		<div class="blurb">
+        		<h1>JRED is almost back!</h1>
+				<p>We are rebuilding the website</em> Back soon <a href="/about">About us</a></p>
+    		</div><!-- /.blurb -->
+		</div><!-- /.container -->
+		<footer>
+    		<ul>
+        		<li><a href="mailto:jred.2019@centralesupelec.fr">email</a></li>
+        		<li><a href="https://github.com/atacs-centralesupelec">github.com/atacs-centralesupelec</a></li>
+			</ul>
+		</footer>
+	</body>
+</html>
