@@ -1,29 +1,130 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>JRED PhD Job Fair : pushing boundaries always further</title>
-		<!-- link to main stylesheet -->
-		<link rel="stylesheet" type="text/css" href="/css/main.css">
-	</head>
-	<body>
-		<nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>
-	        	<li><a href="/Programme">Programme</a></li>
-        		<li><a href="/about">About US</a></li>
-        		<li><a href="/map">Access \& Map</a></li>
-    		</ul>
-		</nav>
-		<div class="container">
-    		<div class="blurb">
-        		<h1>JRED is almost back!</h1>
-				<p>We are rebuilding the website</em> Back soon <a href="/about">About us</a></p>
-    		</div><!-- /.blurb -->
-		</div><!-- /.container -->
-		<footer>
-    		<ul>
-        		<li><a href="mailto:jred.2019@centralesupelec.fr">email</a></li>
-			</ul>
-		</footer>
-	</body>
-</html>
+---
+layout: page
+title: JRED
+permalink: /
+---
+
+<!-- Slider Start -->
+<section id="slider">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-15">
+        <div class="block">
+          <h1 class="animated fadeInUp">J-RED 2019</h1>
+          <h2 class="animated fadeInUp">Journée de rencontre entre entreprises, doctorants et jeunes docteurs</h2>
+          <h2 class="animated fadeInUp">Jeudi 4 avril 2019</h2>
+          <h3 class="animated fadeInUp">Campus de CentraleSupélec, 91990 Gif-Sur-Yvette</h3>
+          <a class="download-btn inscription animated fadeInUp" href="https://www.weezevent.com/jred-2019" >Inscription</a>
+          <h3 class="animated fadeInUp">Pour les étudiants de Paris-Saclay :</br>cette journée compte pour 4h de formation transverse.</h3>
+          <a class="download-btn saclay animated fadeInUp" href="https://www.adum.fr" >ADUM</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Programme Start -->
+<section id="programme">
+  <div class="container">
+    <div class="row">
+      <div class="block">
+        <div class="section-title">
+          <h2>Programme</h2>
+        </div>
+      </div><!-- .col-md-7 close -->
+      <!--<div class="col-md-10 col-sm-10">-->
+      <div class="block">
+        <img src="img/programme_jred.png" alt="Programme">
+      </div> <a href="#programme"></a>
+     <!-- </div> --><!-- .col-md-5 close -->
+    </div>
+    <div class="button-wrapper">
+        <a class="download-btn" href="{{ site.baseurl }}/programme_jred.pdf">Télécharger</a>
+    </div>
+  </div>
+</section>
+
+<section id="feature">
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <div class="section-title">
+        <h2>J-RED : 5 bonnes raisons de venir</h2>
+      </div>
+        <ol>
+          <li>Pour trouver des réponses sur ce que deviennent les doctorants qui décident de travailler dans le privé ou de monter leur startup. La R&D n’est pas l’unique débouché!</li>
+          <li>Pour s’informer sur l’offre de formation doctorale concernant l'entrepreneuriat et le monde de l'entreprise dispensée par l’Université Paris-Saclay.</li>
+          <li>Rencontrer des entreprises dans des secteurs qui vous intéressent, soit dans la continuité soit dans la rupture avec votre thèse. Nous offrons la possibilité de prendre des rendez-vous avec les entreprises pour des entretiens d’embauches. Autrement, vous pourrez directement les voir à leur stand l’après-midi.</li>
+          <li>Pour présenter vos travaux scientifiques sous forme de poster et tenter de  gagner le prix du meilleur poster.</li>
+          <li>Avez-vous vu beaucoup de forums professionnels se terminer par une soirée jazz ? À Saclay ?</li>
+        </ol>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- About US Start -->
+<section id="about-us">
+  <div class="container">
+    <div class="row">
+        <div class="section-title">
+          <h2>JRED - À propos</h2>
+          <p>Qui sommes nous?</p>
+        </div>
+        <div class="block">
+          <p>Les organisateurs de la J-RED sont des membres de l'association des doctorants et amis de CentraleSupélec, l'ATACS. Nous sommes tous doctorants et bénévoles. Nous travaillons également avec les services de CentraleSupélec et de Paris Saclay pour donner une cohérence d'ensemble à cette journée au sein de la construction de l'Université Paris-Saclay.</p>
+ 
+          <p>Nous souhaitons, pour les prochaines éditions, inclure des doctorants et des jeunes chercheurs venant du plateau de Saclay au sein de l'équipe. Si tu es intéressé, tu peux nous contacter via l'email en bas de page.</p>
+        </div>
+    </div>
+  </div>
+</section>
+<!-- Call to action Start -->
+<!-- Content Start -->
+<!--
+<section id="testimonial">
+  <div class="container">
+    <div class="row">
+      <div class="section-title text-center">
+        <h2>Fun Facts About Us</h2>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        {% if site.data.funfacts.size > 0 %}
+        <div class="block">
+          {% for ff in site.data.funfacts %}
+          <ul class="counter-box clearfix">
+            <li>
+              <div class="block">
+                <i class="{{ ff.icon }}"></i>
+                <h4 class="counter">{{ ff.counter }}</h4>
+                <span>{{ ff.text }}</span>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+      <div class="col-md-6">
+        {% if site.data.testimonials.size > 0 %}
+        <div class="testimonial-carousel">
+          <div id="testimonial-slider" class="owl-carousel">
+            {% for tm in site.data.testimonials %}
+            <div>
+                <img src="img/cotation.png" alt="IMG">
+                <p>{{ tm.testimonial }}</p>
+                <div class="user">
+                  <img src="{{ tm.image }}" alt="Pepole">
+                  <p><span>{{ tm.name }}</span> {{ tm.title }}</p>
+                </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>-->
