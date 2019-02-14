@@ -12,9 +12,6 @@ keep_files:
   - ".git"
   - ".gitignore"
 
-include: ['en']
-
-
 # Site settings
 title: JRED
 subtitle: "PhD Job Fair in Saclay"
