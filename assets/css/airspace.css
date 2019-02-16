@@ -449,11 +449,24 @@ font header .navbar-default .navbar-nav li a:hover {
 }
 
 @media only screen and (max-width: 768px) {
-#feature ol {
-  font-size: 13px;
-  /*color: #8d8f92;*/
-  margin-bottom: 20px;
-}
+
+  #feature .block{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+   
+
+  #feature ol {
+    font-size: 13px;
+    /*color: #8d8f92;*/
+    margin-bottom: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  #feature li {
+    margin: 0 0 10px 0;
+  }
 }
 
 @media only screen and (min-width: 767px) {
