@@ -297,6 +297,37 @@ font header .navbar-default .navbar-nav li a:hover {
 /*--
 	About Us Start
 --*/
+
+@media only screen and (max-width: 767px) {
+
+#about-us {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("../img/about_us.jpg") no-repeat;
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+  padding: 10px 0;
+  color: #E3E3E4; /*#FFFFFF; /* #E3E3E4;*/
+}
+
+  #about-us  .block {
+  color: white; /*#E3E3E4;*/
+  margin: 0px auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+  #about-us .block p{
+    text-align: justify;
+    text-justify: inter-word;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
 #about-us {
   background: linear-gradient(
       rgba(0, 0, 0, 0.6),
@@ -310,20 +341,15 @@ font header .navbar-default .navbar-nav li a:hover {
   color: #E3E3E4; /*#FFFFFF; /* #E3E3E4;*/
 }
 
-#about-us  .block {
+
+  #about-us  .block {
   color: white; /*#E3E3E4;*/
   margin: 0 auto;
-  padding-left: 90px;
 }
 
-@media only screen and (max-width: 767px) {
   #about-us .block p{
-    font-size: 13px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  #about-us .block p{
+    text-align: justify;
+    text-justify: inter-word;
     font-size: 20px;
   }
 }
@@ -421,10 +447,21 @@ font header .navbar-default .navbar-nav li a:hover {
   /*color: #8d8f92;*/
   margin-bottom: 20px;
 }
+
+@media only screen and (max-width: 768px) {
+#feature ol {
+  font-size: 13px;
+  /*color: #8d8f92;*/
+  margin-bottom: 20px;
+}
+}
+
+@media only screen and (min-width: 767px) {
 #feature ol {
   font-size: 20px;
   /*color: #8d8f92;*/
   margin-bottom: 20px;
+}
 }
 #feature .btn-view-works {
   background: #655E7A;
