@@ -1,10 +1,12 @@
 $(document).ready(function(){
 
+	$('.header').height($(window).height());
 
-	$("#portfolio-contant-active").mixItUp();
+
+	//$("#portfolio-contant-active").mixItUp();
 
 
-	$("#testimonial-slider").owlCarousel({
+	$("#testimonial-slider").carousel({
 	    paginationSpeed : 500,      
 	    singleItem:true,
 	    autoPlay: 3000,
@@ -13,14 +15,14 @@ $(document).ready(function(){
 
 
 
-	$("#clients-logo").owlCarousel({
+	$("#clients-logo").carousel({
 		autoPlay: 3000,
 		items : 5,
 		itemsDesktop : [1199,5],
 		itemsDesktopSmall : [979,5],
 	});
 
-	$("#works-logo").owlCarousel({
+	$("#works-logo").carousel({
 		autoPlay: 3000,
 		items : 5,
 		itemsDesktop : [1199,5],
@@ -40,10 +42,10 @@ $(document).ready(function(){
 
 	// Counter
 
-	$('.counter').counterUp({
+	/*$('.counter').counterUp({
         delay: 10,
         time: 1000
-    });
+    });*/
 
 
 });
