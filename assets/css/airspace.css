@@ -49,28 +49,39 @@ h6 {
   /*font-family: 'Roboto', sans-serif;*/
 }
 h2 {
-  font-size: 30px;
+  /*font-size: 30px;*/
   font-weight: 400;
 }
 h3 {
-  font-size: 28px;
+  /*font-size: 28px;*/
   font-weight: 300;
 }
 p {
-  font-size: 15px;
-  line-height: 28px;
+  /*font-size: 15px;*/
+  /*line-height: 28px;*/
 }
-ul {
+/*ul {
   padding: 0;
   margin: 0;
   list-style: none;
-}
+}*/
 a:focus{
   text-decoration: none;
 }
 a:active {
   text-decoration: underline;
 }
+
+.nav-link:hover{  
+  color: #f97300; 
+}
+
+.bd-navbar{
+  min-height: 4rem;
+}
+
+.row:before, .row:after {display: none !important;}
+
 .section-title {
   margin-bottom: 70px;
 }
@@ -88,35 +99,75 @@ a:active {
 /*--
 	Header Start
 --*/
+
 header {
-  background: #fff;
+  /*background: #fff;*/
   padding: 20px 0;
   padding-bottom: 30px;
 }
-header .navbar {
-  margin-bottom: 0px;
-  border: 0px;
+
+header .img-responsive{
+  width: 12vw;
+  min-width: 50px;
 }
-header .navbar-brand {
-  padding-top: 0px;
+
+header .lang-flag{
+  width: 2.5vw;
+}
+
+header .navbar-toggler-icon{
+   color:#FFFFFF;
+   border-color: red;
+}
+
+header .navbar-collapse{ 
+  justify-content: flex-end;
+}
+
+header .nav-item{
+  white-space: nowrap;
+}
+
+header .nav-link{
+    /*padding-top: 1rem;*/
+}
+
+header .nav-link, .navbar-brand {
   padding-bottom: 0px;
   /*max-width: 200px;*/
 }
+
 header .navbar-default {
   background: none;
   border: 0px;
 }
-header .navbar-default .navbar-nav {
+header .navbar-default .navbar-nav .navbar-expand-sm {
   padding-top: 10px;
 }
-header .navbar-default .navbar-nav li a {
+
+header .navbar-nav li a{
+  color: #333333; 
+}
+  /*padding: 10% 10%;*/
+  /*padding: 10px 15px;*/
+  /*font-size: 1.5rem;*/
+}
+
+/*header .navbar-default .navbar-nav li a {
   color: #333333;
+  padding:; 10% 10%;
   padding: 10px 15px;
   font-size: 16px;
+}*/
+
+header a.navbar-lang {
+  padding: 0px;
+  float: right;
 }
-font header .navbar-default .navbar-nav li a:hover {
-  color: #000; /* #000 */
-}
+
+/*font header .navbar-default .navbar-nav li a:hover {
+  color: #000; /* #000 
+}*/
 
 /*---------------------------------------------
 					Index Start
@@ -211,16 +262,16 @@ font header .navbar-default .navbar-nav li a:hover {
   color: #E3E3E4;
 }
 
-#programme .block h2 {
+#programme .col h2 {
   padding-top: 35px;
   line-height: 27px;
   margin: 0;
 }
-#programme .block p {
+#programme .col p {
   color: #7B7B7B;
   padding-top: 20px;
 }
-#programme .block img {
+#programme .col img {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -442,6 +493,9 @@ font header .navbar-default .navbar-nav li a:hover {
   font-weight: 600;*/
   text-align: center;
   margin-bottom: 30px;
+    display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #feature p {
   font-size: 40px;
@@ -597,7 +651,6 @@ font header .navbar-default .navbar-nav li a:hover {
 #global-header .block {
   color: #E3E3E4;
   margin: 0 auto;
-  padding-left: 90px;
   text-align: center;
 }
 #global-header .block h1 {

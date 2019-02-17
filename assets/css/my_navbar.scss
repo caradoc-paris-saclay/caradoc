@@ -1,0 +1,94 @@
+---
+---
+
+/// least-squares-fit
+/// Calculate the least square fit linear regression of provided values
+/// @param {map} $map - A SASS map of viewport width and size value combinations
+/// @return Linear equation as a calc() function
+/// @example
+///   font-size: least-squares-fit((576: 24, 768: 24, 992: 34));
+
+@function least-squares-fit($map) {
+  
+  // Get the number of provided breakpoints
+  $length: length(map-keys($map));
+  
+  // Error if the number of breakpoints is < 2
+  @if ($length < 2) {
+    @error "leastSquaresFit() $map must be at least 2 values"
+  }
+    
+  // Calculate the Means
+  $resTotal: 0;
+  $valueTotal: 0;
+  @each $res, $value in $map {
+    $resTotal: $resTotal + $res;
+    $valueTotal: $valueTotal + $value;
+  }
+  $resMean: $resTotal/$length;
+  $valueMean: $valueTotal/$length;
+
+  // Calculate some other stuff
+  $multipliedDiff: 0;
+  $squaredDiff: 0;
+  @each $res, $value in $map {
+    
+    // Differences from means
+    $resDiff: $res - $resMean;
+    $valueDiff: $value - $valueMean;
+    
+    // Sum of multiplied differences
+    $multipliedDiff: $multipliedDiff + ($resDiff * $valueDiff);
+    
+    // Sum of squared resolution differences
+    $squaredDiff: $squaredDiff + ($resDiff * $resDiff);
+  }
+
+  // Calculate the Slope
+  $m: $multipliedDiff / $squaredDiff;
+
+  // Calculate the Y-Intercept
+  $b: $valueMean - ($m * $resMean);
+
+  // Return the CSS calc equation
+  @return calc(#{$m*100}vw + #{$b}px);
+
+}
+
+/*h1 {
+  $map: (576: 22, 768: 20, 992: 34);
+  font-size: least-squares-fit($map);
+}*/
+
+$sm-width: 576px; 
+$md-width: 768; 
+$lg-width: 992px; 
+$xl-width: 1200px; 
+
+@media (min-width: $sm-width){
+  header li {
+    $map: (577:7.25, 610:8, 631: 8.5, 700: 10.2, 900: 14.5, 1000:16.5, 1260: 18);
+    font-size: least-squares-fit($map);
+  }
+}
+
+@media (min-width: $sm-width){ 
+  .navbar-expand-sm .navbar-nav .nav-link{
+    padding-right: 0.3rem;
+    padding-left: 0.3rem;
+  }
+}
+
+@media (min-width: $xl-width){ 
+  .navbar-expand-sm .navbar-nav .nav-link{
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
+  }
+}
+
+
+@media (max-width: $sm-width){
+  header li{
+    font-size: 3vw;
+  }
+}
