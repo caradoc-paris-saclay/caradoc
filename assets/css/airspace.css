@@ -201,6 +201,13 @@ header a.navbar-lang {
   letter-spacing: 10px;
   padding-bottom: 45px;
 }
+
+#slider .block h2, h3, a{
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+
+}
+
 #slider .block p {
   font-size: 23px;
   line-height: 40px;
