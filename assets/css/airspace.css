@@ -1022,10 +1022,12 @@ Map
 }
 
 #map .map img{
+  max-width: 40vw;
   height: auto;
 }
 
 #map .map iframe {
+  min-height: 45vh;
   height:100%;
 }
 
