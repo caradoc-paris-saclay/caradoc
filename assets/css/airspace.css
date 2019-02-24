@@ -210,7 +210,7 @@ header a.navbar-lang {
   }
 }
 
-@media (max-width: 576px){
+@media (max-width: 575px){
   #slider .block h2, .block h3, .block a {
     margin-top: 1vh;
     margin-bottom: 1vh;
@@ -754,8 +754,15 @@ header a.navbar-lang {
   -ms-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
+
+#portfolio-work .block .portfolio-contant{
+  align-items: center;
+  display: table;
+  margin-left: 10vw;
+  margin-right: auto;
+}
+
 #portfolio-work .block .portfolio-contant ul li {
-  /*float: left;*/
   width: 10vw;
   height: 10vw;
   /*overflow: hidden;*/
