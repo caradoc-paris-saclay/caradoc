@@ -802,6 +802,11 @@ header a.navbar-lang {
   height: auto;
 }
 
+#portfolio-work .block .portfolio-contant .TBC {
+  opacity: 0.2;
+  filter: alpha(opacity=20); /* For IE8 and earlier */
+}
+
 #portfolio-work .block .portfolio-contant .overly {
   position: absolute;
   top: 0;
