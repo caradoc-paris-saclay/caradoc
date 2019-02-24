@@ -44,6 +44,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Google Sans','Roboto', sans-serif;
   /*font-family: 'Roboto', sans-serif;*/
@@ -690,8 +691,26 @@ header a.navbar-lang {
 --*/
 #portfolio-work {
   overflow: hidden;
-  padding: 15vh 0;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  padding-top: 15vh;
 }
+
+@media (min-width: 576px){
+#portfolio-work  .container {
+  max-width: 80vw;
+}
+}
+
+@media (max-width: 575px){
+  #portfolio-work  .container {
+    max-width: 100%;
+    /*padding-left: 5vw;
+    padding-right: 5vw;*/
+  }
+}
+
+
 #portfolio-work .block .portfolio-menu {
   padding-bottom: 30px;
   text-align: center;
