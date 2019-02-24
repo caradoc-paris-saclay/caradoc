@@ -18,7 +18,6 @@ for root, dirs, files in walk(companies_folder):
                         name = name[0].upper() + name[1:-4]
                         if "_" in name:
                                 name = name.replace("_", " ")
-                        print(name)
                         html.write(
                         "<li class=\"mix " + basename(root) + "\">\n" +
                         "  <img src=\"{{ site.baseurl }}{% link /assets/img/companies/" +
