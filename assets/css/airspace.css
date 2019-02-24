@@ -694,6 +694,7 @@ header a.navbar-lang {
   margin-left: 1vw;
   margin-right: 1vw;
   padding-top: 15vh;
+  padding-bottom: 10vh;
 }
 
 @media (min-width: 576px){
@@ -784,7 +785,6 @@ header a.navbar-lang {
 #portfolio-work .block .portfolio-contant ul li {
   width: 10vw;
   height: 10vw;
-  /*overflow: hidden;*/
   margin: 1vw;
   position: relative;
 }
@@ -1148,8 +1148,9 @@ Map
 footer {
   background: #F5F5F5;
   text-align: center;
-  padding-top: 48px;
-  padding-bottom: 55px;
+  margin-top: 10vh;
+  padding-top: 8vh;
+  padding-bottom: 6vh;
 }
 footer p {
   font-size: 13px;
