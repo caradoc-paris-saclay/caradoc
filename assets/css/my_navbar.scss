@@ -72,6 +72,13 @@ $xl-width: 1200px;
   }
 }
 
+@media (min-width: $sm-width){
+  #slider .block h1 {
+    $map: (577:29, 610:32, 631: 34, 700: 40.8, 900: 58, 1000:44, 1260: 80);
+    font-size: least-squares-fit($map);
+  }
+}
+
 @media (min-width: $sm-width){ 
   .navbar-expand-sm .navbar-nav .nav-link{
     padding-right: 0.3rem;

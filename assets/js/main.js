@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('.header').height($(window).height());
 
 
-	//$("#portfolio-contant-active").mixItUp();
+	$("#portfolio-contant-active").mixItUp();
 
 
 	$("#testimonial-slider").carousel({
@@ -31,13 +31,13 @@ $(document).ready(function(){
 
 
 	// google map
-		var map;
+	/*	var map;
 		function initMap() {
 		  map = new google.maps.Map(document.getElementById('map'), {
 		    center: {lat: -34.397, lng: 150.644},
 		    zoom: 8
 		  });
-		}
+		}*/
 
 
 	// Counter
