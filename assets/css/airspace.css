@@ -559,6 +559,47 @@ header a.navbar-lang {
   color: #fff;
   padding: 10px 20px;
 }
+/*---
+  poster Start
+---*/
+#poster .top{
+  padding-top: 5vh;
+}
+
+#poster .block{
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+#poster h2 {
+  /*font-size: 28px;
+  font-weight: 600;*/
+  margin-bottom: 30px;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+#poster ul {
+    padding-left: 20px;
+    font-size: 13px;
+    /*color: #8d8f92;*/
+    margin-bottom: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+    list-style-type: disc;
+
+}
+
+/*@media only screen and (max-width: 768px) {
+
+  #poster .block{
+    margin-left: 1vw;
+    margin-right: 1vw;
+  }
+}*/
+
+
 /*--
 	content Start
 --*/

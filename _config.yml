@@ -11,6 +11,9 @@ keep_files:
   - ".git"
   - ".gitignore"
 
+plugins:
+  - jekyll-seo-tag
+
 # Site settings
 title: JRED
 subtitle: "PhD Job Fair in Saclay"
