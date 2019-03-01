@@ -590,15 +590,13 @@ header a.navbar-lang {
     list-style-type: disc;
 
 }
+/*--
+  Table Ronde Start
+--*/
 
-/*@media only screen and (max-width: 768px) {
-
-  #poster .block{
-    margin-left: 1vw;
-    margin-right: 1vw;
-  }
-}*/
-
+#table-ronde .container{
+  padding-top: 5vh;
+}
 
 /*--
 	content Start
