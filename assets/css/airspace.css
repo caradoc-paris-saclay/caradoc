@@ -378,7 +378,7 @@ header a.navbar-lang {
   background-size: cover;
   position: relative;
   background-attachment: fixed;
-  padding: 10px 0;
+  padding: 20vh 0;
   color: #E3E3E4; /*#FFFFFF; /* #E3E3E4;*/
 }
 
@@ -393,6 +393,7 @@ header a.navbar-lang {
   #about-us .block p{
     text-align: justify;
     text-justify: inter-word;
+    font-size: 13px;
   }
 }
 
@@ -407,8 +408,8 @@ header a.navbar-lang {
   background-size: cover;
   position: relative;
   background-attachment: fixed;
-  padding: 90px 0;
   color: #E3E3E4; /*#FFFFFF; /* #E3E3E4;*/
+  padding: 15vh 0;
 }
 
 
@@ -423,8 +424,6 @@ header a.navbar-lang {
     font-size: 20px;
   }
 }
-
-
 
 #about-us .section-title {
     text-align: center;
@@ -520,7 +519,7 @@ header a.navbar-lang {
   justify-content: center;
 }
 #feature p {
-  font-size: 40px;
+  font-size: 20px;
   /*color: #8d8f92;*/
   margin-bottom: 20px;
 }
