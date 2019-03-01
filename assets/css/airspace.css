@@ -574,7 +574,7 @@ header a.navbar-lang {
 #poster h2 {
   /*font-size: 28px;
   font-weight: 600;*/
-  margin-bottom: 30px;
+  margin-bottom: 2vh  ;
   display: flex;
   align-items: left;
   justify-content: left;
@@ -584,7 +584,7 @@ header a.navbar-lang {
     padding-left: 20px;
     font-size: 13px;
     /*color: #8d8f92;*/
-    margin-bottom: 20px;
+    margin-bottom: 3vh;
     text-align: justify;
     text-justify: inter-word;
     list-style-type: disc;
