@@ -438,6 +438,10 @@ header a.navbar-lang {
   color: white;
 }
 
+#about-us a{
+  color: orange;
+}
+
 /*--
 	call-to-action Start
 --*/
