@@ -13,6 +13,7 @@ keep_files:
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Site settings
 title: JRED
