@@ -598,6 +598,29 @@ header a.navbar-lang {
   padding-top: 5vh;
 }
 
+#table-ronde .row{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
+  /*flex-wrap: nowrap;*/
+}
+
+#table-ronde img{
+  width: 13vw;
+  min-width: 100px;
+  padding-right: 2vw;
+}
+
+#table-ronde p{
+  text-align: justify;
+}
 /*--
 	content Start
 --*/
