@@ -621,6 +621,11 @@ header a.navbar-lang {
 #table-ronde p{
   text-align: justify;
 }
+
+#table-ronde h2{
+  padding-top: 5vh;
+}
+
 /*--
 	content Start
 --*/
