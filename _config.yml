@@ -10,7 +10,6 @@ keep_files:
   - "CNAME"
   - ".git"
   - ".gitignore"
-  - "robots.txt"
 
 plugins:
   - jekyll-seo-tag
