@@ -598,6 +598,18 @@ header a.navbar-lang {
   padding-top: 5vh;
 }
 
+@media (min-width: 768px){
+  #table-ronde .container{
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px){
+  #table-ronde .container{
+    max-width: 97%;
+  }
+}
+
 #table-ronde .row{
   display: -webkit-box;
   display: -webkit-flex;
