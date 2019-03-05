@@ -67,7 +67,7 @@ $xl-width: 1200px;
 
 @media (min-width: $sm-width){
   header li {
-    $map: (577:7.25, 610:8, 631: 8.5, 700: 10.2, 900: 14.5, 1000:16.5, 1260: 18);
+    $map: (577:7.25, 610:8, 631: 8.5, 700: 10.2, 900: 14.5, 1000:16.5, 1260: 17);
     font-size: least-squares-fit($map);
   }
 }
@@ -79,17 +79,11 @@ $xl-width: 1200px;
   }
 }
 
-@media (min-width: $sm-width){ 
-  .navbar-expand-sm .navbar-nav .nav-link{
-    padding-right: 0.3rem;
-    padding-left: 0.3rem;
-  }
-}
 
 @media (min-width: $xl-width){ 
-  .navbar-expand-sm .navbar-nav .nav-link{
-    padding-right: 0.25rem;
-    padding-left: 0.25rem;
+  
+  #collapsibleNavbar ul{
+    width:100%;
   }
 }
 
