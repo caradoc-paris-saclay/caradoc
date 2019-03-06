@@ -79,14 +79,11 @@ $xl-width: 1200px;
   }
 }
 
-
 @media (min-width: $xl-width){ 
-  
   #collapsibleNavbar ul{
     width:100%;
   }
 }
-
 
 @media (max-width: $sm-width){
   header li{
