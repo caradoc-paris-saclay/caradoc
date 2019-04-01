@@ -1119,26 +1119,23 @@ Map
   font-size:26px;
 }
 
-#map .map  {
-  width: 42vw;
-  height: auto;
+@media (max-width: 575px){
+  #map .map  {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (min-width: 575px){
+  #map .map  {
+    width: 100%;
+    height: auto;
+  }
 }
 
 #map .map img, .map iframe {
   display: block;
   width: 100%;  
 }
-
-#map .map img{
-  max-width: 40vw;
-  height: auto;
-}
-
-#map .map iframe {
-  min-height: 45vh;
-  height:100%;
-}
-
 
 #map .block ul{
   list-style-type: disc;
