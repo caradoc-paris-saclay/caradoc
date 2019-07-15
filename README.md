@@ -33,8 +33,8 @@ If you get `"Error, command not found"` run `gem install jekyll` to install it u
 ### Run this repository
 Clone the repository, and `cd` into it:
 ```sh
-$ git clone https://github.com/ndrewtl/airspace-jekyll.git
-$ cd airspace-jekyll
+$ git clone https://github.com/atacs-centralesupelec/jred.git
+$ cd jred
 ```
 
 Install Dependencies:
