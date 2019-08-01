@@ -204,7 +204,7 @@ header a.navbar-lang {
   padding-bottom: 45px;
 }
 
-@media (min-width: 576px){
+@media (min-width: 575px){
   #slider .block h2, .block h3, .block a {
     margin-top: 2vh;
     margin-bottom: 2vh;
@@ -1119,18 +1119,12 @@ Map
   font-size:26px;
 }
 
-@media (max-width: 575px){
-  #map .map  {
-    width: 100%;
-    height: auto;
-  }
+
+#map .map  {
+  width: 100%;
+  height: auto;
 }
-@media (min-width: 575px){
-  #map .map  {
-    width: 100%;
-    height: auto;
-  }
-}
+
 
 #map .map img, .map iframe {
   display: block;
