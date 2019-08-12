@@ -16,13 +16,13 @@ plugins:
   - jekyll-sitemap
 
 # Site settings
-title: J-RED
+title: CARaDOC
 subtitle: "PhD Job Fair in Saclay"
 url: "https://www.jred.fr" # the base hostname & protocol for your site
 # baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
 baseurl: "" #important: start with /
 cover: "/assets/img/cover.png"
-logo: "/assets/img/logo_jred_no_bkgd.png"
+logo: "/assets/img/caradoc_logo.png"
 # description: La J-RED est un forum professionnel pour doctorant et jeunes chercheurs organisé par l'ATACS, l'association des thèsards et amis de CentraleSupélec.
 # Build settings
 markdown: kramdown
