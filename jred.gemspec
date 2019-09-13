@@ -1,13 +1,13 @@
 # coding: utf-8
 
 Gem::Specification.new do |spec|
-  spec.name          = "jred-web"
+  spec.name          = "caradoc-web"
   spec.version       = "0.1.0"
   spec.authors       = ["Arnaud Gallant"]
   spec.email         = ["arnaud.gallant@centralesupelec.fr"]
 
   spec.summary       = %q{PhD Job Fair in Saclay.}
-  spec.homepage      = "http://www.jred.fr"
+  spec.homepage      = "https://www.caradoc-paris-saclay.fr"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(_layouts|_includes|_sass|LICENSE|README)/i}) }
