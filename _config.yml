@@ -16,9 +16,9 @@ plugins:
   - jekyll-sitemap
 
 # Site settings
-title: J-RED
+title: CARadOC
 subtitle: "PhD Job Fair in Saclay"
-url: "https://www.jred.fr" # the base hostname & protocol for your site
+url: "https://www.caradoc-paris-saclay.fr" # the base hostname & protocol for your site
 # baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
 baseurl: "" #important: start with /
 cover: "/assets/img/cover.png"
