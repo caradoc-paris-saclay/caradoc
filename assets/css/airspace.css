@@ -3,7 +3,7 @@
  * In airspace, it is called style.css
  * However, style.css now holds additional styles for this jekyll port. (Not written by ThemeFisher)
  * The original style.css is now called airspace.css
- * 
+ *
  */
 
 /* Import Fonts */
@@ -11,9 +11,9 @@
 @import url(//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700);
 @import url(//fonts.googleapis.com/css?family=Volkhov:400italic);
 
-/*sm-width: 576px; 
-md-width: 768; 
-lg-width: 992px; 
+/*sm-width: 576px;
+md-width: 768;
+lg-width: 992px;
 xl-width: 1200px; */
 
  /* latin-ext */
@@ -74,8 +74,8 @@ a:active {
   text-decoration: underline;
 }
 
-.nav-link:hover{  
-  color: #f97300; 
+.nav-link:hover{
+  color: #f97300;
 }
 
 .bd-navbar{
@@ -122,7 +122,7 @@ header .navbar-toggler-icon{
    border-color: red;
 }
 
-header .navbar-collapse{ 
+header .navbar-collapse{
   justify-content: flex-end;
 }
 
@@ -148,7 +148,7 @@ header .navbar-default .navbar-nav .navbar-expand-sm {
 }
 
 header .navbar-nav li a{
-  color: #333333; 
+  color: #333333;
 }
   /*padding: 10% 10%;*/
   /*padding: 10px 15px;*/
@@ -168,7 +168,7 @@ header a.navbar-lang {
 }
 
 /*font header .navbar-default .navbar-nav li a:hover {
-  color: #000; /* #000 
+  color: #000; /* #000
 }*/
 
 /*---------------------------------------------
@@ -234,9 +234,9 @@ header a.navbar-lang {
   width: 250px;
   padding:0.5em 1em;
   color: white;
-  text-align:center; 
+  text-align:center;
   vertical-align: middle;
-  display:inline-block; 
+  display:inline-block;
   cursor: pointer;
   /*border:0.16em solid #FFFFFF;*/
   box-sizing: border-box;
@@ -299,7 +299,7 @@ header a.navbar-lang {
 
 #programme .button-wrapper {
   text-align:center;
-  margin:auto;  
+  margin:auto;
 }
 
 #programme .section-title {
@@ -317,10 +317,10 @@ header a.navbar-lang {
   font-weight: 300;
   font-size: 30px;
   color: white;
-  text-align:center; 
+  text-align:center;
   vertical-align: middle;
   padding:0.5em 1em;
-  display:inline-block; 
+  display:inline-block;
   /*border:0.16em solid #FFFFFF;*/
   box-sizing: border-box;
   background-color: DodgerBlue;
@@ -347,8 +347,8 @@ header a.navbar-lang {
 
 
 /*#programme .btn a{
-    color:#fff!important; 
-    font-weight:normal!important; 
+    color:#fff!important;
+    font-weight:normal!important;
     text-decoration:none;
     padding-left:27px;
     text-shadow:none!important;
@@ -530,7 +530,7 @@ header a.navbar-lang {
     margin-left: 20px;
     margin-right: 30px;
   }
-   
+
 
   #feature ol {
     padding-left: 20px;
@@ -1128,7 +1128,7 @@ Map
 
 #map .map img, .map iframe {
   display: block;
-  width: 100%;  
+  width: 100%;
 }
 
 #map .block ul{
