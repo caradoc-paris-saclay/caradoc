@@ -171,12 +171,9 @@ header a.navbar-lang {
   color: #000; /* #000
 }*/
 
-/*---------------------------------------------
-					Index Start
------------------------------------------------*/
-/*--
+/* *****************************************************************************
 	Slider Start
---*/
+***************************************************************************** */
 #slider {
   background: linear-gradient(
       rgba(0, 0, 0, 0.5),
@@ -233,7 +230,7 @@ header a.navbar-lang {
   font-size: 30px;
   width: 250px;
   padding:0.5em 1em;
-  color: white;
+  color: #002e46;
   text-align:center;
   vertical-align: middle;
   display:inline-block;
@@ -249,26 +246,274 @@ header a.navbar-lang {
 
 
 #slider .inscription{
-    background-color: #9f212f;
+    // background-color: #9f212f;
+    background-color: #b1d8ec;
 }
 
 #slider .saclay{
     background-color: #550911;
 }
 
-
 #slider a.download-btn:active {
   color: #A9A9A9;
   border-color: #A9A9A9;
   text-decoration: underline;
-
 }
 
 #slider a.download-btn:hover {
-  color: #DDDDDD;
-  border-color: #DDDDDD;
+  color: #b1d8ec;
+  border-color: #b1d8ec;
+  background-color: #002e46;
   /*border-color: solid #DDDDDD;*/
 }
+
+/* *****************************************************************************
+	Pour quoi venir ? / Why to come?
+***************************************************************************** */
+#feature {
+  padding: 25px 50px;
+  background-color: #b1d8ec;
+  /* Font color */
+  color: #002e46;
+}
+
+#feature h1 {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+#feature li {
+  font-size: 25px;
+  text-align: justify;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+#feature h2 {
+  margin-top: 0px;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+/*
+#feature {
+  // background: url("../img/featue-bg.jpg");
+  background-color: #F9F7F7;
+  background-position: 50% 94px;
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: visible;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #fff;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  padding: 100px 0;
+}
+*/
+
+
+@media only screen and (max-width: 768px) {
+
+  #feature .block{
+    margin-left: 20px;
+    margin-right: 30px;
+  }
+
+
+  #feature ol {
+    padding-left: 20px;
+    font-size: 13px;
+    /*color: #8d8f92;*/
+    margin-bottom: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  #feature li {
+    margin: 0 0 10px 0;
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  #feature ol {
+    font-size: 20px;
+    /*color: #8d8f92;*/
+    margin-bottom: 20px;
+  }
+}
+
+#feature .btn-view-works {
+  background: #655E7A;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+/* *****************************************************************************
+	Hoistoire / History
+***************************************************************************** */
+#histoire {
+  padding: 25px 50px;
+  /* Blue as in the logo */
+  background-color: #0A2946;
+  /* Font color */
+  color: #b1d8ec;
+}
+
+#histoire h1 {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+#histoire h2 {
+  margin-top: 0px;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+#histoire p {
+  font-size: 25px;
+  text-align: justify;
+  text-indent: 50px;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+/* *****************************************************************************
+	About us
+***************************************************************************** */
+#about-us {
+  padding: 25px 50px;
+  /* Blue as in the logo */
+  background-color: #0A2946;
+  /* Font color */
+  color: #b1d8ec;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("../img/about_us.jpg") no-repeat;
+    background-size: cover;
+    position: relative;
+    background-attachment: fixed;
+}
+
+#about-us h1 {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+#about-us h2 {
+  margin-top: 0px;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+#about-us p {
+  font-size: 25px;
+  text-align: justify;
+  text-indent: 50px;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+#about-us a{
+  color: orange;
+}
+/*
+@media only screen and (max-width: 767px) {
+
+#about-us {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("../img/about_us.jpg") no-repeat;
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+  padding: 20vh 0;
+  color: #b1d8ec;
+}
+
+  #about-us  .block {
+  color: white;
+  margin-left: 30px;
+  margin-right: 30px;
+
+}
+
+  #about-us .block p{
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 25px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+#about-us {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("../img/about_us.jpg") no-repeat;
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+  color: #E3E3E4;
+  padding: 15vh 0;
+}
+
+
+  #about-us  .block {
+  color: white;
+  margin: 0 auto;
+}
+
+  #about-us .block p{
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 25px;
+  }
+}
+
+*/
+
+
+
+
+
+
+
+
 
 
 /*--
@@ -363,83 +608,6 @@ header a.navbar-lang {
 }
 
 
-/*--
-	About Us Start
---*/
-
-@media only screen and (max-width: 767px) {
-
-#about-us {
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ),
-    url("../img/about_us.jpg") no-repeat;
-  background-size: cover;
-  position: relative;
-  background-attachment: fixed;
-  padding: 20vh 0;
-  color: #E3E3E4; /*#FFFFFF; /* #E3E3E4;*/
-}
-
-  #about-us  .block {
-  color: white; /*#E3E3E4;*/
-  margin-left: 30px;
-  margin-right: 30px;
-  /*padding-left: 20px;
-  padding-right: 20px;*/
-}
-
-  #about-us .block p{
-    text-align: justify;
-    text-justify: inter-word;
-    font-size: 13px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-
-#about-us {
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ),
-    url("../img/about_us.jpg") no-repeat;
-  background-size: cover;
-  position: relative;
-  background-attachment: fixed;
-  color: #E3E3E4; /*#FFFFFF; /* #E3E3E4;*/
-  padding: 15vh 0;
-}
-
-
-  #about-us  .block {
-  color: white; /*#E3E3E4;*/
-  margin: 0 auto;
-}
-
-  #about-us .block p{
-    text-align: justify;
-    text-justify: inter-word;
-    font-size: 20px;
-  }
-}
-
-#about-us .section-title {
-    text-align: center;
-}
-
-#about-us .section-title h2{
-    color: white;
-}
-
-#about-us .section-title p{
-  color: white;
-}
-
-#about-us a{
-  color: orange;
-}
 
 /*--
 	call-to-action Start
@@ -483,82 +651,8 @@ header a.navbar-lang {
   color: #333333;
   margin-top: 30px;
 }
-/*--
-	Feature Start
---*/
-#feature {
-  /*background: url("../img/featue-bg.jpg");*/
-  background-color: #F9F7F7;
-  background-position: 50% 94px;
-  width: 100%;
-  display: block;
-  position: relative;
-  overflow: visible;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: #fff;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  padding: 100px 0;
-}
-#feature h2 {
-  /*font-size: 28px;
-  font-weight: 600;*/
-  text-align: center;
-  margin-bottom: 30px;
-    display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#feature p {
-  font-size: 20px;
-  /*color: #8d8f92;*/
-  margin-bottom: 20px;
-}
-
-@media only screen and (max-width: 768px) {
-
-  #feature .block{
-    margin-left: 20px;
-    margin-right: 30px;
-  }
 
 
-  #feature ol {
-    padding-left: 20px;
-    font-size: 13px;
-    /*color: #8d8f92;*/
-    margin-bottom: 20px;
-    text-align: justify;
-    text-justify: inter-word;
-  }
-
-  #feature li {
-    margin: 0 0 10px 0;
-  }
-}
-
-@media only screen and (min-width: 767px) {
-  #feature ol {
-    font-size: 20px;
-    /*color: #8d8f92;*/
-    margin-bottom: 20px;
-  }
-}
-
-#feature .btn-view-works {
-  background: #655E7A;
-  color: #fff;
-  padding: 10px 20px;
-}
 /*---
   poster Start
 ---*/
