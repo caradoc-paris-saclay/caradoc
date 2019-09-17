@@ -171,244 +171,201 @@ header a.navbar-lang {
   color: #000; /* #000
 }*/
 
-/* *****************************************************************************
-	Slider Start
-***************************************************************************** */
-#slider {
+
+/* #############################################################################
+	Slider Head
+############################################################################# */
+#start-head {
+  font-family: 'Google Sans','Roboto', sans-serif;
   background: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ), url("../img/slider-bg.jpg") no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  background-position: 10% 0%;
-  padding: 100px 0 150px 0;
+  background-position: center;
+  padding: 100px 100px 150px 150px;
   position: relative;
-}
-
-#slider .block {
+  /*Font color*/
   color: #E3E3E4;
+  /*Text alignment */
   text-align: center;
 }
-
-#slider .block h1 {
+@media screen and (max-width: 900px) {
+  #start-head {
+    padding: 50px 0px;
+  }
+}
+/* Header h1 **************************************************************** */
+#start-head h1 {
   font-family: 'Google Sans','Roboto', sans-serif;
-  font-weight: 900;
-  /*font-weight: bold;*/
   font-size: 120px;
-  line-height: 60px;
-  letter-spacing: 10px;
-  padding-bottom: 45px;
+  font-weight: bold;
 }
-
-@media (min-width: 575px){
-  #slider .block h2, .block h3, .block a {
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+@media screen and (max-width: 900px) {
+  #start-head h1 {
+    font-size: 50px;
   }
 }
-
-@media (max-width: 575px){
-  #slider .block h2, .block h3, .block a {
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+/* Header h2 **************************************************************** */
+#start-head h2 {
+  font-family: 'Google Sans','Roboto', sans-serif;
+  font-size: 40px;
+}
+@media screen and (max-width: 900px) {
+  #start-head h2 {
+    font-size: 30px;
   }
 }
-
-
-#slider .block p {
-  font-size: 23px;
-  line-height: 40px;
+/* Button ******************************************************************* */
+#start-head a.download-btn {
   font-family: 'Google Sans','Roboto', sans-serif;
   font-weight: 300;
-  letter-spacing: 3px;
-}
-
-#slider a.download-btn {
-  font-family: 'Google Sans','Roboto', sans-serif;
-  font-weight: 300;
-  font-size: 30px;
+  font-size: 32px;
   width: 250px;
   padding:0.5em 1em;
-  color: #002e46;
+  /*Dark blue*/
+  color: #002E46;
   text-align:center;
   vertical-align: middle;
   display:inline-block;
   cursor: pointer;
-  /*border:0.16em solid #FFFFFF;*/
   box-sizing: border-box;
   text-decoration: none;
-  /*text-transform:uppercase;*/
-
   -webkit-transition-duration: 0.2s; /* Safari */
   transition-duration: 0.2s;
+  /* Light blue */
+  background-color: #B1D8EC;
 }
 
-
-#slider .inscription{
-    // background-color: #9f212f;
-    background-color: #b1d8ec;
-}
-
-#slider .saclay{
-    background-color: #550911;
-}
-
-#slider a.download-btn:active {
-  color: #A9A9A9;
-  border-color: #A9A9A9;
+#start-head a.download-btn:active {
   text-decoration: underline;
 }
 
-#slider a.download-btn:hover {
-  color: #b1d8ec;
-  border-color: #b1d8ec;
-  background-color: #002e46;
+#start-head a.download-btn:hover {
+  /*Light blue*/
+  color: #B1D8EC;
+  /*Light blue*/
+  border-color: #B1D8EC;
+  /*Dark blue*/
+  background-color: #AA2E46;
   /*border-color: solid #DDDDDD;*/
 }
 
-/* *****************************************************************************
-	Pour quoi venir ? / Why to come?
-***************************************************************************** */
-#feature {
-  padding: 25px 50px;
-  background-color: #b1d8ec;
-  /* Font color */
-  color: #002e46;
+@media screen and (max-width: 900px) {
+  #start-head a.download-btn {
+    font-size: 30px;
+    width: 200px;
+  }
 }
-
+/* #############################################################################
+  Pour quoi venir ? / Why to come?
+############################################################################# */
+#feature {
+  padding: 100px 100px;
+  /* Light blue */
+  background-color: #B1D8EC;
+  /* Dark blue */
+  color: #002E46;
+}
+@media only screen and (max-width: 900px) {
+  #feature {
+    padding: 50px 0px;
+  }
+}
+/* Paragraph **************************************************************** */
+#feature .block{
+  margin: 0px 150px;
+}
+@media only screen and (max-width: 900px) {
+  #feature .block{
+    margin: 0px 20px;
+  }
+}
+/* Header h1 **************************************************************** */
 #feature h1 {
   text-align: center;
-  margin-top: 0px;
-  margin-bottom: 25px;
-  margin-right: 25px;
-  margin-left: 25px;
+  font-size: 50px;
 }
-
+@media only screen and (max-width: 900px) {
+  #feature h1 {
+    font-size: 40px;
+  }
+}
+/* List li **************************************************************** */
 #feature li {
-  font-size: 25px;
-  text-align: justify;
-  margin-top: 0px;
-  margin-bottom: 25px;
-  margin-right: 25px;
-  margin-left: 25px;
+  font-size: 30px;
+  text-align: left;
 }
-
-#feature h2 {
-  margin-top: 0px;
-  margin-bottom: 25px;
-  margin-right: 25px;
-  margin-left: 25px;
-}
-
-/*
-#feature {
-  // background: url("../img/featue-bg.jpg");
-  background-color: #F9F7F7;
-  background-position: 50% 94px;
-  width: 100%;
-  display: block;
-  position: relative;
-  overflow: visible;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: #fff;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  padding: 100px 0;
-}
-*/
-
-
-@media only screen and (max-width: 768px) {
-
-  #feature .block{
-    margin-left: 20px;
-    margin-right: 30px;
-  }
-
-
-  #feature ol {
-    padding-left: 20px;
-    font-size: 13px;
-    /*color: #8d8f92;*/
-    margin-bottom: 20px;
-    text-align: justify;
-    text-justify: inter-word;
-  }
-
+@media only screen and (max-width: 900px) {
   #feature li {
-    margin: 0 0 10px 0;
+    font-size: 25px;
   }
-}
-
-@media only screen and (min-width: 767px) {
-  #feature ol {
-    font-size: 20px;
-    /*color: #8d8f92;*/
-    margin-bottom: 20px;
-  }
-}
-
-#feature .btn-view-works {
-  background: #655E7A;
-  color: #fff;
-  padding: 10px 20px;
 }
 
 /* *****************************************************************************
 	Hoistoire / History
 ***************************************************************************** */
 #histoire {
-  padding: 25px 50px;
+  padding: 100px 100px;
   /* Blue as in the logo */
-  background-color: #0A2946;
-  /* Font color */
-  color: #b1d8ec;
+  background-color: #002E46;
+  /* Dark blue */
+  color: #B1D8EC;
 }
-
+@media only screen and (max-width: 900px) {
+  #histoire {
+    padding: 50px 0px;
+  }
+}
+/* Paragraph **************************************************************** */
+#histoire .block{
+  margin: 0px 150px;
+}
+@media only screen and (max-width: 900px) {
+  #histoire .block{
+    margin: 0px 20px;
+  }
+}
+/* Header h1 **************************************************************** */
 #histoire h1 {
   text-align: center;
-  margin-top: 0px;
-  margin-bottom: 25px;
-  margin-right: 25px;
-  margin-left: 25px;
+  font-size: 50px;
 }
-
+@media only screen and (max-width: 900px) {
+  #histoire h1 {
+    font-size: 40px;
+  }
+}
+/* Header h1 **************************************************************** */
 #histoire h2 {
-  margin-top: 0px;
-  margin-bottom: 25px;
-  margin-right: 25px;
-  margin-left: 25px;
+  text-align: left;
+  font-size: 40px;
 }
-
+@media only screen and (max-width: 900px) {
+  #histoire h2 {
+    font-size: 30px;
+  }
+}
+/* Paragraph p ************************************************************** */
 #histoire p {
-  font-size: 25px;
-  text-align: justify;
-  text-indent: 50px;
-  margin-top: 0px;
-  margin-bottom: 25px;
-  margin-right: 25px;
-  margin-left: 25px;
+  text-align: left;
+  font-size: 30px;
 }
-
+@media only screen and (max-width: 900px) {
+  #histoire p {
+    font-size: 25px;
+  }
+}
 /* *****************************************************************************
 	About us
 ***************************************************************************** */
 #about-us {
-  padding: 25px 50px;
+  padding: 100px 100px;
   /* Blue as in the logo */
   background-color: #0A2946;
   /* Font color */
-  color: #b1d8ec;
+  color: white;
   background: linear-gradient(
       rgba(0, 0, 0, 0.6),
       rgba(0, 0, 0, 0.6)
@@ -417,195 +374,69 @@ header a.navbar-lang {
     background-size: cover;
     position: relative;
     background-attachment: fixed;
+    background-position: center;
 }
-
+@media only screen and (max-width: 900px) {
+  #about-us {
+    padding: 50px 0px;
+  }
+}
+/* Paragraph **************************************************************** */
+#about-us .block{
+  margin: 0px 150px;
+}
+@media only screen and (max-width: 900px) {
+  #about-us .block{
+    margin: 0px 20px;
+  }
+}
+/* Header h1 **************************************************************** */
 #about-us h1 {
   text-align: center;
-  margin-top: 0px;
-  margin-bottom: 25px;
-  margin-right: 25px;
-  margin-left: 25px;
+  font-size: 50px;
 }
-
+@media only screen and (max-width: 900px) {
+  #about-us h1 {
+    font-size: 40px;
+  }
+}
+/* Header h1 **************************************************************** */
 #about-us h2 {
-  margin-top: 0px;
-  margin-bottom: 25px;
-  margin-right: 25px;
-  margin-left: 25px;
+  text-align: left;
+  font-size: 40px;
 }
-
+@media only screen and (max-width: 900px) {
+  #about-us h2 {
+    font-size: 30px;
+  }
+}
+/* Paragraph p ************************************************************** */
 #about-us p {
-  font-size: 25px;
-  text-align: justify;
-  text-indent: 50px;
-  margin-top: 0px;
-  margin-bottom: 25px;
-  margin-right: 25px;
-  margin-left: 25px;
+  text-align: left;
+  font-size: 30px;
 }
-
+@media only screen and (max-width: 900px) {
+  #about-us p {
+    font-size: 25px;
+  }
+}
 #about-us a{
   color: orange;
 }
-/*
-@media only screen and (max-width: 767px) {
 
-#about-us {
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ),
-    url("../img/about_us.jpg") no-repeat;
-  background-size: cover;
-  position: relative;
-  background-attachment: fixed;
-  padding: 20vh 0;
-  color: #b1d8ec;
+/* *****************************************************************************
+	About us
+***************************************************************************** */
+img {
+  width: 1000px;
 }
-
-  #about-us  .block {
-  color: white;
-  margin-left: 30px;
-  margin-right: 30px;
-
-}
-
-  #about-us .block p{
-    text-align: justify;
-    text-justify: inter-word;
-    font-size: 25px;
+@media only screen and (max-width: 900px) {
+  img {
+    width: 600px;
   }
 }
 
-@media only screen and (min-width: 768px) {
 
-#about-us {
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ),
-    url("../img/about_us.jpg") no-repeat;
-  background-size: cover;
-  position: relative;
-  background-attachment: fixed;
-  color: #E3E3E4;
-  padding: 15vh 0;
-}
-
-
-  #about-us  .block {
-  color: white;
-  margin: 0 auto;
-}
-
-  #about-us .block p{
-    text-align: justify;
-    text-justify: inter-word;
-    font-size: 25px;
-  }
-}
-
-*/
-
-
-
-
-
-
-
-
-
-
-/*--
-	wrapper Start
---*/
-#programme {
-  padding: 50px 0;
-  background-color: #043A65;
-  color: #E3E3E4;
-}
-
-#programme .col h2 {
-  padding-top: 35px;
-  line-height: 27px;
-  margin: 0;
-}
-#programme .col p {
-  color: #7B7B7B;
-  padding-top: 20px;
-}
-#programme .col img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
-    padding-bottom: 40px;
-}
-
-#programme .button-wrapper {
-  text-align:center;
-  margin:auto;
-}
-
-#programme .section-title {
-  text-align: center;
-  margin-bottom: 40px;
-  padding-bottom: 10px;
-}
-
-#programme .section-title p {
-  padding-top: 20px;
-}
-
-#programme a.download-btn {
-  font-family: 'Google Sans','Roboto', sans-serif;
-  font-weight: 300;
-  font-size: 30px;
-  color: white;
-  text-align:center;
-  vertical-align: middle;
-  padding:0.5em 1em;
-  display:inline-block;
-  /*border:0.16em solid #FFFFFF;*/
-  box-sizing: border-box;
-  background-color: DodgerBlue;
-  text-decoration: none;
-  /*text-transform:uppercase;*/
-  cursor: pointer;
-  -webkit-transition-duration: 0.2s; /* Safari */
-  transition-duration: 0.2s;
-}
-
-
-#programme a.download-btn:active {
-  color: #A9A9A9;
-  border-color: #A9A9A9;
-  text-decoration: underline;
-
-}
-
-#programme a.download-btn:hover {
-  color: #DDDDDD;
-  border-color: #DDDDDD;
-  /*border-color: solid #DDDDDD;*/
-}
-
-
-/*#programme .btn a{
-    color:#fff!important;
-    font-weight:normal!important;
-    text-decoration:none;
-    padding-left:27px;
-    text-shadow:none!important;
-}*/
-
-/*
-@media all and (max-width:30em){
- a.btn h3{
-  display:block;
-  margin:0.4em auto;
- }
-}
 
 
 
