@@ -1,0 +1,131 @@
+/*
+<<Author>>: Oscar DE LA CRUZ
+<<E-mail>>: odelacruz.fierro@gmail.com
+<<Date>>: September 21, 2019
+<<Description>>:
+*/
+
+/* #############################################################################
+bird class
+############################################################################# */
+/* General rules -------------------------------------------------------------*/
+.bird {
+  background : linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)),
+    url("../img/slider-bg.jpg");
+  background-size: cover; /*Covers all background area*/
+  background-attachment: fixed; /* Image will not scroll with the page*/
+  background-position: center; /* Position of the background within an element */
+  background-repeat: no-repeat; /* The background image is only shown once */
+  /* Space around an element's content */
+  padding: 2.5vw 2.5vw; /* 5% of the viewport width */
+  /* Font color */
+  color: #E3E3E4;
+  /* Text alignent */
+  text-align: center;
+}
+
+/* Headers rules -------------------------------------------------------------*/
+.bird h1 {
+  /* Font size */
+  font-size: 7vw;
+  /* Other */
+  font-weight: bold;
+}
+@media screen and (max-width: 900px) {
+  .bird h1 {
+    /* Font size */
+    font-size: 10vw;
+  }
+}
+
+.bird h2 {
+  /* Font size */
+  font-size: 2.5vw;
+}
+@media screen and (max-width: 900px) {
+  .bird h2 {
+    /* Font size */
+    font-size: 5vw;
+  }
+}
+
+/* Registration button rule --------------------------------------------------*/
+.bird a {
+  font-family: 'Google Sans','Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 2vw;
+  width: 14vw;
+  padding:0.5em 1em;
+  /*Dark blue*/
+  color: #002E46;
+  text-align:center;
+  vertical-align: middle;
+  display:inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-decoration: none;
+  -webkit-transition-duration: 0.2s; /* Safari */
+  transition-duration: 0.2s;
+  /* Light blue */
+  background-color: #B1D8EC;
+}
+
+.bird a:active {
+  text-decoration: underline;
+}
+
+.bird a:hover {
+  /*Light blue*/
+  color: #B1D8EC;
+  /*Light blue*/
+  border-color: #B1D8EC;
+  /*Dark blue*/
+  background-color: #AA2E46;
+  /*border-color: solid #DDDDDD;*/
+}
+
+@media screen and (max-width: 900px) {
+  .bird a {
+    /* Font size */
+    font-size: 5vw;
+    width: 35vw;
+  }
+}
+
+/* #############################################################################
+falcon class
+############################################################################# */
+.falcon {
+  padding: 2.5vw 7vw; /* 5% of the viewport width */
+  /* Dark blue */
+  color: #002E46;
+  /* Text alignent */
+  text-align: center;
+}
+
+.falcon h1 {
+  /* Font size */
+  font-size: 2.5vw;
+  /* Text alignment */
+  text-align: center;
+}
+@media screen and (max-width: 900px) {
+  .falcon h1 {
+    /* Font size */
+    font-size: 5vw;
+  }
+}
+
+.falcon li {
+  font-size: 1.5vw;
+  /* Text alignment */
+  text-align: left;
+}
+@media screen and (max-width: 900px) {
+  .falcon li {
+    /* Font size */
+    font-size: 4vw;
+  }
+}
