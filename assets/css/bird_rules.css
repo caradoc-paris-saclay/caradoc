@@ -28,43 +28,42 @@ bird class
 
 /* Headers rules -------------------------------------------------------------*/
 .bird h1 {
-  /* Font size */
-  font-size: 7vw;
-  /* Other */
-  font-weight: bold;
+  font-size: 7vw; /* Font size */
+  font-weight: bold /* Other */
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .bird h1 {
-    /* Font size */
-    font-size: 10vw;
+    font-size: 10vw; /* Font size */
   }
 }
 
 .bird h2 {
-  /* Font size */
-  font-size: 2.5vw;
+  font-size: 2.5vw; /* Font size */
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .bird h2 {
-    /* Font size */
-    font-size: 5vw;
+    font-size: 5vw; /* Font size */
   }
 }
 
 /* Registration button rule --------------------------------------------------*/
 .bird a {
-  font-family: 'Google Sans','Roboto', sans-serif;
-  font-weight: 300;
-  font-size: 2vw;
-  width: 14vw;
-  padding:0.5em 1em;
+  font-family: 'Google Sans','Roboto', sans-serif; /* Font type*/
+  font-weight: 300; /* Sets boldness */
+  font-size: 2vw; /* 2% of viewport width */
+  width: 14vw; /* Link width */
+  /* Space around an element's content */
+  padding:0.5em 1em; /* Xem = X times the size of current font */
   /*Dark blue*/
   color: #002E46;
-  text-align:center;
-  vertical-align: middle;
-  display:inline-block;
-  cursor: pointer;
-  box-sizing: border-box;
+  /*Dark blue */
+  text-align: center;
+  /* Vertical alignment of the element */
+  vertical-align: top;
+  /* */
+  display:inline-block; /* Margins/paddings are respected */
+  cursor: pointer; /* Mouse cursos */
+  box-sizing: border-box; /* Includes the padding and border in an element's total width and height. */
   text-decoration: none;
   -webkit-transition-duration: 0.2s; /* Safari */
   transition-duration: 0.2s;
@@ -86,7 +85,7 @@ bird class
   /*border-color: solid #DDDDDD;*/
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .bird a {
     /* Font size */
     font-size: 5vw;
@@ -99,10 +98,10 @@ falcon class
 ############################################################################# */
 .falcon {
   padding: 2.5vw 7vw; /* 5% of the viewport width */
+  /* Light blue */
+  background-color: #B1D8EC;
   /* Dark blue */
   color: #002E46;
-  /* Text alignent */
-  text-align: center;
 }
 
 .falcon h1 {
@@ -111,7 +110,7 @@ falcon class
   /* Text alignment */
   text-align: center;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .falcon h1 {
     /* Font size */
     font-size: 5vw;
@@ -123,8 +122,58 @@ falcon class
   /* Text alignment */
   text-align: left;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .falcon li {
+    /* Font size */
+    font-size: 4vw;
+  }
+}
+
+/* #############################################################################
+sparrow class
+############################################################################# */
+.sparrow {
+  padding: 2.5vw 7vw; /* 5% of the viewport width */
+  /* Dark blue */
+  background-color: #002E46;
+  /* Light blue */
+  color: #B1D8EC;
+}
+
+.sparrow h1 {
+  /* Font size */
+  font-size: 2.5vw;
+  /* Text alignment */
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .sparrow h1 {
+    /* Font size */
+    font-size: 5vw;
+  }
+}
+
+.sparrow h2 {
+  /* Font size */
+  font-size: 2vw;
+  /* Text alignment */
+  text-align: left;
+}
+@media screen and (max-width: 768px) {
+  .sparrow h2 {
+    /* Font size */
+    font-size: 4.5vw;
+  }
+}
+
+.sparrow p {
+  /* Font size */
+  font-size: 1.5vw;
+  /* Text alignment */
+  text-align: left;
+}
+@media screen and (max-width: 768px) {
+  .sparrow p {
     /* Font size */
     font-size: 4vw;
   }
