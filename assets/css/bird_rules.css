@@ -178,3 +178,53 @@ sparrow class
     font-size: 4vw;
   }
 }
+
+/* #############################################################################
+parrot class
+############################################################################# */
+.parrot {
+  padding: 2.5vw 7vw; /* 5% of the viewport width */
+  /* Dark blue */
+  background-color: #002E46;
+  /* Light blue */
+  color: #B1D8EC;
+}
+
+.parrot h1 {
+  /* Font size */
+  font-size: 2.5vw;
+  /* Text alignment */
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .parrot h1 {
+    /* Font size */
+    font-size: 5vw;
+  }
+}
+
+.parrot h2 {
+  /* Font size */
+  font-size: 2vw;
+  /* Text alignment */
+  text-align: left;
+}
+@media screen and (max-width: 768px) {
+  .parrot h2 {
+    /* Font size */
+    font-size: 4.5vw;
+  }
+}
+
+.parrot p {
+  /* Font size */
+  font-size: 1.5vw;
+  /* Text alignment */
+  text-align: left;
+}
+@media screen and (max-width: 768px) {
+  .parrot p {
+    /* Font size */
+    font-size: 4vw;
+  }
+}
