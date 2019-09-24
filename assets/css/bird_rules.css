@@ -94,6 +94,48 @@ bird class
 }
 
 /* #############################################################################
+top-bird class
+############################################################################# */
+.top-bird {
+  padding: 6vw 7vw; /* X% of the viewport width */
+  /* Dark blue */
+  background-color: #002E46;
+  /* Light blue */
+  color: #B1D8EC;
+  /* Text alignment */
+  text-align: center;
+}
+
+.top-bird h1 {
+  /* Font size */
+  font-size: 4vw;
+}
+@media screen and (max-width: 768px) {
+  .top-bird h1 {
+    /* Font size */
+    font-size: 7vw;
+  }
+}
+
+.top-bird h2 {
+  font-size: 2.5vw; /* Font size */
+}
+@media screen and (max-width: 768px) {
+  .top-bird h2 {
+    font-size: 5vw; /* Font size */
+  }
+}
+
+.top-bird img {
+  width: 65vw;
+}
+
+
+
+
+
+
+/* #############################################################################
 falcon class
 ############################################################################# */
 .falcon {
@@ -133,7 +175,7 @@ falcon class
 sparrow class
 ############################################################################# */
 .sparrow {
-  padding: 2.5vw 7vw; /* 5% of the viewport width */
+  padding: 2.5vw 7vw; /* X% of the viewport width */
   /* Dark blue */
   background-color: #002E46;
   /* Light blue */
@@ -182,12 +224,26 @@ sparrow class
 /* #############################################################################
 parrot class
 ############################################################################# */
+/* General rules -------------------------------------------------------------*/
+.parrot {
+  background : linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)),
+    url("../img/about_us.jpg");
+  background-size: cover; /*Covers all background area*/
+  background-attachment: fixed; /* Image will not scroll with the page*/
+  background-position: center; /* Position of the background within an element */
+  background-repeat: no-repeat; /* The background image is only shown once */
+  /* Space around an element's content */
+  padding: 2.5vw 7vw; /* 5% of the viewport width */
+  /* Font color */
+  color: #E3E3E4;
+  /* Text alignent */
+  text-align: center;
+}
+
 .parrot {
   padding: 2.5vw 7vw; /* 5% of the viewport width */
-  /* Dark blue */
-  background-color: #002E46;
-  /* Light blue */
-  color: #B1D8EC;
 }
 
 .parrot h1 {
@@ -227,4 +283,8 @@ parrot class
     /* Font size */
     font-size: 4vw;
   }
+}
+
+.parrot a{
+  color: orange;
 }
