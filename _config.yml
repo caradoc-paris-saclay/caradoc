@@ -23,7 +23,7 @@ url: "https://www.caradoc-paris-saclay.fr" # the base hostname & protocol for yo
 baseurl: "" #important: start with /
 #cover: "/assets/img/cover_jred19.png"
 #logo: "/assets/img/caradoc_logo.png"
-# description: La J-RED est un forum professionnel pour doctorant et jeunes chercheurs organisé par l'ATACS, l'association des thèsards et amis de CentraleSupélec.
+# description: CARaDOC est un forum professionnel pour doctorant et jeunes chercheurs organisé par l'ATACS, l'association des thèsards et amis de CentraleSupélec.
 # Build settings
 markdown: kramdown
 
