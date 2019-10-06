@@ -162,7 +162,9 @@ falcon class
 .falcon li {
   font-size: 1.5vw;
   /* Text alignment */
-  text-align: left;
+  /* text-align: left; */
+  text-align: justify;
+  text-justify: inter-word;
 }
 @media screen and (max-width: 768px) {
   .falcon li {
@@ -212,7 +214,9 @@ sparrow class
   /* Font size */
   font-size: 1.5vw;
   /* Text alignment */
-  text-align: left;
+  /* text-align: left; */
+  text-align: justify;
+  text-justify: inter-word;
 }
 @media screen and (max-width: 768px) {
   .sparrow p {
@@ -276,7 +280,9 @@ parrot class
   /* Font size */
   font-size: 1.5vw;
   /* Text alignment */
-  text-align: left;
+  /* text-align: left; */
+  text-align: justify;
+  text-justify: inter-word;
 }
 @media screen and (max-width: 768px) {
   .parrot p {
