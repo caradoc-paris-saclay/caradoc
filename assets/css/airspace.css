@@ -130,6 +130,12 @@ header .nav-item{
   white-space: nowrap;
 }
 
+header .nav-item:hover nav-sub-item {display:block;}
+
+header .nav-sub-item{
+  display: : none;
+}
+
 header .nav-link{
     /*padding-top: 1rem;*/
 }
