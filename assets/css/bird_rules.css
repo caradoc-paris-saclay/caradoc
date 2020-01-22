@@ -251,8 +251,9 @@ parrot class
   text-align: center;
 }
 
+
 .parrot {
-  padding: 2.5vw 7vw; /* 5% of the viewport width */
+  /*padding: 2.5vw 7vw;*/ /* 5% of the viewport width */
 }
 
 .parrot h1 {
