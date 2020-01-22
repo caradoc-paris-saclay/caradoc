@@ -129,7 +129,7 @@ header .navbar-collapse{
   display: inline-block;
   background-color: rgba(250,250,250);
   padding-top: 5%;
-  height:30%;
+  height:25%;
   right:0;
   left: 0;
   z-index: 1;
@@ -150,6 +150,8 @@ header .subnav-content {
   width: 100%;
   z-index: 1;
   justify-content: space-around;
+  height: 2%;
+
 }
 
 header .subnav-content .subnav-text {
@@ -158,6 +160,7 @@ header .subnav-content .subnav-text {
   color: white;
   justify-content: space-around;
 }
+
 
 header .nav-item:hover .subnav-content {
   display: block;
