@@ -79,7 +79,8 @@ a:active {
 }
 
 .bd-navbar{
-  min-height: 4rem;
+  min-height: 5%;
+  max-height: 20%;
 }
 
 .row:before, .row:after {display: none !important;}
@@ -111,6 +112,7 @@ header {
 header .img-responsive{
   width: 12vw;
   min-width: 50px;
+  max-height: 20%;
 }
 
 header .lang-flag{
@@ -123,34 +125,66 @@ header .navbar-toggler-icon{
 }
 
 header .navbar-collapse{
-  justify-content: flex-end;
+  position: fixed;
+  display: inline-block;
+  background-color: rgba(250,250,250);
+  padding-top: 5%;
+  height:30%;
+  right:0;
+  left: 0;
+  z-index: 1;
+  justify-content: center;
+  align-content: center;
 }
 
 header .nav-item{
   white-space: nowrap;
 }
 
-header .nav-item:hover nav-sub-item {display:block;}
+header .subnav-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: dimgrey;
+  width: 100%;
+  z-index: 1;
+  justify-content: space-around;
+}
 
-header .nav-sub-item{
-  display: : none;
+header .subnav-content .subnav-text {
+  padding-left: 5%;
+  display: inline-block;
+  color: white;
+  justify-content: space-around;
+}
+
+header .nav-item:hover .subnav-content {
+  display: block;
+}
+
+header .nav-sub-link{
+  color:white;
 }
 
 header .nav-link{
-    /*padding-top: 1rem;*/
+  position: relative;
+  top: 30%;
 }
 
 header .nav-link, .navbar-brand {
   padding-bottom: 0px;
+
   /*max-width: 200px;*/
 }
+
 
 header .navbar-default {
   background: none;
   border: 0px;
 }
 header .navbar-default .navbar-nav .navbar-expand-sm {
-  padding-top: 10px;
+  padding-top: 5%;
 }
 
 header .navbar-nav li a{
