@@ -32,3 +32,7 @@
 .post-area a:hover {
   color: #0D0017;
 }
+
+.main {
+  margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
