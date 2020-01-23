@@ -3,24 +3,22 @@
 <!--title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title-->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="yandex-verification" content="8750ad691d7a15b7" />
+<!-- Favicons and logos in web browsers-->
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-<link rel="shortcut icon" type="image/png" href="{{ site.baseurl }}/assets/favicons/favicon_caradoc.png">
-
+<link rel="shortcut icon" href="{{ '/assets/favicons/favicon.ico' | prepend: site.baseurl | prepend: site.url }}" />
+<link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/assets/favicons/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="{{ site.baseurl }}/assets/favicons/safari-pinned-tab.svg" color="#00aba9">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="theme-color" content="#ffffff">
+<!-- Social media meta data section -->
 <meta property="og:type" content="website" />
 <meta name="title" prefix="og: http://ogp.me/ns#" property="og:title" content="CARaDOC"/>
 <meta name="image" prefix="og: http://ogp.me/ns#" property="og:image" content="https://www.caradoc-paris-saclay.fr{{ site.baseurl }}{% link assets/favicons/website_preview.png %}"/>
-<!-- {% link assets/fr/index.html %} /assets/favicons/favicon_caradoc.png" -->
 <meta name="description" prefix="og: http://ogp.me/ns#" property="og:description" content="CARaDOC is a job fair for PhD Students and youg researchers of Paris-Saclay built by ATACS, the association of CentraleSupelec’s PhD Students and Friends"/>
 <meta name="url" prefix="og: http://ogp.me/ns#" property="og:url" content="http://caradoc-paris-saclay.fr" />
-
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00aba9">
-<meta name="msapplication-TileColor" content="#00aba9">
-<meta name="theme-color" content="#ffffff">
-
 <!-- CSS -->
 <!--
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/airspace.min.css" />
