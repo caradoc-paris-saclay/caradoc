@@ -1,13 +1,14 @@
-# _Airspace_ for Jekyll
-![screenshot](screenshots/home.png "Description goes here")
+# CARaDOC website
 
-This Jekyll theme is a port of ThemeFisher's Airspace template. It is released under ThemeFisher's free license, which requires attribution.
+## Credits
 
-dd
+We want to thank ndrewtl for the inspiration he gave us in order to get started. Check is project here:
 
-## Usage
-To start your project, [fork this respository](https://github.com/ndrewtl/airspace-jekyll/fork), put in your content, and go!
+[Airspace Jekyll](https://github.com/ndrewtl/airspace-jekyll/fork), put in your content, and go!
 
+## For developers
+
+Have a look at the project wiki to get started with the web development.
 
 
 ## Steps for Setup:
@@ -35,11 +36,15 @@ jekyll [version number]
 If you get `"Error, command not found"` run `gem install jekyll` to install it using RubyGems.
 
 ### Run this repository
-Clone the repository, and `cd` into it:
+- To download and develop go to the **wiki**
+
+- Otherwise, for a quick look you can just clone the repository, and `cd` into it:
 ```sh
-$ git clone https://github.com/atacs-centralesupelec/jred.git
-$ cd jred
+$ git clone https://github.com/atacs-centralesupelec/caradoc.git
+$ cd caradoc
 ```
+
+**Final Steps**
 
 Install Dependencies:
 ```sh
