@@ -36,7 +36,7 @@ jekyll [version number]
 If you get `"Error, command not found"` run `gem install jekyll` to install it using RubyGems.
 
 ### Run this repository
-- To download and develop go to the **wiki**
+- To download and develop go to the **wiki** to set up a ssh properly.
 
 - Otherwise, for a quick look you can just clone the repository, and `cd` into it:
 ```sh
