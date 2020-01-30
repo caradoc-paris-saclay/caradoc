@@ -10,7 +10,7 @@ bird class
 ############################################################################# */
 /* General rules -------------------------------------------------------------*/
 .bird {
-  margin-top: 4%;
+  margin-top: 2.5%;
   background : linear-gradient(
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)),
@@ -25,6 +25,10 @@ bird class
   color: #E3E3E4;
   /* Text alignent */
   text-align: center;
+}
+
+section.bird{
+  margin-top: 0;
 }
 
 /* Headers rules -------------------------------------------------------------*/
@@ -99,7 +103,7 @@ bird class
 top-bird class
 ############################################################################# */
 .top-bird {
-  margin-top: 4%;
+  margin-top: 0;
   padding: 6vw 7vw; /* X% of the viewport width */
   /* Dark blue */
   background-color: #002E46;
