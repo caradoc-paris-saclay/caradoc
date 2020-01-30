@@ -144,13 +144,12 @@ header .nav-item{
 header .subnav-content {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 90%;
   left: 0;
   background-color: dimgrey;
   width: 100%;
   z-index: 1;
   justify-content: space-around;
-
 }
 
 header .subnav-content .subnav-text {
@@ -180,6 +179,9 @@ header .nav-link, .navbar-brand {
   /*max-width: 200px;*/
 }
 
+header .margin-sub{
+  padding-right: 10%;
+}
 
 header .navbar-default {
   background: none;
