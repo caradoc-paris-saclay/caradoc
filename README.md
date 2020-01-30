@@ -10,6 +10,7 @@ We want to thank ndrewtl for the inspiration he gave us in order to get started.
 
 Have a look at the project wiki to get started with the web development.
 
+[CARaDOC Website WIKI](https://github.com/atacs-centralesupelec/caradoc/wiki)
 
 ## Steps for Setup:
 
@@ -37,6 +38,8 @@ If you get `"Error, command not found"` run `gem install jekyll` to install it u
 
 ### Run this repository
 - To download and develop go to the **wiki** to set up a ssh properly.
+
+[CARaDOC Website WIKI](https://github.com/atacs-centralesupelec/caradoc/wiki)
 
 - Otherwise, for a quick look you can just clone the repository, and `cd` into it:
 ```sh
