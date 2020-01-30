@@ -1,6 +1,13 @@
 <!-- Header Start -->
-<header class="navbar navbar-expand-sm navbar-light bg-light bd-navbar">
+<header>
+<nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light bd-navbar">
   <!-- Toggler/collapsibe Button -->
+<div>
+  <a class="navbar-left mr-0 mr-md-2" href="{{ site.baseurl }} {% link assets/en/index.html %}">
+    <!--<img class="img-fluid img-responsive" src="{{ site.baseurl }}/assets/img/caradoc_logo.png" alt="Logo"> -->
+    <img id="logo" class="img-fluid img-responsive" src="{{ site.baseurl }}/assets/img/200126_Website_menu.png" alt="Logo">
+  </a>
+</div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,26 +15,8 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav container-fluid">
       <li class="nav-item mx-auto">
-        <a class="navbar-brand mr-0 mr-md-2" href="{{ site.baseurl }} {% link assets/en/index.html %}">
-          <!--
-          <img class="img-fluid img-responsive" src="{{ site.baseurl }}/assets/img/caradoc_logo.png" alt="Logo">
-          -->
-          <img class="img-fluid img-responsive" src="{{ site.baseurl }}/assets/img/200126_Website_menu.png" alt="Logo" style="width:4vw">
+        <a class="nav-link" data-value="home" href="{{ site.baseurl }} {% link assets/en/index.html %}">Event</a>
 
-        </a>
-      </li>
-      <li class="nav-item mx-auto">
-        <a class="nav-link" data-value="home" href="#Evènement">Event</a>
-        <lu class="nav-sub-item mx-auto">
-            <div class="subnav-content">
-              <a class="subnav-text" href="{{ site.baseurl }}{% link assets/en/registration.html %}">Registration</a>
-              <a class="subnav-text" href="{{ site.baseurl }}{% link assets/en/program.html %}">Program</a>
-              <a class="subnav-text" href="#careers">Workshops</a>
-              <a class="subnav-text" href="#careers">Company talks</a>
-              <a class="subnav-text" href="{{ site.baseurl }}{% link assets/en/talk.html %}">Keynote lecturers</a>
-              <a class="subnav-text" href="{{ site.baseurl }}{% link assets/en/poster.html %}">Poster contest</a>
-            </div>
-        </lu>
       </li>
       <!-- ***************************************************************** -->
       <li class="nav-item mx-auto">
@@ -35,7 +24,7 @@
       </li>
        <!-- ***************************************************************** -->
       <li class="nav-item mx-auto">
-        <a class="nav-link" data-value="companies" href="#Offres">Job offers</a>
+        <a class="nav-link" data-value="joboffers" href="#Offres">Job offers</a>
       </li>
        <!-- ***************************************************************** -->
       <li class="nav-item mx-auto">
@@ -43,24 +32,17 @@
       </li>
       <!-- ***************************************************************** -->
       <li class="nav-item mx-auto">
-        <a class="nav-link" data-value="home" href="#Evènement">About</a>
-        <lu class="nav-sub-item container-fluid">
-            <div class="subnav-content">
-              <a class="subnav-text pull-right margin-sub" href="{{ site.baseurl }}{% link assets/en/contact.html %}">Contact</a>
-              <a class="subnav-text pull-right" href="{{ site.baseurl }}{% link assets/en/team.html %}">Team</a>
-              <a class="subnav-text pull-right" href="#careers">Story of CARaDOC</a>
-            </div>
-        </lu>
+        <a class="nav-link" data-value="home" href="{{ site.baseurl }}{% link assets/en/contact.html %}">About</a>
       </li>
       <!-- ***************************************************************** -->
       <li class="nav-item mx-auto">
         <!-- <a class="nav-link" href="{{ site.baseurl }}/"> -->
-                    <a class="nav-link nav-lang" href="{{ site.baseurl }}{% link assets/fr/index.html %}">
-
-          <img class="img-fluid lang-flag" src="{{ site.baseurl }}/assets/img/fr_flag.png" alt="Logo">
+        <a class="nav-link nav-lang" href="{{ site.baseurl }}{% link assets/fr/index.html %}">
+          <img class="img-fluid lang-flag" src="{{ site.baseurl }}/assets/img/fr_flag.png" alt="flag">
           FR
         </a>
       </li>
     </ul>
   </div>
+</nav>
 </header><!-- header close -->

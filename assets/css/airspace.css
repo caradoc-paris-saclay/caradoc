@@ -63,7 +63,6 @@ p {
 }
 ul {
   padding: 0;
-  margin: 0;
   list-style: none;
 }
 
@@ -78,8 +77,14 @@ a:active {
   color: #f97300;
 }
 
+.navbar{
+  height: calc(3em + 5vh);
+}
+
 .bd-navbar{
-  min-height: 5%;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  min-height: 2.5%;
   max-height: 20%;
 }
 
@@ -103,16 +108,10 @@ a:active {
 	Header Start
 --*/
 
-header {
-  /*background: #fff;*/
-  padding: 20px 0;
-  padding-bottom: 30px;
-}
-
-header .img-responsive{
-  width: 12vw;
-  min-width: 50px;
-  max-height: 20%;
+img#logo{
+  display: inherit;
+  vertical-align: middle;
+  width: 3em;
 }
 
 header .lang-flag{
@@ -125,26 +124,24 @@ header .navbar-toggler-icon{
 }
 
 header .navbar-collapse{
-  position: fixed;
   display: inline-block;
-  background-color: rgba(250,250,250);
-  padding-top: 5%;
-  height:25%;
-  right:0;
-  left: 0;
-  z-index: 1;
-  justify-content: center;
+  /*background-color: rgba(0,250,250);*/
+  /*width: auto;*/
+  justify-content: flex-end;
   align-content: center;
 }
 
 header .nav-item{
+  height: 100%;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
 header .subnav-content {
   display: none;
-  position: absolute;
-  top: 90%;
+  position: relative;
+  /*min-width: 50px;*/
+  top: 8vh;
   left: 0;
   background-color: dimgrey;
   width: 100%;
@@ -152,12 +149,23 @@ header .subnav-content {
   justify-content: space-around;
 }
 
+header .nav-sub-item{
+  width: auto;
+}
+
 header .subnav-content .subnav-text {
   padding-left: 5%;
+  margin-left: 30px;
+  position: relative;
   display: inline-block;
-  color: white;
+  color: red;
   justify-content: space-around;
 }
+
+header .subnav-text {
+  display: inline-block;
+    padding-left: 2vw;
+  }
 
 
 header .nav-item:hover .subnav-content {
@@ -175,7 +183,7 @@ header .nav-link{
 
 header .nav-link, .navbar-brand {
   padding-bottom: 0px;
-
+  max-height: 100%;
   /*max-width: 200px;*/
 }
 
@@ -188,7 +196,12 @@ header .navbar-default {
   border: 0px;
 }
 header .navbar-default .navbar-nav .navbar-expand-sm {
+  max-height: 70%;
   padding-top: 5%;
+}
+
+.navbar-nav{
+  height: 100%;
 }
 
 header .navbar-nav li a{
@@ -209,6 +222,62 @@ header .navbar-nav li a{
 header a.navbar-lang {
   padding: 0px;
   float: right;
+}
+
+header a.navbar-brand {
+  padding: 0px;
+  height: 100%;
+  width: auto;
+  float: right;
+}
+
+div#index-sub-nav {
+  height: 2em;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+div#index-sub-nav .nav-link{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+div#index-sub-nav .nav-item{
+  height: auto;
+  padding-left: 2em;
+}
+
+@media (max-width: 578px){
+  div#index-sub-nav{
+    display: none;
+  }
+}
+
+div#about-sub-nav {
+  height: 2em;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/*div#about-sub-nav .navbar-nav{
+  padding-right: 10vw;
+}*/
+
+div#about-sub-nav .nav-link{
+  padding-top: 0;
+  padding-bottom: 0;
+
+}
+
+div#about-sub-nav .nav-item{
+  height: auto;
+  padding-left: 2em;
+}
+
+@media (max-width: 578px){
+  div#about-sub-nav{
+    display: none;
+  }
 }
 
 /*font header .navbar-default .navbar-nav li a:hover {
@@ -471,9 +540,9 @@ header a.navbar-lang {
 /* *****************************************************************************
 	About us
 ***************************************************************************** */
-img {
+/*img {
   width: 1000px;
-}
+}*/
 @media only screen and (max-width: 900px) {
   img {
     width: 600px;
