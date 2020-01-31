@@ -271,7 +271,7 @@ div#about-sub-nav .nav-item{
 }
 
 div#about-sub-nav .nav-link{
-  height: auto;
+  height: 100%;
   padding-top: 0;
   display: flex;
   justify-content: center;
