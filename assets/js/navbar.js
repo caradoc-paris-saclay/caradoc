@@ -31,6 +31,6 @@ function toggleDropDown() {
  }
 
 
-document.getElementById("collapsibleNavbar").addEventListener("load", toggleDropDown);
-/*document.getElementById("EventMenu").addEventListener("click", activateEventSubNav);
+/*document.getElementById("collapsibleNavbar").addEventListener("load", toggleDropDown);
+document.getElementById("EventMenu").addEventListener("click", activateEventSubNav);
 document.getElementById("AnyMenu").addEventListener("click", deactivateSubNav);*/
