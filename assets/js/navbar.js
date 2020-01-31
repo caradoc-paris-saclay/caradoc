@@ -19,6 +19,18 @@ function activateAboutSubNav() {
   	document.getElementById("about-sub-nav").style.display = "inherit";
   }
 }
+function toggleDropDown() {
+	//window.alert(event.target.id);
+	console.log("Before condition");
+  if (window.matchMedia(maxDeviceXidth).matches){
+  	console.log("passed condition");
+  	eventMenu = document.getElementById("Eventli");
+  	eventMenu.classList.add("dropdown");
+  }
+  	//document.getElementById("AboutMenu").class = "inherit";
+ }
+
+
+document.getElementById("collapsibleNavbar").addEventListener("load", toggleDropDown);
 /*document.getElementById("EventMenu").addEventListener("click", activateEventSubNav);
-document.getElementById("AboutMenu").addEventListener("click", activateAboutSubNav);
 document.getElementById("AnyMenu").addEventListener("click", deactivateSubNav);*/

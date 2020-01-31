@@ -12,8 +12,8 @@
   <!-- Navbar links -->
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav container-fluid">
-      <li class="nav-item mx-auto">
-        <a class="nav-link" data-value="home" href="{{ site.baseurl }} {% link assets/en/index.html %}">Event</a>
+      <li class="nav-item mx-auto" if="Eventli">
+        <a class="nav-link" data-value="home" href="{{ site.baseurl }} {% link assets/en/index.html %}" id="EventMenu">Event</a>
       </li>
       <!-- ***************************************************************** -->
       <li class="nav-item mx-auto">
@@ -29,7 +29,7 @@
       </li>
       <!-- ***************************************************************** -->
       <li class="nav-item mx-auto">
-        <a class="nav-link" data-value="home" href="{{ site.baseurl }}{% link assets/en/contact.html %}">About</a>
+        <a class="nav-link" data-value="home" href="{{ site.baseurl }}{% link assets/en/contact.html %}" id="AboutMenu">About</a>
       </li>
       <!-- ***************************************************************** -->
       <li class="nav-item mx-auto">
