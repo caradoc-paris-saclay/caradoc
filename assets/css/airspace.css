@@ -133,13 +133,12 @@ filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
 
 .bg-image{
   background: #ffde59;
-  filter: blur(5px) brightness(0.5);
+  filter: blur(5px) brightness(93%) opacity(90%) contrast(1%) sepia(100%) saturate(230%);
   position: absolute;
   top: 0; 
   left: 0;
   height: 100%; 
   width:100%;
-  opacity: 0.9;
 }
 
 header .lang-flag{
