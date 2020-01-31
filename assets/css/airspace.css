@@ -132,7 +132,7 @@ filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
 */
 
 .bg-image{
-  background: #ffd58a;
+  background: #ffde59;
   filter: blur(5px) brightness(0.5);
   position: absolute;
   top: 0; 
