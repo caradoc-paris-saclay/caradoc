@@ -232,16 +232,7 @@ header a.navbar-brand {
 div#event-sub-nav {
   height: 2.5em;
   padding-top: 0;
-  padding-bottom: 0.5em;
-}
-
-div#event-sub-nav .nav-link{
-  height: auto;
-}
-
-div#event-sub-nav .nav-item{
-  height: auto;
-  padding-left: 2em;
+  padding-bottom: 0;
 }
 
 @media (max-width: 578px){
@@ -249,20 +240,23 @@ div#event-sub-nav .nav-item{
     display: none;
   }
 }
+div#event-sub-nav .nav-item{
+  height: auto;
+  padding-left: 2em;
+}
+
+div#event-sub-nav .nav-link{
+  height: 100%;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 div#about-sub-nav {
   height: 2.5em;
   padding-top: 0;
-  padding-bottom: 0.5em;
-}
-
-div#about-sub-nav .nav-link{
-  height: auto;
-}
-
-div#about-sub-nav .nav-item{
-  height: auto;
-  padding-left: 2em;
+  padding-bottom: 0;
 }
 
 @media (max-width: 578px){
@@ -270,6 +264,20 @@ div#about-sub-nav .nav-item{
     display: none;
   }
 }
+
+div#about-sub-nav .nav-item{
+  height: auto;
+  padding-left: 2em;
+}
+
+div#about-sub-nav .nav-link{
+  height: auto;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*--
 	call-to-action Start
 --*/
