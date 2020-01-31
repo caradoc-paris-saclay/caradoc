@@ -167,7 +167,6 @@ header .subnav-text {
     padding-left: 2vw;
   }
 
-
 header .nav-item:hover .subnav-content {
   display: block;
 }
@@ -178,7 +177,6 @@ header .nav-sub-link{
 
 header .nav-link{
   position: relative;
-  top: 30%;
 }
 
 header .nav-link, .navbar-brand {
@@ -231,42 +229,35 @@ header a.navbar-brand {
   float: right;
 }
 
-div#index-sub-nav {
-  height: 2em;
+div#event-sub-nav {
+  height: 2.5em;
   padding-top: 0;
-  padding-bottom: 0;
+  padding-bottom: 0.5em;
 }
 
-div#index-sub-nav .nav-link{
-  padding-top: 0;
-  padding-bottom: 0;
+div#event-sub-nav .nav-link{
+  height: auto;
 }
 
-div#index-sub-nav .nav-item{
+div#event-sub-nav .nav-item{
   height: auto;
   padding-left: 2em;
 }
 
 @media (max-width: 578px){
-  div#index-sub-nav{
+  div#event-sub-nav{
     display: none;
   }
 }
 
 div#about-sub-nav {
-  height: 2em;
+  height: 2.5em;
   padding-top: 0;
-  padding-bottom: 0;
+  padding-bottom: 0.5em;
 }
 
-/*div#about-sub-nav .navbar-nav{
-  padding-right: 10vw;
-}*/
-
 div#about-sub-nav .nav-link{
-  padding-top: 0;
-  padding-bottom: 0;
-
+  height: auto;
 }
 
 div#about-sub-nav .nav-item{
@@ -279,280 +270,6 @@ div#about-sub-nav .nav-item{
     display: none;
   }
 }
-
-/*font header .navbar-default .navbar-nav li a:hover {
-  color: #000; /* #000
-}*/
-
-
-/* #############################################################################
-	Slider Head
-############################################################################# */
-#start-head {
-  font-family: 'Google Sans','Roboto', sans-serif;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ), url("../img/slider-bg.jpg") no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  padding: 100px 100px 150px 150px;
-  position: relative;
-  /*Font color*/
-  color: #E3E3E4;
-  /*Text alignment */
-  text-align: center;
-}
-@media screen and (max-width: 900px) {
-  #start-head {
-    padding: 50px 0px;
-  }
-}
-/* Header h1 **************************************************************** */
-#start-head h1 {
-  font-family: 'Google Sans','Roboto', sans-serif;
-  font-size: 120px;
-  font-weight: bold;
-}
-@media screen and (max-width: 900px) {
-  #start-head h1 {
-    font-size: 50px;
-  }
-}
-/* Header h2 **************************************************************** */
-#start-head h2 {
-  font-family: 'Google Sans','Roboto', sans-serif;
-  font-size: 40px;
-}
-@media screen and (max-width: 900px) {
-  #start-head h2 {
-    font-size: 30px;
-  }
-}
-/* Button ******************************************************************* */
-#start-head a.download-btn {
-  font-family: 'Google Sans','Roboto', sans-serif;
-  font-weight: 300;
-  font-size: 32px;
-  width: 250px;
-  padding:0.5em 1em;
-  /*Dark blue*/
-  color: #002E46;
-  text-align:center;
-  vertical-align: middle;
-  display:inline-block;
-  cursor: pointer;
-  box-sizing: border-box;
-  text-decoration: none;
-  -webkit-transition-duration: 0.2s; /* Safari */
-  transition-duration: 0.2s;
-  /* Light blue */
-  background-color: #B1D8EC;
-}
-
-#start-head a.download-btn:active {
-  text-decoration: underline;
-}
-
-#start-head a.download-btn:hover {
-  /*Light blue*/
-  color: #B1D8EC;
-  /*Light blue*/
-  border-color: #B1D8EC;
-  /*Dark blue*/
-  background-color: #AA2E46;
-  /*border-color: solid #DDDDDD;*/
-}
-
-@media screen and (max-width: 900px) {
-  #start-head a.download-btn {
-    font-size: 30px;
-    width: 200px;
-  }
-}
-/* #############################################################################
-  Pour quoi venir ? / Why to come?
-############################################################################# */
-#feature {
-  padding: 100px 100px;
-  /* Light blue */
-  background-color: #B1D8EC;
-  /* Dark blue */
-  color: #002E46;
-}
-@media only screen and (max-width: 900px) {
-  #feature {
-    padding: 50px 0px;
-  }
-}
-/* Paragraph **************************************************************** */
-#feature .block{
-  margin: 0px 150px;
-}
-@media only screen and (max-width: 900px) {
-  #feature .block{
-    margin: 0px 20px;
-  }
-}
-/* Header h1 **************************************************************** */
-#feature h1 {
-  text-align: center;
-  font-size: 50px;
-}
-@media only screen and (max-width: 900px) {
-  #feature h1 {
-    font-size: 40px;
-  }
-}
-/* List li **************************************************************** */
-#feature li {
-  font-size: 30px;
-  text-align: left;
-}
-@media only screen and (max-width: 900px) {
-  #feature li {
-    font-size: 25px;
-  }
-}
-
-/* *****************************************************************************
-	Hoistoire / History
-***************************************************************************** */
-#histoire {
-  padding: 100px 100px;
-  /* Blue as in the logo */
-  background-color: #002E46;
-  /* Dark blue */
-  color: #B1D8EC;
-}
-@media only screen and (max-width: 900px) {
-  #histoire {
-    padding: 50px 0px;
-  }
-}
-/* Paragraph **************************************************************** */
-#histoire .block{
-  margin: 0px 150px;
-}
-@media only screen and (max-width: 900px) {
-  #histoire .block{
-    margin: 0px 20px;
-  }
-}
-/* Header h1 **************************************************************** */
-#histoire h1 {
-  text-align: center;
-  font-size: 50px;
-}
-@media only screen and (max-width: 900px) {
-  #histoire h1 {
-    font-size: 40px;
-  }
-}
-/* Header h1 **************************************************************** */
-#histoire h2 {
-  text-align: left;
-  font-size: 40px;
-}
-@media only screen and (max-width: 900px) {
-  #histoire h2 {
-    font-size: 30px;
-  }
-}
-/* Paragraph p ************************************************************** */
-#histoire p {
-  text-align: left;
-  font-size: 30px;
-}
-@media only screen and (max-width: 900px) {
-  #histoire p {
-    font-size: 25px;
-  }
-}
-/* *****************************************************************************
-	About us
-***************************************************************************** */
-#about-us {
-  padding: 100px 100px;
-  /* Blue as in the logo */
-  background-color: #0A2946;
-  /* Font color */
-  color: white;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ),
-    url("../img/about_us.jpg") no-repeat;
-    background-size: cover;
-    position: relative;
-    background-attachment: fixed;
-    background-position: center;
-}
-@media only screen and (max-width: 900px) {
-  #about-us {
-    padding: 50px 0px;
-  }
-}
-/* Paragraph **************************************************************** */
-#about-us .block{
-  margin: 0px 150px;
-}
-@media only screen and (max-width: 900px) {
-  #about-us .block{
-    margin: 0px 20px;
-  }
-}
-/* Header h1 **************************************************************** */
-#about-us h1 {
-  text-align: center;
-  font-size: 50px;
-}
-@media only screen and (max-width: 900px) {
-  #about-us h1 {
-    font-size: 40px;
-  }
-}
-/* Header h1 **************************************************************** */
-#about-us h2 {
-  text-align: left;
-  font-size: 40px;
-}
-@media only screen and (max-width: 900px) {
-  #about-us h2 {
-    font-size: 30px;
-  }
-}
-/* Paragraph p ************************************************************** */
-#about-us p {
-  text-align: left;
-  font-size: 30px;
-}
-@media only screen and (max-width: 900px) {
-  #about-us p {
-    font-size: 25px;
-  }
-}
-#about-us a{
-  color: orange;
-}
-
-/* *****************************************************************************
-	About us
-***************************************************************************** */
-/*img {
-  width: 1000px;
-}*/
-@media only screen and (max-width: 900px) {
-  img {
-    width: 600px;
-  }
-}
-
-
-
-
-
 /*--
 	call-to-action Start
 --*/
