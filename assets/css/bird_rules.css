@@ -10,6 +10,7 @@ bird class
 ############################################################################# */
 /* General rules -------------------------------------------------------------*/
 .bird {
+  margin-top: 2.5%;
   background : linear-gradient(
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)),
@@ -24,6 +25,10 @@ bird class
   color: #E3E3E4;
   /* Text alignent */
   text-align: center;
+}
+
+section.bird{
+  margin-top: 0;
 }
 
 /* Headers rules -------------------------------------------------------------*/
@@ -48,6 +53,7 @@ bird class
 
 /* Registration button rule --------------------------------------------------*/
 .bird a {
+  margin-top: 4%;
   font-family: 'Google Sans','Roboto', sans-serif; /* Font type*/
   font-weight: 300; /* Sets boldness */
   font-size: 2vw; /* 2% of viewport width */
@@ -97,6 +103,7 @@ bird class
 top-bird class
 ############################################################################# */
 .top-bird {
+  margin-top: 0;
   padding: 6vw 7vw; /* X% of the viewport width */
   /* Dark blue */
   background-color: #002E46;
@@ -182,8 +189,6 @@ sparrow class
   background-color: #002E46;
   /* Light blue */
   color: #B1D8EC;
-  margin-bottom:50px;
-
 }
 
 .sparrow h1 {
@@ -248,8 +253,9 @@ parrot class
   text-align: center;
 }
 
+
 .parrot {
-  padding: 2.5vw 7vw; /* 5% of the viewport width */
+  /*padding: 2.5vw 7vw;*/ /* 5% of the viewport width */
 }
 
 .parrot h1 {
