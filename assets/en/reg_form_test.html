@@ -63,7 +63,7 @@ permalink: /reg_form_test/
 
   <!-- Doctoral school -->
   <label>Doctoral school</label>
-  <select id = "phdschool" name="_phdschool" required="" onchange = "showDoctoralSchool(this)">
+  <select id = "phdschool" name="_phdschool" required="" onchange = "showSchool()(this)">
     <option value="" selected="" disabled="">-- Doctoral School --</option>
     <option value="ABIES">Agriculture, alimentation, biologie, environnement, santé (ABIES)</option>
     <option value="AAIF">Astronomie et Astrophysique d'Île-de-France</option>
@@ -89,7 +89,17 @@ permalink: /reg_form_test/
   </select>
   <br/><br/>
 
-  <label>Research laboratory</label>
+  <!-- Other doctoral school -->
+  <div id = "another_shcool" style="margin-left: 3%; display: none">
+    <label id = "otherschool_label">Type your doctoral school</label>
+    <input id = "otherschool" type="text" name="_other_school" placeholder="Name of doctoral school" required="">
+    <br/><br/>
+  </div>
+
+
+
+
+  <label>*Research laboratory</label>
   <!-- [Source]: https://fr.wikipedia.org/wiki/Universit%C3%A9_Paris-Saclay#Les_laboratoires_de_l'universit%C3%A9_Paris-Saclay[33] -->
   <select id = "laboratory" name="_laboratory" required="">
 
@@ -137,36 +147,49 @@ permalink: /reg_form_test/
     <option value="LETIAM">Laboratoire d'étude des techniques d'instrumentation et d'analyse moléculaire (LETIAM)</option>
 
     <option value="" selected="" disabled="">-- Biology --</option>
-    <option value="CMIB">Chimie, Modélisation et Imagerie pour la biologie (CMIB) - UMR 9187</option>
-    <option value="EGCE">Evolution, Génomes, comportement et écologie - (EGCE) - UMR 9191</option>
-    <option value="ESE">Ecologie, Systématique et Evolution - (ESE) - UMR 8079</option>
-    <option value="ETIC">Signalisation normale et pathologique : de l'Embryon aux Thérapies Innovantes des Cancers - (ETIC) - UMR 3347</option>
-    <option value="I2BC">Institut de Biologie Intégrative de la Cellule (I2BC) - UMR 9198</option>
-    <option value="ICPH">Interactions cellulaires et Physiopathologie Hépatique - (ICPH) - UMR S757</option>
-    <option value="INPS">Institut des Neurosciences Paris Saclay (INPS) UMR 9197</option>
-    <option value="IPS2">Institut des Sciences des Plantes de Paris Saclay  (IPS2) UMR 9213</option>
-    <option value="SGC">Stress Génotoxique et Cancer - (SGC) - UMR 3348</option>
-    <option value="GQE">Génétique quantitative et Evolution - le Moulon -  (GQE) - UMR 8120</option>
-    <option value="UNIC">Unité de Neurosciences Information et Complexité - (UNIC) - FRE 3693</option>
-    <option value="UNICOG">Cognitive Neuroimaging Unit (UNICOG) U 992</option>
-    <option value="IDEEV">Institut Diversité Ecologie et Evolution du Vivant  (IDEEV) FR 3284</option>
+    <option value="CMIB">Chimie, Modélisation et Imagerie pour la biologie (CMIB)</option>
+    <option value="EGCE">Evolution, Génomes, comportement et écologie (EGCE)</option>
+    <option value="ESE">Ecologie, Systématique et Evolution (ESE)</option>
+    <option value="ETIC">Signalisation normale et pathologique : de l'Embryon aux Thérapies Innovantes des Cancers</option>
+    <option value="I2BC">Institut de Biologie Intégrative de la Cellule (I2BC)</option>
+    <option value="ICPH">Interactions cellulaires et Physiopathologie Hépatique (ICPH)</option>
+    <option value="INPS">Institut des Neurosciences Paris Saclay (INPS)</option>
+    <option value="IPS2">Institut des Sciences des Plantes de Paris Saclay  (IPS2)</option>
+    <option value="SGC">Stress Génotoxique et Cancer (SGC)</option>
+    <option value="GQE">Génétique quantitative et Evolution - le Moulon (GQE)</option>
+    <option value="UNIC">Unité de Neurosciences Information et Complexité (UNIC)</option>
+    <option value="UNICOG">Cognitive Neuroimaging Unit (UNICOG)</option>
+    <option value="IDEEV">Institut Diversité Ecologie et Evolution du Vivant (IDEEV)</option>
 
     <option value="" selected="" disabled="">-- Human & Social Sciences --</option>
+    <option value="" selected="" disabled="">-- Other --</option>
+    <option value="OTHER">Other</option>
   </select>
   <br/><br/>
 
-  <!-- Other doctoral school -->
-  <label id = "otherschool_label" style= "display: none">Write your doctoral school</label>
-  <input id = "otherschool" type="text" name="_other_school" placeholder="Name of doctoral school" required="" style= "display: none">
-
   <!-- Workshop list -->
-  <legend>Please chose a workshop</legend>
+  <legend>Please choose a workshop</legend>
   <label>Workshops</label>
   <select id="workshop">
     <option value="" selected="" disabled="">-- Choose your PhD year first --</option>
   </select>
 
   <br/><br/>
+
+  <legend>Registering to ADUM?</legend>
+  <select id = "adum" name="_adum" required="" onchange = "showAdum()(this)">
+    <option value="" selected="" disabled="">-- Pick an option --</option>
+    <option value="UNICOG">Yes</option>
+    <option value="IDEEV">No</option>
+  </select>
+  <br/><br/>
+  <!-- Other doctoral school -->
+  <div id = "adum_link" style="margin-left: 3%; display: none">
+    Register here!
+    <a href="https://www.adum.fr/index.pl" target="_blank">www.adum.fr</a>
+    <br/><br/>
+  </div>
+
   <input type="submit" value="Send">
   <br/>
   <small>(Submission button not working yet)</small>
@@ -174,16 +197,18 @@ permalink: /reg_form_test/
 
 <!-- Display textbox for a doctoral school out of UPS -->
 <script>
-  function showDoctoralSchool(element)
-  {
-    document.getElementById("otherschool_label").style.display = element.value == 'OTHER' ? 'block' : 'none';
-    document.getElementById("otherschool").style.display = element.value == 'OTHER' ? 'block' : 'none';
+  function showSchool() {
+    var x = document.getElementById("another_shcool");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    }
   }
 
-  function addSpaces(initial){
-        initial.replace("/([0-9]{3})/","\1 ");
-        initial.replace("/[0-9]{3} ([0-9]{3})/","\1 ");
-        return initial;
+  function showAdum() {
+    var x = document.getElementById("adum_link");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    }
   }
 </script>
 
@@ -230,25 +255,3 @@ permalink: /reg_form_test/
     }
 }
 </script>
-
-
-<!--
-<label>PhD year</label>
-<select name="_phdYear" required="">
-  <option value="" selected="" disabled="">Select an option</option>
-  <option value="first">1st year PhD student</option>
-  <option value="hD student">2nd year PhD student</option>
-  <option value="3rd year PhD student">3rd year PhD student</option>
-  <option value=">3rd year PhD student">>3rd year PhD student</option>
-  <option value="Postdoc">Postdoc</option>
-</select>
--->
-<!-- <fieldset class="locale"> -->
-<!-- </fieldset> -->
-
-<!--
-<label for="note">Note</label>
-<textarea rows="2" name="note" id="note" placeholder="Include any additional information"></textarea>
-<input type="hidden" name="_subject" id="email-subject" value="Registration Form Submission">
--->
-<!-- </fieldset> -->
