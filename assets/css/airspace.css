@@ -15,8 +15,7 @@
 md-width: 768;
 lg-width: 992px;
 xl-width: 1200px; */
-
- /* latin-ext */
+/* latin-ext */
 @font-face {
   font-family: 'Google Sans';
   font-style: normal;
@@ -32,7 +31,6 @@ xl-width: 1200px; */
   src: local('Google Sans Regular'), local('GoogleSans-Regular'), url(https://fonts.gstatic.com/s/googlesans/v11/4UaGrENHsxJlGDuGo1OIlL3Owp5eKQtG.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 /* var text-decoration */
 /*--
 	Common Css
@@ -63,7 +61,6 @@ p {
 }
 ul {
   padding: 0;
-  margin: 0;
   list-style: none;
 }
 
@@ -78,8 +75,25 @@ a:active {
   color: #f97300;
 }
 
+.navbar{
+  height: calc(3em + 4vh);
+  background-color: #ffde59;
+}
+
 .bd-navbar{
-  min-height: 4rem;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  min-height: 2.5%;
+  max-height: 20%;
+}
+
+.nav-sticky-top{
+  position:sticky;
+  top: 0;
+}
+.subnav-sticky-top{
+  position:sticky;
+  top: calc(3em + 5vh);
 }
 
 .row:before, .row:after {display: none !important;}
@@ -102,15 +116,29 @@ a:active {
 	Header Start
 --*/
 
-header {
-  /*background: #fff;*/
-  padding: 20px 0;
-  padding-bottom: 30px;
+img#logo{
+  display: inherit;
+  vertical-align: middle;
+  width: 3em;
 }
+/*
+-webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+    filter: url("https://gist.githubusercontent.com/amitabhaghosh197/b7865b409e835b5a43b5/raw/1a255b551091924971e7dee8935fd38a7fdf7311/blur".svg#blur);
+filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+*/
 
-header .img-responsive{
-  width: 12vw;
-  min-width: 50px;
+.bg-image{
+  background: #ffde59;
+  filter: blur(5px) brightness(93%) opacity(90%) contrast(1%) sepia(100%) saturate(230%);
+  position: absolute;
+  top: 0; 
+  left: 0;
+  height: 100%; 
+  width:100%;
 }
 
 header .lang-flag{
@@ -118,25 +146,74 @@ header .lang-flag{
 }
 
 header .navbar-toggler-icon{
-   color:#FFFFFF;
+   color:#8d1010;
    border-color: red;
 }
 
 header .navbar-collapse{
+  display: inline-block;
+  /*background-color: rgba(0,250,250);*/
+  /*width: auto;*/
   justify-content: flex-end;
+  align-content: center;
 }
 
 header .nav-item{
+  height: 100%;
   white-space: nowrap;
+  vertical-align: middle;
+}
+
+header .subnav-content {
+  display: none;
+  position: relative;
+  /*min-width: 50px;*/
+  top: 8vh;
+  left: 0;
+  background-color: dimgrey;
+  width: 100%;
+  z-index: 1;
+  justify-content: space-around;
+}
+
+header .nav-sub-item{
+  width: auto;
+}
+
+header .subnav-content .subnav-text {
+  padding-left: 5%;
+  margin-left: 30px;
+  position: relative;
+  display: inline-block;
+  color: red;
+  justify-content: space-around;
+}
+
+header .subnav-text {
+  display: inline-block;
+    padding-left: 2vw;
+  }
+
+header .nav-item:hover .subnav-content {
+  display: block;
+}
+
+header .nav-sub-link{
+  color:white;
 }
 
 header .nav-link{
-    /*padding-top: 1rem;*/
+  position: relative;
 }
 
 header .nav-link, .navbar-brand {
   padding-bottom: 0px;
+  max-height: 100%;
   /*max-width: 200px;*/
+}
+
+header .margin-sub{
+  padding-right: 10%;
 }
 
 header .navbar-default {
@@ -144,301 +221,78 @@ header .navbar-default {
   border: 0px;
 }
 header .navbar-default .navbar-nav .navbar-expand-sm {
-  padding-top: 10px;
+  max-height: 70%;
+  padding-top: 5%;
+}
+
+.navbar-nav{
+  height: 100%;
 }
 
 header .navbar-nav li a{
   color: #333333;
 }
-  /*padding: 10% 10%;*/
-  /*padding: 10px 15px;*/
-  /*font-size: 1.5rem;*/
-}
-
-/*header .navbar-default .navbar-nav li a {
-  color: #333333;
-  padding:; 10% 10%;
-  padding: 10px 15px;
-  font-size: 16px;
-}*/
 
 header a.navbar-lang {
   padding: 0px;
   float: right;
 }
 
-/*font header .navbar-default .navbar-nav li a:hover {
-  color: #000; /* #000
-}*/
-
-
-/* #############################################################################
-	Slider Head
-############################################################################# */
-#start-head {
-  font-family: 'Google Sans','Roboto', sans-serif;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ), url("../img/slider-bg.jpg") no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  padding: 100px 100px 150px 150px;
-  position: relative;
-  /*Font color*/
-  color: #E3E3E4;
-  /*Text alignment */
-  text-align: center;
-}
-@media screen and (max-width: 900px) {
-  #start-head {
-    padding: 50px 0px;
-  }
-}
-/* Header h1 **************************************************************** */
-#start-head h1 {
-  font-family: 'Google Sans','Roboto', sans-serif;
-  font-size: 120px;
-  font-weight: bold;
-}
-@media screen and (max-width: 900px) {
-  #start-head h1 {
-    font-size: 50px;
-  }
-}
-/* Header h2 **************************************************************** */
-#start-head h2 {
-  font-family: 'Google Sans','Roboto', sans-serif;
-  font-size: 40px;
-}
-@media screen and (max-width: 900px) {
-  #start-head h2 {
-    font-size: 30px;
-  }
-}
-/* Button ******************************************************************* */
-#start-head a.download-btn {
-  font-family: 'Google Sans','Roboto', sans-serif;
-  font-weight: 300;
-  font-size: 32px;
-  width: 250px;
-  padding:0.5em 1em;
-  /*Dark blue*/
-  color: #002E46;
-  text-align:center;
-  vertical-align: middle;
-  display:inline-block;
-  cursor: pointer;
-  box-sizing: border-box;
-  text-decoration: none;
-  -webkit-transition-duration: 0.2s; /* Safari */
-  transition-duration: 0.2s;
-  /* Light blue */
-  background-color: #B1D8EC;
+header a.navbar-brand {
+  padding: 0px;
+  height: 100%;
+  width: auto;
+  float: right;
 }
 
-#start-head a.download-btn:active {
-  text-decoration: underline;
+div#event-sub-nav {
+  height: 2.5em;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-#start-head a.download-btn:hover {
-  /*Light blue*/
-  color: #B1D8EC;
-  /*Light blue*/
-  border-color: #B1D8EC;
-  /*Dark blue*/
-  background-color: #AA2E46;
-  /*border-color: solid #DDDDDD;*/
+@media (max-width: 578px){
+  div#event-sub-nav{
+    display: none;
+  }
+}
+div#event-sub-nav .nav-item{
+  height: auto;
+  padding-left: 2em;
 }
 
-@media screen and (max-width: 900px) {
-  #start-head a.download-btn {
-    font-size: 30px;
-    width: 200px;
-  }
+div#event-sub-nav .nav-link{
+  height: 100%;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-/* #############################################################################
-  Pour quoi venir ? / Why to come?
-############################################################################# */
-#feature {
-  padding: 100px 100px;
-  /* Light blue */
-  background-color: #B1D8EC;
-  /* Dark blue */
-  color: #002E46;
+
+div#about-sub-nav {
+  height: 2.5em;
+  padding-top: 0;
+  padding-bottom: 0;
 }
-@media only screen and (max-width: 900px) {
-  #feature {
-    padding: 50px 0px;
-  }
-}
-/* Paragraph **************************************************************** */
-#feature .block{
-  margin: 0px 150px;
-}
-@media only screen and (max-width: 900px) {
-  #feature .block{
-    margin: 0px 20px;
-  }
-}
-/* Header h1 **************************************************************** */
-#feature h1 {
-  text-align: center;
-  font-size: 50px;
-}
-@media only screen and (max-width: 900px) {
-  #feature h1 {
-    font-size: 40px;
-  }
-}
-/* List li **************************************************************** */
-#feature li {
-  font-size: 30px;
-  text-align: left;
-}
-@media only screen and (max-width: 900px) {
-  #feature li {
-    font-size: 25px;
+
+@media (max-width: 578px){
+  div#about-sub-nav{
+    display: none;
   }
 }
 
-/* *****************************************************************************
-	Hoistoire / History
-***************************************************************************** */
-#histoire {
-  padding: 100px 100px;
-  /* Blue as in the logo */
-  background-color: #002E46;
-  /* Dark blue */
-  color: #B1D8EC;
-}
-@media only screen and (max-width: 900px) {
-  #histoire {
-    padding: 50px 0px;
-  }
-}
-/* Paragraph **************************************************************** */
-#histoire .block{
-  margin: 0px 150px;
-}
-@media only screen and (max-width: 900px) {
-  #histoire .block{
-    margin: 0px 20px;
-  }
-}
-/* Header h1 **************************************************************** */
-#histoire h1 {
-  text-align: center;
-  font-size: 50px;
-}
-@media only screen and (max-width: 900px) {
-  #histoire h1 {
-    font-size: 40px;
-  }
-}
-/* Header h1 **************************************************************** */
-#histoire h2 {
-  text-align: left;
-  font-size: 40px;
-}
-@media only screen and (max-width: 900px) {
-  #histoire h2 {
-    font-size: 30px;
-  }
-}
-/* Paragraph p ************************************************************** */
-#histoire p {
-  text-align: left;
-  font-size: 30px;
-}
-@media only screen and (max-width: 900px) {
-  #histoire p {
-    font-size: 25px;
-  }
-}
-/* *****************************************************************************
-	About us
-***************************************************************************** */
-#about-us {
-  padding: 100px 100px;
-  /* Blue as in the logo */
-  background-color: #0A2946;
-  /* Font color */
-  color: white;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ),
-    url("../img/about_us.jpg") no-repeat;
-    background-size: cover;
-    position: relative;
-    background-attachment: fixed;
-    background-position: center;
-}
-@media only screen and (max-width: 900px) {
-  #about-us {
-    padding: 50px 0px;
-  }
-}
-/* Paragraph **************************************************************** */
-#about-us .block{
-  margin: 0px 150px;
-}
-@media only screen and (max-width: 900px) {
-  #about-us .block{
-    margin: 0px 20px;
-  }
-}
-/* Header h1 **************************************************************** */
-#about-us h1 {
-  text-align: center;
-  font-size: 50px;
-}
-@media only screen and (max-width: 900px) {
-  #about-us h1 {
-    font-size: 40px;
-  }
-}
-/* Header h1 **************************************************************** */
-#about-us h2 {
-  text-align: left;
-  font-size: 40px;
-}
-@media only screen and (max-width: 900px) {
-  #about-us h2 {
-    font-size: 30px;
-  }
-}
-/* Paragraph p ************************************************************** */
-#about-us p {
-  text-align: left;
-  font-size: 30px;
-}
-@media only screen and (max-width: 900px) {
-  #about-us p {
-    font-size: 25px;
-  }
-}
-#about-us a{
-  color: orange;
+div#about-sub-nav .nav-item{
+  height: auto;
+  padding-left: 2em;
 }
 
-/* *****************************************************************************
-	About us
-***************************************************************************** */
-img {
-  width: 1000px;
+div#about-sub-nav .nav-link{
+  height: 100%;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-@media only screen and (max-width: 900px) {
-  img {
-    width: 600px;
-  }
-}
-
-
-
-
 
 /*--
 	call-to-action Start
