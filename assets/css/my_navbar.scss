@@ -1,13 +1,22 @@
 ---
 ---
-
 /// least-squares-fit
 /// Calculate the least square fit linear regression of provided values
 /// @param {map} $map - A SASS map of viewport width and size value combinations
 /// @return Linear equation as a calc() function
 /// @example
 ///   font-size: least-squares-fit((576: 24, 768: 24, 992: 34));
+/// Standard height defined in Bootstrap CSS/JS
+$sm-width: 576px;
+$md-width: 768px;
+$lg-width: 992px;
+$xl-width: 1200px;
+/// Variables
+$navbar-height: calc(3em + 2vh);
+$navbar-sticky-top: calc(3em + 5vh);
+$navbar-logo-height: calc(3em + 0.4vh); 
 
+/// Functions
 @function least-squares-fit($map) {
 
   // Get the number of provided breakpoints
@@ -60,34 +69,230 @@
   font-size: least-squares-fit($map);
 }*/
 
-$sm-width: 576px;
-$md-width: 768;
-$lg-width: 992px;
-$xl-width: 1200px;
-
-@media (min-width: $sm-width){
+@media (min-width: $md-width){
   header li {
     $map: (577:7.25, 610:8, 631: 8.5, 700: 10.2, 900: 14.5, 1000:16.5, 1260: 17);
     font-size: least-squares-fit($map);
   }
 }
-
+@media (max-width: $md-width){
+  header li {
+    font-size: calc(1em + 3vw);
+  }
+}
 @media (min-width: $sm-width){
   #slider .block h1 {
     $map: (577:29, 610:32, 631: 34, 700: 40.8, 900: 58, 1000:44, 1260: 80);
     font-size: least-squares-fit($map);
   }
 }
-
 @media (min-width: $xl-width){
   #collapsibleNavbar ul{
     width:100%;
   }
 }
-
-@media (max-width: $sm-width){
-  header li{
-    //font-size: 3vw;
-    font-size: 6vw;
+nav-link:hover{
+  color: #f97300;
+}
+nav.navbar{/*special rules for top nav bar that collapses*/
+  padding-right: 0;
+  padding-left: 0;
+}
+@media (max-width: $md-width){
+  nav.navbar{
+    height: auto;
   }
+}
+.navbar{
+  height: $navbar-height;
+  background-color: #ffde59;
+}
+.bd-navbar{
+  min-height: 2.5%;
+  max-height: 20%;
+}
+@media (max-width: $md-width){
+  .bd-navbar{
+    margin-bottom: 0;
+  }
+}
+.nav-sticky-top{
+  position:sticky;
+  top: 0;
+}
+.subnav-sticky-top{
+  position:sticky;
+  top: $navbar-sticky-top;
+}
+/*
+-webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+    filter: url("https://gist.githubusercontent.com/amitabhaghosh197/b7865b409e835b5a43b5/raw/1a255b551091924971e7dee8935fd38a7fdf7311/blur".svg#blur);
+filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+*/
+.bg-image{
+  background: #524953;
+  filter: opacity(90%);
+  /*filter: blur(5px) brightness(93%) opacity(90%) contrast(1%) sepia(100%) saturate(230%);*/
+  position: absolute;
+  top: 0; 
+  left: 0;
+  height: 100%; 
+  width: 100%;
+}
+header a.navbar-left{
+  margin-left: 1em;
+}
+img#logo{
+  display: inherit;
+  vertical-align: middle;
+  height: $navbar-logo-height;
+  width: auto;
+  margin-top: 0.8vh;
+  margin-bottom: 0.8vh;
+}
+header .lang-flag{
+  width: 2.5vw;
+}
+header .navbar-toggler-icon{
+   color:#8d1010;
+   border-color: red;
+}
+header button.navbar-toggler{
+  margin-right: 1em;
+}
+header .navbar-collapse{
+  padding-bottom: 1vh;
+  background-color: #ffde59;
+}
+/*header .navbar-collapse{
+  display: inline-block;
+  background-color: rgba(0,250,250);
+  /*width: auto;*/
+  /*justify-content: center;
+  align-content: center;
+}*/
+header .nav-item{
+  height: 100%;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+@media (max-width: $md-width){
+  .nav-item{
+    margin-bottom: 0;
+  }
+}
+header .nav-item:hover .subnav-content {
+  display: block;
+}
+header .subnav-content {
+  display: none;
+  position: relative;
+  /*min-width: 50px;*/
+  top: 8vh;
+  left: 0;
+  background-color: dimgrey;
+  width: 100%;
+  z-index: 1;
+  justify-content: space-around;
+}
+header .nav-sub-item{
+  width: auto;
+}
+header .subnav-content .subnav-text {
+  padding-left: 5%;
+  margin-left: 30px;
+  position: relative;
+  display: inline-block;
+  color: red;
+  justify-content: space-around;
+}
+header .subnav-text {
+  display: inline-block;
+    padding-left: 2vw;
+  }
+header .nav-sub-link{
+  color:white;
+}
+header .nav-link{
+  position: relative;
+}
+header .nav-link, .navbar-brand {
+  padding-bottom: 0px;
+  max-height: 100%;
+  /*max-width: 200px;*/
+}
+header .margin-sub{
+  padding-right: 10%;
+}
+header .navbar-default {
+  background: none;
+  border: 0px;
+}
+header .navbar-default .navbar-nav .navbar-expand-sm {
+  max-height: 70%;
+  padding-top: 5%;
+}
+/*.navbar-nav{
+  height: 100%;
+}*/
+header .navbar-nav li a{
+  color: #333333;
+}
+header a.navbar-lang {
+  padding: 0px;
+  float: right;
+}
+/*header a.navbar-brand {
+  padding: 0px;
+  height: 100%;
+  width: auto;
+  float: right;
+}*/
+div#event-sub-nav {
+  height: 2.5em;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 1px;
+}
+@media (max-width: $md-width){
+  div#event-sub-nav{
+    display: none;
+  }
+}
+div#event-sub-nav .nav-item{
+  height: auto;
+  padding-left: 2em;
+}
+div#event-sub-nav .nav-link{
+  height: 100%;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#about-sub-nav {
+  height: 2.5em;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 1px;
+}
+@media (max-width: $md-width){
+  div#about-sub-nav{
+    display: none;
+  }
+}
+div#about-sub-nav .nav-item{
+  height: auto;
+  padding-left: 2em;
+}
+div#about-sub-nav .nav-link{
+  height: 100%;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
