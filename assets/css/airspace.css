@@ -106,6 +106,7 @@ nav.navbar{/*special rules for top nav bar that collapses*/
 @media (max-width: 578px){
   .bd-navbar{
     margin-bottom: 0;
+  }
 }
 .nav-sticky-top{
   position:sticky;
