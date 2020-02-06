@@ -12,9 +12,11 @@ $md-width: 768px;
 $lg-width: 992px;
 $xl-width: 1200px;
 /// Variables
-$navbar-height: calc(3em + 2vh);
-$navbar-sticky-top: calc(3em + 5vh);
-$navbar-logo-height: calc(3em + 0.4vh); 
+$navbar-height: calc(7vh);
+$navbar-sticky-top: calc(9vh);
+$navbar-logo-height: calc(5vh); 
+$navbar-min-height: 2.5%;
+
 
 /// Functions
 @function least-squares-fit($map) {
@@ -63,12 +65,10 @@ $navbar-logo-height: calc(3em + 0.4vh);
   @return calc(#{$m*100}vw + #{$b}px);
 
 }
-
 /*h1 {
   $map: (576: 22, 768: 20, 992: 34);
   font-size: least-squares-fit($map);
 }*/
-
 @media (min-width: $md-width){
   header li {
     $map: (577:7.25, 610:8, 631: 8.5, 700: 10.2, 900: 14.5, 1000:16.5, 1260: 17);
@@ -108,7 +108,7 @@ nav.navbar{/*special rules for top nav bar that collapses*/
   background-color: #ffde59;
 }
 .bd-navbar{
-  min-height: 2.5%;
+  min-height: $navbar-min-height;
   max-height: 20%;
 }
 @media (max-width: $md-width){
@@ -153,6 +153,7 @@ img#logo{
   width: auto;
   margin-top: 0.8vh;
   margin-bottom: 0.8vh;
+  min-height: $navbar-min-height;
 }
 header .lang-flag{
   width: 2.5vw;
@@ -167,6 +168,7 @@ header button.navbar-toggler{
 header .navbar-collapse{
   padding-bottom: 1vh;
   background-color: #ffde59;
+  /*overflow-y: auto;*/
 }
 /*header .navbar-collapse{
   display: inline-block;
@@ -192,7 +194,7 @@ header .subnav-content {
   display: none;
   position: relative;
   /*min-width: 50px;*/
-  top: 8vh;
+  top: $navbar-sticky-top;
   left: 0;
   background-color: dimgrey;
   width: 100%;
@@ -296,3 +298,40 @@ div#about-sub-nav .nav-link{
   justify-content: center;
   align-items: center;
 }
+//sidenav
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: inherit;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+//
