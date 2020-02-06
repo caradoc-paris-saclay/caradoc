@@ -1,9 +1,28 @@
 var maxDeviceXidth = '(max-device-width:578px)';
-var minWidth = 578;
+var minWidth = 768;
 var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 window.onresize = function(){
 	width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 }
+function myfunction(){
+	if (width < minWidth){
+		$('#collapsibleNavbar').html("" +
+   "<nav>MATTEO</div>");
+	}
+	console.log("Hello");
+}
+function showSideNav(){
+	document.getElementById("mySidenav").style.display = "inherit";
+	console.log("Showing SideNav");
+	openNav();
+}
+function openNav() {
+  document.getElementById("mySidenav").style.width = "100%";
+}
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+//myfunction();
 function deactivateSubNav(){
 		document.getElementById("event-sub-nav").style.display = "none";
 		document.getElementById("about-sub-nav").style.display = "none";

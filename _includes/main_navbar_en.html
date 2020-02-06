@@ -1,16 +1,16 @@
-<nav class="navbar navbar-expand-md navbar-light bd-navbar sticky-top">
+<nav class="navbar navbar-expand-md navbar-light bd-navbar">
   <a class="navbar-left mr-0 mr-md-2" href="{{ site.baseurl }} {% link assets/en/index.html %}">
     <img id="logo" class="img-fluid img-responsive" src="{{ site.baseurl }}/assets/img/200126_Website_menu.png" alt="Logo">
   </a>
   <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="showSideNav()">
     <span class="navbar-toggler-icon"></span>
   </button>
   <!-- Navbar links -->
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav container-fluid">
-      <li class="nav-item mx-auto" if="Eventli">
-        <a class="nav-link" data-value="home" href="{{ site.baseurl }} {% link assets/en/index.html %}" id="EventMenu">Event</a>
+      <li class="nav-item mx-auto">
+        <a class="nav-link" data-value="home" href="{{ site.baseurl }}{% link assets/en/index.html %}" id="EventMenu">Event</a>
       </li>
       <!-- ***************************************************************** -->
       <li class="nav-item mx-auto">
@@ -39,3 +39,4 @@
     </ul>
   </div>
 </nav>
+{% include sidenavbar_en.html %}
