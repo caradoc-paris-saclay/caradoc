@@ -1,0 +1,81 @@
+<nav id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <!-- Dropdown EventSubMenu -->
+    <ul>
+      <li class="nav-item">
+        <div style="display: flex;">
+          <a href="{{ site.baseurl }} {% link assets/fr/index.html %}">
+            Événement
+          </a>
+          <a class="dropdown-toggle" href="#EventSubMenu" data-toggle="collapse" aria-expanded="false">
+          </a>
+        </div>
+        <ul class="collapse list-unstyled ml-5" id="EventSubMenu">
+          <li>
+            <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/registration.html %}">Registration</a>
+          </li>
+          <li>
+            <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/program.html %}">Program</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#workshops">Workshops</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#careers">Company talks</a>
+          </li>
+          <li>
+            <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/talk.html %}">Keynote lecturers</a>
+          </li>
+          <li>
+            <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/poster.html %}">Poster contest</a>
+          </li>
+        </ul>
+    </li>
+    <li class="nav-item">
+      <a href="{{ site.baseurl }}{% link assets/fr/entreprises.html %}">
+        Entreprises
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-value="joboffers" href="#Offres">Offres</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-value="map" href="{{ site.baseurl }}{% link assets/fr/map.html %}">Plan & Accès</a>
+    </li>
+    <li class="nav-item">
+      <div style="display: flex;">
+        <a class="nav-link" data-value="home" href="{{ site.baseurl }}{% link assets/fr/contact.html %}">
+          À Propos
+        </a>
+        <a class="dropdown-toggle" href="#AboutSubMenu" data-toggle="collapse" aria-expanded="false">
+        </a>
+      </div>
+      <ul class="collapse list-unstyled ml-5" id="AboutSubMenu">
+        <li>
+          <a class="nav-link" href="{{ site.baseurl }}{% link assets/fr/inscription.html %}">Inscription</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{{ site.baseurl }}{% link assets/fr/programme.html %}">Programme</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#ateliers">Ateliers</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#careers">Présentations d'entreprises</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{{ site.baseurl }}{% link assets/fr/talk.html %}">Conférence</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{{ site.baseurl }}{% link assets/fr/poster.html %}">Posters</a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link nav-lang" href="{{ site.baseurl }}{% link assets/en/index.html %}">
+        <img class="img-fluid lang-flag" src="{{ site.baseurl }}/assets/img/gb_flag.png" alt="Logo">
+          EN
+      </a>
+    </li>
+  </ul>
+</nav>
