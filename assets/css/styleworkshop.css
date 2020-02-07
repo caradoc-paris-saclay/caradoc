@@ -136,7 +136,8 @@ h2{
 }
 
 .container2 .card .content h3{
-	margin-bottom: 1.5rem;
+	margin-bottom: 1rem;
+	margin-right: 1rem;
 	font-size: 1.5rem;
 	font-weight: bold;
 }
