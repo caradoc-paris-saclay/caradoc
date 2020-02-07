@@ -17,8 +17,6 @@ $navbar-min-height: 2.5%;
 $navbar-sticky-top: 9vh;
 $navbar-logo-height: 5vh; 
 $navbar-min-logo-height: 2.5em;
-
-
 /// Functions
 @function least-squares-fit($map) {
 
@@ -341,4 +339,3 @@ ul.list-unstyled {
 ul.list-unstyled li{
   margin-left: 2rem!important;
 }
-//
