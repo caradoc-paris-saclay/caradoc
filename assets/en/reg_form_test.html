@@ -25,155 +25,181 @@ permalink: /reg_form_test/
 -->
 
 <form id="fs-frm" name="reg-form" accept-charset="utf-8" method="post"style="margin: 5% 5%">
-  <!-- <fieldset> -->
+
+  <!-- ====================== Participant's information-->
+  <legend>Participant's information</legend>
+  <br/>
+  <fieldset>
+    <!-- ====================== Firstname -->
+    <label>*Firstname</label><br/>
+    <input type="text" name="_name" placeholder="Write here your name(s)" required="">
+    <br/><br/>
+
+    <!-- ====================== Lastname -->
+    <label>*Lastname</label><br/>
+    <input type="text" name="_lastname" placeholder="Write here your lastname(s)" required="">
+    <br/><br/>
+
+    <!-- ====================== E-mail -->
+    <label>*E-mail</label><br/>
+    <input type="email" name="_email" placeholder="email@domain.tld" required="">
+    <br/><br/>
+
+    <!-- ====================== Mobile -->
+    <label for="phone">Mobile (optional):</label>
+    <br/>
+    <input id="phone" type="tel" name="_phone" placeholder="(+XX) XXX-XXX-XXX" patern="{5} [0-9]{3}-[0-9]{3}-[0-9]{3}" class="masked" title="10-digit number"
+    minlength="17" maxlength="17">
+    <br/>
+    <small>Format: (+XX) XXX-XXX-XXX</small>
+  </fieldset>
+  <br/><br/>
+
   <!-- ====================== Professional information -->
   <legend>Professional information</legend>
-
-  <!-- ====================== Firstname -->
-  <label>*Firstname</label><br/>
-  <input type="text" name="_name" placeholder="Write here your name(s)" required="">
-  <br/><br/>
-  <!-- ====================== Lastname -->
-  <label>*Lastname</label><br/>
-  <input type="text" name="_lastname" placeholder="Write here your lastname(s)" required="">
-  <br/><br/>
-
-  <!-- ====================== E-mail -->
-  <label>*E-mail</label><br/>
-  <input type="email" name="_email" placeholder="email@domain.tld" required="">
-
-  <!-- ====================== Mobile -->
-  <br/><br/>
-  <label for="phone">Mobile:</label>
-  <br/>
-  <input id="phone" type="tel" name="_phone" placeholder="(+XX) XXX-XXX-XXX" patern="{5} [0-9]{3}-[0-9]{3}-[0-9]{3}" class="masked" title="10-digit number"
-  minlength="17" maxlength="17">
-  <br/>
-  <small>Format: (+XX) XXX-XXX-XXX</small>
-  <br/><br/>
-
-  <!-- ====================== PhD year -->
-  <label>PhD year</label>
-  <select id = "phdyear" name="_phdyear" required="" onchange = changeWorkshopList()>
-    <option value="" selected="" disabled="">-- PhD Year --</option>
-    <option value="YEAR_1">1st Year PhD Student</option>
-    <option value="YEAR_2">2nd Year PhD Student</option>
-    <option value="YEAR_3">3rd Year PhD Student</option>
-    <option value="YEAR_4">>3rd year PhD student</option>
-    <option value="YEAR_5">Postdoc</option>
-  </select>
-  <br/><br/>
-
-  <!-- ====================== Doctoral school -->
-  <label>Doctoral school</label>
-  <select id = "phdschool" name="_phdschool" required="" onchange = "showSchool()(this)">
-    <option value="" selected="" disabled="">-- Doctoral School --</option>
-    <option value="ABIES">Agriculture, alimentation, biologie, environnement, santé (ABIES)</option>
-    <option value="AAIF">Astronomie et Astrophysique d'Île-de-France</option>
-    <option value="CBMD">Cancérologie, Biologie, Médecine, Santé</option>
-    <option value="EDMH">École Doctorale de Mathématiques Hadamard (EDMH)</option>
-    <option value="EOBE">Electrical, Optical, Bio - physics and Engineering (EOBE)</option>
-    <option value="ITFA">Innovation Thérapeutique, du fondamental à l'appliqué</option>
-    <option value="Interfaces">Interfaces</option>
-    <option value="OM">Ondes et Matière</option>
-    <option value="PIF">Physique en Île-de-France</option>
-    <option value="PHENIICS">Particules, Hadrons, Énergie, Noyau, Instrumentation, Imagerie, Cosmos et Simulation (PHENIICS)</option>
-    <option value="SP">Santé Publique</option>
-    <option value="2MIB">Sciences Chimiques : Molécules, Matériaux, Instrumentation et Biosystèmes (2MIB)</option>
-    <option value="SEIF">Sciences de l'Environnement d'Île-de-France</option>
-    <option value="SHS">Sciences de l'Homme et de la Société (SHS)</option>
-    <option value="SSMMH">Sciences du Sport, de la Motricité et du Mouvement Humain (SSMMH)</option>
-    <option value="SVGE">Sciences du Végétal : du gène à l'écosystème</option>
-    <option value="STIC">Sciences et Technologies de l'Information et de la Communication (STIC)</option>
-    <option value="SMEMaG">Sciences Mécaniques et Énergétiques, Matériaux et Géosciences (SMEMaG)</option>
-    <option value="BioSigne">Signalisations et réseaux intégratifs en biologie (BioSigne)</option>
-    <option value="SDSV">Structure et Dynamique des Systèmes Vivants (SDSV)</option>
-    <option value="OTHER">Other</option>
-  </select>
-  <br/><br/>
-
-  <!-- Other doctoral school -->
-  <div id = "another_shcool" style="margin-left: 3%; display: none">
-    <label id = "otherschool_label">Type your doctoral school</label>
-    <input id = "otherschool" type="text" name="_other_school" placeholder="Name of doctoral school" required="">
+  <fieldset>
+    <!-- ====================== Academic institution -->
+    <label>*Academic institution</label>
+    <select id = "university" name="_university" required="" onchange = "showUniversity(this.value)">
+      <option value="">AgroParisTech</option>
+      <option value="">CentraleSupélec</option>
+      <option value="">l’École normale supérieure Paris-Saclay</option>
+      <option value="">l’Institut des hautes études scientifiques</option>
+      <option value="">l’Institut d'optique Graduate School</option>
+      <option value="OTHER">Other</option>
+    </select>
     <br/><br/>
-  </div>
 
-  <!-- ====================== Research laboratory -->
-
-
-
-  <label>*Research laboratory </label>
-  <small>(Please select your laboratory from the list if displayed)</small><br/>
-
-  <input type="text" list="datalist" size="100" placeholder="Your research laboratory">
+    <!-- Other academic institution -->
+    <div id = "another_university" style="margin-left: 3%; display: none">
+      <label id = "other_university_label">Type your academic institution</label>
+      <input id = "other_university" type="text" name="_other_university" placeholder="Your academic institurion" required="" size="80">
+      <br/><br/>
+    </div>
 
 
+    <!-- ====================== PhD year -->
+    <label>PhD year</label>
+    <select id = "phdyear" name="_phdyear" required="" onchange = changeWorkshopList()>
+      <option value="" selected="" disabled="">-- PhD Year --</option>
+      <option value="YEAR_1">1st Year PhD Student</option>
+      <option value="YEAR_2">2nd Year PhD Student</option>
+      <option value="YEAR_3">3rd Year PhD Student</option>
+      <option value="YEAR_4">>3rd year PhD student</option>
+      <option value="YEAR_5">Postdoc</option>
+    </select>
+    <br/><br/>
 
-  <datalist id="datalist">
-  <!-- [Source]: https://fr.wikipedia.org/wiki/Universit%C3%A9_Paris-Saclay#Les_laboratoires_de_l'universit%C3%A9_Paris-Saclay[33] -->
+    <!-- ====================== Doctoral school -->
+    <label>Doctoral school</label>
+    <select id = "phdschool" name="_phdschool" required="" onchange = "showSchool(this.value)">
+      <option value="" selected="" disabled="">-- Doctoral School --</option>
+      <option value="ABIES">Agriculture, alimentation, biologie, environnement, santé (ABIES)</option>
+      <option value="AAIF">Astronomie et Astrophysique d'Île-de-France</option>
+      <option value="CBMD">Cancérologie, Biologie, Médecine, Santé</option>
+      <option value="EDMH">École Doctorale de Mathématiques Hadamard (EDMH)</option>
+      <option value="EOBE">Electrical, Optical, Bio - physics and Engineering (EOBE)</option>
+      <option value="ITFA">Innovation Thérapeutique, du fondamental à l'appliqué</option>
+      <option value="Interfaces">Interfaces</option>
+      <option value="OM">Ondes et Matière</option>
+      <option value="PIF">Physique en Île-de-France</option>
+      <option value="PHENIICS">Particules, Hadrons, Énergie, Noyau, Instrumentation, Imagerie, Cosmos et Simulation (PHENIICS)</option>
+      <option value="SP">Santé Publique</option>
+      <option value="2MIB">Sciences Chimiques : Molécules, Matériaux, Instrumentation et Biosystèmes (2MIB)</option>
+      <option value="SEIF">Sciences de l'Environnement d'Île-de-France</option>
+      <option value="SHS">Sciences de l'Homme et de la Société (SHS)</option>
+      <option value="SSMMH">Sciences du Sport, de la Motricité et du Mouvement Humain (SSMMH)</option>
+      <option value="SVGE">Sciences du Végétal : du gène à l'écosystème</option>
+      <option value="STIC">Sciences et Technologies de l'Information et de la Communication (STIC)</option>
+      <option value="SMEMaG">Sciences Mécaniques et Énergétiques, Matériaux et Géosciences (SMEMaG)</option>
+      <option value="BioSigne">Signalisations et réseaux intégratifs en biologie (BioSigne)</option>
+      <option value="SDSV">Structure et Dynamique des Systèmes Vivants (SDSV)</option>
+      <option value="OTHER">Other</option>
+    </select>
+    <br/><br/>
 
-    <!-- <option value="" selected="" disabled="">-- Mathematics --</option> -->
-    <option value="Laboratoire de mathématiques d'Orsay (LMO)"></option>
+    <!-- Other doctoral school -->
+    <div id = "another_school" style="margin-left: 3%; display: none">
+      <label id = "otherschool_label">Type your doctoral school</label>
+      <input id = "otherschool" type="text" name="_other_school" placeholder="Name of doctoral school" required="" size="80">
+      <br/><br/>
+    </div>
 
-    <!-- <option value="" selected="" disabled="">-- Physics --</option> -->
-    <option value="Centre de spectrométrie nucléaire et de spectrométrie de masse (CSNSM)"></option>
-    <option value="Institut de physique nucléaire (IPN)"></option>
-    <option value="Laboratoire de l'accélérateur linéaire (LAL)"></option>
-    <option value="Laboratoire Aimé Cotton (LAC)"></option>
-    <option value="Institut des Sciences Moléculaires d’Orsay (ISMO)"></option>
-    <option value="Laboratoire de physique des solides (LPS)"></option>
-    <option value="Laboratoire de physique théorique (LPT)"></option>
-    <option value="Laboratoire de physique théorique et modèles statistiques (LPTMS)"></option>
-    <option value="Centre de recherche et d'ingénierie industrielle et pédagogique (IUT)"></option>
-    <option value="Laboratoire Charles Fabry de l'Institut d'optique (LCFIO)"></option>
-    <option value="Centre de nanosciences et de nanotechnologies (C2N)"></option>
-    <option value="Fluides, automatique et systèmes thermiques (FAST)"></option>
-    <option value="Laboratoire de Physique Plasmas (LPP)"></option>
-    <option value="Laboratoire de physique des gaz et des plasmas (LPGP)"></option>
-    <option value="Unité mixte de physique CNRS-Thales"></option>
-    <option value="Imagerie et Modélisation en Neurobiologie et Cancérologie (IMNC)"></option>
+    <!-- ====================== Research laboratory -->
+    <label>*Research laboratory </label>
+    <small>(Please select your laboratory from the list if displayed)</small><br/>
 
-    <!-- <option value="" selected="" disabled="">-- Earth Sciences & Universe --</option> -->
-    <option value="Institut d'astrophysique spatiale (IAS)"></option>
-    <option value="Géosciences Paris-Sud (GEOPS)"></option>
+    <input type="text" list="datalist" size="100" placeholder="Your research laboratory">
 
-    <!-- <option value="" selected="" disabled="">-- Informatics & Engineering Sciences --</option> -->
-    <option value="Laboratoire de recherche en informatique (LRI)"></option>
-    <option value="Laboratoire d'informatique pour la mécanique et les sciences de l'ingénieur (LIMSI)"></option>
-    <option value="Laboratoire des signaux et systèmes (L2S)"></option>
-    <option value="Imagerie par Résonance Magnétique Médicale et Multi-Modalités (IR4M)"></option>
-    <option value="Laboratoire Génie électrique et électronique de Paris (GeePS)"></option>
-    <option value="Laboratoire Universitaire de Recherche en Production Automatisée (LURPA)"></option>
-    <option value="Systèmes et Applications des Technologies de l’Information et de l’Énergie (SATIE)"></option>
 
-    <!-- <option value="" selected="" disabled="">-- Chemistry --</option> -->
-    <option value="Institut de Chimie Moléculaire et des Matériaux d'Orsay (ICMMO)"></option>
-    <option value="Laboratoire de chimie physique (LCP)"></option>
-    <option value="Centre de cinétique rapide (ELYSE)"></option>
-    <option value="Biomolécule : Conception, Isolement, Synthèse (BioCIS)"></option>
-    <option value="Chimie physique minérale et bioiorganique « Matériaux et santé »"></option>
-    <option value="Chimie organique"></option>
-    <option value="Laboratoire d'étude des techniques d'instrumentation et d'analyse moléculaire (LETIAM)"></option>
 
-    <!-- <option value="" selected="" disabled="">-- Biology --</option> -->
-    <option value="Chimie, Modélisation et Imagerie pour la biologie (CMIB)"></option>
-    <option value="Evolution, Génomes, comportement et écologie (EGCE)"></option>
-    <option value="Ecologie, Systématique et Evolution (ESE)"></option>
-    <option value="Signalisation normale et pathologique : de l'Embryon aux Thérapies Innovantes des Cancers"></option>
-    <option value="Institut de Biologie Intégrative de la Cellule (I2BC)"></option>
-    <option value="Interactions cellulaires et Physiopathologie Hépatique (ICPH)"></option>
-    <option value="Institut des Neurosciences Paris Saclay (INPS)"></option>
-    <option value="Institut des Sciences des Plantes de Paris Saclay  (IPS2)"></option>
-    <option value="Stress Génotoxique et Cancer (SGC)"></option>
-    <option value="Génétique quantitative et Evolution - le Moulon (GQE)"></option>
-    <option value="Unité de Neurosciences Information et Complexité (UNIC)"></option>
-    <option value="Cognitive Neuroimaging Unit (UNICOG)"></option>
-    <option value="Institut Diversité Ecologie et Evolution du Vivant (IDEEV)"></option>
+    <datalist id="datalist">
+    <!-- [Source]: https://fr.wikipedia.org/wiki/Universit%C3%A9_Paris-Saclay#Les_laboratoires_de_l'universit%C3%A9_Paris-Saclay[33] -->
 
-  </datalist>
+      <!-- <option value="" selected="" disabled="">-- Mathematics --</option> -->
+      <option value="Laboratoire de mathématiques d'Orsay (LMO)"></option>
+
+      <!-- <option value="" selected="" disabled="">-- Physics --</option> -->
+      <option value="Centre de spectrométrie nucléaire et de spectrométrie de masse (CSNSM)"></option>
+      <option value="Institut de physique nucléaire (IPN)"></option>
+      <option value="Laboratoire de l'accélérateur linéaire (LAL)"></option>
+      <option value="Laboratoire Aimé Cotton (LAC)"></option>
+      <option value="Institut des Sciences Moléculaires d’Orsay (ISMO)"></option>
+      <option value="Laboratoire de physique des solides (LPS)"></option>
+      <option value="Laboratoire de physique théorique (LPT)"></option>
+      <option value="Laboratoire de physique théorique et modèles statistiques (LPTMS)"></option>
+      <option value="Centre de recherche et d'ingénierie industrielle et pédagogique (IUT)"></option>
+      <option value="Laboratoire Charles Fabry de l'Institut d'optique (LCFIO)"></option>
+      <option value="Centre de nanosciences et de nanotechnologies (C2N)"></option>
+      <option value="Fluides, automatique et systèmes thermiques (FAST)"></option>
+      <option value="Laboratoire de Physique Plasmas (LPP)"></option>
+      <option value="Laboratoire de physique des gaz et des plasmas (LPGP)"></option>
+      <option value="Unité mixte de physique CNRS-Thales"></option>
+      <option value="Imagerie et Modélisation en Neurobiologie et Cancérologie (IMNC)"></option>
+
+      <!-- <option value="" selected="" disabled="">-- Earth Sciences & Universe --</option> -->
+      <option value="Institut d'astrophysique spatiale (IAS)"></option>
+      <option value="Géosciences Paris-Sud (GEOPS)"></option>
+
+      <!-- <option value="" selected="" disabled="">-- Informatics & Engineering Sciences --</option> -->
+      <option value="Laboratoire de recherche en informatique (LRI)"></option>
+      <option value="Laboratoire d'informatique pour la mécanique et les sciences de l'ingénieur (LIMSI)"></option>
+      <option value="Laboratoire des signaux et systèmes (L2S)"></option>
+      <option value="Imagerie par Résonance Magnétique Médicale et Multi-Modalités (IR4M)"></option>
+      <option value="Laboratoire Génie électrique et électronique de Paris (GeePS)"></option>
+      <option value="Laboratoire Universitaire de Recherche en Production Automatisée (LURPA)"></option>
+      <option value="Systèmes et Applications des Technologies de l’Information et de l’Énergie (SATIE)"></option>
+
+      <!-- <option value="" selected="" disabled="">-- Chemistry --</option> -->
+      <option value="Institut de Chimie Moléculaire et des Matériaux d'Orsay (ICMMO)"></option>
+      <option value="Laboratoire de chimie physique (LCP)"></option>
+      <option value="Centre de cinétique rapide (ELYSE)"></option>
+      <option value="Biomolécule : Conception, Isolement, Synthèse (BioCIS)"></option>
+      <option value="Chimie physique minérale et bioiorganique « Matériaux et santé »"></option>
+      <option value="Chimie organique"></option>
+      <option value="Laboratoire d'étude des techniques d'instrumentation et d'analyse moléculaire (LETIAM)"></option>
+
+      <!-- <option value="" selected="" disabled="">-- Biology --</option> -->
+      <option value="Chimie, Modélisation et Imagerie pour la biologie (CMIB)"></option>
+      <option value="Evolution, Génomes, comportement et écologie (EGCE)"></option>
+      <option value="Ecologie, Systématique et Evolution (ESE)"></option>
+      <option value="Signalisation normale et pathologique : de l'Embryon aux Thérapies Innovantes des Cancers"></option>
+      <option value="Institut de Biologie Intégrative de la Cellule (I2BC)"></option>
+      <option value="Interactions cellulaires et Physiopathologie Hépatique (ICPH)"></option>
+      <option value="Institut des Neurosciences Paris Saclay (INPS)"></option>
+      <option value="Institut des Sciences des Plantes de Paris Saclay  (IPS2)"></option>
+      <option value="Stress Génotoxique et Cancer (SGC)"></option>
+      <option value="Génétique quantitative et Evolution - le Moulon (GQE)"></option>
+      <option value="Unité de Neurosciences Information et Complexité (UNIC)"></option>
+      <option value="Cognitive Neuroimaging Unit (UNICOG)"></option>
+      <option value="Institut Diversité Ecologie et Evolution du Vivant (IDEEV)"></option>
+    </datalist>
+
+  </fieldset>
+
 
   <br/><br/>
+
 
   <!-- Workshop list -->
   <legend>Please choose a workshop</legend>
@@ -205,12 +231,30 @@ permalink: /reg_form_test/
 
 <!-- Display textbox for a doctoral school out of UPS -->
 <script>
-  function showSchool() {
-    var x = document.getElementById("another_shcool");
-    if (x.style.display === "none") {
-      x.style.display = "block";
+  function showUniversity(val) {
+    var x = document.getElementById("another_university");
+    if(val === 'OTHER'){
+      if (x.style.display === "none"){
+        x.style.display = "block";
+      }
+    }
+    else {
+      x.style.display = "none";
     }
   }
+
+  function showSchool(val) {
+    var x = document.getElementById("another_school");
+    if(val === 'OTHER'){
+      if (x.style.display === "none"){
+        x.style.display = "block";
+      }
+    }
+    else {
+      x.style.display = "none";
+    }
+  }
+
 
   function showAdum() {
     var x = document.getElementById("adum_link");
