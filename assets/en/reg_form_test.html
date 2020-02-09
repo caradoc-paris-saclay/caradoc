@@ -72,7 +72,7 @@ permalink: /reg_form_test/
 
     <!-- Other academic institution -->
     <div id = "another_university" style="margin-left: 3%; display: none">
-      <label id = "other_university_label">Type your academic institution</label>
+      <label id = "other_university_label">Type your academic institution</label><br/>
       <input id = "other_university" type="text" name="_other_university" placeholder="Your academic institurion" required="" size="80">
       <br/><br/>
     </div>
@@ -120,7 +120,7 @@ permalink: /reg_form_test/
 
     <!-- Other doctoral school -->
     <div id = "another_school" style="margin-left: 3%; display: none">
-      <label id = "otherschool_label">Type your doctoral school</label>
+      <label id = "otherschool_label">Type your doctoral school</label><br/>
       <input id = "otherschool" type="text" name="_other_school" placeholder="Name of doctoral school" required="" size="80">
       <br/><br/>
     </div>
@@ -197,36 +197,63 @@ permalink: /reg_form_test/
 
   </fieldset>
 
-
   <br/><br/>
-
 
   <!-- Workshop list -->
   <legend>Please choose a workshop</legend>
-  <label>Workshops</label>
-  <select id="workshop">
-    <option value="" selected="" disabled="">-- Choose your PhD year first --</option>
-  </select>
+  <fieldset>
+    <label>Workshops</label>
+    <select id="workshop">
+      <option value="" selected="" disabled="">-- Choose your PhD year first --</option>
+    </select>
+  </fieldset>
 
   <br/><br/>
 
   <legend>Registering to ADUM?</legend>
-  <select id = "adum" name="_adum" required="" onchange = "showAdum()(this)">
-    <option value="" selected="" disabled="">-- Pick an option --</option>
-    <option value="UNICOG">Yes</option>
-    <option value="IDEEV">No</option>
-  </select>
+  <fieldset>
+    <select id = "adum" name="_adum" required="" onchange = "showAdum(this.value)">
+      <option value="" selected="" disabled="">-- Pick an option --</option>
+      <option value="YES">Yes</option>
+      <option value="NO">No</option>
+    </select>
+
+    <!-- Adum link -->
+    <div id = "adum_link" style="margin-left: 3%; display: none">
+      <br/>
+      Register here!
+      <a href="https://www.adum.fr/index.pl" target="_blank">www.adum.fr</a>
+      <br/>
+    </div>
+  </fieldset>
+
   <br/><br/>
-  <!-- Other doctoral school -->
-  <div id = "adum_link" style="margin-left: 3%; display: none">
-    Register here!
-    <a href="https://www.adum.fr/index.pl" target="_blank">www.adum.fr</a>
-    <br/><br/>
-  </div>
+
+  <legend>How did you know about us?</legend>
+  <fieldset>
+    <select id = "how_did_you" name="_how_did_you" required="">
+
+      <option value="" selected="" disabled="">-- Social media --</option>
+      <option value="Linkedin">LinkedIn</option>
+      <option value="Facebook">Facebook</option>
+
+      <option value="" selected="" disabled="">-- E-mail from your --</option>
+      <option value="">Academic institution</option>
+      <option value="">Doctoral school</option>
+      <option value="">Research laboratory</option>
+      <option value="">Company</option>
+
+      <option value="" selected="" disabled="">-- Other --</option>
+      <option value="">Word of mouth</option>
+    </select>
+  </fieldset>
+
+  <br/><br/>
 
   <input type="submit" value="Send">
   <br/>
   <small>(Submission button not working yet)</small>
+
 </form>
 
 <!-- Display textbox for a doctoral school out of UPS -->
@@ -255,11 +282,15 @@ permalink: /reg_form_test/
     }
   }
 
-
-  function showAdum() {
+  function showAdum(val) {
     var x = document.getElementById("adum_link");
-    if (x.style.display === "none") {
-      x.style.display = "block";
+    if(val === 'YES'){
+      if (x.style.display === "none"){
+        x.style.display = "block";
+      }
+    }
+    else {
+      x.style.display = "none";
     }
   }
 </script>
