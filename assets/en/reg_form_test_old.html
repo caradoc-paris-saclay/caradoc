@@ -1,0 +1,427 @@
+---
+layout: page_event_en
+title: Registration_form_test
+permalink: /reg_form_test_old/
+---
+<section class="top-bird">
+  <div>
+    <h1 class="animated fadeInUp"><strong>CARaDOC 2020</strong></h1>
+    <h2 class="animated fadeInUp"><strong>Registration form test page</strong></h2>
+    <h3 class="animated fadeInUp"><strong>(For internal usage ONLY /!\)</strong></h3>
+  </div>
+</section>
+
+<!--
+<form action="https://formspree.io/odelacruz.fierro@gmail.com" method="POST">
+  <p>Name:</p>
+  <input type="text" name="name">
+  <br/>
+  <p>E-mail:</p>
+  <input type="email" name="_replyto">
+  <br/>
+  <br/>
+  <input type="submit" value="Send">
+</form>
+-->
+
+<form id="fs-frm" name="reg-form" accept-charset="utf-8" method="post"style="margin: 5% 5%" class="reg_form">
+
+  <!-- ====================== Participant's information-->
+  <legend>Participant's information</legend>
+  <br/>
+  <fieldset>
+    <!-- ====================== Firstname -->
+    <label>*Firstname</label><br/>
+    <input type="text" name="_name" placeholder="Write here your name(s)" required="">
+    <br/><br/>
+
+    <!-- ====================== Lastname -->
+    <label>*Lastname</label><br/>
+    <input type="text" name="_lastname" placeholder="Write here your lastname(s)" required="">
+    <br/><br/>
+
+    <!-- ====================== E-mail -->
+    <label>*E-mail</label><br/>
+    <input type="email" name="_email" placeholder="email@domain.tld" required="">
+    <br/><br/>
+
+    <!-- ====================== Mobile -->
+    <label for="phone">Mobile (optional):</label>
+    <br/>
+    <input id="phone" type="tel" name="_phone" placeholder="(+XX) XXX-XXX-XXX" patern="{5} [0-9]{3}-[0-9]{3}-[0-9]{3}" class="masked" title="10-digit number"
+    minlength="17" maxlength="17">
+    <br/>
+    <small>Format: (+XX) XXX-XXX-XXX</small>
+  </fieldset>
+  <br/><br/>
+
+  <!-- ====================== Professional information -->
+  <legend>Professional information</legend>
+  <fieldset>
+    <!-- ====================== Academic institution -->
+    <label>*Academic institution</label>
+    <select id = "university" name="_university" required="" onchange = "showUniversity(this.value)">
+      <option value="">AgroParisTech</option>
+      <option value="">CentraleSupélec</option>
+      <option value="">l’École normale supérieure Paris-Saclay</option>
+      <option value="">l’Institut des hautes études scientifiques</option>
+      <option value="">l’Institut d'optique Graduate School</option>
+      <option value="OTHER">Other</option>
+    </select>
+    <br/><br/>
+
+    <!-- Other academic institution -->
+    <div id = "another_university" style="margin-left: 3%; display: none">
+      <label id = "other_university_label">Type your academic institution</label><br/>
+      <input id = "other_university" type="text" name="_other_university" placeholder="Your academic institurion" required="" size="80">
+      <br/><br/>
+    </div>
+
+
+    <!-- ====================== PhD year -->
+    <label>PhD year</label>
+    <select id = "phdyear" name="_phdyear" required="" onchange = changeWorkshopList()>
+      <option value="" selected="" disabled="">-- PhD Year --</option>
+      <option value="YEAR_1">1st Year PhD Student</option>
+      <option value="YEAR_2">2nd Year PhD Student</option>
+      <option value="YEAR_3">3rd Year PhD Student</option>
+      <option value="YEAR_4">>3rd year PhD student</option>
+      <option value="YEAR_5">Postdoc</option>
+    </select>
+    <br/><br/>
+
+    <!-- ====================== Doctoral school -->
+    <label>Doctoral school</label>
+    <select id = "phdschool" name="_phdschool" required="" onchange = "showSchool(this.value)">
+      <option value="" selected="" disabled="">-- Doctoral School --</option>
+      <option value="ABIES">Agriculture, alimentation, biologie, environnement, santé (ABIES)</option>
+      <option value="AAIF">Astronomie et Astrophysique d'Île-de-France</option>
+      <option value="CBMD">Cancérologie, Biologie, Médecine, Santé</option>
+      <option value="EDMH">École Doctorale de Mathématiques Hadamard (EDMH)</option>
+      <option value="EOBE">Electrical, Optical, Bio - physics and Engineering (EOBE)</option>
+      <option value="ITFA">Innovation Thérapeutique, du fondamental à l'appliqué</option>
+      <option value="Interfaces">Interfaces</option>
+      <option value="OM">Ondes et Matière</option>
+      <option value="PIF">Physique en Île-de-France</option>
+      <option value="PHENIICS">Particules, Hadrons, Énergie, Noyau, Instrumentation, Imagerie, Cosmos et Simulation (PHENIICS)</option>
+      <option value="SP">Santé Publique</option>
+      <option value="2MIB">Sciences Chimiques : Molécules, Matériaux, Instrumentation et Biosystèmes (2MIB)</option>
+      <option value="SEIF">Sciences de l'Environnement d'Île-de-France</option>
+      <option value="SHS">Sciences de l'Homme et de la Société (SHS)</option>
+      <option value="SSMMH">Sciences du Sport, de la Motricité et du Mouvement Humain (SSMMH)</option>
+      <option value="SVGE">Sciences du Végétal : du gène à l'écosystème</option>
+      <option value="STIC">Sciences et Technologies de l'Information et de la Communication (STIC)</option>
+      <option value="SMEMaG">Sciences Mécaniques et Énergétiques, Matériaux et Géosciences (SMEMaG)</option>
+      <option value="BioSigne">Signalisations et réseaux intégratifs en biologie (BioSigne)</option>
+      <option value="SDSV">Structure et Dynamique des Systèmes Vivants (SDSV)</option>
+      <option value="OTHER">Other</option>
+    </select>
+    <br/><br/>
+
+    <!-- Other doctoral school -->
+    <div id = "another_school" style="margin-left: 3%; display: none">
+      <label id = "otherschool_label">Type your doctoral school</label><br/>
+      <input id = "otherschool" type="text" name="_other_school" placeholder="Name of doctoral school" required="" size="80">
+      <br/><br/>
+    </div>
+
+    <!-- ====================== Research laboratory -->
+    <label>*Research laboratory </label>
+    <small>(Please select your laboratory from the list if displayed)</small><br/>
+
+    <input type="text" list="datalist" size="100" placeholder="Your research laboratory">
+
+
+
+    <datalist id="datalist">
+    <!-- [Source]: https://fr.wikipedia.org/wiki/Universit%C3%A9_Paris-Saclay#Les_laboratoires_de_l'universit%C3%A9_Paris-Saclay[33] -->
+
+      <!-- <option value="" selected="" disabled="">-- Mathematics --</option> -->
+      <option value="Laboratoire de mathématiques d'Orsay (LMO)"></option>
+
+      <!-- <option value="" selected="" disabled="">-- Physics --</option> -->
+      <option value="Centre de spectrométrie nucléaire et de spectrométrie de masse (CSNSM)"></option>
+      <option value="Institut de physique nucléaire (IPN)"></option>
+      <option value="Laboratoire de l'accélérateur linéaire (LAL)"></option>
+      <option value="Laboratoire Aimé Cotton (LAC)"></option>
+      <option value="Institut des Sciences Moléculaires d’Orsay (ISMO)"></option>
+      <option value="Laboratoire de physique des solides (LPS)"></option>
+      <option value="Laboratoire de physique théorique (LPT)"></option>
+      <option value="Laboratoire de physique théorique et modèles statistiques (LPTMS)"></option>
+      <option value="Centre de recherche et d'ingénierie industrielle et pédagogique (IUT)"></option>
+      <option value="Laboratoire Charles Fabry de l'Institut d'optique (LCFIO)"></option>
+      <option value="Centre de nanosciences et de nanotechnologies (C2N)"></option>
+      <option value="Fluides, automatique et systèmes thermiques (FAST)"></option>
+      <option value="Laboratoire de Physique Plasmas (LPP)"></option>
+      <option value="Laboratoire de physique des gaz et des plasmas (LPGP)"></option>
+      <option value="Unité mixte de physique CNRS-Thales"></option>
+      <option value="Imagerie et Modélisation en Neurobiologie et Cancérologie (IMNC)"></option>
+
+      <!-- <option value="" selected="" disabled="">-- Earth Sciences & Universe --</option> -->
+      <option value="Institut d'astrophysique spatiale (IAS)"></option>
+      <option value="Géosciences Paris-Sud (GEOPS)"></option>
+
+      <!-- <option value="" selected="" disabled="">-- Informatics & Engineering Sciences --</option> -->
+      <option value="Laboratoire de recherche en informatique (LRI)"></option>
+      <option value="Laboratoire d'informatique pour la mécanique et les sciences de l'ingénieur (LIMSI)"></option>
+      <option value="Laboratoire des signaux et systèmes (L2S)"></option>
+      <option value="Imagerie par Résonance Magnétique Médicale et Multi-Modalités (IR4M)"></option>
+      <option value="Laboratoire Génie électrique et électronique de Paris (GeePS)"></option>
+      <option value="Laboratoire Universitaire de Recherche en Production Automatisée (LURPA)"></option>
+      <option value="Systèmes et Applications des Technologies de l’Information et de l’Énergie (SATIE)"></option>
+
+      <!-- <option value="" selected="" disabled="">-- Chemistry --</option> -->
+      <option value="Institut de Chimie Moléculaire et des Matériaux d'Orsay (ICMMO)"></option>
+      <option value="Laboratoire de chimie physique (LCP)"></option>
+      <option value="Centre de cinétique rapide (ELYSE)"></option>
+      <option value="Biomolécule : Conception, Isolement, Synthèse (BioCIS)"></option>
+      <option value="Chimie physique minérale et bioiorganique « Matériaux et santé »"></option>
+      <option value="Chimie organique"></option>
+      <option value="Laboratoire d'étude des techniques d'instrumentation et d'analyse moléculaire (LETIAM)"></option>
+
+      <!-- <option value="" selected="" disabled="">-- Biology --</option> -->
+      <option value="Chimie, Modélisation et Imagerie pour la biologie (CMIB)"></option>
+      <option value="Evolution, Génomes, comportement et écologie (EGCE)"></option>
+      <option value="Ecologie, Systématique et Evolution (ESE)"></option>
+      <option value="Signalisation normale et pathologique : de l'Embryon aux Thérapies Innovantes des Cancers"></option>
+      <option value="Institut de Biologie Intégrative de la Cellule (I2BC)"></option>
+      <option value="Interactions cellulaires et Physiopathologie Hépatique (ICPH)"></option>
+      <option value="Institut des Neurosciences Paris Saclay (INPS)"></option>
+      <option value="Institut des Sciences des Plantes de Paris Saclay  (IPS2)"></option>
+      <option value="Stress Génotoxique et Cancer (SGC)"></option>
+      <option value="Génétique quantitative et Evolution - le Moulon (GQE)"></option>
+      <option value="Unité de Neurosciences Information et Complexité (UNIC)"></option>
+      <option value="Cognitive Neuroimaging Unit (UNICOG)"></option>
+      <option value="Institut Diversité Ecologie et Evolution du Vivant (IDEEV)"></option>
+    </datalist>
+
+  </fieldset>
+
+  <br/><br/>
+
+  <!-- Workshop list -->
+  <legend>Please choose a workshop</legend>
+  <fieldset>
+    <label>Workshops</label>
+    <select id="workshop">
+      <option value="" selected="" disabled="">-- Choose your PhD year first --</option>
+    </select>
+  </fieldset>
+
+  <br/><br/>
+
+  <legend>Registering to ADUM?</legend>
+  <fieldset>
+    <select id = "adum" name="_adum" required="" onchange = "showAdum(this.value)">
+      <option value="" selected="" disabled="">-- Pick an option --</option>
+      <option value="YES">Yes</option>
+      <option value="NO">No</option>
+    </select>
+
+    <!-- Adum link -->
+    <div id = "adum_link" style="margin-left: 3%; display: none">
+      <br/>
+      Register here!
+      <a href="https://www.adum.fr/index.pl" target="_blank">www.adum.fr</a>
+      <br/>
+    </div>
+  </fieldset>
+
+  <br/><br/>
+
+  <legend>How did you know about us?</legend>
+  <fieldset>
+    <select id = "how_did_you" name="_how_did_you" required="">
+
+      <option value="" selected="" disabled="">-- Social media --</option>
+      <option value="Linkedin">LinkedIn</option>
+      <option value="Facebook">Facebook</option>
+
+      <option value="" selected="" disabled="">-- E-mail from your --</option>
+      <option value="">Academic institution</option>
+      <option value="">Doctoral school</option>
+      <option value="">Research laboratory</option>
+      <option value="">Company</option>
+
+      <option value="" selected="" disabled="">-- Other --</option>
+      <option value="">Word of mouth</option>
+    </select>
+  </fieldset>
+
+  <br/><br/>
+
+  <input type="submit" value="Send">
+  <br/>
+  <small>(Submission button not working yet)</small>
+
+</form>
+
+
+
+
+<!--
+<form action="https://formspree.io/odelacruz.fierro@gmail.com" method="POST">
+-->
+
+
+<!-- Display textbox for a doctoral school out of UPS -->
+<script>
+  function showUniversity(val) {
+    var x = document.getElementById("another_university");
+    if(val === 'OTHER'){
+      if (x.style.display === "none"){
+        x.style.display = "block";
+      }
+    }
+    else {
+      x.style.display = "none";
+    }
+  }
+
+  function showSchool(val) {
+    var x = document.getElementById("another_school");
+    if(val === 'OTHER'){
+      if (x.style.display === "none"){
+        x.style.display = "block";
+      }
+    }
+    else {
+      x.style.display = "none";
+    }
+  }
+
+  function showAdum(val) {
+    var x = document.getElementById("adum_link");
+    if(val === 'YES'){
+      if (x.style.display === "none"){
+        x.style.display = "block";
+      }
+    }
+    else {
+      x.style.display = "none";
+    }
+  }
+</script>
+
+
+<!-- Propose workshop according to PhD Year -->
+<script>
+  // Establish relationship between PhD year and corresponding workshop
+  var yearAndWorkshops = {};
+
+  yearAndWorkshops['YEAR_1'] = ['W.-Stress managemnet & co-working', 'W.-Public speaking' , 'W.-How to structure work and pose the problems'];
+
+  yearAndWorkshops['YEAR_2'] = ['W.-Stress managemnet & co-working', 'W.-Public speaking' , 'W.-How to structure work and pose the problems'];
+
+  yearAndWorkshops['YEAR_3'] = ['W.-How to get a job in industry after your Ph.D.', 'W.-The transition from graduate student to Professor', 'RT.-Experiences and advices on launching a StartUp','RT.-Gender equality in big companies and public institutions'];
+
+  yearAndWorkshops['YEAR_4'] = ['W.-How to get a job in industry after your Ph.D.', 'W.-The transition from graduate student to Professor', 'RT.-Experiences and advices on launching a StartUp','RT.-Gender equality in big companies and public institutions'];
+
+  yearAndWorkshops['YEAR_5'] = ['W.-How to get a job in industry after your Ph.D.', 'W.-The transition from graduate student to Professor', 'RT.-Experiences and advices on launching a StartUp','RT.-Gender equality in big companies and public institutions'];
+
+  function changeWorkshopList() {
+    /*Retrieve existing lists*/
+    // Master list
+    var yearList = document.getElementById("phdyear");
+    // Slave list
+    var workshopList = document.getElementById("workshop");
+
+    /* Retrive seleted item from master list*/
+    var currentYear = yearList.options[yearList.selectedIndex].value;
+    // Clean slave list
+    while (workshopList.options.length) {
+      workshopList.remove(0);
+    }
+
+    /*Retreive corresponding workshop list in function fof the current year*/
+    var slotsList = yearAndWorkshops[currentYear];
+
+    // Add workshop list to the corresponding <select> element
+    if (slotsList) {
+      var i;
+      for (i = 0; i < slotsList.length; i++) {
+        var slot = new Option(slotsList[i], i);
+        workshopList.options.add(slot);
+      }
+    }
+}
+</script>
+
+
+
+<form action="" method="POST" id= "registrationform" class="reg_form">
+  <label>Name:</label>
+  <input type="text" name="name" value = "" id = "name" required/>
+  <br/>
+  <label>E-mail:</label>
+  <input type="text" name="email" value = "" id = "email" required/>
+  <br/>
+  <br/>
+
+  <!-- <input type="submit" value="Register"> -->
+  <button type="submit">Register</button>
+</form>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAyNxrmo7B7VYacZGjzKqVUSE7Pjq7Y_X4",
+    authDomain: "caradoc2020.firebaseapp.com",
+    databaseURL: "https://caradoc2020.firebaseio.com",
+    projectId: "caradoc2020",
+    storageBucket: "caradoc2020.appspot.com",
+    messagingSenderId: "1045538076343",
+    appId: "1:1045538076343:web:f15f2599558d83bdd6bf32",
+    measurementId: "G-1QJJH0PZK6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  //Reference for form collection(3)
+  let formMessage = firebase.database().ref('register');
+
+  //listen for submit event//(1)
+  document
+  .getElementById('registrationform')
+  .addEventListener('submit', submitForm);
+
+  //Submit form(1.2)
+  function submitForm(e) {
+    e.preventDefault();
+    // Get Values from the DOM
+    let name = document.querySelector('#name').value;
+    let email = document.querySelector('#email').value;
+
+    //send message values
+    sendMessage(name, email, password, bio, job, interest);
+
+    //Show Alert Message(5)
+    document.querySelector('.alert').style.display = 'block';
+
+    //Hide Alert Message After Seven Seconds(6)
+    setTimeout(function() {
+      document.querySelector('.alert').style.display = 'none';
+    }, 7000);
+
+    //Form Reset After Submission(7)
+    document.getElementById('registrationform').reset();
+  }
+
+  function sendMessage(name, email) {
+    let newFormMessage = formMessage.push();
+    newFormMessage.set({
+      name: name,
+      email: email
+    });
+  }
+
+</script>
