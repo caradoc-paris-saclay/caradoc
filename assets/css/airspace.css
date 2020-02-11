@@ -624,3 +624,7 @@ footer .footer-menu ul li a {
 footer .footer-menu ul li a:hover {
   color: #000;
 }
+
+footer .container{
+  width:auto;
+}
