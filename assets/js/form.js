@@ -22,14 +22,27 @@ document.getElementById('registrationform').addEventListener('submit', submitFor
 function submitForm(e){
   e.preventDefault();
   var name = getInputVal('name');
-  var email = getInputVal('email');
+  var email = getInputVal('email').replace(/\s/g, ''); //remove white spaces
+  var emailConfirmation = getInputVal('emailConfirmation').replace(/\s/g, '');
+  var emailNoMatch = email.localeCompare(emailConfirmation);
+  // emailNoMatch
+  console.log(email);
+  console.log(emailConfirmation);
+  console.log("Do e-mails match?");
+  if (emailNoMatch){
+      console.log("No match!");
+      document.getElementById('emailNoMatch').style.display = "block";
+      return false;
+  }
+  else{
+    document.getElementById('emailNoMatch').style.display = "none";
+  }
 
-  console.log(name);
   //save participant
   saveParticipant(name, email);
 
+  document.getElementById('submissionMsg').style.display = "block";
   document.getElementById('registrationform').reset();
-
 }
 
 function getInputVal(id){
