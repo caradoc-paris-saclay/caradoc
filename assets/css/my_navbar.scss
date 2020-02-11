@@ -157,6 +157,13 @@ img#logo{
 header .lang-flag{
   width: 2.5vw;
 }
+@media  (max-width: $md-width){
+  header .lang-flag{
+    height: 1em;
+    width: auto;
+    padding-bottom: 1px;
+  }
+}
 header .navbar-toggler-icon{
    color:#8d1010;
    border-color: red;
