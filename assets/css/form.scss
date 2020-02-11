@@ -42,8 +42,8 @@ form.reg_form button{
   transition: background-color 2s ease-out;
 }
 
-.reg_form label{
-  display:block;
+.reg_form label, .reg_form input{
+  display:inline-block;
 }
 
 .reg_form div{
@@ -52,6 +52,12 @@ form.reg_form button{
 
 .wrapper{
   box-shadow: 0 0 20px 0 rgba(72,94,116,0.7);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper > *{
@@ -61,6 +67,29 @@ form.reg_form button{
 .wrapper div.d-flex{
 	margin-top:1em;
 	padding: 0;
+}
+
+.formItem{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 50vw;
+}
+
+.inputWithMsg{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.inputWithMsg > * {
+	width: inherit;
+}
+
+input#emailConfirmation {
+	width: inherit;
 }
 
 .reg_form .full{
@@ -81,12 +110,16 @@ div.alert{
 	display: none;
 }
 
-@media (min-width:$md-width){
-  .wrapper{
-    display: grid;
+@media (max-width:$md-width){
+	
+	.formItem{
+		width: 80vw;
+	}
+  /*.wrapper{
+    /*display: grid;
     grid-template-columns: 1fr 2fr;
-  }
-  .wrapper > *{
+  }*/
+  /*.wrapper > *{
     padding:2em;
-  }
+  }*/
 }
