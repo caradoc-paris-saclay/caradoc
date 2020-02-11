@@ -17,7 +17,7 @@ $xl-width: 1200px;
 
 form.reg_form {
   padding: 10px 15px;
-  background: rgb(252, 220, 97);
+  background: #F5F5F5;
   margin-bottom: 0;
   margin-left: 0;
 }
@@ -45,9 +45,18 @@ form.reg_form button{
 .reg_form label, .reg_form input{
   display:inline-block;
 }
-
+.reg_form label{
+	font-weight: bold;
+}
+.reg_form input{
+	width: 100%;
+}
 .reg_form div{
   margin:0;
+}
+
+.reg_form select{
+  background-color: #fff;
 }
 
 .wrapper{
@@ -79,6 +88,10 @@ form.reg_form button{
 	flex-direction: column;
 	align-content: flex-start;
 	width: 50vw;
+}
+
+.phd_student_block{
+  display: none;
 }
 
 .inputWithMsg{
