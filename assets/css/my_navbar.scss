@@ -104,7 +104,10 @@ nav.navbar{/*special rules for top nav bar that collapses*/
 }
 .navbar{
   height: $navbar-height;
-  background-color: #ffde59;
+}
+.navbar, .navbar-collapse{
+    background-color: #ffde59; /*#9FF18A;*/
+    /*background-image: linear-gradient(to left, #9ff18a, #85fac8, #96fcf4, #c5fbff, #f2faff);*/
 }
 .bd-navbar{
   min-height: $navbar-min-height;
@@ -173,7 +176,6 @@ header button.navbar-toggler{
 }
 header .navbar-collapse{
   padding-bottom: 1vh;
-  background-color: #ffde59;
   /*overflow-y: auto;*/
 }
 /*header .navbar-collapse{

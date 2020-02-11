@@ -10,18 +10,15 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-
-// Reference account collection
-
-var participantRef = firebase.database().ref('participants');
+const db = firebase.firestore();
 
 //Listen to click on submit
 document.getElementById('registrationform').addEventListener('submit', submitForm);
 //Submit Form
 function submitForm(e){
   e.preventDefault();
-  var name = getInputVal('name');
+  var firstname = getInputVal('firstname');
+  var lastname = getInputVal('lastname');
   var email = getInputVal('email').replace(/\s/g, ''); //remove white spaces
   var emailConfirmation = getInputVal('emailConfirmation').replace(/\s/g, '');
   var emailNoMatch = email.localeCompare(emailConfirmation);
@@ -49,10 +46,64 @@ function getInputVal(id){
   return document.getElementById(id).value;
 }
 
-function saveParticipant(name, email){
-  var newParticipantRef = participantRef.push();
-  newParticipantRef.set({
-    name: name,
-    email: email
+function saveParticipant(firstname, lastname, email, phone){
+  db.collection('participants').add({
+    firstname: firstname,
+    lastname: lastname,
+    email: email,
+    phone: phone
+  })
+  .then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+    console.error("Error adding document: ", error);
   });
 }
+
+//form helper functions
+
+function isPhDStudent(val) {
+  if(val === 'PhDStudent'){
+    $('.phd_student_block').css("display", "flex");
+  }
+  else {
+    $('.phd_student_block').css("display", "none");
+  } 
+}
+
+function showUniversity(val) {
+    var x = document.getElementById("another_university");
+    if(val === 'OTHER'){
+      if (x.style.display === "none"){
+        x.style.display = "block";
+      }
+    }
+    else {
+      x.style.display = "none";
+    }
+  }
+
+  function showSchool(val) {
+    var x = document.getElementById("another_school");
+    if(val === 'OTHER'){
+      if (x.style.display === "none"){
+        x.style.display = "block";
+      }
+    }
+    else {
+      x.style.display = "none";
+    }
+  }
+
+  function showAdum(val) {
+    var x = document.getElementById("adum_link");
+    if(val === 'YES'){
+      if (x.style.display === "none"){
+        x.style.display = "block";
+      }
+    }
+    else {
+      x.style.display = "none";
+    }
+  }
