@@ -1,0 +1,12 @@
+div.alert{
+	text-align: center;
+	padding: 10px;
+	background: #63003C;
+	color:#fff;
+	margin-bottom: none;
+	display: block;
+}
+form#registrationForm{
+	margin-top: none;
+	margin-bottom: none;
+}
