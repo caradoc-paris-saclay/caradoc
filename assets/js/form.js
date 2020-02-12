@@ -15,22 +15,25 @@ const db = firebase.firestore();
 //Listen to click on submit
 document.getElementById('registrationform').addEventListener('submit', submitForm);
 //Uncomment this line then use the URL on 2nd line in the webrowser
-processUser();
+if (location.pathname.indexOf("reg_form_test") !== -1){
+    processUser();
+}
 //http://127.0.0.1:4000/reg_form_test_arnaud.html/?firstname=Arnaud&lastname=Jean
 //
 function processUser()
-  {
+  { 
     var parameters = location.search.substring(1).split("&");
-
-    var temp = parameters[0].split("=");
-    l = unescape(temp[1]);
-    temp = parameters[1].split("=");
-    p = unescape(temp[1]);
-    document.getElementById("firstname").value = l;
-    document.getElementById("lastname").value = p;
-    console.log("Parsing URL:");
-    console.log(l);
-    console.log(p);
+    if (Array.isArray(parameters) && parameters.length){ // check if array and if array is empty
+      var temp = parameters[0].split("=");
+      l = unescape(temp[1]);
+      temp = parameters[1].split("=");
+      p = unescape(temp[1]);
+      document.getElementById("firstname").value = l;
+      document.getElementById("lastname").value = p;
+      console.log("Parsing URL:");
+      console.log(l);
+      console.log(p);
+    }
   }
 //Submit Form
 function submitForm(e){
