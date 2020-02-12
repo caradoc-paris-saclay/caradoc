@@ -17,17 +17,17 @@ permalink: /reg_form_test_arnaud
 			<div class="d-flex flex-row">
 				<div class="flex-fill">
 	  			<label>First Name (*)</label>
-	  			<input type="text" name="firstname" value = "" id = "firstname" placeholder="First Name" required/>
+	  			<input type="text" name="firstname" value="" id ="firstname" placeholder="First Name" required/>
 	  			</div>
 	  			<div class="pl-md-5 pl-2 flex-fill">
 	  			<label>Last Name (*)</label>
-	  			<input type="text" name="lastname" value = "" id = "lastname" placeholder="Last Name" required/>
+	  			<input type="text" name="lastname" value="" id ="lastname" placeholder="Last Name" required/>
 	  			</div>
   			</div>
 	  	</div>
 	  	<div class="formItem">	
 	  		<label>E-mail (*)</label>
-	  		<input type="email" name="email" value = "" id = "email" placeholder="myname@mail.com" required/>
+	  		<input type="email" name="email" value="" id="email" placeholder="myname@mail.com" required/>
 	  	</div>
 	  	<div class="formItem">	
 	  		<div>
@@ -44,11 +44,11 @@ permalink: /reg_form_test_arnaud
 	  	</div>
 	  	<div class="formItem">	
 	  		<label>Phone Number</label>
-	  		<input type="tel" name="phone" value = "" id = "phone" placeholder="06XXXXXXXX" required/>
+	  		<input type="tel" name="phone" value="" id ="phone" placeholder="06XXXXXXXX"/>
 	  	</div>
 	  	<div class="formItem">
-	  		<label>Position (*)</label>
-	  		<select id = "position" name="position" required onchange="isPhDStudent(this.value)">
+	  		<label>Job Title (*)</label>
+	  		<select id="position" name="position" required onchange="isPhDStudent(this.value)">
 				<option value="" selected="" disabled="">-- Position --</option>
 				<option value="PhDStudent">PhD Student</option>
 				<option value="PostDoc">Post-Doc</option>
@@ -59,7 +59,7 @@ permalink: /reg_form_test_arnaud
 	  	</div>
 	  	<div class="formItem phd_student_block">	
 	  		<label>Academic institution (*)</label>
-		    <select id ="university" name="_university" required onchange="showUniversity(this.value)">
+		    <select id="university" name="university" onchange="showUniversity(this.value)">
 		      <option value="">AgroParisTech</option>
 		      <option value="">CentraleSupélec</option>
 		      <option value="">l’École normale supérieure Paris-Saclay</option>
@@ -67,14 +67,14 @@ permalink: /reg_form_test_arnaud
 		      <option value="">l’Institut d'optique Graduate School</option>
 		      <option value="OTHER">Other</option>
 		    </select>
-		    <div id = "another_university" style="margin-left: 3%; display: none">
-		      <label id = "other_university_label">Type your academic institution</label><br/>
-		      <input id = "other_university" type="text" name="_other_university" placeholder="Your academic institurion" required="" size="80">
+		    <div id="another_university" style="margin-left: 3%; display: none">
+		      <label id="other_university_label">Type your academic institution</label><br/>
+		      <input id="other_university" type="text" name="other_university" placeholder="Your academic institurion" size="80"/>
 		    </div>
 		 </div>
 		 <div class="formItem phd_student_block">
 	 	    <label>PhD year (*)</label>
-    		<select id = "phdyear" name="_phdyear" required onchange=changeWorkshopList()>
+    		<select id="phdyear" name="phdyear" onchange="changeWorkshopList()">
 				<option value="" selected="" disabled="">-- PhD Year --</option>
 				<option value="YEAR_1">1st Year PhD Student</option>
 				<option value="YEAR_2">2nd Year PhD Student</option>
