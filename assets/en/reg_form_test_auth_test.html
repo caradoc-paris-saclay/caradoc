@@ -1,0 +1,90 @@
+---
+layout: page_event_en
+title: Registration_form_test_auth_test
+permalink: /reg_form_test/
+---
+<section class="top-bird">
+  <div>
+    <h1 class="animated fadeInUp"><strong>CARaDOC 2020</strong></h1>
+    <h2 class="animated fadeInUp"><strong>Registration form test page</strong></h2>
+    <h3 class="animated fadeInUp"><strong>(For internal usage ONLY /!\)</strong></h3>
+  </div>
+</section>
+
+
+<form action=""  id= "registrationform" class="reg_form">
+  <label>Name:</label>
+  <input type="text" name="name" value = "" id = "name" required/>
+  <br/>
+  <label>E-mail:</label>
+  <input type="text" name="email" value = "" id = "email" required/>
+  <br/>
+  <br/>
+  <!-- <input type="submit" value="Register"> -->
+  <button type="submit">Register</button>
+</form>
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!--script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script-->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!--script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-analytics.js"></script>
+
+
+<script>
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAyNxrmo7B7VYacZGjzKqVUSE7Pjq7Y_X4",
+    authDomain: "caradoc2020.firebaseapp.com",
+    databaseURL: "https://caradoc2020.firebaseio.com",
+    projectId: "caradoc2020",
+    storageBucket: "caradoc2020.appspot.com",
+    messagingSenderId: "1045538076343",
+    appId: "1:1045538076343:web:f15f2599558d83bdd6bf32",
+    measurementId: "G-1QJJH0PZK6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+
+
+
+  // Reference messages collection
+  var messagesRef =  firebase.database().ref('messages');
+
+    document.getElementById('registrationform').addEventListener('submit',submitForm);
+
+    function submitForm(e){
+      e.preventDefault();
+      // Get Values
+      var name = getInputVal('name');
+      var email = getInputVal('email');
+
+      console.log(name);
+      console.log(email);
+      saveMessage(name,email);
+
+
+    }
+
+    // Function to get input Values
+    function getInputVal(id){
+      return document.getElementById(id).value;
+    }
+
+
+// Save the message to firebase
+function saveMessage(name, email){
+  var newMessageRef = messagesRef.push();
+  newMessageRef.set({
+    name:name,
+    email:email});
+}
+
+
+</script-->
