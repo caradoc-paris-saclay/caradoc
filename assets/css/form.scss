@@ -129,10 +129,12 @@ div.alert{
 }
 
 @media (max-width:$md-width){
-	
 	.form_item{
 		width: 80vw;
 	}
+  .inputWithMsg{
+    flex-direction: column-reverse;
+  }
   /*.wrapper{
     /*display: grid;
     grid-template-columns: 1fr 2fr;
