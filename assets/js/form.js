@@ -14,6 +14,7 @@ const db = firebase.firestore();
 
 //Listen to click on submit
 document.getElementById('registration_form').addEventListener('submit', submitForm);
+//document.getElementById('position').addEventListener('change', updateWorkshop);
 //Uncomment this block then use the URL on 2nd line in the webrowser
 if (location.pathname.indexOf("reg_form_test") !== -1){
     processUser();
@@ -23,17 +24,20 @@ if (location.pathname.indexOf("reg_form_test") !== -1){
 // TODO
 function processUser()
 { 
+  console.log("Parsing URL:");
   var parameters = location.search.substring(1).split("&");
-  if (Array.isArray(parameters) && parameters.length){ // check if array and if array is empty
-    var temp = parameters[0].split("=");
-    l = unescape(temp[1]);
-    temp = parameters[1].split("=");
-    p = unescape(temp[1]);
-    document.getElementById("first_name").value = l;
-    document.getElementById("last_name").value = p;
-    console.log("Parsing URL:");
-    console.log(l);
-    console.log(p);
+  // check if array and if array is empty
+  if (Array.isArray(parameters) && parameters.length){
+    if (parameters[0] != ""){ 
+      var temp = parameters[0].split("=");
+      if (temp[0] === "id"){
+         const id = unescape(temp[1]);
+         console.log(id);
+      }
+      else{
+        return false;
+      }
+    }
   }
 }
 // helper function to get value from input forms
@@ -49,6 +53,15 @@ function submitForm(e){
   var email = getInputVal('email').replace(/\s/g, ''); //remove white spaces
   var emailConfirmation = getInputVal('email_confirmation').replace(/\s/g, '');
   var emailNoMatch = email.localeCompare(emailConfirmation);
+  if (emailNoMatch != 0){
+    console.log("Error: e-mails don't match!");
+    document.getElementById('emailNoMatch').style.display = "block";
+    alert("Emails provided don't match. Please check again.")
+    return false; // break before submission
+  }
+  else{
+    document.getElementById('emailNoMatch').style.display = "none";
+  }
   var phone = getInputVal('phone');
   var position = getInputVal('position');
   if (position.length == 0){
@@ -63,15 +76,7 @@ function submitForm(e){
   if (doctoralSchool.length == 0){
     doctoralSchool = getInputVal('other_doctoral_school');
   }
-  if (emailNoMatch != 0){
-      console.log("Error: e-mails don't match!");
-      document.getElementById('emailNoMatch').style.display = "block";
-      alert("Emails provided don't match. Please check again.")
-      return false; // break before submission
-  }
-  else{
-    document.getElementById('emailNoMatch').style.display = "none";
-  }
+  var workshop = getInputVal('workshop');
 
   const participant = {
     contact:{
@@ -85,6 +90,9 @@ function submitForm(e){
       university, university,
       phdYear: phdYear,
       doctoralSchool:doctoralSchool
+    },
+    eventChoices:{
+      workshop:workshop
     }
   }
 
@@ -170,19 +178,38 @@ yearAndWorkshops['YEAR_3'] = ['W.-How to get a job in industry after your Ph.D.'
 yearAndWorkshops['YEAR_4'] = ['W.-How to get a job in industry after your Ph.D.', 'W.-The transition from graduate student to Professor', 'RT.-Experiences and advices on launching a StartUp','RT.-Gender equality in big companies and public institutions'];
 yearAndWorkshops['YEAR_5'] = ['W.-How to get a job in industry after your Ph.D.', 'W.-The transition from graduate student to Professor', 'RT.-Experiences and advices on launching a StartUp','RT.-Gender equality in big companies and public institutions'];
 
+function updateWorkshop(e){
+  const position = getInputVal('position');
+  console.log("Uddating workshop.");
+  console.log(document.getElementById('workshop').options[0].text);
+  var workshopHTML = document.getElementById('workshop').options[0].text;
+  if (position == "PhDStudent"){
+    workshopHTML = "-- Choose your PhD year first --";
+  }
+  else{
+    workshopHTML = "-- Choose your position --";
+  }
+}
+
+function eraseOptions(select){ // select is the HTML select container
+      while (select.options.length) {
+      select.remove(0);
+    }
+}
+
 function changeWorkshopList() {
     /*Retrieve existing lists*/
-    console.log("Workshop triggered!")
+    var workshopList = document.getElementById("workshop");
     // Master list
     var yearList = document.getElementById("phd_year");
     var phdYear = getInputVal("phd_year");
+    // Check position and adapt workshop content accordingly
     var position = getInputVal("position");
-    // Slave list
-    var workshopList = document.getElementById("workshop");
-    /* Retrive seleted item from master list*/
-    // we activate the function to detect if not PhDStudent
-    // else we need to wait for user to enter phd_year
-    if (position == 'PhDStudent' && phd_year == ""){
+    if (position == 'PhDStudent' && phdYear == ""){
+      console.log("Erasing");
+      eraseOptions(workshopList);
+      console.log("Erased");
+      workshopList.options.add(new Option("-- Choose your PhD year first --", "", true, false));
       return false;
     }
     else if (position != 'PhDStudent'){
@@ -192,10 +219,12 @@ function changeWorkshopList() {
     else{
       var currentYear = yearList.options[yearList.selectedIndex].value;
     }
+    // Slave list
+    /* Retrive seleted item from master list*/
+    // we activate the function to detect if not PhDStudent
+    // else we need to wait for user to enter phd_year
     // Clean slave list
-    while (workshopList.options.length) {
-      workshopList.remove(0);
-    }
+    eraseOptions(workshopList);
     /*Retreive corresponding workshop list in function fof the current year*/
     var slotsList = yearAndWorkshops[currentYear];
     // Add workshop list to the corresponding <select> element
