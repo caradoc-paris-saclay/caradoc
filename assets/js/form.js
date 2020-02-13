@@ -115,8 +115,8 @@ function showOther(val, id, idOther){
   var main = document.getElementById(id);
   var other = document.getElementById(idOther);
   if(val === 'OTHER'){
-    if (x.style.display === "none"){
-      maintstyle.required=false;
+    if (other.style.display === "none"){
+      main.style.required=false;
       other.style.required = true;
       other.style.display = "block";
     }
