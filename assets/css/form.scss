@@ -83,7 +83,7 @@ form.reg_form button{
 	padding: 0;
 }
 
-.formItem{
+.form_item{
 	display: flex;
 	flex-direction: column;
 	align-content: flex-start;
@@ -130,7 +130,7 @@ div.alert{
 
 @media (max-width:$md-width){
 	
-	.formItem{
+	.form_item{
 		width: 80vw;
 	}
   /*.wrapper{

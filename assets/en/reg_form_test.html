@@ -6,58 +6,63 @@ permalink: /reg_form_test
 <section class="top-bird">
 	<div>
 		<h1 class="animated fadeInUp"><strong>CARaDOC 2020</strong></h1>
-		<h2 class="animated fadeInUp"><strong>Registration form test page</strong></h2>
-		<h3 class="animated fadeInUp"><strong>(For internal usage ONLY /!\)</strong></h3>
+		<h2 class="animated fadeInUp"><strong>Registration form</strong></h2>
 	</div>
 </section>
-<div class="alert" id="submissionMsg">Your submission has been sent</div>
-<form  class="reg_form" action=""  id="registrationform">
+<div class="alert" id="submission_msg">Your submission has been sent</div>
+<form  class="reg_form" action=""  id="registration_form">
 	<div class="wrapper">
-		<div class="formItem">
+		<div class="form_item">
+			<legend>Contact details</legend>
 			<div class="d-flex flex-row">
 				<div class="flex-fill">
 	  			<label>First Name (*)</label>
-	  			<input type="text" name="firstname" value="" id ="firstname" placeholder="First Name" required/>
+	  			<input type="text" name="first_name" value="" id ="first_name" placeholder="First Name" required/>
 	  			</div>
 	  			<div class="pl-md-5 pl-2 flex-fill">
 	  			<label>Last Name (*)</label>
-	  			<input type="text" name="lastname" value="" id ="lastname" placeholder="Last Name" required/>
+	  			<input type="text" name="last_name" value="" id ="last_name" placeholder="Last Name" required/>
 	  			</div>
   			</div>
 	  	</div>
-	  	<div class="formItem">	
+	  	<div class="form_item">	
 	  		<label>E-mail (*)</label>
 	  		<input type="email" name="email" value="" id="email" placeholder="myname@mail.com" required/>
 	  	</div>
-	  	<div class="formItem">	
+	  	<div class="form_item">	
 	  		<div>
 	  		<label>Confirm e-mail (*)</label>
 	  		</div>
 	  		<div class="inputWithMsg">
 	  			<div class="">
-			  		<input type="email" name="confirmedEmail" value="" id="emailConfirmation" placeholder="myname@mail.com" required/>
+			  		<input type="email" name="email_confirmation" value="" id="email_confirmation" placeholder="myname@mail.com" required/>
 			  	</div>
 			  	<div class="p-2 formWarning" id="emailNoMatch">
 			  			E-mails don't match.
 			  	</div>
 			</div>
 	  	</div>
-	  	<div class="formItem">	
+	  	<div class="form_item">	
 	  		<label>Phone Number</label>
 	  		<input type="tel" name="phone" value="" id ="phone" placeholder="06XXXXXXXX"/>
 	  	</div>
-	  	<div class="formItem">
+	  	<div class="form_item">
+	  		<legend>Tell us about your job</legend>
 	  		<label>Job Title (*)</label>
-	  		<select id="position" name="position" required onchange="isPhDStudent(this.value)">
+	  		<select id="position" name="position" required onchange="isPhDStudent(this.value);changeWorkshopList()">
 				<option value="" selected="" disabled="">-- Position --</option>
 				<option value="PhDStudent">PhD Student</option>
 				<option value="PostDoc">Post-Doc</option>
 				<option value="AssistantProfessor">Assistant Professor</option>
 				<option value="Professor">Professor</option>
-				<option value="Other">Other</option>
+				<option value="OTHER">Other</option>
     		</select>
+    		<div id="another_position" style="margin-left: 3%; display: none">
+		      <label id="other_position_label">Type your academic institution</label>
+		      <input id="other_position" type="text" name="other_university" placeholder="Your academic institurion" size="80"/>
+		    </div>
 	  	</div>
-	  	<div class="formItem phd_student_block">	
+	  	<div class="form_item phd_student_block">	
 	  		<label>Academic institution (*)</label>
 		    <select id="university" name="university" onchange="showUniversity(this.value)">
 		      <option value="">AgroParisTech</option>
@@ -68,13 +73,13 @@ permalink: /reg_form_test
 		      <option value="OTHER">Other</option>
 		    </select>
 		    <div id="another_university" style="margin-left: 3%; display: none">
-		      <label id="other_university_label">Type your academic institution</label><br/>
+		      <label id="other_university_label">Type your academic institution</label>
 		      <input id="other_university" type="text" name="other_university" placeholder="Your academic institurion" size="80"/>
 		    </div>
 		 </div>
-		 <div class="formItem phd_student_block">
+		 <div class="form_item phd_student_block">
 	 	    <label>PhD year (*)</label>
-    		<select id="phdyear" name="phdyear" onchange="changeWorkshopList()">
+    		<select id="phd_year" name="phd_year" onchange="changeWorkshopList()">
 				<option value="" selected="" disabled="">-- PhD Year --</option>
 				<option value="YEAR_1">1st Year PhD Student</option>
 				<option value="YEAR_2">2nd Year PhD Student</option>
@@ -82,9 +87,49 @@ permalink: /reg_form_test
 				<option value="YEAR_4">>3rd year PhD student</option>
     		</select>
 		 </div>
+		 <div class="form_item phd_student_block">
+		 	<!-- ====================== Doctoral school -->
+	    	<label>Doctoral school</label>
+		    <select id = "doctoral_school" name="doctoral_school" onchange = "showSchool(this.value)">
+		      <option value="" selected="" disabled="">-- Doctoral School --</option>
+		      <option value="ABIES">Agriculture, alimentation, biologie, environnement, santé (ABIES)</option>
+		      <option value="AAIF">Astronomie et Astrophysique d'Île-de-France</option>
+		      <option value="CBMD">Cancérologie, Biologie, Médecine, Santé</option>
+		      <option value="EDMH">École Doctorale de Mathématiques Hadamard (EDMH)</option>
+		      <option value="EOBE">Electrical, Optical, Bio - physics and Engineering (EOBE)</option>
+		      <option value="ITFA">Innovation Thérapeutique, du fondamental à l'appliqué</option>
+		      <option value="Interfaces">Interfaces</option>
+		      <option value="OM">Ondes et Matière</option>
+		      <option value="PIF">Physique en Île-de-France</option>
+		      <option value="PHENIICS">Particules, Hadrons, Énergie, Noyau, Instrumentation, Imagerie, Cosmos et Simulation (PHENIICS)</option>
+		      <option value="SP">Santé Publique</option>
+		      <option value="2MIB">Sciences Chimiques : Molécules, Matériaux, Instrumentation et Biosystèmes (2MIB)</option>
+		      <option value="SEIF">Sciences de l'Environnement d'Île-de-France</option>
+		      <option value="SHS">Sciences de l'Homme et de la Société (SHS)</option>
+		      <option value="SSMMH">Sciences du Sport, de la Motricité et du Mouvement Humain (SSMMH)</option>
+		      <option value="SVGE">Sciences du Végétal : du gène à l'écosystème</option>
+		      <option value="STIC">Sciences et Technologies de l'Information et de la Communication (STIC)</option>
+		      <option value="SMEMaG">Sciences Mécaniques et Énergétiques, Matériaux et Géosciences (SMEMaG)</option>
+		      <option value="BioSigne">Signalisations et réseaux intégratifs en biologie (BioSigne)</option>
+		      <option value="SDSV">Structure et Dynamique des Systèmes Vivants (SDSV)</option>
+		      <option value="OTHER">Other</option>
+    		</select>
+    		<!-- Other doctoral school -->
+		    <div id = "another_doctoral_school" style="margin-left: 3%; display: none">
+		      <label id = "other_doctoral_school_label">Type your doctoral school</label>
+		      <input id = "other_doctoral_school" type="text" name="_other_school" placeholder="Name of doctoral school" size="80"/>
+		    </div>
+		 </div>
+		 <div class="form_item">
+		 	<legend>Please choose a workshop</legend>
+		    <label>Workshops</label>
+		    <select id="workshop">
+		      <option value="" selected="" disabled="">-- Choose your PhD year first --</option>
+		    </select>
+		 </div>
 	  	<!-- <input type="submit" value="Register"> -->
-	  	<div class="full formItem">	
-	  		<button type="submit">Register</button>
+	  	<div class="full form_item">	
+	  		<button type="submit">Send</button>
 		</div>
 	</div>
 </form>
