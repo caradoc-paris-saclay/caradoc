@@ -14,7 +14,6 @@ const db = firebase.firestore();
 
 //Listen to click on submit
 document.getElementById('registration_form').addEventListener('submit', submitForm);
-//document.getElementById('position').addEventListener('change', updateWorkshop);
 //Uncomment this block then use the URL on 2nd line in the webrowser
 if (location.pathname.indexOf("reg_form_test") !== -1){
     processUser();
@@ -177,19 +176,6 @@ yearAndWorkshops['YEAR_2'] = ['W.-Stress managemnet & co-working', 'W.-Public sp
 yearAndWorkshops['YEAR_3'] = ['W.-How to get a job in industry after your Ph.D.', 'W.-The transition from graduate student to Professor', 'RT.-Experiences and advices on launching a StartUp','RT.-Gender equality in big companies and public institutions'];
 yearAndWorkshops['YEAR_4'] = ['W.-How to get a job in industry after your Ph.D.', 'W.-The transition from graduate student to Professor', 'RT.-Experiences and advices on launching a StartUp','RT.-Gender equality in big companies and public institutions'];
 yearAndWorkshops['YEAR_5'] = ['W.-How to get a job in industry after your Ph.D.', 'W.-The transition from graduate student to Professor', 'RT.-Experiences and advices on launching a StartUp','RT.-Gender equality in big companies and public institutions'];
-
-function updateWorkshop(e){
-  const position = getInputVal('position');
-  console.log("Uddating workshop.");
-  console.log(document.getElementById('workshop').options[0].text);
-  var workshopHTML = document.getElementById('workshop').options[0].text;
-  if (position == "PhDStudent"){
-    workshopHTML = "-- Choose your PhD year first --";
-  }
-  else{
-    workshopHTML = "-- Choose your position --";
-  }
-}
 
 function eraseOptions(select){ // select is the HTML select container
       while (select.options.length) {
