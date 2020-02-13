@@ -1,3 +1,10 @@
+// workshop
+var yearAndWorkshops = {};
+yearAndWorkshops['YEAR_1'] = ['W1-Stress managemnet & co-working', 'W2-Public speaking' , 'W3-How to structure work and pose the problems'];
+yearAndWorkshops['YEAR_2'] = ['W1-Stress managemnet & co-working', 'W2-Public speaking' , 'W3-How to structure work and pose the problems'];
+yearAndWorkshops['YEAR_3'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
+yearAndWorkshops['YEAR_4'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
+yearAndWorkshops['YEAR_5'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyCEMl2rBQqmY5YzqKGfYLy0VgLug7HQZ7o",
@@ -32,6 +39,30 @@ function processUser()
       if (temp[0] === "id"){
          const id = unescape(temp[1]);
          console.log(id);
+         console.log("YEah")
+          db.collection("participants").doc(id).get().then(function(doc){
+            if (doc.exists){
+              const participant = doc.data();
+                // Variables from input fields
+              setInputVal('first_name', participant.contact.firstName);
+              setInputVal('last_name', participant.contact.lastName);
+              setInputVal('email', participant.contact.email);
+              setInputVal('email_confirmation', participant.contact.email);
+              setInputVal('phone', participant.contact.phone);
+              //todo treat case of display and others
+              //setInputVal('postion', participant.professional.position);
+              console.log(participant.professional.position);
+              showPosition(participant.professional.position);
+              isPhDStudent(participant.professional.position);
+              setInputVal('university', participant.professional.university);
+              showUniversity(participant.professional.university);
+              setInputVal('phd_year', participant.professional.phdYear);
+              setInputVal('doctoral_school', participant.professional.doctoralSchool);
+              showSchool(participant.professional.doctoralSchool);
+              changeWorkshopList();
+              setInputVal('workshop', participant.eventChoices.workshop);
+            }
+          });
       }
       else{
         return false;
@@ -42,6 +73,9 @@ function processUser()
 // helper function to get value from input forms
 function getInputVal(id){
   return document.getElementById(id).value;
+}
+function setInputVal(id, val){
+  document.getElementById(id).value = val;
 }
 //Submit Form
 function submitForm(e){
@@ -124,19 +158,23 @@ function showOther(val, id, idOther){
   if(val === 'OTHER'){
     if (other.style.display === "none"){
       main.style.required=false;
+      if (other.value != val){
+        other.value = val; // for when we load data from firebase
+      }
       other.style.required = true;
       other.style.display = "block";
     }
   }
   else {
     main.style.required = true;
+    if (main.value != val){
+      main.value = val;
+    }
     other.style.required = false;
     other.style.display = "none";
   }
 }
 function showPosition(val){
-  console.log("In showPosition");
-  console.log(val);
   showOther(val, "position", "another_position");
 }
 function isPhDStudent(val) {
@@ -169,13 +207,6 @@ function showAdum(val) {
     x.style.display = "none";
   }
 }
-
-var yearAndWorkshops = {};
-yearAndWorkshops['YEAR_1'] = ['W.-Stress managemnet & co-working', 'W.-Public speaking' , 'W.-How to structure work and pose the problems'];
-yearAndWorkshops['YEAR_2'] = ['W.-Stress managemnet & co-working', 'W.-Public speaking' , 'W.-How to structure work and pose the problems'];
-yearAndWorkshops['YEAR_3'] = ['W.-How to get a job in industry after your Ph.D.', 'W.-The transition from graduate student to Professor', 'RT.-Experiences and advices on launching a StartUp','RT.-Gender equality in big companies and public institutions'];
-yearAndWorkshops['YEAR_4'] = ['W.-How to get a job in industry after your Ph.D.', 'W.-The transition from graduate student to Professor', 'RT.-Experiences and advices on launching a StartUp','RT.-Gender equality in big companies and public institutions'];
-yearAndWorkshops['YEAR_5'] = ['W.-How to get a job in industry after your Ph.D.', 'W.-The transition from graduate student to Professor', 'RT.-Experiences and advices on launching a StartUp','RT.-Gender equality in big companies and public institutions'];
 
 function eraseOptions(select){ // select is the HTML select container
       while (select.options.length) {
