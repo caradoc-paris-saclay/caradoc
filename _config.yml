@@ -5,6 +5,8 @@ exclude:
   - "README.md"
   - "LICENSE.md"
   - "*.gemspec"
+  - "/firebase"
+  - "/scripts"
 
 keep_files:
   - "CNAME"
