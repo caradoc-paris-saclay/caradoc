@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "caradoc-reg": "caradoc-b9cfd",
+    "default": "caradoc-b9cfd",
+    "sendMailRegistration": "caradoc-b9cfd"
+  }
+}
