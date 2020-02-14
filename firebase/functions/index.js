@@ -2,7 +2,8 @@
 
 const functions = require('firebase-functions');
 const nodemailer = require('nodemailer');
-
+const QRCode = require('qrcode');
+const fs = require('fs');
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
@@ -20,15 +21,12 @@ async function main() {
   const emailAddress = functions.config().gmail.email;
   const emailPassword = functions.config().gmail.password;
   const mailTransport = nodemailer.createTransport({
-        host: "ssl0.ovh.net",
-        port: 587,
-        secure: false, // true for 465, false for other ports
+        service: 'gmail',
         auth: {
         user: emailAddress, // generated ethereal user
         pass: emailPassword // generated ethereal password
       }
   });
-
   // Sends an email confirmation when a user changes his mailing list subscription.
   exports.sendREgistrationEmail = functions
   .region('europe-west1')
@@ -37,29 +35,34 @@ async function main() {
       .onCreate((snap, context) => {
         // Get an object representing the document
         // e.g. {'name': 'Marie', 'age': 66}
-        const newValue = snap.data();
+        const participant = snap.data();
 
         // access a particular field as you would any JS property
         const id = snap.id;
-        const firstName = newValue.contact.firstName;
+        const firstName = participant.contact.firstName;
         console.log("New doc id: ", id, " and firstname: ", firstName);
 
         const mailOptions = {
           from: '"No-Reply CARaDOC" <contact@caradoc-paris-saclay.fr>',
-          to: newValue.email,
+          to: participant.contact.email,
         };
 
 
     // Building Email message.
     mailOptions.subject = "Welcome to CARaDOC 2020!";
-    mailOptions.text = subscribed ?
-        'Thanks you for subscribing to our newsletter. You will receive our next weekly newsletter.' :
-        'I hereby confirm that I will stop sending you the newsletter.';
+    mailOptions.text = "";
+    mailOptions.html = fs.readFileSync("./email_body.html")
+                         .toString()
+                         .replace("/participantID/g", id)
+                         .replace("/participantFirstName/g", participant.contact.firstName)
+                         .replace("/participantLastName/g", participant.contact.lastName)
+                         .replace("/WORKSHOP/g", participant.eventChoices.workshop);
     
     try {
       async function test(){await mailTransport.sendMail(mailOptions);}
       test();
-      console.log(`New subscription confirmation email sent to:`, newValue.email);
+      console.log("File ./email_body.html exist ? ", fs.existsSync("./email_body.html"));
+      console.log(`New subscription confirmation email sent to:`, participant.contact.email);
     } catch(error) {
       console.error('There was an error while sending the email:', error);
     }

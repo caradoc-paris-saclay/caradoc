@@ -6,6 +6,7 @@ yearAndWorkshops['YEAR_3'] = ['W4-How to get a job in industry after your Ph.D.'
 yearAndWorkshops['YEAR_4'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
 yearAndWorkshops['YEAR_5'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
 // Your web app's Firebase configuration
+var yearList = document.getElementById("phd_year");
 var firebaseConfig = {
   apiKey: "AIzaSyCEMl2rBQqmY5YzqKGfYLy0VgLug7HQZ7o",
   authDomain: "caradoc-b9cfd.firebaseapp.com",
@@ -22,9 +23,9 @@ const db = firebase.firestore();
 //Listen to click on submit
 document.getElementById('registration_form').addEventListener('submit', submitForm);
 //Uncomment this block then use the URL on 2nd line in the webrowser
-if (location.pathname.indexOf("reg_form_test") !== -1){
-    processUser();
-}
+
+processUser();
+
 //http://127.0.0.1:4000/reg_form_test_arnaud.html/?firstname=Arnaud&lastname=Jean
 //Function to get data from URL and load content from firebase-firestore db when existing
 // TODO
@@ -60,7 +61,7 @@ function processUser()
               setInputVal('doctoral_school', participant.professional.doctoralSchool);
               showSchool(participant.professional.doctoralSchool);
               changeWorkshopList();
-              setInputVal('workshop', participant.eventChoices.workshop);
+              setInputVal('workshop', participant.eventChoices.workshopIndex);
             }
           });
       }
@@ -109,8 +110,13 @@ function submitForm(e){
   if (doctoralSchool.length == 0){
     doctoralSchool = getInputVal('other_doctoral_school');
   }
-  var workshop = getInputVal('workshop');
-
+  var workshopIndex = getInputVal('workshop'); // returns an int
+  if(position != 'PhDStudent'){
+    var workshop = yearAndWorkshops['YEAR_5'][workshopIndex];
+  }
+  else{
+    var workshop = yearAndWorkshops[phdYear][workshopIndex];
+  }
   const participant = {
     contact:{
       firstName: firstName,
@@ -125,6 +131,7 @@ function submitForm(e){
       doctoralSchool:doctoralSchool
     },
     eventChoices:{
+      workshopIndex:workshopIndex,
       workshop:workshop
     }
   }
@@ -218,7 +225,6 @@ function changeWorkshopList() {
     /*Retrieve existing lists*/
     var workshopList = document.getElementById("workshop");
     // Master list
-    var yearList = document.getElementById("phd_year");
     var phdYear = getInputVal("phd_year");
     // Check position and adapt workshop content accordingly
     var position = getInputVal("position");
