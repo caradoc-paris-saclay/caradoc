@@ -85,6 +85,7 @@ function submitForm(e){
   var firstName = getInputVal('first_name');
   var lastName = getInputVal('last_name');
   var email = getInputVal('email').replace(/\s/g, ''); //remove white spaces
+  var emailId = email.replace("@","").replace(/\./g,"");
   var emailConfirmation = getInputVal('email_confirmation').replace(/\s/g, '');
   var emailNoMatch = email.localeCompare(emailConfirmation);
   if (emailNoMatch != 0){
@@ -122,6 +123,7 @@ function submitForm(e){
       firstName: firstName,
       lastName: lastName,
       email: email,
+      emailId: emailId,
       phone: phone
     },
     professional:{
@@ -156,7 +158,7 @@ function submitForm(e){
   }
 
   document.getElementById('submission_msg').style.display = "block";
-  document.getElementById('registration_form').reset();
+  //document.getElementById('registration_form').reset();
 }
 
 // send data to firebase-firestorm and return ID
