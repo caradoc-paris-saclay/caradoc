@@ -31,12 +31,12 @@ processUser();
 //Function to get data from URL and load content from firebase-firestore db when existing
 // TODO
 function processUser()
-{ 
+{
   console.log("Parsing URL:");
   var parameters = location.search.substring(1).split("&");
   // check if array and if array is empty
   if (Array.isArray(parameters) && parameters.length){
-    if (parameters[0] != ""){ 
+    if (parameters[0] != ""){
       var temp = parameters[0].split("=");
       if (temp[0] === "id"){
          idRef = decodeURI(temp[1])
@@ -149,7 +149,7 @@ function submitForm(e){
         else{
           saveParticipant(newParticipant);
         }
-      }); 
+      });
   }
   else{
     updatePaticipant(idRef, newParticipant);
@@ -205,9 +205,11 @@ function showOther(val, id, idOther){
     other.style.display = "none";
   }
 }
+
 function showPosition(val){
   showOther(val, "position", "another_position");
 }
+
 function isPhDStudent(val) {
   if(val === 'PhDStudent'){
     $('.phd_student_block').css("display", "flex");
@@ -218,15 +220,20 @@ function isPhDStudent(val) {
     $('.phd_student_block').css("display", "none");
     document.getElementById("university").style.required = false;
     document.getElementById("phd_year").style.required = false;
-  } 
+  }
   showPosition(val);
 }
+
 function showUniversity(val) {
   showOther(val, "university", "another_university");
 }
+
+
 function showSchool(val) {
   showOther(val, "doctoral_school", "another_doctoral_school");
 }
+
+
 function showAdum(val) {
   var x = document.getElementById("adum_link");
   if(val === 'YES'){
@@ -238,6 +245,7 @@ function showAdum(val) {
     x.style.display = "none";
   }
 }
+
 
 function eraseOptions(select){ // select is the HTML select container
       while (select.options.length) {
