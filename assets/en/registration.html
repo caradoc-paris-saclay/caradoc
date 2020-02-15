@@ -95,9 +95,10 @@ permalink: /registration
 				<option value="YEAR_4">>3rd year PhD student</option>
     		</select>
 		 </div>
+
 		 <div class="form_item phd_student_block">
 		 	<!-- ====================== Doctoral school -->
-	    	<label>Doctoral school (*)</label>
+			<label>Doctoral school (*)</label>
 		    <select id="doctoral_school" name="doctoral_school" onchange="showSchool(this.value)" required>
 		      <option value="" selected="" disabled="">-- Doctoral School --</option>
 		      <option value="ABIES">Agriculture, alimentation, biologie, environnement, santé (ABIES)</option>
@@ -129,6 +130,7 @@ permalink: /registration
 		      <input id = "other_doctoral_school" type="text" name="_other_school" placeholder="Name of doctoral school" size="80"/>
 		    </div>
 		 </div>
+
 		 <div class="form_item">
 		 	<legend>Please choose a workshop</legend>
 		    <label>Workshops</label>
@@ -145,6 +147,26 @@ permalink: /registration
 			 <option value="no_poster">No</option>
 			 </select>
 		 </div>
+
+		 <div class="form_item">
+			 <legend>How did you learn about CARaDOC (*)</legend>
+			 <select>
+			 <option value="" selected="" disabled="">-- Social media --</option>
+       <option value="Linkedin">LinkedIn</option>
+       <option value="Facebook">Facebook</option>
+
+       <option value="" selected="" disabled="">-- E-mail from your --</option>
+       <option value="">Academic institution</option>
+       <option value="">Doctoral school</option>
+       <option value="">Research laboratory</option>
+       <option value="">Company</option>
+
+       <option value="" selected="" disabled="">-- Other --</option>
+       <option value="">Word of mouth</option>
+			 </select>
+		 </div>
+
+
 	  	<!-- <input type="submit" value="Register"> -->
 	  	<div class="full form_item">
 	  		<button type="submit">Send</button>
