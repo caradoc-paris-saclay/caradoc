@@ -14,21 +14,27 @@ permalink: /registration
 	<div class="wrapper">
 		<div class="form_item">
 			<legend>Contact details</legend>
+
+
 			<div class="d-flex flex-row">
 				<div class="flex-fill">
-	  			<label>First Name (*)</label>
-	  			<input type="text" name="first_name" value="" id ="first_name" placeholder="First Name" required/>
+	  			<label>First name (*)</label>
+	  			<input type="text" name="first_name" value="" id ="first_name" placeholder="First name" required/>
 	  			</div>
 	  			<div class="pl-md-5 pl-2 flex-fill">
-	  			<label>Last Name (*)</label>
-	  			<input type="text" name="last_name" value="" id ="last_name" placeholder="Last Name" required/>
+	  			<label>Last name (*)</label>
+	  			<input type="text" name="last_name" value="" id ="last_name" placeholder="Last name" required/>
 	  			</div>
   			</div>
 	  	</div>
-	  	<div class="form_item">
+
+
+			<div class="form_item">
 	  		<label>E-mail (*)</label>
 	  		<input type="email" name="email" value="" id="email" placeholder="myname@mail.com" required/>
 	  	</div>
+
+
 	  	<div class="form_item">
 	  		<div>
 	  		<label>Confirm e-mail (*)</label>
@@ -43,12 +49,12 @@ permalink: /registration
 			</div>
 	  	</div>
 	  	<div class="form_item">
-	  		<label>Phone Number</label>
+	  		<label>Phone number</label>
 	  		<input type="tel" name="phone" value="" id ="phone" placeholder="06XXXXXXXX"/>
 	  	</div>
 	  	<div class="form_item">
 	  		<legend>Tell us about your job</legend>
-	  		<label>Job Title (*)</label>
+	  		<label>Job title (*)</label>
 	  		<select id="position" name="position" required onchange="isPhDStudent(this.value);changeWorkshopList();">
 				<option value="" selected="" disabled="">-- Position --</option>
 				<option value="PhDStudent">PhD Student</option>
@@ -58,13 +64,14 @@ permalink: /registration
 				<option value="OTHER">Other</option>
     		</select>
     		<div id="another_position" style="margin-left: 3%; display: none">
-		      <label id="other_position_label">Type your Job Title</label>
+					</br>
+		      <label id="other_position_label">Type your job title</label>
 		      <input id="other_position" type="text" name="other_position" placeholder="Your Job Title" size="80"/>
 		    </div>
 	  	</div>
 	  	<div class="form_item phd_student_block">
 	  		<label>Academic institution (*)</label>
-		    <select id="university" name="university" onchange="showUniversity(this.value)">
+		    <select id="university" name="university" onchange="showUniversity(this.value)" required>
 		      <option value="">AgroParisTech</option>
 		      <option value="">CentraleSupélec</option>
 		      <option value="">l’École normale supérieure Paris-Saclay</option>
@@ -73,13 +80,14 @@ permalink: /registration
 		      <option value="OTHER">Other</option>
 		    </select>
 		    <div id="another_university" style="margin-left: 3%; display: none">
+					</br>
 		      <label id="other_university_label">Type your academic institution</label>
 		      <input id="other_university" type="text" name="other_university" placeholder="Your academic institurion" size="80"/>
 		    </div>
 		 </div>
 		 <div class="form_item phd_student_block">
 	 	    <label>PhD year (*)</label>
-    		<select id="phd_year" name="phd_year" onchange="changeWorkshopList()">
+    		<select id="phd_year" name="phd_year" onchange="changeWorkshopList()" required>
 				<option value="" selected="" disabled="">-- PhD Year --</option>
 				<option value="YEAR_1">1st Year PhD Student</option>
 				<option value="YEAR_2">2nd Year PhD Student</option>
@@ -89,8 +97,8 @@ permalink: /registration
 		 </div>
 		 <div class="form_item phd_student_block">
 		 	<!-- ====================== Doctoral school -->
-	    	<label>Doctoral school</label>
-		    <select id="doctoral_school" name="doctoral_school" onchange="showSchool(this.value)">
+	    	<label>Doctoral school (*)</label>
+		    <select id="doctoral_school" name="doctoral_school" onchange="showSchool(this.value)" required>
 		      <option value="" selected="" disabled="">-- Doctoral School --</option>
 		      <option value="ABIES">Agriculture, alimentation, biologie, environnement, santé (ABIES)</option>
 		      <option value="AAIF">Astronomie et Astrophysique d'Île-de-France</option>
@@ -116,6 +124,7 @@ permalink: /registration
     		</select>
     		<!-- Other doctoral school -->
 		    <div id = "another_doctoral_school" style="margin-left: 3%; display: none">
+					</br>
 		      <label id = "other_doctoral_school_label">Type your doctoral school</label>
 		      <input id = "other_doctoral_school" type="text" name="_other_school" placeholder="Name of doctoral school" size="80"/>
 		    </div>
@@ -132,7 +141,7 @@ permalink: /registration
 			 <legend>Are you going to submit a poster? (*)</legend>
 			 <select id="poster" name="poster" required>
 			 <option value="" selected="" disabled="">-- Please choose an option --</option>
-			 <option value="yes_psoter">Yes</option>
+			 <option value="yes_poster">Yes</option>
 			 <option value="no_poster">No</option>
 			 </select>
 		 </div>
