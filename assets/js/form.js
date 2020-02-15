@@ -140,7 +140,7 @@ function submitForm(e){
   // check if id was provided and we are just updating an already existing participant
   // check if e-mail already exist to prevent making double entry for same e-mail
   if (participant == null){
-      db.collection('participants').where('email', "==", participant.contact.email)
+      db.collection('participants').where('email', "==", newParticipant.contact.email)
       .get().then((snap) => {
         if(snap.exists){
           console.log("email conflict!")
