@@ -214,17 +214,33 @@ function showPosition(val){
 
 function isPhDStudent(val) {
   if(val === 'PhDStudent'){
+    $('.postdoc_block').css("display", "none");
+    $('.professor_block').css("display", "none");
     $('.phd_student_block').css("display", "flex");
+
     document.getElementById("university").style.required = true;
     document.getElementById("phd_year").style.required = true;
   }
+  else if (val === 'PostDoc'){
+    $('.phd_student_block').css("display", "none");
+    $('.professor_block').css("display", "none");
+    $('.postdoc_block').css("display", "flex");
+  }
+  else if (val ==='AssistantProfessor' || val ==='Professor'){
+    $('.phd_student_block').css("display", "none");
+    $('.postdoc_block').css("display", "none");
+    $('.professor_block').css("display", "flex");
+  }
   else {
     $('.phd_student_block').css("display", "none");
+    $('.postdoc_block').css("display", "none");
+    $('.professor_block').css("display", "none");
     document.getElementById("university").style.required = false;
     document.getElementById("phd_year").style.required = false;
   }
   showPosition(val);
 }
+
 
 function showUniversity(val) {
   showOther(val, "university", "another_university");
