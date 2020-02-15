@@ -19,7 +19,8 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-
+var participant=null;
+var idRef=null;
 //Listen to click on submit
 document.getElementById('registration_form').addEventListener('submit', submitForm);
 //Uncomment this block then use the URL on 2nd line in the webrowser
@@ -38,11 +39,11 @@ function processUser()
     if (parameters[0] != ""){ 
       var temp = parameters[0].split("=");
       if (temp[0] === "id"){
-         const id = unescape(temp[1]);
-         console.log(id);
-          db.collection("participants").doc(id).get().then(function(doc){
+         idRef = decodeURI(temp[1])
+         console.log("id: ", idRef);
+          db.collection("participants").doc(idRef).get().then(function(doc){
             if (doc.exists){
-              const participant = doc.data();
+              participant = doc.data();
                 // Variables from input fields
               setInputVal('first_name', participant.contact.firstName);
               setInputVal('last_name', participant.contact.lastName);
@@ -116,7 +117,7 @@ function submitForm(e){
   else{
     var workshop = yearAndWorkshops[phdYear][workshopIndex];
   }
-  const participant = {
+  const newParticipant = {
     contact:{
       firstName: firstName,
       lastName: lastName,
@@ -136,7 +137,24 @@ function submitForm(e){
   }
 
   //save participant
-  saveParticipant(participant);
+  // check if id was provided and we are just updating an already existing participant
+  // check if e-mail already exist to prevent making double entry for same e-mail
+  if (participant == null){
+      db.collection('participants').where('email', "==", participant.contact.email)
+      .get().then((snap) => {
+        if(snap.exists){
+          console.log(snap);
+        }
+        else{
+          saveParticipant(newParticipant);
+        }
+      }); 
+  }
+  else{
+    console.log("yeah down!");
+    console.log("id: ", idRef);
+    updatePaticipant(idRef, newParticipant);
+  }
 
   document.getElementById('submission_msg').style.display = "block";
   document.getElementById('registration_form').reset();
@@ -155,6 +173,14 @@ function saveParticipant(participant){
     console.error("Error adding document: ", error);
   });
   return userId;
+}
+
+function updatePaticipant(id, participant){
+  console.log("update using id: ", id);
+  console.log("participant: ", participant);
+  db.collection("participants").doc(id).update(participant).then(res =>{
+     console.log('Document updated at ${res.updateTime}');
+  });
 }
 
 //form helper functions
