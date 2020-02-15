@@ -40,7 +40,6 @@ function processUser()
       if (temp[0] === "id"){
          const id = unescape(temp[1]);
          console.log(id);
-         console.log("YEah")
           db.collection("participants").doc(id).get().then(function(doc){
             if (doc.exists){
               const participant = doc.data();

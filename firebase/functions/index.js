@@ -53,10 +53,10 @@ async function main() {
     mailOptions.text = "";
     mailOptions.html = fs.readFileSync("./email_body.html")
                          .toString()
-                         .replace("/participantID/g", id)
-                         .replace("/participantFirstName/g", participant.contact.firstName)
-                         .replace("/participantLastName/g", participant.contact.lastName)
-                         .replace("/WORKSHOP/g", participant.eventChoices.workshop);
+                         .replace(/participantID/g, id)
+                         .replace(/participantFirstName/g, participant.contact.firstName)
+                         .replace(/participantLastName/g, participant.contact.lastName)
+                         .replace(/WORKSHOP/g, participant.eventChoices.workshop);
     
     try {
       async function test(){await mailTransport.sendMail(mailOptions);}
