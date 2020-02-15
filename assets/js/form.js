@@ -143,6 +143,7 @@ function submitForm(e){
       db.collection('participants').where('email', "==", participant.contact.email)
       .get().then((snap) => {
         if(snap.exists){
+          console.log("email conflict!")
           console.log(snap);
         }
         else{
@@ -151,8 +152,6 @@ function submitForm(e){
       }); 
   }
   else{
-    console.log("yeah down!");
-    console.log("id: ", idRef);
     updatePaticipant(idRef, newParticipant);
   }
 
