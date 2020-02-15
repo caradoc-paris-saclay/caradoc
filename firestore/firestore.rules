@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    match /participants/{participantID}{
+      function pPrefix(){
+        return /databases/$(database)/documents/participants/$(participantID);
+      }
+      allow write;
+      allow read: if exists(/$(pPrefix()));
+      match /email/{emailID}{
+        allow write;
+        allow read: if exists(/$(pPrefix())/email/$(emailID));
+      }
+    }
+  }
+}

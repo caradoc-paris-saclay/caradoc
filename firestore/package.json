@@ -1,0 +1,22 @@
+{
+  "name": "firestore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --timeout=10000",
+    "format": "prettier --write **/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase-tools": "^7.13.0"
+  },
+  "devDependencies": {
+    "@firebase/testing": "^0.16.9",
+    "filesystem": "^1.0.1",
+    "mocha": "^7.0.1",
+    "prettier": "^1.19.1"
+  }
+}
