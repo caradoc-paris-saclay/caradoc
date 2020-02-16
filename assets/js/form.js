@@ -85,7 +85,6 @@ function submitForm(e){
   var firstName = getInputVal('first_name');
   var lastName = getInputVal('last_name');
   var email = getInputVal('email').replace(/\s/g, ''); //remove white spaces
-  var emailId = email.replace("@","").replace(/\./g,"");
   var emailConfirmation = getInputVal('email_confirmation').replace(/\s/g, '');
   var emailNoMatch = email.localeCompare(emailConfirmation);
   if (emailNoMatch != 0){
@@ -123,7 +122,6 @@ function submitForm(e){
       firstName: firstName,
       lastName: lastName,
       email: email,
-      emailId: emailId,
       phone: phone
     },
     professional:{
@@ -158,7 +156,7 @@ function submitForm(e){
   }
 
   document.getElementById('submission_msg').style.display = "block";
-  //document.getElementById('registration_form').reset();
+  document.getElementById('registration_form').reset();
 }
 
 // send data to firebase-firestorm and return ID
@@ -207,51 +205,41 @@ function showOther(val, id, idOther){
     other.style.display = "none";
   }
 }
-
 function showPosition(val){
   showOther(val, "position", "another_position");
 }
-
 function isPhDStudent(val) {
   if(val === 'PhDStudent'){
     $('.postdoc_block').css("display", "none");
     $('.professor_block').css("display", "none");
     $('.phd_student_block').css("display", "flex");
-
-    //document.getElementById("university").style.required = true;
-    //document.getElementById("phd_year").style.required = true;
+    document.getElementById("university").style.required = true;
+    document.getElementById("phd_year").style.required = true;
   }
   else if (val === 'PostDoc'){
     $('.phd_student_block').css("display", "none");
     $('.professor_block').css("display", "none");
     $('.postdoc_block').css("display", "flex");
   }
-  else if (val ==='AssistantProfessor' || val ==='Professor'){
+  else if (val === 'Professor' || val === 'AssistantProfessor'){
     $('.phd_student_block').css("display", "none");
-    $('.postdoc_block').css("display", "none");
-    $('.professor_block').css("display", "flex");
+     $('.postdoc_block').css("display", "none");
+     $('.professor_block').css("display", "flex");
   }
   else {
     $('.phd_student_block').css("display", "none");
     $('.postdoc_block').css("display", "none");
-    $('.professor_block').css("display", "none");
-    //document.getElementById("university").style.required = false;
-    //document.getElementById("phd_year").style.required = false;
+    document.getElementById("university").style.required = false;
+    document.getElementById("phd_year").style.required = false;
   }
   showPosition(val);
 }
-
-
 function showUniversity(val) {
   showOther(val, "university", "another_university");
 }
-
-
 function showSchool(val) {
   showOther(val, "doctoral_school", "another_doctoral_school");
 }
-
-
 function showAdum(val) {
   var x = document.getElementById("adum_link");
   if(val === 'YES'){
@@ -263,7 +251,6 @@ function showAdum(val) {
     x.style.display = "none";
   }
 }
-
 
 function eraseOptions(select){ // select is the HTML select container
       while (select.options.length) {

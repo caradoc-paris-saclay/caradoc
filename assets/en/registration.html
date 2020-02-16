@@ -1,6 +1,6 @@
 ---
 layout: registration_form_en
-title: Registration
+title: Registration_form_test
 permalink: /registration
 ---
 <section class="top-bird">
@@ -9,98 +9,67 @@ permalink: /registration
 		<h2 class="animated fadeInUp"><strong>Registration form</strong></h2>
 	</div>
 </section>
-
-
 <div class="alert" id="submission_msg">Your submission has been sent</div>
-
 <form  class="reg_form" action=""  id="registration_form">
 	<div class="wrapper">
 		<div class="form_item">
 			<legend>Contact details</legend>
-
 			<div class="d-flex flex-row">
 				<div class="flex-fill">
 	  			<label>First Name (*)</label>
 	  			<input type="text" name="first_name" value="" id ="first_name" placeholder="First Name" required/>
-	  		</div>
-	  		<div class="pl-md-5 pl-2 flex-fill">
+	  			</div>
+	  			<div class="pl-md-5 pl-2 flex-fill">
 	  			<label>Last Name (*)</label>
 	  			<input type="text" name="last_name" value="" id ="last_name" placeholder="Last Name" required/>
-	  		</div>
-  		</div>
-	  </div>
-
-
-		<!-- ====================== E-mail -->
-		<div class="form_item">
+	  			</div>
+  			</div>
+	  	</div>
+	  	<div class="form_item">
 	  		<label>E-mail (*)</label>
 	  		<input type="email" name="email" value="" id="email" placeholder="myname@mail.com" required/>
-	  </div>
-
-	  <div class="form_item">
-	  	<div>	<label>Confirm E-mail (*)</label> </div>
-
-			<div class="inputWithMsg">
-				<div class="">
-			  	<input type="email" name="email_confirmation" value="" id="email_confirmation" placeholder="myname@mail.com" required/>
-			  </div>
-
-				<div class="p-2 formWarning" id="emailNoMatch">
+	  	</div>
+	  	<div class="form_item">
+	  		<div>
+	  		<label>Confirm e-mail (*)</label>
+	  		</div>
+	  		<div class="inputWithMsg">
+	  			<div class="">
+			  		<input type="email" name="email_confirmation" value="" id="email_confirmation" placeholder="myname@mail.com" required/>
+			  	</div>
+			  	<div class="p-2 formWarning" id="emailNoMatch">
 			  			E-mails don't match.
-			  </div>
+			  	</div>
 			</div>
-	  </div>
-
-
-		<!-- ====================== Phone number -->
-	  <div class="form_item">
-	  		<label>Phone number</label>
+	  	</div>
+	  	<div class="form_item">
+	  		<label>Phone Number</label>
 	  		<input type="tel" name="phone" value="" id ="phone" placeholder="06XXXXXXXX"/>
-	  </div>
-
-
-			<!-- ====================== Job position -->
-  	<div class="form_item">
-  		<legend>Tell us about your job</legend>
-
-			<!-- ====================== Job title -->
-  		<label>Job Title (*)</label>
-  		<select id="position" name="position" required onchange="isPhDStudent(this.value);changeWorkshopList();">
+	  	</div>
+	  	<div class="form_item">
+	  		<legend>Tell us about your job</legend>
+	  		<label>Job Title (*)</label>
+	  		<select id="position" name="position" required onchange="isPhDStudent(this.value);changeWorkshopList();">
 				<option value="" selected="" disabled="">-- Position --</option>
 				<option value="PhDStudent">PhD Student</option>
 				<option value="PostDoc">Post-Doc</option>
 				<option value="AssistantProfessor">Assistant Professor</option>
 				<option value="Professor">Professor</option>
 				<option value="OTHER">Other</option>
-  		</select>
-
-  		<div id="another_position" style="margin-left: 3%; display: none">
+    		</select>
+    		<div id="another_position" style="margin-left: 3%; display: none">
 				</br>
-	      <label id="other_position_label">Type your Job title (*)</label>
-	      <input id="other_position" type="text" name="other_position" placeholder="Your Job Title" size="80" required/>
+				<label id="other_position_label">Type your Job title (*)</label>
+				<input id="other_position" type="text" name="other_position" placeholder="Your Job Title" size="80" required/>
 				</br>
 				</br>
 				<label id="other_institution">Type your Entity Name (*)</label>
-	      <input id="other_position" type="text" name="other_entity" placeholder="Your University, Laboratory, Company OR Association name etc." size="80" required/>
-	    </div>
-  	</div>
-
-			<!-- ======================  Ph.D. year -->
- 		 <div class="form_item phd_student_block" id="phd_year">
- 	 	    <label>Ph.D. Year (*)</label>
-     		<select  name="phd_year" onchange="changeWorkshopList()" required>
- 				<option value="" selected="" disabled="">-- PhD Year --</option>
- 				<option value="YEAR_1">1st Year PhD Student</option>
- 				<option value="YEAR_2">2nd Year PhD Student</option>
- 				<option value="YEAR_3">3rd Year PhD Student</option>
- 				<option value="YEAR_4">>3rd year PhD student</option>
-     		</select>
- 		 </div>
-
-			<!-- ====================== Academic institution -->
+				<input id="other_position" type="text" name="other_entity" placeholder="Your University, Laboratory, Company OR Association name etc." size="80" required/>
+		    </div>
+	  	</div>
 	  	<div class="form_item phd_student_block postdoc_block professor_block">
 	  		<label>Academic institution (*)</label>
-		    <select id="university" name="university" onchange="showUniversity(this.value)" required>
+		    <select id="university" name="university" onchange="showUniversity(this.value)">
 		      <option value="">AgroParisTech</option>
 		      <option value="">CentraleSupélec</option>
 		      <option value="">l’École normale supérieure Paris-Saclay</option>
@@ -108,40 +77,26 @@ permalink: /registration
 		      <option value="">l’Institut d'optique Graduate School</option>
 		      <option value="OTHER">Other</option>
 		    </select>
-
 		    <div id="another_university" style="margin-left: 3%; display: none">
 					</br>
-		      <label id="other_university_label">Type your academic institution (*)</label>
-		      <input id="other_university" type="text" name="other_university" placeholder="Your academic institurion" size="80" required/>
+			      <label id="other_university_label">Type your academic institution (*)</label>
+			      <input id="other_university" type="text" name="other_university" placeholder="Your academic institurion" size="80" required/>
 		    </div>
 		 </div>
-
-		 <!-- ====================== Laboratory -->
-		 <div class="form_item phd_student_block postdoc_block">
-
-			 <label>Laboratory (*)</label>
-			 <div style ="text-align: left">
-			 			<small>(Type keyword to find your lab OR write its full name)</small>
-			 </div>
-			 <input type="text" list="labs_list" placeholder="Type keyword to find your lab OR write its full name" required>
-
-			 <!-- [Source]: https://fr.wikipedia.org/wiki/Universit%C3%A9_Paris-Saclay#Les_laboratoires_de_l'universit%C3%A9_Paris-Saclay[33] -->
-			<datalist id="labs_list">
-				<option value="Laboratoire de mathématiques d'Orsay (LMO)"></option>
-
-			 	<option value="Centre de spectrométrie nucléaire et de spectrométrie de masse (CSNSM)"></option>
-			 	<option value="Institut de physique nucléaire (IPN)"></option>
-			 	<option value="Laboratoire de l'accélérateur linéaire (LAL)"></option>
-			</datalist>
-			</div>
-
-
-		 <!-- ====================== Doctoral school -->
 		 <div class="form_item phd_student_block">
-			 </br>
-			<label>Doctoral school (*)</label>
-		    <select id="doctoral_school" name="doctoral_school" onchange="showSchool(this.value)" required>
-
+	 	    <label>PhD year (*)</label>
+    		<select id="phd_year" name="phd_year" onchange="changeWorkshopList()">
+				<option value="" selected="" disabled="">-- PhD Year --</option>
+				<option value="YEAR_1">1st Year PhD Student</option>
+				<option value="YEAR_2">2nd Year PhD Student</option>
+				<option value="YEAR_3">3rd Year PhD Student</option>
+				<option value="YEAR_4">>3rd year PhD student</option>
+    		</select>
+		 </div>
+		 <div class="form_item phd_student_block">
+		 	<!-- ====================== Doctoral school -->
+	    	<label>Doctoral school</label>
+		    <select id="doctoral_school" name="doctoral_school" onchange="showSchool(this.value)">
 		      <option value="" selected="" disabled="">-- Doctoral School --</option>
 		      <option value="ABIES">Agriculture, alimentation, biologie, environnement, santé (ABIES)</option>
 		      <option value="AAIF">Astronomie et Astrophysique d'Île-de-France</option>
@@ -164,62 +119,44 @@ permalink: /registration
 		      <option value="BioSigne">Signalisations et réseaux intégratifs en biologie (BioSigne)</option>
 		      <option value="SDSV">Structure et Dynamique des Systèmes Vivants (SDSV)</option>
 		      <option value="OTHER">Other</option>
-
     		</select>
     		<!-- Other doctoral school -->
 		    <div id = "another_doctoral_school" style="margin-left: 3%; display: none">
 					</br>
-		      <label id = "other_doctoral_school_label">Type your doctoral school</label>
-		      <input id = "other_doctoral_school" type="text" name="_other_school" placeholder="Name of doctoral school" size="80" required/>
+						<label id = "other_doctoral_school_label">Type your doctoral school (*)</label>
+						<input id = "other_doctoral_school" type="text" name="_other_school" placeholder="Name of doctoral school" size="80" required/>
 		    </div>
 		 </div>
 
+			<div class="form_item phd_student_block postdoc_block">
 
-		 <!-- ====================== Workshop -->
-		 <div class="form_item">
-		 	<legend>Please choose a workshop</legend>
-		    <label>Workshops</label>
-		    <select id="workshop_form">
-		      <option id="workshop_default_option" value="" selected="" disabled="">-- Choose your position --</option>
-		    </select>
-		 </div>
+			<label>Laboratory (*)</label>
+			<div style ="text-align: left">
+				<small>(Type keyword to find your lab OR write its full name)</small>
+			</div>
+			<input type="text" list="labs_list" placeholder="Type keyword to find your lab OR write its full name" required>
 
-		 <!-- ====================== Poster -->
-		 <div class="form_item phd_student_block">
-			 <legend>Are you going to submit a poster? (*)</legend>
-			 <select id="poster" name="poster" required>
-			 <option value="" selected="" disabled="">-- Please choose an option --</option>
-			 <option value="yes_poster">Yes</option>
-			 <option value="no_poster">No</option>
-			 </select>
-		 </div>
+			<!-- [Source]: https://fr.wikipedia.org/wiki/Universit%C3%A9_Paris-Saclay#Les_laboratoires_de_l'universit%C3%A9_Paris-Saclay[33] -->
+			<datalist id="labs_list">
+			<option value="Laboratoire de mathématiques d'Orsay (LMO)"></option>
 
-
-		 <!-- ====================== How did you learn -->
-		 <div class="form_item">
-			 <legend>How did you learn about CARaDOC (*)</legend>
-			 <select>
-			 <option value="" selected="" disabled="">-- Social media --</option>
-       <option value="Linkedin">LinkedIn</option>
-       <option value="Facebook">Facebook</option>
-
-       <option value="" selected="" disabled="">-- E-mail from your --</option>
-       <option value="">Academic institution</option>
-       <option value="">Doctoral school</option>
-       <option value="">Research laboratory</option>
-       <option value="">Company</option>
-
-       <option value="" selected="" disabled="">-- Other --</option>
-       <option value="">Word of mouth</option>
-			 </select>
-		 </div>
-
-
-		 	<!-- ====================== Submission -->
-			<div class="full form_item">
-	  		<button type="submit">Send</button>
+			<option value="Centre de spectrométrie nucléaire et de spectrométrie de masse (CSNSM)"></option>
+			<option value="Institut de physique nucléaire (IPN)"></option>
+			<option value="Laboratoire de l'accélérateur linéaire (LAL)"></option>
+			</datalist>
 			</div>
 
 
+		 <div class="form_item">
+		 	<legend>Please choose a workshop</legend>
+		    <label>Workshops</label>
+		    <select id="workshop">
+		      <option id="workshop_default_option" value="" selected="" disabled="">-- Choose your position --</option>
+		    </select>
+		 </div>
+	  	<!-- <input type="submit" value="Register"> -->
+	  	<div class="full form_item">
+	  		<button type="submit">Send</button>
+		</div>
 	</div>
 </form>
