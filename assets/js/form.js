@@ -59,6 +59,7 @@ function processUser()
               showUniversity(participant.professional.university);
               setInputVal('phd_year', participant.professional.phdYear);
               setInputVal('doctoral_school', participant.professional.doctoralSchool);
+              setInputVal('laboratory', participant.professional.laboratory);
               showSchool(participant.professional.doctoralSchool);
               changeWorkshopList();
               setInputVal('workshop', participant.eventChoices.workshopIndex);
@@ -85,6 +86,7 @@ function submitForm(e){
   var firstName = getInputVal('first_name');
   var lastName = getInputVal('last_name');
   var email = getInputVal('email').replace(/\s/g, ''); //remove white spaces
+  var emailId = email.replace("@","").replace(/\./g,""); 
   var emailConfirmation = getInputVal('email_confirmation').replace(/\s/g, '');
   var emailNoMatch = email.localeCompare(emailConfirmation);
   if (emailNoMatch != 0){
@@ -110,6 +112,7 @@ function submitForm(e){
   if (doctoralSchool.length == 0){
     doctoralSchool = getInputVal('other_doctoral_school');
   }
+  var laboratory = getInputVal('laboratory');
   var workshopIndex = getInputVal('workshop'); // returns an int
   if(position != 'PhDStudent'){
     var workshop = yearAndWorkshops['YEAR_5'][workshopIndex];
@@ -122,13 +125,15 @@ function submitForm(e){
       firstName: firstName,
       lastName: lastName,
       email: email,
+      emailId:emailId,
       phone: phone
     },
     professional:{
       position: position,
       university, university,
       phdYear: phdYear,
-      doctoralSchool:doctoralSchool
+      doctoralSchool:doctoralSchool,
+      laboratory: laboratory
     },
     eventChoices:{
       workshopIndex:workshopIndex,
@@ -146,9 +151,10 @@ function submitForm(e){
 
 // send data to firebase-firestorm and return ID
 function saveParticipant(participant){
+  console.log(participant);
   let userId = null;
   let ps = db.collection('participants');
-  let es = es.collection('email');
+  let es = db.collection('email');
   //First we check if particpant's e-mail already exsits in the databse
   es.doc(participant.contact.emailId).get()
   .then(function(doc) {
