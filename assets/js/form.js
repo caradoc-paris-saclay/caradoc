@@ -139,22 +139,7 @@ function submitForm(e){
   //save participant
   // check if id was provided and we are just updating an already existing participant
   // check if e-mail already exist to prevent making double entry for same e-mail
-  if (participant == null){
-      db.collection('participants').where('email', "==", newParticipant.contact.email)
-      .get().then((snap) => {
-        if(snap.exists){
-          console.log("email conflict!")
-          console.log(snap);
-        }
-        else{
-          saveParticipant(newParticipant);
-        }
-      });
-  }
-  else{
-    updatePaticipant(idRef, newParticipant);
-  }
-
+  saveParticipant(newParticipant);
   document.getElementById('submission_msg').style.display = "block";
   document.getElementById('registration_form').reset();
 }
@@ -162,27 +147,34 @@ function submitForm(e){
 // send data to firebase-firestorm and return ID
 function saveParticipant(participant){
   let userId = null;
-  //First we check if particpant's e-mail already exsits in the databse
   let ps = db.collection('participants');
   let es = es.collection('email');
-  ps.add(participant)
-  .then(function(docRef) {
-    userId = docRef.id;
-    console.log("Document written with ID: ", docRef.id);
-    docRef.collection("email").doc(participant.contact.emailS).set({});
-  })
-  .catch(function(error) {
-    console.error("Error adding document: ", error);
+  //First we check if particpant's e-mail already exsits in the databse
+  es.doc(participant.contact.emailId).get()
+  .then(function(doc) {
+    if (doc.exists){
+      console.log("Found user in database, update user info");
+      ps.doc(doc.data().refId).update(participant);
+    }
+    else{
+      console.log("New user. Creating new database entry");
+      ps.add(participant)
+      .then(function(docRef) {
+        userId = docRef.id;
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+      es.doc(participant.contact.emailId).set({
+        refId:id
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+    }
   });
   return userId;
-}
-
-function updatePaticipant(id, participant){
-  console.log("update using id: ", id);
-  console.log("participant: ", participant);
-  db.collection("participants").doc(id).update(participant).then(res =>{
-     console.log('Document updated at ${res.updateTime}');
-  });
 }
 
 //form helper functions
