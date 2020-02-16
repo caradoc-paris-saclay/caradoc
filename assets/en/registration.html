@@ -12,81 +12,82 @@ permalink: /registration
 
 
 <div class="alert" id="submission_msg">Your submission has been sent</div>
+
 <form  class="reg_form" action=""  id="registration_form">
 	<div class="wrapper">
 		<div class="form_item">
 			<legend>Contact details</legend>
 
-
 			<div class="d-flex flex-row">
 				<div class="flex-fill">
-	  			<label>First name (*)</label>
-	  			<input type="text" name="first_name" value="" id ="first_name" placeholder="First name" required/>
-	  			</div>
-	  			<div class="pl-md-5 pl-2 flex-fill">
-	  			<label>Last name (*)</label>
-	  			<input type="text" name="last_name" value="" id ="last_name" placeholder="Last name" required/>
-	  			</div>
-  			</div>
-	  	</div>
+	  			<label>First Name (*)</label>
+	  			<input type="text" name="first_name" value="" id ="first_name" placeholder="First Name" required/>
+	  		</div>
+	  		<div class="pl-md-5 pl-2 flex-fill">
+	  			<label>Last Name (*)</label>
+	  			<input type="text" name="last_name" value="" id ="last_name" placeholder="Last Name" required/>
+	  		</div>
+  		</div>
+	  </div>
 
 
-			<!-- ====================== E-mail -->
-			<div class="form_item">
+		<!-- ====================== E-mail -->
+		<div class="form_item">
 	  		<label>E-mail (*)</label>
 	  		<input type="email" name="email" value="" id="email" placeholder="myname@mail.com" required/>
-	  	</div>
+	  </div>
 
-	  	<div class="form_item">
-	  		<div>
-	  		<label>Confirm e-mail (*)</label>
-	  		</div>
-	  		<div class="inputWithMsg">
-	  			<div class="">
-			  		<input type="email" name="email_confirmation" value="" id="email_confirmation" placeholder="myname@mail.com" required/>
-			  	</div>
-			  	<div class="p-2 formWarning" id="emailNoMatch">
+	  <div class="form_item">
+	  	<div>	<label>Confirm E-mail (*)</label> </div>
+
+			<div class="inputWithMsg">
+				<div class="">
+			  	<input type="email" name="email_confirmation" value="" id="email_confirmation" placeholder="myname@mail.com" required/>
+			  </div>
+
+				<div class="p-2 formWarning" id="emailNoMatch">
 			  			E-mails don't match.
-			  	</div>
+			  </div>
 			</div>
-	  	</div>
+	  </div>
 
 
-			<!-- ====================== Phone number -->
-	  	<div class="form_item">
+		<!-- ====================== Phone number -->
+	  <div class="form_item">
 	  		<label>Phone number</label>
 	  		<input type="tel" name="phone" value="" id ="phone" placeholder="06XXXXXXXX"/>
-	  	</div>
+	  </div>
 
 
 			<!-- ====================== Job position -->
-	  	<div class="form_item">
-	  		<legend>Tell us about your job</legend>
+  	<div class="form_item">
+  		<legend>Tell us about your job</legend>
 
-				<!-- ====================== Job title -->
-	  		<label>Job title (*)</label>
-	  		<select id="position" name="position" required onchange="isPhDStudent(this.value);changeWorkshopList();">
+			<!-- ====================== Job title -->
+  		<label>Job Title (*)</label>
+  		<select id="position" name="position" required onchange="isPhDStudent(this.value);changeWorkshopList();">
 				<option value="" selected="" disabled="">-- Position --</option>
 				<option value="PhDStudent">PhD Student</option>
 				<option value="PostDoc">Post-Doc</option>
 				<option value="AssistantProfessor">Assistant Professor</option>
 				<option value="Professor">Professor</option>
 				<option value="OTHER">Other</option>
-    		</select>
-    		<div id="another_position" style="margin-left: 3%; display: none">
-					</br>
-		      <label id="other_position_label">Type your job title</label>
-		      <input id="other_position" type="text" name="other_position" placeholder="Your Job Title" size="80"/>
-					</br>
-					</br>
-					<label id="other_institution">Type your entity name</label>
-		      <input id="other_position" type="text" name="other_entity" placeholder="Your University, Laboratory, Company OR Association name etc." size="80"/>
-		    </div>
-	  	</div>
+  		</select>
+
+  		<div id="another_position" style="margin-left: 3%; display: none">
+				</br>
+	      <label id="other_position_label">Type your Job title (*)</label>
+	      <input id="other_position" type="text" name="other_position" placeholder="Your Job Title" size="80" required/>
+				</br>
+				</br>
+				<label id="other_institution">Type your Entity Name (*)</label>
+	      <input id="other_position" type="text" name="other_entity" placeholder="Your University, Laboratory, Company OR Association name etc." size="80" required/>
+	    </div>
+  	</div>
 
 			<!-- ======================  Ph.D. year -->
  		 <div class="form_item phd_student_block" id="phd_year">
- 	 	    <label>Ph.D. year (*)</label>
+ 	 	    <label>Ph.D. Year (*)</label>
      		<select  name="phd_year" onchange="changeWorkshopList()" required>
  				<option value="" selected="" disabled="">-- PhD Year --</option>
  				<option value="YEAR_1">1st Year PhD Student</option>
@@ -99,7 +100,7 @@ permalink: /registration
 			<!-- ====================== Academic institution -->
 	  	<div class="form_item phd_student_block postdoc_block professor_block">
 	  		<label>Academic institution (*)</label>
-		    <select id="university" name="university" onchange="showUniversity(this.value)">
+		    <select id="university" name="university" onchange="showUniversity(this.value)" required>
 		      <option value="">AgroParisTech</option>
 		      <option value="">CentraleSupélec</option>
 		      <option value="">l’École normale supérieure Paris-Saclay</option>
@@ -110,8 +111,8 @@ permalink: /registration
 
 		    <div id="another_university" style="margin-left: 3%; display: none">
 					</br>
-		      <label id="other_university_label">Type your academic institution</label>
-		      <input id="other_university" type="text" name="other_university" placeholder="Your academic institurion" size="80"/>
+		      <label id="other_university_label">Type your academic institution (*)</label>
+		      <input id="other_university" type="text" name="other_university" placeholder="Your academic institurion" size="80" required/>
 		    </div>
 		 </div>
 
@@ -122,7 +123,7 @@ permalink: /registration
 			 <div style ="text-align: left">
 			 			<small>(Type keyword to find your lab OR write its full name)</small>
 			 </div>
-			 <input type="text" list="labs_list" placeholder="Type keyword to find your lab OR write its full name INSTEAD">
+			 <input type="text" list="labs_list" placeholder="Type keyword to find your lab OR write its full name" required>
 
 			 <!-- [Source]: https://fr.wikipedia.org/wiki/Universit%C3%A9_Paris-Saclay#Les_laboratoires_de_l'universit%C3%A9_Paris-Saclay[33] -->
 			<datalist id="labs_list">
@@ -169,17 +170,16 @@ permalink: /registration
 		    <div id = "another_doctoral_school" style="margin-left: 3%; display: none">
 					</br>
 		      <label id = "other_doctoral_school_label">Type your doctoral school</label>
-		      <input id = "other_doctoral_school" type="text" name="_other_school" placeholder="Name of doctoral school" size="80"/>
+		      <input id = "other_doctoral_school" type="text" name="_other_school" placeholder="Name of doctoral school" size="80" required/>
 		    </div>
 		 </div>
-
 
 
 		 <!-- ====================== Workshop -->
 		 <div class="form_item">
 		 	<legend>Please choose a workshop</legend>
 		    <label>Workshops</label>
-		    <select id="workshop">
+		    <select id="workshop_form">
 		      <option id="workshop_default_option" value="" selected="" disabled="">-- Choose your position --</option>
 		    </select>
 		 </div>

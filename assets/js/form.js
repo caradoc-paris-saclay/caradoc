@@ -218,8 +218,8 @@ function isPhDStudent(val) {
     $('.professor_block').css("display", "none");
     $('.phd_student_block').css("display", "flex");
 
-    document.getElementById("university").style.required = true;
-    document.getElementById("phd_year").style.required = true;
+    //document.getElementById("university").style.required = true;
+    //document.getElementById("phd_year").style.required = true;
   }
   else if (val === 'PostDoc'){
     $('.phd_student_block').css("display", "none");
@@ -235,8 +235,8 @@ function isPhDStudent(val) {
     $('.phd_student_block').css("display", "none");
     $('.postdoc_block').css("display", "none");
     $('.professor_block').css("display", "none");
-    document.getElementById("university").style.required = false;
-    document.getElementById("phd_year").style.required = false;
+    //document.getElementById("university").style.required = false;
+    //document.getElementById("phd_year").style.required = false;
   }
   showPosition(val);
 }
