@@ -80,6 +80,19 @@ permalink: /registration
 	    </div>
   	</div>
 
+
+		<div class="form_item phd_student_block">
+ 	    <label>PhD year (*)</label>
+  		<select id="phd_year" name="phd_year" onchange="changeWorkshopList()">
+				<option value="" selected="" disabled="">-- PhD Year --</option>
+				<option value="YEAR_1">1st Year PhD Student</option>
+				<option value="YEAR_2">2nd Year PhD Student</option>
+				<option value="YEAR_3">3rd Year PhD Student</option>
+				<option value="YEAR_4">>3rd year PhD student</option>
+  		</select>
+		</div>
+
+
 		<!-- ====================== Acaddemic institution -->
   	<div class="form_item phd_student_block professor_block">
   		<label>Academic institution (*)</label>
@@ -98,16 +111,6 @@ permalink: /registration
 	    </div>
 	 	</div>
 
-		<div class="form_item phd_student_block">
- 	    <label>PhD year (*)</label>
-  		<select id="phd_year" name="phd_year" onchange="changeWorkshopList()">
-				<option value="" selected="" disabled="">-- PhD Year --</option>
-				<option value="YEAR_1">1st Year PhD Student</option>
-				<option value="YEAR_2">2nd Year PhD Student</option>
-				<option value="YEAR_3">3rd Year PhD Student</option>
-				<option value="YEAR_4">>3rd year PhD student</option>
-  		</select>
-		</div>
 
 		<!-- ====================== Doctoral school -->
 		<div class="form_item phd_student_block">
@@ -155,64 +158,75 @@ permalink: /registration
 			<input type="text" list="labs_list" placeholder="Type keyword to find your lab OR write its full name" required>
 
 			<datalist id="labs_list">
-				<!-- [Source]: https://fr.wikipedia.org/wiki/Universit%C3%A9_Paris-Saclay#Les_laboratoires_de_l'universit%C3%A9_Paris-Saclay[33] -->
-				<!-- Mathematics -->
-				<option value="Laboratoire de mathématiques d'Orsay (LMO)"></option>
+				<!-- Page 1 -->
+				<option value="Aérodynamique, Aéroélasticité, Acoustique"></option>
+				<option value="Alimentation et Sciences Sociales"></option>
+				<option value="Analyse moléculaire, modélisation et imagerie de la maladie cancéreuse"></option>
+				<option value="Approches génétiques intégrées et découvertes thérapeutiques pour les maladies rares"></option>
+				<option value="Astrophysique, Instrumentation et Modélisation de Paris-Saclay - DRF/IRFU/DAp"></option>
+				<option value="Bibliothèque mathématique Jacques Hadamard"></option>
+				<option value="BioEmergences"></option>
+				<option value="Biologie de la Reproduction, Environnement, Epigénétique, et Développement"></option>
+				<option value="BIOlogie GEstion des Risques en agriculture"></option>
+				<option value="Biomarqueurs en cancérologie et onco-hématologie"></option>
+				<option value="Biomarqueurs prédictifs et nouvelles stratégies thérapeutiques en oncologie"></option>
+				<option value="Biomolécules : Conception, Isolement, Synthèse"></option>
 
-				<!-- Physics -->
-				<option value="Centre de spectrométrie nucléaire et de spectrométrie de masse (CSNSM)"></option>
-				<option value="Institut de physique nucléaire (IPN)"></option>
-				<option value="Laboratoire de l'accélérateur linéaire (LAL)"></option>
-				<option value="Laboratoire Aimé Cotton (LAC)"></option>
-				<option value="Institut des Sciences Moléculaires d’Orsay (ISMO)"></option>
-				<option value="Laboratoire de physique des solides (LPS)"></option>
-				<option value="Laboratoire de physique théorique (LPT)"></option>
-				<option value="Laboratoire de physique théorique et modèles statistiques (LPTMS)"></option>
-				<option value="Centre de recherche et d'ingénierie industrielle et pédagogique (IUT)"></option>
-				<option value="Laboratoire Charles Fabry de l'Institut d'optique (LCFIO)"></option>
-				<option value="Centre de nanosciences et de nanotechnologies (C2N)"></option>
-				<option value="Fluides, automatique et systèmes thermiques (FAST)"></option>
-				<option value="Laboratoire de Physique Plasmas (LPP)"></option>
-				<option value="Laboratoire de physique des gaz et des plasmas (LPGP)"></option>
-				<option value="Unité mixte de physique CNRS-Thales"></option>
-				<option value="Imagerie et Modélisation en Neurobiologie et Cancérologie (IMNC)"></option>
+				<!-- Page 2 -->
+				<option value="Biostatistique, Biomathématique, PharmacoEpidémiologie, et Maladies Infectieuses"></option>
+				<option value="Building large instruments for neuroimaging: from population imaging to ultra-high magnetic fields"></option>
+				<option value="Centre d'Economie de la Sorbonne - Antenne de Cachan"></option>
+				<option value="Centre d'Etudes des Politiques Economiques de l'Université d'Evry"></option>
+				<option value="Centre d'études et de recherche en droit de l'immatériel"></option>
+				<option value="Centre d'Etudes sur la Mondialisation, les conflits, les territoires et les vulnérabilités"></option>
+				<option value="Centre d’Histoire Culturelle des Sociétés Contemporaines"></option>
+				<option value="Centre de mathématiques et de leurs applications"></option>
+				<option value="Centre de Nanosciences et de Nanotechnologies"></option>
+				<option value="Centre de Recherche en Design"></option>
+				<option value="Centre de Recherche en épidémiologie et Santé des populations"></option>
+				<option value="Centre de recherche en Immunologie des infections virales et des maladies autoimmunes - DRF/JACOB"></option>
 
-				<!-- Earth Sciences & Universe -->
-				<option value="Institut d'astrophysique spatiale (IAS)"></option>
-				<option value="Géosciences Paris-Sud (GEOPS)"></option>
+				<!-- Page 3 -->
+				<option value="Centre de Recherche Léon Duguit, pour l'étude des nouvelles transformations du droit"></option>
+				<option value="Centre de recherches sociologiques sur le droit et les institutions pénales"></option>
+				<option value="Centre de Recherches Versailles Saint Quentin Institutions Publiques"></option>
+				<option value="Centre de Sciences Nucléaires et de Sciences de la Matière"></option>
+				<option value="Centre de Traitement de l'Information Génétique"></option>
+				<option value="Centre de Vision Numérique"></option>
+				<option value="Centre Giovanni Borelli"></option>
+				<option value="Centre international de recherche sur l'environnement et le développement"></option>
+				<option value="Centre National de Recherche en Génomique Humaine - DRF/JACOB "></option>
+				<option value="Centre Pierre Naville, Laboratoire de sociologie"></option>
+				<option value="Chimie, modélisation et imagerie pour la biologie"></option>
+				<option value="Cohortes Epidémiologiques en population"></option>
 
-				<!-- Informatics & Engineering Sciences -->
-				<option value="Laboratoire de recherche en informatique (LRI)"></option>
-				<option value="Laboratoire d'informatique pour la mécanique et les sciences de l'ingénieur (LIMSI)"></option>
-				<option value="Laboratoire des signaux et systèmes (L2S)"></option>
-				<option value="Imagerie par Résonance Magnétique Médicale et Multi-Modalités (IR4M)"></option>
-				<option value="Laboratoire Génie électrique et électronique de Paris (GeePS)"></option>
-				<option value="Laboratoire Universitaire de Recherche en Production Automatisée (LURPA)"></option>
-				<option value="Systèmes et Applications des Technologies de l’Information et de l’Énergie (SATIE)"></option>
+				<!-- Page 4 -->
+				<option value="Collège d'études interdisciplinaires"></option>
+				<option value="Complexité, innovation, activités motrices et sportives"></option>
+				<option value="Cultures, Environnement, l'Arctique et ses Représentations, Climats"></option>
+				<option value="Département Architecture, Conception et Logiciels Embarqués - DRT"></option>
+				<option value="Département d'Astrophysique - DRF/IRFU"></option>
+				<option value="Département d'Electronique des Détecteurs et d'Informatique pour la Physique - DRF/IRFU"></option>
+				<option value="Département d'Ingénierie des Systèmes - DRF/IRFU"></option>
+				<option value="Département de Modélisation des Systèmes et Structures - DEN"></option>
+				<option value="Département de Physico-Chimie - DEN"></option>
+				<option value="Département de Physique des Particules - DRF/IRFU"></option>
+				<option value="Département de Physique Nucléaire - DRF/IRFU"></option>
+				<option value="Département des Accélérateurs, de la Cryogénie et du Magnétisme - DRF/IRFU"></option>
 
-				<!-- Chemistry -->
-				<option value="Institut de Chimie Moléculaire et des Matériaux d'Orsay (ICMMO)"></option>
-				<option value="Laboratoire de chimie physique (LCP)"></option>
-				<option value="Centre de cinétique rapide (ELYSE)"></option>
-				<option value="Biomolécule : Conception, Isolement, Synthèse (BioCIS)"></option>
-				<option value="Chimie physique minérale et bioiorganique « Matériaux et santé »"></option>
-				<option value="Chimie organique"></option>
-				<option value="Laboratoire d'étude des techniques d'instrumentation et d'analyse moléculaire (LETIAM)"></option>
-
-				<!-- Biology -->
-				<option value="Chimie, Modélisation et Imagerie pour la biologie (CMIB)"></option>
-				<option value="Evolution, Génomes, comportement et écologie (EGCE)"></option>
-				<option value="Ecologie, Systématique et Evolution (ESE)"></option>
-				<option value="Signalisation normale et pathologique : de l'Embryon aux Thérapies Innovantes des Cancers"></option>
-				<option value="Institut de Biologie Intégrative de la Cellule (I2BC)"></option>
-				<option value="Interactions cellulaires et Physiopathologie Hépatique (ICPH)"></option>
-				<option value="Institut des Neurosciences Paris Saclay (INPS)"></option>
-				<option value="Institut des Sciences des Plantes de Paris Saclay  (IPS2)"></option>
-				<option value="Stress Génotoxique et Cancer (SGC)"></option>
-				<option value="Génétique quantitative et Evolution - le Moulon (GQE)"></option>
-				<option value="Unité de Neurosciences Information et Complexité (UNIC)"></option>
-				<option value="Cognitive Neuroimaging Unit (UNICOG)"></option>
-				<option value="Institut Diversité Ecologie et Evolution du Vivant (IDEEV)"></option>
+				<!-- Page 5 -->
+				<option value="Département des Matériaux pour le Nucléaire - DEN"></option>
+				<option value="Département Imagerie et Simulation pour le Contrôle - DRT"></option>
+				<option value="Département Ingéniérie Logiciels et Systèmes - DRT"></option>
+				<option value="Département Intelligence Ambiante et Systèmes Interactifs - DRT"></option>
+				<option value="Département Médicaments et technologies pour la santé - DRF/JOLIOT"></option>
+				<option value="Département Métrologie Instrumentation et Information - DRT"></option>
+				<option value="Direction de la Recherche Fondamentale"></option>
+				<option value="Direction des activités nucléaires de Saclay - DEN"></option>
+				<option value="Données et Algorithmes pour une ville intelligente et durable"></option>
+				<option value="Droit et sociétés religieuses"></option>
+				<option value="Dynamiques patrimoniales et culturelles (Antiquités, Moyen-Age, Temps modernes)"></option>
+				<option value="Ecologie fonctionnelle et écotoxicologie des agroécosystèmes"></option>
 			</datalist>
 		</div>
 
