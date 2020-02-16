@@ -4,16 +4,27 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if false;
     }
+    function prefix(){
+      return /databases/$(database)/documents;
+    }
     match /participants/{participantID}{
       function pPrefix(){
         return /databases/$(database)/documents/participants/$(participantID);
       }
       allow write;
       allow read: if exists(/$(pPrefix()));
-      match /email/{emailID}{
+      /*match /email/{emailID}{
         allow write;
         allow read: if exists(/$(pPrefix())/email/$(emailID));
-      }
+      }*/
     }
+    match /email/{emailID}{
+      allow write;
+      allow read: if exists(/$(prefix())/email/$(emailID));
+    }
+    /*match /{path=**}/email/{emailID}{
+      allow read: if exists(/$(path)/email/$(emailID));
+      //allow read: if true;
+    }*/
   }
 }

@@ -38,7 +38,7 @@ function makeParticipant(newemail){
 	  firstName: "A",
 	  lastName: "G",
 	  email: newemail,
-	  emailS: tmp,
+	  emailId: tmp,
 	  phone: ""
 	},
 	professional:{
@@ -57,6 +57,7 @@ function makeParticipant(newemail){
 describe("TEST SUITE WRITE/READ EMAIL", () => {
 	const db = authedApp(null);//generalAuthApp();
 	const ps = db.collection("participants");
+	const es = db.collection("email");
 	var idRef;
 	var idRef2;
 	var userId;
@@ -69,13 +70,15 @@ describe("TEST SUITE WRITE/READ EMAIL", () => {
     	await ps.add(participant)
 	      .then(function(docRef) {
 	      	id = docRef.id;
-	      	console.log("Document written with ID: ", id);
-		    docRef.collection("email").doc(participant.contact.emailS).set({});
+	      	console.log("Document written with ID: ", id)
 		    //console.log(docRef.data());
 		  })
 	  	.catch(function(error) {
 	    	console.error("Error adding document: ", error);
 	  	});
+	  	await es.doc(participant.contact.emailId).set({
+	  		refId:id
+	  	})
 	  	//await ps.doc(id).collection("email").add({participant.contact.email:""});
 	  	return id;
 	}
@@ -105,79 +108,103 @@ describe("TEST SUITE WRITE/READ EMAIL", () => {
         	await profile.get().then(function(doc){
 	            if (doc.exists){
 	              participant = doc.data();
-	              getEmail(profile, participant.contact.emailS).get().then(function(subDoc){
-	              	console.log("Reading subcollection data : ", subDoc.data());
+	              es.doc(participant.contact.emailId).get()
+	              .then(function(doc){
+	              	console.log("Doc found. Participant's email: ", participant.contact.email);
+	              })
+	              .catch(function (err){
+	              	console.log(err);
 	              });
-	        	  console.log("Doc found. Participant's email: ", participant.contact.email);
-	        	  console.log("Keys: ", Object.keys(participant));
-	        	  const cmpr = 'lolgmailcom';
-	        	  console.log("Is ", cmpr, " in keys? ",  cmpr in participant);
+	              
 	        	  console.log(participant);
 	            }
             })
         );
 	});
-	it("Acess subCollection Email", async () => {
+	it("Acess collection Email", async () => {
 		await addParticipant(makeParticipant("ref@gmail.com"));
 		idRef = await addParticipant(makeParticipant("lol@gmail.com"));
 		console.log(idRef);
 		var subCollectionID;
         const profile = ps.doc(idRef);
         await profile.get().then(function(doc){
-        	subCollectionID = doc.data().contact.emailS;
+        	emailId = doc.data().contact.emailId;
+        	console.log("subCollectionID", emailId);
         });
         
         await firebase.assertSucceeds(
-        	await profile.collection("email").doc(subCollectionID).get()
+        	await es.doc(emailId).get()
         	.then(function(doc){
 	            if (doc.exists){
-	              console.log("Subcollection exists!", doc.data());
+	              console.log("Subcollection exists! ", doc.data());
 	          	}
             })
         );
 	});
-	it("Read all participants", async () => {
+	it("Knowing e-mail get particpant info", async () => {
+		let participant = makeParticipant("ref@gmail.com")
+		await addParticipant(participant);
+		let emailId = participant.contact.emailId;
+		var participantId;
+	    await es.doc(emailId).get()
+    	.then(function(doc){
+            if (doc.exists){
+              participantId = doc.data().refId;
+              console.log("Email exists! ", doc.data());
+          	}
+        });
+	    const profile = ps.doc(participantId);
+	    await firebase.assertSucceeds(
+    		await profile.get().then(function(doc){
+    			if (doc.exists){
+    				console.log("Found participant", doc.data());
+    			}
+    			else{
+    				console.log("Couldn't find participant");
+    			}
+	    	})
+        );
+	});
+	it("Try reading all participants", async () => {
 		idRef = await addParticipant(makeParticipant("lol@gmail.com"));
 		var tmp="";
 		await firebase.assertFails(
 			 tmp = getMarker()
 		);
-		console.log(tmp);
+		//console.log(tmp);
 	});
-	/*it("Add new participant if e-mail not already in collection",  async () => {
-		idRef = await addParticipant(makeParticipant("lol@gmail.com"));
+	it("Add new participant only if e-mail not already in collection",  async () => {
+		var oldParticipant = makeParticipant("lol@gmail.com"); 
+		await addParticipant(oldParticipant);
+		var emailId = oldParticipant.contact.emailId;
+		var newParticipant = makeParticipant("pablo@gmail.com");
+		console.log("Starting Lookup");
+		let participantId;
+		await es.doc(emailId).get()
+		.then(function(doc){
+			if (doc.exists){
+				participantId = doc.data().refId;
+				console.log("Found the email: ", doc.data());
+			}
+			else{
+				console.log("Couldn't find the email.");
+			}
+		});
 		await firebase.assertSucceeds(
-			await addParticipant(makeParticipant("pablo@gmail.com"))
-		);
-	});
-	it("Refuse new participant if e-mail already in collection", async () => {
-		await addParticipant(makeParticipant("ref@gmail.com"));
-		idRef = await addParticipant(makeParticipant("lol@gmail.com"));
-		await firebase.assertSucceeds(
-			ps.doc(idRef).get()
-			.then(function(docRef) {
-		    	console.log("Document found with ID: ", idRef);
-		  	})
-		  	.catch(function(error) {
-		  		//addParticipant(makeParticipant("lol@gmail.com"))
-		    	console.error("Error adding document: ", error);
-		  	})
+			ps.doc(participantId).get()
+			.then(doc => {
+				if(doc.exists){
+		    	console.log("Found participant");
+	      		console.log(doc.id, '=>', doc.data());
+	      	}
+	      	else{
+	      		console.log("Access granted. Yet found nothing");
+	      	}
+		  })
+		  .catch(err => {
+		    console.log('Error getting documents', err);
+		  })
 			//ps.where("refgmailcom", "==", "").get()
 		);
 	});
-	it("Read non exsisting id e-mail already in collection", async () => {
-		await addParticipant(makeParticipant("ref@gmail.com"));
-		idRef = await addParticipant(makeParticipant("lol@gmail.com"));
-		await firebase.assertSucceeds(
-			ps.doc("some@gmail.com").get()
-			.then(function(docRef) {
-		    	console.log("Document found with ID: ", idRef);
-		  	})
-		  	.catch(function(error) {
-		  		//addParticipant(makeParticipant("lol@gmail.com"))
-		    	console.error("Error adding document: ", error);
-		  	})
-			//ps.where("refgmailcom", "==", "").get()
-		);
-	});*/
 });

@@ -161,12 +161,15 @@ function submitForm(e){
 
 // send data to firebase-firestorm and return ID
 function saveParticipant(participant){
-  var userId = "";
-  console.log("hello");
-  db.collection('participants').add(participant)
+  let userId = null;
+  //First we check if particpant's e-mail already exsits in the databse
+  let ps = db.collection('participants');
+  let es = es.collection('email');
+  ps.add(participant)
   .then(function(docRef) {
     userId = docRef.id;
     console.log("Document written with ID: ", docRef.id);
+    docRef.collection("email").doc(participant.contact.emailS).set({});
   })
   .catch(function(error) {
     console.error("Error adding document: ", error);
