@@ -5,6 +5,7 @@ yearAndWorkshops['YEAR_2'] = ['W1-Stress managemnet & co-working', 'W2-Public sp
 yearAndWorkshops['YEAR_3'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
 yearAndWorkshops['YEAR_4'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
 yearAndWorkshops['YEAR_5'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
+const positionArray=["PhDStudent", "PostDoc", "AssistantProfessor", "Professor"];
 // Your web app's Firebase configuration
 var yearList = document.getElementById("phd_year");
 var firebaseConfig = {
@@ -59,10 +60,16 @@ function processUser()
               showUniversity(participant.professional.university);
               setInputVal('phd_year', participant.professional.phdYear);
               setInputVal('doctoral_school', participant.professional.doctoralSchool);
-              setInputVal('laboratory', participant.professional.laboratory);
+              if(positionArray.includes(participant.professional.position)){
+                setInputVal('laboratory', participant.professional.workplace);
+              }
+              else{
+                setInputVal('other_position_institution', participant.professional.workplace);
+              }
               showSchool(participant.professional.doctoralSchool);
               changeWorkshopList();
               setInputVal('workshop', participant.eventChoices.workshopIndex);
+              setInputVal('poster', participant.eventChoices.poster);
             }
           });
       }
@@ -100,9 +107,15 @@ function submitForm(e){
   }
   var phone = getInputVal('phone');
   var position = getInputVal('position');
+  var workplace="";
   if (position.length == 0){
     postion = getInputVal('other_position');
+    workplace = getInputVal('other_position_institution');
   }
+  else{
+    var workplace = getInputVal('laboratory');
+  }
+  console.log("workplace", workplace);
   var university = getInputVal('university');
   if (university.length == 0){
     university = getInputVal('other_university');
@@ -112,7 +125,6 @@ function submitForm(e){
   if (doctoralSchool.length == 0){
     doctoralSchool = getInputVal('other_doctoral_school');
   }
-  var laboratory = getInputVal('laboratory');
   var workshopIndex = getInputVal('workshop'); // returns an int
   if(position != 'PhDStudent'){
     var workshop = yearAndWorkshops['YEAR_5'][workshopIndex];
@@ -120,24 +132,27 @@ function submitForm(e){
   else{
     var workshop = yearAndWorkshops[phdYear][workshopIndex];
   }
+  var poster = getInputVal('poster');
+
   const newParticipant = {
     contact:{
       firstName: firstName,
       lastName: lastName,
       email: email,
-      emailId:emailId,
+      emailId: emailId,
       phone: phone
     },
     professional:{
       position: position,
-      university, university,
+      university: university,
       phdYear: phdYear,
-      doctoralSchool:doctoralSchool,
-      laboratory: laboratory
+      doctoralSchool: doctoralSchool,
+      workplace: workplace
     },
     eventChoices:{
-      workshopIndex:workshopIndex,
-      workshop:workshop
+      workshopIndex: workshopIndex,
+      workshop: workshop,
+      poster: poster
     }
   }
 

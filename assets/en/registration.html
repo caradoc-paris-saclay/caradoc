@@ -97,11 +97,12 @@ permalink: /registration
   	<div class="form_item phd_student_block professor_block">
   		<label>Academic institution (*)</label>
 	    <select id="university" name="university" onchange="showUniversity(this.value)">
-	      <option value="">AgroParisTech</option>
-	      <option value="">CentraleSupélec</option>
-	      <option value="">l’École normale supérieure Paris-Saclay</option>
-	      <option value="">l’Institut des hautes études scientifiques</option>
-	      <option value="">l’Institut d'optique Graduate School</option>
+	      <option value="" selected="" disabled="">-- Institution --</option>
+	      <option value="AgroParisTech">AgroParisTech</option>
+	      <option value="CentraleSupelec">CentraleSupélec</option>
+	      <option value="ENSParisSaclay">l’École normale supérieure Paris-Saclay</option>
+	      <option value="IHES">l’Institut des hautes études scientifiques</option>
+	      <option value="IOGS">l’Institut d'optique Graduate School</option>
 	      <option value="OTHER">Other</option>
 	    </select>
 	    <div id="another_university" style="margin-left: 3%; display: none">
@@ -471,10 +472,19 @@ permalink: /registration
 		<!-- ====================== Workshops -->
 		<div class="form_item">
 		 	<legend>Please choose a workshop</legend>
-		  <label>Workshops</label>
-		  <select id="workshop">
-		    <option id="workshop_default_option" value="" selected="" disabled="">-- Choose your position --</option>
-		  </select>
+			<label>Workshops</label>
+			<select id="workshop">
+			<option id="workshop_default_option" value="" selected="" disabled="">-- Choose your position --</option>
+			</select>
+		</div>
+		<div class="form_item">
+		 	<legend>Do you want to present a poster?</legend>
+			<label>Participation to poster Contest</label>
+			<select id="poster" name="poster"/>
+			<option value="" selected="" disabled="">-- Choice --</option>
+			<option value=true>Yes</option>
+			<option value=false>No</option>
+  		</select>
 		</div>
 
 		<!-- ====================== Submission -->
