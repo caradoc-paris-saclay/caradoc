@@ -26,6 +26,7 @@ var idRef=null;
 document.getElementById('registration_form').addEventListener('submit', submitForm);
 //Uncomment this block then use the URL on 2nd line in the webrowser
 
+loadLabs();
 processUser();
 
 //http://127.0.0.1:4000/reg_form_test_arnaud.html/?firstname=Arnaud&lastname=Jean
@@ -79,6 +80,18 @@ function processUser()
     }
   }
 }
+
+function loadLabs(){
+  console.log("Fetching lab list");
+  db.collection("laboratories").get()
+  .then(doc =>{
+    console.log("Laboratory list downloaded.");
+  })
+  .catch(err =>{
+    console.log("Failes to load list of labs: ", err);
+  });
+}
+
 // helper function to get value from input forms
 function getInputVal(id){
   return document.getElementById(id).value;
