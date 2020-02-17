@@ -85,7 +85,7 @@ async function main() {
       .onUpdate((change, context) => {
         const participant = change.after.data();
         const participantOld = change.before.data();
-        console.log("Looking at id: ", participantID);
+        console.log("Looking at id: ", change.after.id);
         if (participant.contact.email != participantOld.contact.email){
           db.collection('email').document(participantOld.contact.emailId).delete()
           .then( function(snap){
@@ -113,7 +113,7 @@ async function main() {
         }
 
         // access a particular field as you would any JS property
-        const id = participant.id;
+        const id = change.after.id;
         const firstName = participant.contact.firstName;
         console.log("Modify doc id: ", id);
 
