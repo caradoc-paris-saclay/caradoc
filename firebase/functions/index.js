@@ -28,7 +28,7 @@ async function main() {
       }
   });
   // Sends an email confirmation when a user changes his mailing list subscription.
-  exports.sendREgistrationEmail = functions
+  exports.sendRegistrationEmail = functions
   .region('europe-west1')
   .firestore
       .document('participants/{participantID}')
@@ -69,7 +69,7 @@ async function main() {
     return null;
   });
 
-  exports.sendREgistrationEmail = functions
+  exports.sendModificationEmail = functions
   .region('europe-west1')
   .firestore
       .document('participants/{participantID}')
