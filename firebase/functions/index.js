@@ -1,9 +1,12 @@
 'use strict';
-
 const functions = require('firebase-functions');
 const nodemailer = require('nodemailer');
 const QRCode = require('qrcode');
 const fs = require('fs');
+const admin = require('firebase-admin');
+admin.initializeApp();
+
+const db = admin.firestore();
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
@@ -73,13 +76,40 @@ async function main() {
   .region('europe-west1')
   .firestore
       .document('participants/{participantID}')
-      .onUpdate((snap, context) => {
-        const participant = snap.data();
+      .onUpdate((change, context) => {
+        const participant = change.after.data();
+        const participantOld = change.before.data();
+        console.log("Looking at id: ", participantID);
+        if (participant.contact.email != participantOld.contact.email){
+          db.collection('email').document(participantOld.contact.emailId).delete()
+          .then( function(snap){
+              console.log("Old email document deleted.");
+              db.collection('email').document(participant.contact.emailId).get()
+              .then(function(doc){
+                if (doc.exists){
+                  console.log("New email doc found.")
+                }
+                else{
+                  consol.log("Couldn't find new email doc. Creating one.")
+                  db.collection('email').document(participant.contact.emailId).set({
+                      refId:participantID
+                  });
+                }
+              })
+              .catch(function (err){
+                console.log("Error when trying to find email document: ", participant.contact.emailId);
+                console.log("Error report: ", err);
+              });
+          })
+          .catch(function(err){
+              console.log("Error when deleting email doc: ", participantOld.contact.emailId);
+          });
+        }
 
         // access a particular field as you would any JS property
-        const id = snap.id;
+        const id = participant.id;
         const firstName = participant.contact.firstName;
-        console.log("New doc id: ", id, " and firstname: ", firstName);
+        console.log("Modify doc id: ", id);
 
         const mailOptions = {
           from: '"No-Reply CARaDOC" <contact@caradoc-paris-saclay.fr>',
