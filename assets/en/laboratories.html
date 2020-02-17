@@ -12,26 +12,35 @@ permalink: /laboratories/
 
 <form  class="reg_form" action=""  id="laboratory_form">
 	<div class="wrapper">
-	<div class="form_item">
-	<label>Laboratory (*)</label>
-		<div style ="text-align: left">
-			<small>(Type keyword to find your lab OR write its full name)</small>
+		<div class="form_item">
+			<legend>Laboratory (*)</legend>
+			<div style ="text-align: center">
+				<small>(Type keyword to find your lab OR write its full name)</small>
+			</div>
+			<div id="lab_div" class="d-flex flex-row">
+				<div id="acronym_div" class="col-3">
+					<label>Acronym (*)</label>
+		  			<input id="acronym" name="acronym" type="text" list="lab_acronym_list" placeholder="Acronym"/>
+					<datalist id="lab_acronym_list">
+						<option value="AAA"></option>
+					</datalist>
+  				</div>
+				<div id="name_div" class="col pl-md-5 pl-2 flex-fill">
+					<label>Name(*)</label>
+					<input id="name" name="name" type="text" list="lab_name_list" placeholder="Name"/>
+					<datalist id="lab_name_list">
+						<option value="Aérodynamique, Aéroélasticité, Acoustique"></option>
+					</datalist>
+	  			</div>
+			</div>
 		</div>
-
-		<input id="laboratory" name="laboratory" type="text" list="labs_list" placeholder="Type keyword to find your lab OR write its full name"/>
-
-		<datalist id="labs_list">
-			<!-- Page 1 -->
-			<option value="Aérodynamique, Aéroélasticité, Acoustique"></option>
-		</datalist>
-	</div>
-<div class="form_item">
+		<div class="form_item">
 			<legend>Contact details</legend>
 			<div class="d-flex flex-row">
 				<div class="flex-fill">
-	  			<label>First Name (*)</label>
-	  			<input type="text" name="first_name" value="" id ="first_name" placeholder="First Name" required/>
-	  		</div>
+		  			<label>First Name (*)</label>
+		  			<input type="text" name="first_name" value="" id ="first_name" placeholder="First Name" required/>
+	  			</div>
 
 				<div class="pl-md-5 pl-2 flex-fill">
 	  			<label>Last Name (*)</label>

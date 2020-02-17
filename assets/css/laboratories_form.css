@@ -1,0 +1,25 @@
+---
+---
+$sm-width: 576px;
+$md-width: 768px;
+$lg-width: 992px;
+$xl-width: 1200px;
+
+div#acronym_div{
+	padding-left: 0;
+}
+
+@media (max-width:$md-width){
+
+	div#lab_div{
+		flex-direction: column ! important;
+	}
+
+	div#acronym_div{
+		-ms-flex: 1 1 auto!important;
+	    flex: 1 1 auto!important;
+	    flex-grow: 1 !important;
+	    flex-shrink: 1 !important;
+	    flex-basis: auto !important;
+	}
+}
