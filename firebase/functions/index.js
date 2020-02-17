@@ -4,7 +4,13 @@ const nodemailer = require('nodemailer');
 const QRCode = require('qrcode');
 const fs = require('fs');
 const admin = require('firebase-admin');
-admin.initializeApp();
+
+var serviceAccount = require("./caradoc-b9cfd-firebase-adminsdk-7xt83-0bfb05e279.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://caradoc-b9cfd.firebaseio.com"
+});
 
 const db = admin.firestore();
 // // Create and Deploy Your First Cloud Functions

@@ -10,6 +10,34 @@ permalink: /laboratories/
 	</div>
 </section>
 
-<form  class="lab_form" action=""  id="laboratory_form">
+<form  class="reg_form" action=""  id="laboratory_form">
+	<div class="wrapper">
+	<div class="form_item">
+	<label>Laboratory (*)</label>
+		<div style ="text-align: left">
+			<small>(Type keyword to find your lab OR write its full name)</small>
+		</div>
 
+		<input id="laboratory" name="laboratory" type="text" list="labs_list" placeholder="Type keyword to find your lab OR write its full name"/>
+
+		<datalist id="labs_list">
+			<!-- Page 1 -->
+			<option value="Aérodynamique, Aéroélasticité, Acoustique"></option>
+		</datalist>
+	</div>
+<div class="form_item">
+			<legend>Contact details</legend>
+			<div class="d-flex flex-row">
+				<div class="flex-fill">
+	  			<label>First Name (*)</label>
+	  			<input type="text" name="first_name" value="" id ="first_name" placeholder="First Name" required/>
+	  		</div>
+
+				<div class="pl-md-5 pl-2 flex-fill">
+	  			<label>Last Name (*)</label>
+	  			<input type="text" name="last_name" value="" id ="last_name" placeholder="Last Name" required/>
+	  		</div>
+  		</div>
+	  	</div>
+	</div>
 </form>
