@@ -132,7 +132,7 @@ function submitForm(e){
   else{
     var workshop = yearAndWorkshops[phdYear][workshopIndex];
   }
-  var poster = getInputVal('poster');
+  var poster = getInputVal('poster') == "true" ? true : false;
 
   const newParticipant = {
     contact:{
