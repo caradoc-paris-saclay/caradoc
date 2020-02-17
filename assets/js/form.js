@@ -163,22 +163,28 @@ function saveParticipant(participant){
       ps.doc(doc.data().refId).update(participant);
     }
     else{
-      console.log("New user. Creating new database entry");
-      ps.add(participant)
-      .then(function(docRef) {
-        userId = docRef.id;
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function(error) {
-        console.error("Error adding document: ", error);
-      });
-      es.doc(participant.contact.emailId).set({
-        refId:id
-      })
-      .catch(function(error) {
-        console.error("Error adding document: ", error);
-      });
-    }
+    }})
+  .catch(function(error) {
+    //console.error("Error getting document: ", error);
+    console.log("New user. Creating new database entry");
+      async function addPar(){
+        await ps.add(participant)
+        .then(function(docRef) {
+          userId = docRef.id;
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
+        es.doc(participant.contact.emailId).set({
+          refId:userId
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
+      }
+      addPar();
+      
   });
   return userId;
 }
@@ -216,24 +222,28 @@ function isPhDStudent(val) {
     $('.phd_student_block').css("display", "flex");
     document.getElementById("university").style.required = true;
     document.getElementById("phd_year").style.required = true;
+    document.getElementById("laboratory").style.required = true;
   }
   else if (val === 'PostDoc'){
     $('.phd_student_block').css("display", "none");
     $('.professor_block').css("display", "none");
     $('.postdoc_block').css("display", "flex");
+    document.getElementById("laboratory").style.required = true;
   }
   else if (val === 'Professor' || val === 'AssistantProfessor'){
     $('.phd_student_block').css("display", "none");
      $('.postdoc_block').css("display", "none");
      $('.professor_block').css("display", "flex");
+     document.getElementById("laboratory").style.required = true;
   }
   else {
+    console.log("We are here fo OTHERs");
     $('.phd_student_block').css("display", "none");
     $('.postdoc_block').css("display", "none");
     document.getElementById("university").style.required = false;
+    document.getElementById("laboratory").style.required = false;
     document.getElementById("phd_year").style.required = false;
   }
-  showPosition(val);
 }
 function showUniversity(val) {
   showOther(val, "university", "another_university");

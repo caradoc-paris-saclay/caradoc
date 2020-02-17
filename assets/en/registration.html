@@ -60,7 +60,7 @@ permalink: /registration
 		<div class="form_item">
   		<legend>Tell us about your job</legend>
   		<label>Job Title (*)</label>
-  		<select id="position" name="position" required onchange="isPhDStudent(this.value);changeWorkshopList();">
+  		<select id="position" name="position" required onchange="isPhDStudent(this.value);showPosition(this.value);changeWorkshopList();"/>
 				<option value="" selected="" disabled="">-- Position --</option>
 				<option value="PhDStudent">PhD Student</option>
 				<option value="PostDoc">Post-Doc</option>
@@ -155,7 +155,7 @@ permalink: /registration
 				<small>(Type keyword to find your lab OR write its full name)</small>
 			</div>
 
-			<input id="laboratory" type="text" list="labs_list" placeholder="Type keyword to find your lab OR write its full name" required>
+			<input id="laboratory" name="laboratory" type="text" list="labs_list" placeholder="Type keyword to find your lab OR write its full name"/>
 
 			<datalist id="labs_list">
 				<!-- Page 1 -->
