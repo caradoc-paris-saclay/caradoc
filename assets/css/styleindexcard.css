@@ -1,5 +1,7 @@
 .niceday {
-  background: #e4dfdf;
+  /*background: #e4dfdf;*/
+  background: linear-gradient(134deg, rgba(1, 1, 1,0.02) 0%, rgba(1, 1, 1,0.02) 16%,transparent 16%, transparent 76%,rgba(58, 58, 58,0.02) 76%, rgba(58, 58, 58,0.02) 100%),linear-gradient(215deg, rgba(166, 166, 166,0.02) 0%, rgba(166, 166, 166,0.02) 33%,transparent 33%, transparent 79%,rgba(111, 111, 111,0.02) 79%, rgba(111, 111, 111,0.02) 100%),linear-gradient(303deg, rgba(215, 215, 215,0.02) 0%, rgba(215, 215, 215,0.02) 7%,transparent 7%, transparent 90%,rgba(192, 192, 192,0.02) 90%, rgba(192, 192, 192,0.02) 100%),linear-gradient(302deg, rgba(113, 113, 113,0.02) 0%, rgba(113, 113, 113,0.02) 34%,transparent 34%, transparent 73%,rgba(65, 65, 65,0.02) 73%, rgba(65, 65, 65,0.02) 100%),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));
+
 }
 
 .niceday h1 {
@@ -32,11 +34,12 @@
 .container .card {
   position: relative;
   cursor: pointer;
-  background: #e4dfdf;
+  /*background: #e4dfdf;*/
   margin: 0.5em;
   width: 35rem;
   height: 30rem;
   border: 0px solid rgba(0,0,0,.125);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .container .card .face {
@@ -51,7 +54,7 @@ box-shadow: 0 20px 25px rgba(0, 0, 0, 0.4)
 .container .card .face.face1 {
 
   position: relative;
-  background: #333;
+  background: #092A46;
   display: flex;
   justify-content: center;
   align-items: center;
