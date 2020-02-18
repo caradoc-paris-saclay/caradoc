@@ -5,21 +5,37 @@ $md-width: 768px;
 $lg-width: 992px;
 $xl-width: 1200px;
 
+.form_item {
+	width: 75vw;
+}
+
 div#acronym_div{
-	padding-left: 0;
+	width: 11vw;
+	padding-left: 0 !important;
+}
+
+div#name_div{
+	width: 60vw;
+	padding-left: 2vw;
 }
 
 @media (max-width:$md-width){
 
 	div#lab_div{
-		flex-direction: column ! important;
+		flex-direction: column !important;
 	}
 
 	div#acronym_div{
+		max-width: 100%;
+		width: auto !important;
 		-ms-flex: 1 1 auto!important;
 	    flex: 1 1 auto!important;
 	    flex-grow: 1 !important;
 	    flex-shrink: 1 !important;
 	    flex-basis: auto !important;
+	}
+	div#name_div{
+		width: auto !important;
+		padding-left: 0 !important;
 	}
 }
