@@ -15,10 +15,6 @@ admin.initializeApp({
 const db = admin.firestore();
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
 
 // Configure the email transport using the default SMTP transport and a GMail account.
 // For other types of transports such as Sendgrid see https://nodemailer.com/transports/
@@ -58,6 +54,7 @@ async function main() {
 
 
     // Building Email message.
+    const myConcertChoice = participant.eventChoices.concert ? "Ticket for 1 person (ID required)" : "Not going";
     mailOptions.subject = "Welcome to CARaDOC 2020!";
     mailOptions.text = "";
     mailOptions.html = fs.readFileSync("./email_body_register.html")
@@ -65,7 +62,8 @@ async function main() {
                          .replace(/participantID/g, id)
                          .replace(/participantFirstName/g, participant.contact.firstName)
                          .replace(/participantLastName/g, participant.contact.lastName)
-                         .replace(/WORKSHOP/g, participant.eventChoices.workshop);
+                         .replace(/WORKSHOP/g, participant.eventChoices.workshop)
+                         .replace(/CONCERT/g, myConcertChoice);
     
     try {
       async function test(){await mailTransport.sendMail(mailOptions);}
@@ -123,13 +121,16 @@ async function main() {
         };
         mailOptions.subject = "Modifcation of your registration to CARaDOC 2020.";
 
+      const myConcertChoice = participant.eventChoices.concert ? "Ticket for 1 person (ID required)" : "Not going";
+
       mailOptions.text = "";
       mailOptions.html = fs.readFileSync("./email_body_modify.html")
                            .toString()
                            .replace(/participantID/g, id)
                            .replace(/participantFirstName/g, participant.contact.firstName)
                            .replace(/participantLastName/g, participant.contact.lastName)
-                           .replace(/WORKSHOP/g, participant.eventChoices.workshop);
+                           .replace(/WORKSHOP/g, participant.eventChoices.workshop)
+                           .replace(/CONCERT/g, myConcertChoice);
       
       try {
         async function test(){await mailTransport.sendMail(mailOptions);}
