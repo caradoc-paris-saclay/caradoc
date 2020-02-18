@@ -57,6 +57,11 @@ function submitForm(e){
 	document.getElementById('laboratory_form').reset();
 }
 
+function updateForm(field, val){
+	console.log("Called updateForm");
+	console.log(field, " ", val);
+}
+
 function isLabInDatabase(newLab){
 	let result = false;
 	let labId = null;
