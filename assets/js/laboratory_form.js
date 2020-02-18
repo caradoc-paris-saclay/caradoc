@@ -39,7 +39,7 @@ function submitForm(e){
 	var phone = getInputVal('phone');
 	var name = getInputVal('name');
 	var acronym = getInputVal('acronym');
-	var isPerson = getInputVal('is_person');
+	var isPerson = getInputVal('is_person')  == "true" ? true : false;
 
 	const newLab = {
 	contact:{
@@ -88,6 +88,14 @@ window.updateForm = function updateForm(field, val){
 		setInputVal('email', lab.contact.email)
 		setInputVal('phone', lab.contact.phone);
 		setInputVal('is_person', lab.contact.isPerson);
+	}
+	else{
+		setInputVal('first_name', "");
+		setInputVal('last_name', "");
+		setInputVal('email', "")
+		setInputVal('phone', "");
+		setInputVal('is_person', "");
+
 	}
 }
 
