@@ -112,10 +112,10 @@ function isLabInDatabase(newLab){
 	labs.forEach(doc => {
 		lab = doc.data();
 		if (newLab.name == lab.name || newLab.acronym == lab.acronym ){
-			console.log("New Lab name: ", newLab.name);
-			console.log(newLab);
-			console.log("Ols Lab name: ", lab.name);
-			console.log(lab);
+			//console.log("New Lab name: ", newLab.name);
+			//console.log(newLab);
+			//console.log("Old Lab name: ", lab.name);
+			//console.log(lab);
 			labId = doc.id;
 			result = true;
 		}    	
@@ -141,7 +141,7 @@ function saveLab(lab){
 	let labId = null;
 	//First we check if particpant's e-mail already exsits in the databse
 	let check = isLabInDatabase(lab);
-	console.log("check", check);
+	//console.log("check", check);
 	if (check[0]){
 		labId = check[1];
 		ls.doc(labId).set(lab)
