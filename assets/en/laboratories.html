@@ -10,6 +10,7 @@ permalink: /laboratories/
 	</div>
 </section>
 
+<div class="alert" id="submission_msg">Your submission has been sent</div>
 <form  class="reg_form" action=""  id="laboratory_form">
 	<div class="wrapper">
 		<div class="form_item">
@@ -27,7 +28,7 @@ permalink: /laboratories/
   				</div>
 				<div id="name_div" class="flex-fill">
 					<label>Name(*)</label>
-					<input id="name" name="name" type="text" list="lab_name_list" placeholder="Name"/>
+					<input id="name" name="name" type="text" list="lab_name_list" placeholder="Name" required/>
 					<datalist id="lab_name_list">
 						<option value="Aérodynamique, Aéroélasticité, Acoustique"></option>
 					</datalist>
@@ -39,18 +40,18 @@ permalink: /laboratories/
 			<div class="d-flex flex-row">
 				<div class="flex-fill">
 		  			<label>First Name (*)</label>
-		  			<input type="text" name="first_name" value="" id ="first_name" placeholder="First Name" required/>
+		  			<input type="text" name="first_name" value="" id ="first_name" placeholder="First Name" />
 	  			</div>
 
 				<div class="pl-md-5 pl-2 flex-fill">
 	  			<label>Last Name (*)</label>
-	  			<input type="text" name="last_name" value="" id ="last_name" placeholder="Last Name" required/>
+	  			<input type="text" name="last_name" value="" id ="last_name" placeholder="Last Name" />
 	  		</div>
   		</div>
 	  	</div>
 		<div class="form_item">
 			<label>E-mail (*)</label>
-			<input type="email" name="email" value="" id="email" placeholder="contact@mail.com" required/>
+			<input type="email" name="email" value="" id="email" placeholder="contact@mail.com" />
 		</div>
 	  	<div class="form_item">
 	  		<label>Phone Number</label>
@@ -58,7 +59,7 @@ permalink: /laboratories/
 	  	</div>
 	  	<div class="form_item">
   		<label>Contact is a person?</label>
-  		<select id="is_person" name="isPerson" required onchange="isPhDStudent(this.value);showPosition(this.value);changeWorkshopList();"/>
+  		<select id="is_person" name="is_person" onchange=""/>
 				<option value="" selected="" disabled="">-- Yes/No --</option>
 				<option value="true">Yes</option>
 				<option value="fals">No</option>
