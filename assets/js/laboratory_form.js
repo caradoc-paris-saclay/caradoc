@@ -32,22 +32,25 @@ async function setLabs(){
 
 
 function submitForm(e){
-  e.preventDefault();
-  var firstName = getInputVal('first_name');
-  var lastName = getInputVal('last_name');
-  var email = getInputVal('email').replace(/\s/g, ''); //remove white spaces
-  var phone = getInputVal('phone');
-  var name = getInputVal('name');
-  var acronym = getInputVal('acronym');
+	e.preventDefault();
+	var firstName = getInputVal('first_name');
+	var lastName = getInputVal('last_name');
+	var email = getInputVal('email').replace(/\s/g, ''); //remove white spaces
+	var phone = getInputVal('phone');
+	var name = getInputVal('name');
+	var acronym = getInputVal('acronym');
 
-   const newLab = {
-    contact:{
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      phone: phone
-    },
-    name:name,
-    acronym:acronym
+	const newLab = {
+	contact:{
+	  firstName: firstName,
+	  lastName: lastName,
+	  email: email,
+	  phone: phone
+	  isPerson: isPerson;
+	},
+	name:name,
+	acronym:acronym
 	}
+
+	
 }

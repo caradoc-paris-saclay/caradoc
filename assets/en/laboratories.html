@@ -53,8 +53,12 @@ permalink: /laboratories/
 			<input type="email" name="email" value="" id="email" placeholder="contact@mail.com" required/>
 		</div>
 	  	<div class="form_item">
+	  		<label>Phone Number</label>
+	  		<input type="tel" name="phone" value="" id ="phone" placeholder="06XXXXXXXX"/>
+	  	</div>
+	  	<div class="form_item">
   		<label>Contact is a person?</label>
-  		<select id="position" name="position" required onchange="isPhDStudent(this.value);showPosition(this.value);changeWorkshopList();"/>
+  		<select id="is_person" name="isPerson" required onchange="isPhDStudent(this.value);showPosition(this.value);changeWorkshopList();"/>
 				<option value="" selected="" disabled="">-- Yes/No --</option>
 				<option value="true">Yes</option>
 				<option value="fals">No</option>
