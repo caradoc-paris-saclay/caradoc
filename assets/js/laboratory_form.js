@@ -57,9 +57,40 @@ function submitForm(e){
 	document.getElementById('laboratory_form').reset();
 }
 
-function updateForm(field, val){
+// since we use this js as a module we need to declare the
+// function using window.functioname to use in the html file
+window.updateForm = function updateForm(field, val){
 	console.log("Called updateForm");
 	console.log(field, " ", val);
+	let flag = false;
+	let lab;
+	if (field == 'acronym'){
+		labs.forEach(doc => {
+			lab = doc.data();
+			if (val == lab.acronym){
+				setInputVal('name', lab.name);
+				flag = true;
+				return true;
+			}  
+		})
+	}
+	else if (field == 'name'){
+		labs.forEach(doc => {
+			lab = doc.data();
+			if (val == lab.name){
+				setInputVal('acronym', lab.acronym);
+				flag = true;
+				return true;
+			}  
+		})
+	}
+	if (flag){
+		setInputVal('first_name', lab.contact.firstName);
+		setInputVal('last_name', lab.contact.lastName);
+		setInputVal('email', lab.contact.email)
+		setInputVal('phone', lab.contact.phone);
+		setInputVal('is_person', lab.contact.isPerson);
+	}
 }
 
 function isLabInDatabase(newLab){
