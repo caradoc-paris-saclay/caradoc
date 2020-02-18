@@ -62,11 +62,14 @@ function submitForm(e){
 window.updateForm = function updateForm(field, val){
 	let flag = false;
 	let lab;
+	let reflab;
 	if (field == 'acronym'){
 		labs.forEach(doc => {
 			lab = doc.data();
 			if (val == lab.acronym){
-				setInputVal('name', lab.name);
+				reflab = lab;
+				setInputVal('name', reflab.name);
+				clearContactField();
 				flag = true;
 				return true;
 			}  
@@ -76,27 +79,30 @@ window.updateForm = function updateForm(field, val){
 		labs.forEach(doc => {
 			lab = doc.data();
 			if (val == lab.name){
-				setInputVal('acronym', lab.acronym);
+				reflab = lab;
+				setInputVal('acronym', reflab.acronym);
+				clearContactField();
 				flag = true;
 				return true;
 			}  
 		})
 	}
+	console.log(lab);
 	if (flag){
-		setInputVal('first_name', lab.contact.firstName);
-		setInputVal('last_name', lab.contact.lastName);
-		setInputVal('email', lab.contact.email)
-		setInputVal('phone', lab.contact.phone);
-		setInputVal('is_person', lab.contact.isPerson);
+		setInputVal('first_name', reflab.contact.firstName);
+		setInputVal('last_name', reflab.contact.lastName);
+		setInputVal('email', reflab.contact.email)
+		setInputVal('phone', reflab.contact.phone);
+		setInputVal('is_person', reflab.contact.isPerson);
 	}
-	else{
-		setInputVal('first_name', "");
-		setInputVal('last_name', "");
-		setInputVal('email', "")
-		setInputVal('phone', "");
-		setInputVal('is_person', "");
+}
 
-	}
+function clearContactField(){
+	setInputVal('first_name', "");
+	setInputVal('last_name', "");
+	setInputVal('email', "")
+	setInputVal('phone', "");
+	setInputVal('is_person', "");
 }
 
 function isLabInDatabase(newLab){
