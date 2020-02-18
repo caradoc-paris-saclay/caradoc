@@ -19,7 +19,7 @@ async function setLabs(){
 			let lab;
 			labs.forEach(doc => {
 		    	lab = doc.data();
-		    	console.log(doc.id, '=>', lab);
+		    	//console.log(doc.id, '=>', lab);
 		    	let optionName = document.createElement('option');
 		    	let optionAcronym = document.createElement('option');
 		    	optionName.value =  lab.name; 
