@@ -60,8 +60,6 @@ function submitForm(e){
 // since we use this js as a module we need to declare the
 // function using window.functioname to use in the html file
 window.updateForm = function updateForm(field, val){
-	console.log("Called updateForm");
-	console.log(field, " ", val);
 	let flag = false;
 	let lab;
 	if (field == 'acronym'){
