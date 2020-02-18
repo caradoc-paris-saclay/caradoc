@@ -87,7 +87,7 @@ window.updateForm = function updateForm(field, val){
 			}  
 		})
 	}
-	console.log(lab);
+	//console.log(lab);
 	if (flag){
 		setInputVal('first_name', reflab.contact.firstName);
 		setInputVal('last_name', reflab.contact.lastName);
