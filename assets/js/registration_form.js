@@ -104,6 +104,7 @@ function processUser(){
               changeWorkshopList();
               setInputVal('workshop', participant.eventChoices.workshopIndex);
               setInputVal('poster', participant.eventChoices.poster);
+              setInputVal('concert', participant.eventChoices.concert);
             }
           });
       }
@@ -161,6 +162,7 @@ function submitForm(e){
     var workshop = yearAndWorkshops[phdYear][workshopIndex];
   }
   var poster = getInputVal('poster') == "true" ? true : false;
+  var concert = getInputVal('concert') == "true" ? true : false;
 
   const newParticipant = {
     contact:{
@@ -180,7 +182,8 @@ function submitForm(e){
     eventChoices:{
       workshopIndex: workshopIndex,
       workshop: workshop,
-      poster: poster
+      poster: poster,
+      concert:concert
     }
   }
 
