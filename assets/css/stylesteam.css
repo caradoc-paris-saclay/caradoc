@@ -55,6 +55,7 @@
 
 	.card{
 		width: 32rem;
+		/*height: 88rem;*/
 		background-color: #ebeef8;
 		display: flex;
 		flex-direction: column;
