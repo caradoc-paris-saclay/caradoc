@@ -48,6 +48,18 @@ permalink: /laboratories/
 	  		</div>
   		</div>
 	  	</div>
+		<div class="form_item">
+			<label>E-mail (*)</label>
+			<input type="email" name="email" value="" id="email" placeholder="contact@mail.com" required/>
+		</div>
+	  	<div class="form_item">
+  		<label>Contact is a person?</label>
+  		<select id="position" name="position" required onchange="isPhDStudent(this.value);showPosition(this.value);changeWorkshopList();"/>
+				<option value="" selected="" disabled="">-- Yes/No --</option>
+				<option value="true">Yes</option>
+				<option value="fals">No</option>
+  		</select>
+	  	</div>
   	  	<div class="full form_item">
 	  		<button type="submit">Send</button>
 		</div>

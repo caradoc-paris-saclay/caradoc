@@ -8,23 +8,19 @@ $xl-width: 1200px;
 .form_item {
 	width: 75vw;
 }
-
 div#acronym_div{
 	width: 11vw;
 	padding-left: 0 !important;
 }
-
 div#name_div{
 	width: 60vw;
 	padding-left: 2vw;
 }
 
 @media (max-width:$md-width){
-
 	div#lab_div{
 		flex-direction: column !important;
 	}
-
 	div#acronym_div{
 		max-width: 100%;
 		width: auto !important;
