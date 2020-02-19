@@ -8,6 +8,8 @@ exclude:
   - "/firebase"
   - "/scripts"
   - "/firestore"
+  - "/assets/img/email"
+  - "/assets/img/jred"
 
 keep_files:
   - "CNAME"
