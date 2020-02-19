@@ -30,10 +30,13 @@ h2{
 	align-content: center;
 	flex-direction: column;*/
 
-	width: 60rem;
+	/*width: 60rem;
 	display: grid;
 	grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
-	margin: 1rem auto 3rem auto;
+	margin: 1rem auto 3rem auto;*/
+	display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
 }
 
@@ -51,7 +54,8 @@ h2{
 	position: relative;
 	width: 23rem;
 	height: 23rem;
-	margin: 0 auto 3rem auto;
+	/*margin: 0 auto 3rem auto;*/
+	margin: 0.5rem 3rem 1rem 3rem;
 
 	border-radius: 200px 200px 200px 200px;
 	-moz-border-radius: 200px 200px 200px 200px;
@@ -62,8 +66,7 @@ h2{
 	border-radius: 72px 72px 72px 72px;
 	-moz-border-radius: 72px 72px 72px 72px;
 	-webkit-border-radius: 72px 72px 72px 72px;*/
-	
-}
+    }
 .container2 .card .imgBx{
 	position: absolute;
 	top: 0;
@@ -178,6 +181,7 @@ h2{
 @media (max-width: 768px){
 	.container2 .card{
 		max-width: 23rem;
+		margin: 1rem 0 1rem 0;
 		flex-direction: column;
 		height: auto;
 		border-radius: 108px 108px 108px 108px;
