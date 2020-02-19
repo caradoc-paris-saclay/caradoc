@@ -55,6 +55,7 @@ function submitForm(e){
 	saveLab(newLab);
 	document.getElementById('submission_msg').style.display = "block";
 	document.getElementById('laboratory_form').reset();
+	setLabs(); // refresh the list TODO make it local to prevent a useless call to DB
 }
 
 // since we use this js as a module we need to declare the
