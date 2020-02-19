@@ -15,6 +15,9 @@ async function setLabs(){
 	await loadLaboratories()
 	.then( function(snap){
 		labs = snap;
+		console.log(snap);
+		console.log(snap.val());
+		//console.log(labs.toJSON());
 		if (snap != null){
 			let lab;
 			labs.forEach(doc => {
@@ -23,7 +26,9 @@ async function setLabs(){
 		    	let optionName = document.createElement('option');
 		    	let optionAcronym = document.createElement('option');
 		    	optionName.value =  lab.name; 
-		    	optionAcronym.value =  lab.acronym;   
+		    	optionName.id = lab.name.replace(/\s/g, '');
+		    	optionAcronym.value =  lab.acronym; 
+		    	optionAcronym.id =  lab.acronym.replace(/\s/g, '');     
 		  		listName.appendChild(optionName);
 		  		listAcronym.appendChild(optionAcronym);
 	  		})
@@ -55,7 +60,8 @@ function submitForm(e){
 	saveLab(newLab);
 	document.getElementById('submission_msg').style.display = "block";
 	document.getElementById('laboratory_form').reset();
-	setLabs(); // refresh the list TODO make it local to prevent a useless call to DB
+	// Fetch contact information from databse
+	loadLaboratories();
 }
 
 // since we use this js as a module we need to declare the
@@ -106,7 +112,7 @@ function clearContactField(){
 	setInputVal('is_person', "");
 }
 
-function isLabInDatabase(newLab){
+function isLabInDatabase(newLab, refresh){
 	let result = false;
 	let labId = null;
 	let lab;
@@ -119,6 +125,19 @@ function isLabInDatabase(newLab){
 			//console.log(lab);
 			labId = doc.id;
 			result = true;
+			if (refresh){
+				listName.removeChild(lab.name);
+				listAcronym.removeChild(lab.acronym);
+				let optionName = document.createElement('option');
+		    	let optionAcronym = document.createElement('option');
+		    	optionName.value =  newLab.name; 
+		    	optionName.id = newLab.name.replace(/\s/g, '');
+		    	optionAcronym.value =  newLab.acronym; 
+		    	optionAcronym.id =  newLab.acronym.replace(/\s/g, '');
+		  		listName.appendChild(optionName);
+		  		listAcronym.appendChild(optionAcronym);
+			}
+			return [result, labId]; // to break the loop sooner
 		}    	
 	})
 	return [result, labId];
@@ -141,7 +160,7 @@ function saveLab(lab){
 	console.log("Adding new lab:", lab);
 	let labId = null;
 	//First we check if particpant's e-mail already exsits in the databse
-	let check = isLabInDatabase(lab);
+	let check = isLabInDatabase(lab, true);
 	//console.log("check", check);
 	if (check[0]){
 		labId = check[1];

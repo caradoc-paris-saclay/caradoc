@@ -49,6 +49,7 @@ yearAndWorkshops['YEAR_2'] = ['W1-Stress managemnet & co-working', 'W2-Public sp
 yearAndWorkshops['YEAR_3'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
 yearAndWorkshops['YEAR_4'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
 yearAndWorkshops['YEAR_5'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
+yearAndWorkshops['OTHER']  = ['W1-Stress managemnet & co-working', 'W2-Public speaking' , 'W3-How to structure work and pose the problems', 'W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
 const positionArray=["PhDStudent", "PostDoc", "AssistantProfessor", "Professor"];
 // Your web app's Firebase configuration
 var yearList = document.getElementById("phd_year");
@@ -155,7 +156,7 @@ function submitForm(e){
     doctoralSchool = getInputVal('other_doctoral_school');
   }
   var workshopIndex = getInputVal('workshop'); // returns an int
-  if(position != 'PhDStudent'){
+  if(position != 'PhDStudent' || position != 'PostDoc'){
     var workshop = yearAndWorkshops['YEAR_5'][workshopIndex];
   }
   else{
@@ -327,9 +328,12 @@ function changeWorkshopList() {
       workshopList.options.add(new Option("-- Choose your PhD year first --", "", true, false));
       return false;
     }
-    else if (position != 'PhDStudent'){
+    else if (position == 'PostDoc'){
+      var currentYear = 'YEAR_5';
+    }
+    else if (position != 'PhDStudent' && position != 'PostDoc'){
       console.log("not a PhDStudent");
-      var currentYear = yearList.options[yearList.length-1].value;
+      var currentYear = 'OTHER';
     }
     else{
       var currentYear = yearList.options[yearList.selectedIndex].value;
