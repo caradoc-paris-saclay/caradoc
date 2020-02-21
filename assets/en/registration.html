@@ -9,8 +9,26 @@ permalink: /registration
 		<h2 class="animated fadeInUp"><strong>Registration form</strong></h2>
 	</div>
 </section>
-
-<div class="alert" id="submission_msg">Your submission has been sent</div>
+<!--div class="alert" id="submission_msg">Your submission has been sent</div-->
+<div class="modal fade" id="submission_msg" tabindex="-1" role="dialog" aria-labelledby="SubmissionMsg" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<h4 class="modal-title ml-auto" id="SubmissionMsg">Close</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <h3>Your submission has been sent</h3>
+        <br />
+        <p>Thank you for your registration!</p>
+        <p>En email with the detail of your registration will be sent to you shortly.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <form  class="reg_form" action=""  id="registration_form">
 	<div class="wrapper">
 
@@ -516,6 +534,7 @@ permalink: /registration
 		</div>
   		<div class="full form_item">
 	  		<button type="submit">Send</button>
+	  		<!--button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">See Modal</button-->
 		</div>
 
 

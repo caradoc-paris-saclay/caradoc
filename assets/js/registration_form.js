@@ -194,6 +194,8 @@ function submitForm(e){
   saveParticipant(newParticipant);
   document.getElementById('submission_msg').style.display = "block";
   document.getElementById('registration_form').reset();
+  $(function() {$('#submission_msg').modal("show");});
+    //data-toggle="modal" data-target="#submission_msg"
 }
 
 // send data to firebase-firestorm and return ID
