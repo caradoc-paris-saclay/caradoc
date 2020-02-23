@@ -1,0 +1,196 @@
+---
+layout: page_event_fr
+title: Inscription
+permalink: /fr/job/
+---
+
+<!-- ########## Inscription ########## -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create a column layout with Flexbox */
+.row {
+  display: flex;
+}
+
+/* Left column (menu) */
+.left {
+  flex: 35%;
+  padding: 15px 0;
+}
+
+.left h2 {
+  padding-left: 8px;
+}
+
+/* Right column (page content) */
+.right {
+  flex: 65%;
+  padding: 15px;
+}
+
+/* Style the search box */
+#mySearch {
+  width: 100%;
+  font-size: 18px;
+  padding: 11px;
+  border: 1px solid #ddd;
+}
+
+/* Style the navigation menu inside the left column */
+#myMenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myMenu li a {
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: block
+}
+
+#myMenu li a:hover {
+  background-color: #eee;
+}
+
+#myMenu li a:focus {
+  background-color: #eee;
+}
+
+#rcorners2 {
+  border-radius: 10px;
+  border: 5px solid #f9c700;;
+  padding-left: 2%;
+  padding-right: 2%; 
+  width: 95%;
+}
+
+
+</style>
+</head>
+<body>
+
+<section class="top-bird">
+  <div class="animated fadeInUp">
+    <h1><strong>Liste des Offres</strong></h1>
+  </div>
+</section>
+
+<section class="container">
+
+  <div class="row">
+    <div class="left" style="background-color:#bbb;">
+      <h2>Entreprises :</h2>
+      <input type="text" id="mySearch" onkeyup="searchCompany()" placeholder="Recherche..." title="Type in a category">
+      <ul id="myMenu">
+        <li id="saintgobain"><a id="saintgobain" onfocus="searchjob(this.id)" href="#">Saint Gobain</a></li>
+        <li id="loreal"><a id="loreal" onfocus="searchjob(this.id)" href="#">L'Oreal</a></li>
+        <li id="scalian"><a id="scalian" onfocus="searchjob(this.id)" href="#">Scalian</a></li>
+      </ul>
+    </div>
+    
+    <div id="paragraphe" class="right" style="background-color:#ddd;">
+      <h2> Résultats : </h2>
+
+      <div id="p_saintgobain">
+        <div id="rcorners2">
+          <h3>[Saint Gobain] Offre 1</h3>
+          Voici mon offre...
+          Candidater blabla
+        </div> <br>
+        <div id="rcorners2">
+          <h3>[Saint Gobain] Offre 2</h3>
+          Voici mon offre...
+          Candidater blabla
+        </div> <br>
+      </div>
+
+      <div id="p_loreal">
+        <div id="rcorners2">
+          <h3>[L'oreal] Offre 1</h3>
+          Voici mon offre...
+          Candidater blabla
+        </div> <br>
+        <div id="rcorners2">
+          <h3>[L'oreal] Offre 2</h3>
+          Voici mon offre...
+          Candidater blabla
+        </div> <br>
+      </div>
+
+      <div id="p_scalian">
+        <div id="rcorners2">
+          <h3>[Scalian] Offre 1</h3>
+          Voici mon offre...
+          Candidater blabla
+        </div> <br>
+        <div id="rcorners2">
+          <h3>[Scalian] Offre 2</h3>
+          Voici mon offre...
+          Candidater blabla e
+        </div> <br>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+<script>
+function searchCompany() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("mySearch");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myMenu");
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+      document.getElementById("p_"+li[i].id).style.display = "";
+    } else {
+      li[i].style.display = "none";
+      document.getElementById("p_"+li[i].id).style.display = "none";
+    }
+  }
+}
+
+function searchjob(company_name) {
+  all = document.querySelectorAll('[id^="p_"]');
+  for (i = 0; i < all.length; i++){
+    all[i].style.display = "none";
+  }
+  document.getElementById("p_"+company_name).style.display = ""; 
+}
+</script>
+
+
+</body>
+</html>
+
+
+<!--
+<section id="registration">
+  <div class="container">
+    <div class="row">
+      <div class="col-md">
+        <h1>Lien d'inscription à venir !</h1>
+        <a title="Logiciel billetterie en ligne" href="https://weezevent.com/?c=sys_widget" class="weezevent-widget-integration" target="_blank" data-src="https://www.weezevent.com/widget_billeterie.php?id_evenement=411721&lg_billetterie=1&code=10168&width_auto=1&color_primary=00AEEF" data-width="650" data-height="600" data-id="411721" data-resize="1" data-width_auto="1" data-noscroll="0" data-nopb="0">Billetterie Weezevent</a><script type="text/javascript" src="https://www.weezevent.com/js/widget/min/widget.min.js"></script>
+      </div>
+    </div>
+  </div>
+</section>
+-->
