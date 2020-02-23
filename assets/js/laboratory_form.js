@@ -15,8 +15,7 @@ async function setLabs(){
 	await loadLaboratories()
 	.then( function(snap){
 		labs = snap;
-		console.log(snap);
-		console.log(snap.val());
+		console.log("snap: ", snap);
 		//console.log(labs.toJSON());
 		if (snap != null){
 			let lab;
