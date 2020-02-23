@@ -156,12 +156,16 @@ function submitForm(e){
     doctoralSchool = getInputVal('other_doctoral_school');
   }
   var workshopIndex = getInputVal('workshop'); // returns an int
-  if(position != 'PhDStudent' || position != 'PostDoc'){
+  if (position == "PostDoc"){
     var workshop = yearAndWorkshops['YEAR_5'][workshopIndex];
+  }
+  if(position != 'PhDStudent' && position != 'PostDoc'){
+    var workshop = yearAndWorkshops['OTHER'][workshopIndex];
   }
   else{
     var workshop = yearAndWorkshops[phdYear][workshopIndex];
   }
+
   var poster = getInputVal('poster') == "true" ? true : false;
   var concert = getInputVal('concert') == "true" ? true : false;
 

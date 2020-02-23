@@ -54,7 +54,8 @@ async function main() {
 
 
     // Building Email message.
-    const myConcertChoice = participant.eventChoices.concert ? "Ticket for 1 person (ID required)" : "Not going";
+    const myPosterChoice = participant.eventChoices.poster ? "Presenting a poster." : "Not presenting a poster.";
+
     mailOptions.subject = "Welcome to CARaDOC 2020!";
     mailOptions.text = "";
     mailOptions.html = fs.readFileSync("./email_body_register.html")
@@ -63,7 +64,7 @@ async function main() {
                          .replace(/participantFirstName/g, participant.contact.firstName)
                          .replace(/participantLastName/g, participant.contact.lastName)
                          .replace(/WORKSHOP/g, participant.eventChoices.workshop)
-                         .replace(/CONCERT/g, myConcertChoice);
+                         .replace(/POSTER/g, myPosterChoice);
     
     try {
       async function test(){await mailTransport.sendMail(mailOptions);}
@@ -121,7 +122,7 @@ async function main() {
         };
         mailOptions.subject = "Modifcation of your registration to CARaDOC 2020.";
 
-      const myConcertChoice = participant.eventChoices.concert ? "Ticket for 1 person (ID required)" : "Not going";
+      const myPosterChoice = participant.eventChoices.poster ? "Presenting a poster." : "Not presenting a poster.";
 
       mailOptions.text = "";
       mailOptions.html = fs.readFileSync("./email_body_modify.html")
@@ -130,7 +131,7 @@ async function main() {
                            .replace(/participantFirstName/g, participant.contact.firstName)
                            .replace(/participantLastName/g, participant.contact.lastName)
                            .replace(/WORKSHOP/g, participant.eventChoices.workshop)
-                           .replace(/CONCERT/g, myConcertChoice);
+                           .replace(/POSTER/g, myPosterChoice);
       
       try {
         async function test(){await mailTransport.sendMail(mailOptions);}
