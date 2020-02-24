@@ -40,7 +40,7 @@
   /*background: #e4dfdf;*/
   margin: 0.5em;
   width: 40vw;
-  max-height: 620px;
+  max-height: 670px;
   height: auto;
   border: 0px solid rgba(0,0,0,.125);
   background-color: rgba(0, 0, 0, 0);
@@ -58,7 +58,7 @@ box-shadow: 0 20px 25px rgba(0, 0, 0, 0.4)
 .container .card .face.face1 {
   border-radius: 40px 40px 0px 0px;
   box-shadow: none;
-  height: 13vw;
+  height: 14vw;
   position: relative;
   background: #092A46;
   display: flex;
