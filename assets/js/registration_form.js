@@ -86,6 +86,7 @@ function processUser(){
               setInputVal('email', participant.contact.email);
               setInputVal('email_confirmation', participant.contact.email);
               setInputVal('phone', participant.contact.phone);
+              setInputVal('linkedin', participant.contact.linkedIn);
               //todo treat case of display and others
               //setInputVal('postion', participant.professional.position);
               console.log(participant.professional.position);
@@ -136,6 +137,7 @@ function submitForm(e){
     document.getElementById('emailNoMatch').style.display = "none";
   }
   var phone = getInputVal('phone');
+  var linkedIn = getInputVal('linkedin');
   var position = getInputVal('position');
   var workplace="";
   if (position.length == 0){
@@ -175,7 +177,8 @@ function submitForm(e){
       lastName: lastName,
       email: email,
       emailId: emailId,
-      phone: phone
+      phone: phone,
+      linkedIn: linkedIn
     },
     professional:{
       position: position,
