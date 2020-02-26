@@ -400,10 +400,15 @@ a:active {
 }
 #portfolio-work .block .portfolio-contant ul li {
   width: 10vw;
-  height: 10vw;
+  height: auto;
   margin: 1vw;
   position: relative;
 }
+
+#portfolio-work .block .portfolio-contant ul li img {
+  padding: 5px;
+}
+
 #portfolio-work .block .portfolio-contant ul li:hover .overly {
   opacity: 1;
 }
