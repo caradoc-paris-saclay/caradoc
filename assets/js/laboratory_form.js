@@ -5,8 +5,8 @@ var idRef=null;
 document.getElementById('laboratory_form').addEventListener('submit', submitForm);
 //Uncomment this block then use the URL on 2nd line in the webrowser
 
-const listName = document.getElementById("lab_name_list");
-const listAcronym = document.getElementById("lab_acronym_list");
+var listName = document.getElementById("lab_name_list");
+var listAcronym = document.getElementById("lab_acronym_list");
 const ls = db.collection('laboratories');
 var labs;
 setLabs();
@@ -125,8 +125,8 @@ function isLabInDatabase(newLab, refresh){
 			labId = doc.id;
 			result = true;
 			if (refresh){
-				listName.removeChild(lab.name);
-				listAcronym.removeChild(lab.acronym);
+				listName.removeChild(document.querySelector("#lab_name_list option[value=\'"+lab.name+"\']"));
+				listAcronym.removeChild(document.querySelector("#lab_acronym_list option[value=\'"+lab.acronym+"\']"));
 				let optionName = document.createElement('option');
 		    	let optionAcronym = document.createElement('option');
 		    	optionName.value =  newLab.name; 
