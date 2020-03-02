@@ -125,8 +125,8 @@ function isLabInDatabase(newLab, refresh){
 			labId = doc.id;
 			result = true;
 			if (refresh){
-				listName.removeChild(document.querySelector("#lab_name_list option[value=\'"+lab.name+"\']"));
-				listAcronym.removeChild(document.querySelector("#lab_acronym_list option[value=\'"+lab.acronym+"\']"));
+				listName.removeChild(document.querySelector("#lab_name_list option[value=\""+lab.name+"\"]"));
+				listAcronym.removeChild(document.querySelector("#lab_acronym_list option[value=\""+lab.acronym+"\"]"));
 				let optionName = document.createElement('option');
 		    	let optionAcronym = document.createElement('option');
 		    	optionName.value =  newLab.name; 
