@@ -205,6 +205,12 @@ function addLabToTable(lab, row){
 	email.innerHTML = lab.contact.email;
 	phone.innerHTML = lab.contact.phone;
 	isPerson.innerHTML = lab.contact.isPerson;
+
+	updateNumberLabs();
+}
+
+function updateNumberLabs(){
+	document.getElementById("label_list_labs").innerHTML = "List of Labs (" + listOfLabs.length +")";
 }
 
 function makeLabTable(){
@@ -218,7 +224,7 @@ function makeLabTable(){
 	});
 
 	var row, acronym, name, firstName, lastName, email, phone, isPerson;
-	console.log("Listof labs:", listOfLabs);
+	updateNumberLabs();
 	listOfLabs.forEach(function(lab, i){
 		row = table.insertRow(-1);
 
