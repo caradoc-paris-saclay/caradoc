@@ -9,6 +9,7 @@ var listName = document.getElementById("lab_name_list");
 var listAcronym = document.getElementById("lab_acronym_list");
 const ls = db.collection('laboratories');
 var labs;
+var listOfLabs = new Array();
 setLabs();
 
 async function setLabs(){
@@ -21,6 +22,7 @@ async function setLabs(){
 			let lab;
 			labs.forEach(doc => {
 		    	lab = doc.data();
+		    	listOfLabs.push(lab);
 		    	//console.log(doc.id, '=>', lab);
 		    	let optionName = document.createElement('option');
 		    	let optionAcronym = document.createElement('option');
@@ -32,6 +34,7 @@ async function setLabs(){
 		  		listAcronym.appendChild(optionAcronym);
 	  		})
 		}
+		makeLabTable();
 	});
 }
 
@@ -57,9 +60,11 @@ function submitForm(e){
 	acronym:acronym
 	}
 	saveLab(newLab);
+	listOfLabs.push(newLab);
+	addLabToTable(newLab, -1);
 	document.getElementById('submission_msg').style.display = "block";
 	document.getElementById('laboratory_form').reset();
-	// Fetch contact information from databse
+	// Fetch contact information from database
 	loadLaboratories();
 }
 
@@ -138,7 +143,7 @@ function isLabInDatabase(newLab, refresh){
 			}
 			return [result, labId]; // to break the loop sooner
 		}    	
-	})
+	});
 	return [result, labId];
 }
 
@@ -176,4 +181,61 @@ function saveLab(lab){
 		labId = addLab(lab);
 	}
 	return labId;
+}
+
+
+function addLabToTable(lab, row){
+	var table = document.getElementById("table_labs");
+
+	var row, acronym, name, firstName, lastName, email, phone, isPerson;
+	row = table.insertRow(row);
+
+	acronym = row.insertCell(0);
+	name = row.insertCell(1);
+	firstName = row.insertCell(2);
+	lastName = row.insertCell(3);
+	email = row.insertCell(4);
+	phone = row.insertCell(5);
+	isPerson = row.insertCell(6);
+
+	acronym.innerHTML = lab.acronym;
+	name.innerHTML = lab.name;
+	firstName.innerHTML = lab.contact.firstName;
+	lastName.innerHTML = lab.contact.lastName;
+	email.innerHTML = lab.contact.email;
+	phone.innerHTML = lab.contact.phone;
+	isPerson.innerHTML = lab.contact.isPerson;
+}
+
+function makeLabTable(){
+	var table = document.getElementById("table_labs");
+	listOfLabs.sort(function(a, b){ 
+		var x = a.acronym.toLowerCase();
+	  	var y = b.acronym.toLowerCase();
+	  	if (x < y) {return -1;}
+	  	if (x > y) {return 1;}
+	  	return 0;
+	});
+
+	var row, acronym, name, firstName, lastName, email, phone, isPerson;
+	console.log("Listof labs:", listOfLabs);
+	listOfLabs.forEach(function(lab, i){
+		row = table.insertRow(-1);
+
+		acronym = row.insertCell(0);
+		name = row.insertCell(1);
+		firstName = row.insertCell(2);
+		lastName = row.insertCell(3);
+		email = row.insertCell(4);
+		phone = row.insertCell(5);
+		isPerson = row.insertCell(6);
+
+		acronym.innerHTML = lab.acronym;
+		name.innerHTML = lab.name;
+		firstName.innerHTML = lab.contact.firstName;
+		lastName.innerHTML = lab.contact.lastName;
+		email.innerHTML = lab.contact.email;
+		phone.innerHTML = lab.contact.phone;
+		isPerson.innerHTML = lab.contact.isPerson;
+	});
 }
