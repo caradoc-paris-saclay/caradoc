@@ -235,6 +235,10 @@ function makeLabTable(){
 		firstName.innerHTML = lab.contact.firstName;
 		lastName.innerHTML = lab.contact.lastName;
 		email.innerHTML = lab.contact.email;
+		if (lab.contact.email == ""){
+			console.log("Problem: email missing!");
+			row.className = "table-danger";
+		}
 		phone.innerHTML = lab.contact.phone;
 		isPerson.innerHTML = lab.contact.isPerson;
 	});
