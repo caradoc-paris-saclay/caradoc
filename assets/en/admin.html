@@ -1,5 +1,5 @@
 ---
-layout: laboratories_form
+layout: admin_en
 title: admin
 permalink: /admin/
 ---
@@ -10,15 +10,15 @@ permalink: /admin/
 	</div>
 </section>
 
-<form  class="reg_form" action=""  id="registration_form">
+<form  id="login_form" class="reg_form" action="#" onsubmit="return false" id="admin_form">
 	<div class="wrapper">
 		<div class="form_item">
-			<label>E-mail (*)</label>
-			<input type="email" name="email" value="" id="email" placeholder="myname@mail.com" required/>
+			<label for="email">E-mail (*)</label>
+			<input type="email" name="email" value="" id="email" autocomplete="on" placeholder="myname@mail.com" required/>
 		</div>
 		<div class="form_item">
-			<label>Password (*)</label>
-			<input type="password" name="password" value="" id="password" placeholder="XXXXXXX" required/>
+			<label for="password">Password (*)</label>
+			<input type="password" name="password" value="" id="password" autocomplete="on" placeholder="XXXXXXX" required/>
 		</div>
 		<div class="full form_item">
 			<button type="submit">Log In</button>
