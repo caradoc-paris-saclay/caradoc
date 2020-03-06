@@ -1,28 +1,37 @@
 ---
 layout: admin_en
-title: admin
+sitemap: false
+title: Admin - Log In
 permalink: /admin/
 ---
 <section class="top-bird">
 	<div>
-		<h1 class="animated fadeInUp"><strong>Admin Page</strong></h1>
+		<h1 class="animated fadeInUp"><strong>Admin Log In Page</strong></h1>
 		<h2 class="animated fadeInUp"><strong>Only for administrators</strong></h2>
 	</div>
 </section>
 
-<form  id="login_form" class="reg_form" action="#" onsubmit="return false" id="admin_form">
+<form  id="login_form" class="reg_form" action="#" onsubmit="return false">
 	<div class="wrapper">
 		<div class="form_item">
-			<label for="email">E-mail (*)</label>
-			<input type="email" name="email" value="" id="email" autocomplete="on" placeholder="myname@mail.com" required/>
+			<label> Log In Status: <span id="quickstart-sign-in-status">Unknown</span></label>
 		</div>
-		<div class="form_item">
+		<div class="form_item" id="username_div">
+			<label for="email">Username (*)</label>
+			<input type="email" name="email" value="" id="username" spellcheck="false" autocapitalize="none" autocomplete="username email" placeholder="myname@mail.com" required/>
+		</div>
+		<div class="form_item" id="password_div">
 			<label for="password">Password (*)</label>
-			<input type="password" name="password" value="" id="password" autocomplete="on" placeholder="XXXXXXX" required/>
+			<input type="password" name="password" value="" id="password" autocomplete="current-password" spellcheck="false" autocapitalize="off" placeholder="XXXXXXX" required/>
 		</div>
 		<div class="full form_item">
-			<button type="submit">Log In</button>
+			<button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
 			<!--button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">See Modal</button-->
 		</div>
 	</div>
 </form>
+<div class="quickstart-user-details-container">
+    Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+    <div>Firebase auth <code>currentUser</code> object value:</div>
+    <pre><code id="quickstart-account-details">null</code></pre>
+ </div>
