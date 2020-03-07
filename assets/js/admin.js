@@ -78,6 +78,8 @@ function initApp() {
 			var providerData = user.providerData;
 			// [START_EXCLUDE]
 			document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+			document.getElementById('admin_title').textContent = "Admin Dashboard";
+			document.getElementById('admin_subtitle').style.display = "none";
 			document.getElementById('quickstart-sign-in').textContent = 'Sign out';
 			document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
 			document.getElementById('username_div').style.display = "none";
@@ -88,6 +90,8 @@ function initApp() {
 			// User is signed out.
 			// [START_EXCLUDE]
 			document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
+			document.getElementById('admin_title').textContent = "Admin Log In Page";
+			document.getElementById('admin_subtitle').style.display = "block";
 			document.getElementById('quickstart-sign-in').textContent = 'Sign in';
 			document.getElementById('quickstart-account-details').textContent = 'null';
 			document.getElementById('username_div').style.display = "block";
