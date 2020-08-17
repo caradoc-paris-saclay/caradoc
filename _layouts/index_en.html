@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    {% include head.html %}
+    <link rel="stylesheet" href="{{site.baseurl }}/assets/css/styleindexcard.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/index.css" />
+    {% seo %}
+  </head>
+  <body>
+    {% include header_event_en.html %}
+
+    {{ content }}
+
+    {% include footer_en.html %}
+    {% include foot_js.html %}
+    <script src="{{ site.baseurl }}/assets/js/index.js"></script>
+    </body>
+</html>
