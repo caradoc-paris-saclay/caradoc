@@ -5,42 +5,11 @@
 <<Description>>:
 */
 
-/* #############################################################################
-main class
-############################################################################# */
-/* General rules -------------------------------------------------------------*/
-.main {
-  margin-top: 2.5%;
-  background : linear-gradient(
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)),
-    url("../img/slider-bg.jpg");
-  background-size: cover; /*Covers all background area*/
-  background-attachment: fixed; /* Image will not scroll with the page*/
-  background-position: center; /* Position of the background within an element */
-  background-repeat: no-repeat; /* The background image is only shown once */
-  /* Space around an element's content */
-  padding: 2.5vw 2.5vw; /* 5% of the viewport width */
-  /* Font color */
-  color: #E3E3E4;
-  /* Text alignent */
-  text-align: center;
+html {
+  scroll-behavior: smooth;
 }
 
-section.main{
-  margin-top: 0;
-}
 
-/* Headers rules -------------------------------------------------------------*/
-.main h1 {
-  font-size: 7vw; /* Font size */
-  font-weight: bold /* Other */
-}
-@media screen and (max-width: 768px) {
-  .main h1 {
-    font-size: 10vw; /* Font size */
-  }
-}
 
 .main h2 {
   font-size: 2.5vw; /* Font size */

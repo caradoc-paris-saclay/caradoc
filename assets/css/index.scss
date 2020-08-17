@@ -1,0 +1,216 @@
+---
+---
+/* #############################################################################
+index page
+############################################################################# */
+/* break points (according to bootstrap doc) */
+$sm-width: 576px;
+$md-width: 768px;
+$lg-width: 992px;
+$xl-width: 1200px;
+/* colors */
+$special-white: white;
+$prussian-blue: rgba(9, 41, 70, 1);
+$lapis-lazuli: rgba(37, 95, 154, 1);
+$naples-yellow: rgba(254, 221, 100, 1);
+$rusty-red: rgba(222, 60, 75, 1);
+$french-raspberry: rgba(196, 40, 71, 1);
+/* block sizes */
+$index-top-height: 90vh;
+/* Font size */
+$default-font-size: 2vw;
+$title-font-size: 7vw;
+$big-title-font-size: 10vw;
+$subtitle-font-size: 2.5vw;
+$big-subtitle-font-size: 3.57vw;
+$big-font-size: 4vw;
+$huge-font-size: 5.71vw;
+
+
+/* #############################################################################
+General rules
+############################################################################# */
+
+.index{
+  color: $special-white;
+  font-size: $default-font-size; 
+  font-weight: bold; 
+}
+
+/* #############################################################################
+index-top
+############################################################################# */
+/* index-top corresponds to the welcome page first graphic band */
+
+.index-top {
+  height:$index-top-height;
+  //margin-top: 2.5%;
+  margin-top: 0;
+  padding: 2.5vh 2.5vw; /* 5% of the viewport width */
+  /*background : linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)),
+    url("../img/slider-bg.jpg");*/
+  background: $prussian-blue;
+  background-size: cover; /*Covers all background area*/
+  background-attachment: fixed; /* Image will not scroll with the page*/
+  background-position: center; /* Position of the background within an element */
+  background-repeat: no-repeat; /* The background image is only shown once */
+  /* Space around an element's content */
+  /* Text alignent */
+  text-align: center;
+  z-index: 1;
+}
+
+.d-flex.animated.fadeInUp{
+	position: relative;
+	z-index: 1;
+}
+
+.index-top .title{
+  font-size: $title-font-size;
+}
+
+.index-top .subtitle{
+  font-size: $subtitle-font-size;
+}
+
+.index-top .date-and-place{
+  font-size: $big-font-size;
+  color: $special-white;
+}
+
+.index-top .d-flex.date{
+	margin-top: 5vh;
+}
+
+.index-top .d-flex.date > .date{
+  border-bottom: 1px solid $naples-yellow;
+}
+
+@media screen and (max-width: $md-width) {
+  .index-top .title {
+    font-size: $big-title-font-size;
+  }
+  .index-top .subtitle{
+    font-size: $big-subtitle-font-size;
+  }
+  .index-top .date-and-place{
+  	font-size: $huge-font-size;
+  }
+}
+
+@media (min-width: $sm-width) and (orientation: landscape) {
+  .index-top .title {
+    font-size: $title-font-size;
+  }
+  .index-top .subtitle{
+    font-size: $subtitle-font-size;
+  }
+  .index-top .date-and-place{
+  	font-size: $big-font-size;
+  }
+
+}
+
+/* dialog gif */
+
+.dialog-gif{
+	z-index: 0;
+	position: absolute;
+	bottom: 15vh;
+	max-height: $index-top-height * 2 / 3 ;
+	min-width: 40vw;
+	height: auto;
+	-o-object-fit: contain;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+@media screen and (max-width: $md-width) {
+	.dialog-gif{
+		//	bottom: 10vh;
+		max-width: 50vw;
+		max-height: $index-top-height / 2 - 5vh ;
+
+	}
+}
+
+/* center gif only in portrait mode on small screens */
+@media (max-width: $md-width) and (orientation: portrait) {
+	.dialog-gif-box{
+		margin-right: 0 !important;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+@media screen and (max-width: $sm-width) {
+	.dialog-gif{
+		//bottom: 10vh;
+		max-width: 60vw;
+		//padding-left: 10vw;
+	}
+	.dialog-gif-box{
+		margin-left: 5vw;
+		margin-bottom: auto;
+	}
+}
+
+/* Message above arrow */
+.participate-box{
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 3vh;
+	z-index: 1;
+}
+
+.participate{
+	font-size: $subtitle-font-size;
+	color: $special-white;
+ 	border-bottom: 1px solid $special-white;
+}
+
+.index-top a:hover { 
+  background-color: inherit;
+  color: inherit;
+  border-color: inherit;
+}
+
+@media screen and (max-width: $md-width) {
+	.participate{
+  		font-size: $big-subtitle-font-size;
+  	}
+  	.participate-box{
+		margin-bottom: 2.5vh;
+	}
+}
+
+/* arrow animation and position */
+@keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 2vh;}
+    100% {bottom: 0;}
+}
+
+.arrow {
+    animation: bouncing 1s infinite ease-in-out;
+    bottom: 0;
+    display: block;
+    min-height: 50px;
+    min-width: 50px;
+    height: 4vw;
+    width: 4vw;
+    //left: 50%;
+    //margin-left: max(-2vw, 50px);
+    position: relative;
+    
+}
+
+/* #############################################################################
+.index-registration
+############################################################################# */
+.index-registration{
+	color: black;
+}
