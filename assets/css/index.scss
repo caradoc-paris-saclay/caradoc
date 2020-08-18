@@ -17,6 +17,7 @@ $naples-yellow: rgba(254, 221, 100, 1);
 $rusty-red: rgba(222, 60, 75, 1);
 $french-raspberry: rgba(196, 40, 71, 1);
 /* block sizes */
+$navbar-height: 10vh; // defined in .navbar from my_navabr.scss
 $index-top-height: 90vh;
 /* Font size */
 $default-font-size: 2vw;
@@ -99,6 +100,17 @@ Scroll Down Animated Arrow
     //margin-left: max(-2vw, 50px);
     position: relative;
     
+}
+
+/* #############################################################################
+Anchor
+############################################################################# */
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -1 * $navbar-height;
+    visibility: hidden;
 }
 
 /* #############################################################################
@@ -224,7 +236,7 @@ index-top
 index-caradoc
 ############################################################################# */
 .index-caradoc{
-	color: $special_black;
+	color: $special_white;
 	height: $index-top-height;
 	background : linear-gradient(
     rgba(0, 0, 0, 0.5),
