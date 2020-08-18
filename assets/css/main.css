@@ -1,14 +1,19 @@
-/*
-<<Author>>: Oscar DE LA CRUZ
-<<E-mail>>: odelacruz.fierro@gmail.com
-<<Date>>: September 21, 2019
-<<Description>>:
-*/
-
 html {
   scroll-behavior: smooth;
 }
-
+ul {
+  padding: 0;
+  list-style: none;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Google Sans','Roboto', sans-serif;
+}
+h2 {
+  font-weight: 400;
+}
+h3 {
+  font-weight: 300;
+}
 
 
 .main h2 {
@@ -20,55 +25,6 @@ html {
   }
 }
 
-/* Registration button rule --------------------------------------------------*/
-.main a {
-  margin-top: 4%;
-  font-family: 'Google Sans','Roboto', sans-serif; /* Font type*/
-  font-weight: 300; /* Sets boldness */
-  font-size: 2vw; /* 2% of viewport width */
-  width: 14vw; /* Link width */
-  /* Space around an element's content */
-  padding:0.5em 1em; /* Xem = X times the size of current font */
-  /*Dark blue*/
-  color: #002E46;
-  /*Dark blue */
-  text-align: center;
-  /* Vertical alignment of the element */
-  vertical-align: top;
-  /* */
-  display:inline-block; /* Margins/paddings are respected */
-  cursor: pointer; /* Mouse cursos */
-  box-sizing: border-box; /* Includes the padding and border in an element's total width and height. */
-  text-decoration: none;
-  -webkit-transition-duration: 0.2s; /* Safari */
-  transition-duration: 0.2s;
-  /* Light blue */
-  background-color: #B1D8EC;
-}
-
-.main a:active {
-  text-decoration: underline;
-}
-
-.main a:hover {
-  /*Light blue*/
-  color: #B1D8EC;
-  /*Light blue*/
-  border-color: #B1D8EC;
-  /*Dark blue*/
-  background-color: #AA2E46;
-  /*border-color: solid #DDDDDD;*/
-}
-
-@media screen and (max-width: 768px) {
-  .main a {
-    /* Font size */
-    font-size: 5vw;
-    width: 35vw;
-  }
-}
-
-}
 /* #############################################################################
 footer class
 ############################################################################# */
