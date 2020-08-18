@@ -9,6 +9,7 @@ $md-width: 768px;
 $lg-width: 992px;
 $xl-width: 1200px;
 /* colors */
+$special_black: black;
 $special-white: white;
 $prussian-blue: rgba(9, 41, 70, 1);
 $lapis-lazuli: rgba(37, 95, 154, 1);
@@ -37,6 +38,69 @@ General rules
   font-weight: bold; 
 }
 
+/* general behaviour of links in the index div */
+.index a:hover { 
+  background-color: inherit;
+  color: inherit;
+  border-color: inherit;
+  text-decoration: none;
+}
+
+.index a { 
+  background-color: inherit;
+  color: inherit;
+  border-color: inherit;
+}
+
+/* #############################################################################
+Scroll Down Animated Arrow
+############################################################################# */
+
+/* text above arrow */
+.arrow-box{
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	//margin-bottom: 3vh;
+	z-index: 1;
+}
+
+.arrow-suptitle{
+	font-size: $subtitle-font-size;
+	color: $special-white;
+ 	border-bottom: 1px solid $special-white;
+}
+
+@media screen and (max-width: $md-width) {
+	.arrow-suptitle{
+  		font-size: $big-subtitle-font-size;
+  	}
+  	.arrow-box{
+		//margin-bottom: 2.5vh;
+	}
+}
+
+/* arrow animation and position */
+@keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 2vh;}
+    100% {bottom: 0;}
+}
+
+.arrow {
+    animation: bouncing 1s infinite ease-in-out;
+    bottom: 0;
+    display: block;
+    min-height: 50px;
+    min-width: 50px;
+    height: 4vw;
+    width: 4vw;
+    //left: 50%;
+    //margin-left: max(-2vw, 50px);
+    position: relative;
+    
+}
+
 /* #############################################################################
 index-top
 ############################################################################# */
@@ -44,18 +108,9 @@ index-top
 
 .index-top {
   height:$index-top-height;
-  //margin-top: 2.5%;
   margin-top: 0;
-  padding: 2.5vh 2.5vw; /* 5% of the viewport width */
-  /*background : linear-gradient(
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)),
-    url("../img/slider-bg.jpg");*/
+  padding: 2.5vh 2.5vw; 
   background: $prussian-blue;
-  background-size: cover; /*Covers all background area*/
-  background-attachment: fixed; /* Image will not scroll with the page*/
-  background-position: center; /* Position of the background within an element */
-  background-repeat: no-repeat; /* The background image is only shown once */
   /* Space around an element's content */
   /* Text alignent */
   text-align: center;
@@ -131,7 +186,7 @@ index-top
 	.dialog-gif{
 		//	bottom: 10vh;
 		max-width: 50vw;
-		max-height: $index-top-height / 2 - 5vh ;
+		max-height: $index-top-height / 2 - 10vh ;
 
 	}
 }
@@ -149,6 +204,7 @@ index-top
 	.dialog-gif{
 		//bottom: 10vh;
 		max-width: 60vw;
+		min-width: 0vw;
 		//padding-left: 10vw;
 	}
 	.dialog-gif-box{
@@ -156,61 +212,198 @@ index-top
 		margin-bottom: auto;
 	}
 }
-
-/* Message above arrow */
-.participate-box{
-	position: relative;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 3vh;
-	z-index: 1;
+/* #############################################################################
+index-caradoc
+############################################################################# */
+.index-caradoc{
+	color: $special_black;
+	height: $index-top-height;
+	background : linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)),
+    url("../img/slider-bg.jpg");
+	background-size: cover; /*Covers all background area*/
+  	background-attachment: fixed; /* Image will not scroll with the page*/
+  	background-position: center; /* Position of the background within an element */
+  	background-repeat: no-repeat; /* The background image is only shown once */
 }
 
-.participate{
-	font-size: $subtitle-font-size;
-	color: $special-white;
- 	border-bottom: 1px solid $special-white;
+.index-caradoc .title {
+	font-size: $big-font-size;
 }
 
-.index-top a:hover { 
-  background-color: inherit;
-  color: inherit;
-  border-color: inherit;
+/* #############################################################################
+index-paris-saclay
+############################################################################# */
+.index-paris-saclay{
+  height:$index-top-height;
+  margin-top: 0;
+  padding: 2.5vh 2.5vw; 
+  background: $prussian-blue;
+  /* Space around an element's content */
+  /* Text alignent */
+  text-align: center;
+  z-index: 1;
 }
 
-@media screen and (max-width: $md-width) {
-	.participate{
-  		font-size: $big-subtitle-font-size;
-  	}
-  	.participate-box{
-		margin-bottom: 2.5vh;
-	}
+.index-paris-saclay .title {
+	font-size: $big-font-size;
 }
 
-/* arrow animation and position */
-@keyframes bouncing {
-    0% {bottom: 0;}
-    50% {bottom: 2vh;}
-    100% {bottom: 0;}
-}
 
-.arrow {
-    animation: bouncing 1s infinite ease-in-out;
-    bottom: 0;
-    display: block;
-    min-height: 50px;
-    min-width: 50px;
-    height: 4vw;
-    width: 4vw;
-    //left: 50%;
-    //margin-left: max(-2vw, 50px);
-    position: relative;
-    
-}
 
 /* #############################################################################
 .index-registration
 ############################################################################# */
+$category-width: 35vw;
+$category-width-sm: 90vw;
+$category-height-sm: 25vh;
+
 .index-registration{
-	color: black;
+	color: $special-white;
+	background: $lapis-lazuli;
+	height: $index-top-height;
+	margin-top: 0;
+  	padding: 2.5vh 2.5vw; 
+}
+
+.index-registration .title {
+	font-size: $big-font-size;
+}
+
+.index-registration .d-flex.align-items-center{
+	color: $special-white;
+}
+
+.index-registration .category-title{
+	font-size: $big-font-size;
+}
+
+.index-registration .category-box{
+	width: $category-width;
+	height: $category-width;
+}
+
+/* required to bypass a marker and jump to next d-flex in html */
+.index-registration .category-box .d-flex{
+	height: inherit;
+	width: inherit;
+}
+
+.index-registration  .img-category{
+	max-height: $category-width - 2.5vw;
+	max-width: $category-width - 2.5vw;
+	height: auto;
+	-o-object-fit: contain;
+    object-fit: contain;
+    overflow: hidden;
+    position: relative;
+	height: 20vw;
+}
+
+.index-registration .company{
+	/*background: rgba(9, 41, 70, 0.95);*/
+}
+
+.student a, .company a{
+	height: inherit;
+}
+
+/* registration buttons */
+.registration-btn {
+  margin-top: 4%;
+  font-family: 'Google Sans','Roboto', sans-serif; /* Font type*/
+  font-weight: 300; /* Sets boldness */
+  font-size: $default-font-size; /* 2% of viewport width */
+  width: 30vw; /* Link width */
+  /* Space around an element's content */
+  padding:0.5em 1em; /* Xem = X times the size of current font */
+  text-align: center;
+  /* Vertical alignment of the element */
+  vertical-align: top;
+  /* */
+  display:inline-block; /* Margins/paddings are respected */
+  cursor: pointer; /* Mouse cursos */
+  box-sizing: border-box; /* Includes the padding and border in an element's total width and height. */
+  text-decoration: none;
+  -webkit-transition-duration: 0.2s; /* Safari */
+  transition-duration: 0.2s;
+  border-radius: 50px;
+}
+
+.student .registration-btn {
+	background-color: $naples-yellow;
+	color: $special_black;
+}
+
+.company .registration-btn {
+	background-color: $prussian-blue;
+	color: $special-white;
+}
+
+.student a:hover, .student a:active {
+	color: $naples-yellow;
+	background-color: $special_black;
+	border-color: $naples-yellow; 
+}
+
+.company a:hover, .company a:active  {
+	color: $prussian-blue;
+	background-color: $special-white;
+	border-color: $prussian-blue; 
+}
+
+.student a:active, .company a:active {
+  text-decoration: underline;
+  border-width: 2px;
+  border-style: solid;
+}
+
+@media (max-width: $md-width) and (orientation: portrait) {
+	
+	.index-registration .title {
+	font-size: $big-title-font-size;
+	}
+
+	.index-registration .category-title{
+	font-size: $title-font-size;
+	}
+
+	.index-registration .category-box{
+		width: $category-width-sm;
+		height: $category-height-sm;
+	}
+
+	.index-registration .student{
+		margin-bottom: 10vh;
+	}
+
+	.registration-btn{
+		font-size: 5vw;
+		width: $category-width-sm * 3/5;
+	}
+}
+
+
+/*@media screen and (max-width: 768px) {
+  .registration-btn a {
+    /* Font size 
+    font-size: 5vw;
+    width: 35vw;
+  }
+}*/
+
+/* text above arrow at the bottom of page */
+.show-more{
+	font-size: $subtitle-font-size;
+	color: $special-white;
+}
+
+@media screen and (max-width: $md-width) {
+	.show-more{
+  		font-size: $big-subtitle-font-size;
+  	}
+  	.index-registration .arrow-box{
+		margin-bottom: 1vh;
+	}
 }
