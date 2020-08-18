@@ -7,7 +7,7 @@ image : "{{ site.baseurl }}/assets/img/caradoc_logo.png"
 
 ---
 <div class="index">
-<!-- ########## Section 1 ########## -->
+<!-- ########## Section Top ########## -->
 <section class = "index-top d-flex justify-content-between flex-column">
   <div class="animated fadeInUp align-self-end">
     <div class="d-flex pr-5 title">
@@ -28,26 +28,101 @@ image : "{{ site.baseurl }}/assets/img/caradoc_logo.png"
       <img class="dialog-gif" src="{{ site.baseurl }}{% link assets/img/index_dialog_400x400.gif %}" >
   </div>
   
-  <a href="#home" id="arrow-registration">
-    <div class="d-flex align-self-center align-items-center justify-content-center participate-box">
-        <div class="participate">Participate</div>
-    </div>
-    <div class="d-flex align-self-center align-items-center justify-content-center arrow-box" id="arrow-registration-box">
-        <div>
-          
-            <img class="arrow" src="{{ site.baseurl }}{% link assets/img/keyboard_arrow_down-white-18dp.svg %}">
-        </div>
+  <a href="#caradoc" id="arrow-caradoc">
+    <div class="d-flex align-items-center justify-content-between flex-column">
+      <div class="d-flex align-self-center align-items-center justify-content-center arrow-box mb-2">
+          <div class="arrow-suptitle">The Convention</div>
+      </div>
+      <div class="d-flex align-self-center align-items-center justify-content-center arrow-box">
+          <div>
+              <img class="arrow" src="{{ site.baseurl }}{% link assets/img/keyboard_arrow_down-white-18dp.svg %}">
+          </div>
+      </div>
     </div>
   </a>
 </section>
-
-<section class = "index-registration">
-    <div class="d-flex" id="index-registration-top">
-      <div class="mx-auto">Registration</div>
+<!-- ########## Section CARaDOC ########## -->
+<section class = "index-caradoc d-flex justify-content-between flex-column" id="caradoc">
+    <div class="d-flex" id="index-caradoc-top">
+      <div class="mx-auto title">What is CARaDOC ?</div>
+    </div>
+    <div class="d-flex align-items-center" >
+      <div class="mx-auto">Bla</div>
+      <div class="mx-auto">Bla</div>
+    </div>
+       <!-- if you change names in this section change also refs in index.js  -->
+   <a href="#paris-saclay" id="arrow-paris-saclay">
+    <div class="d-flex align-items-center justify-content-between flex-column">
+      <div class="d-flex align-self-center align-items-center justify-content-center arrow-box mb-2">
+          <div class="arrow-suptitle">Paris-Saclay</div>
+      </div>
+      <div class="d-flex align-self-center align-items-center justify-content-center arrow-box">
+          <div>
+              <img class="arrow" src="{{ site.baseurl }}{% link assets/img/keyboard_arrow_down-white-18dp.svg %}">
+          </div>
+      </div>
+    </div>
+  </a>
+</section>
+<!-- ########## Section Paris-Saclay ########## -->
+<section class = "index-paris-saclay d-flex justify-content-between flex-column" id="paris-saclay">
+    <div class="d-flex" id="index-paris-saclay-top">
+      <div class="mx-auto title">Paris-Saclay</div>
+    </div>
+    <div class="d-flex align-items-center" >
+      <div class="mx-auto">Bla</div>
+      <div class="mx-auto">Bla</div>
+    </div>
+       <!-- if you change names in this section change also refs in index.js  -->
+   <a href="#registration" id="arrow-registration">
+      <div class="d-flex align-items-center justify-content-between flex-column">
+      <div class="d-flex align-self-center align-items-center justify-content-center arrow-box mb-2">
+          <div class="arrow-suptitle">Participate</div>
+      </div>
+      <div class="d-flex align-self-center align-items-center justify-content-center arrow-box">
+          <div>
+              <img class="arrow" src="{{ site.baseurl }}{% link assets/img/keyboard_arrow_down-white-18dp.svg %}">
+          </div>
+      </div>
+    </div>
+  </a>
+</section>
+<!-- ########## Section Registration ########## -->
+<section class = "index-registration d-flex justify-content-between flex-column" id="registration">
+    <div class="d-flex mt-2" id="index-registration-top">
+      <div class="mx-auto title">Registration</div>
+    </div>
+    <div class="d-flex align-items-center flex-wrap" >
+      <div class="mx-auto student category-box">
+        <div class="d-flex align-items-center justify-content-between flex-column">
+          <div class="my-auto category-title">PhD & Postdocs</div>
+          <div class="my-auto">
+            <img class="img-category" src="{{ site.baseurl }}{% link assets/img/motarboard_white.svg %}">
+          </div>
+          <div class="my-auto">
+            <a class="registration-btn inscription animated fadeInUp" href="{{ site.baseurl }}{% link assets/en/registration.html %}">
+            Register
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto company category-box">
+        <div class="d-flex align-items-center justify-content-between flex-column">
+          <div class="my-auto category-title">Corporations</div>
+          <div class="my-auto">
+            <img class="img-category" src="{{ site.baseurl }}{% link assets/img/company.png %}">
+          </div>
+                    <div class="my-auto">
+            <a class="registration-btn inscription animated fadeInUp" href="{{ site.baseurl }}{% link assets/en/contact.html %}">
+            Take part
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 </section>
 
-<section class = "niceday">
+<!--section class = "niceday">
     <h1> 5 strong reasons to come </h1>
 <div class="container">
       <div class="card">
@@ -135,7 +210,7 @@ image : "{{ site.baseurl }}/assets/img/caradoc_logo.png"
     </div>
   </div>
 </div>
-</section>
+</section-->
 </div>
 <!-- ########## Section 2 ########## 
 <section class="falcon">

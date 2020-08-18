@@ -68,6 +68,49 @@ html {
   }
 }
 
+}
+/* #############################################################################
+footer class
+############################################################################# */
+footer {
+  background: #F5F5F5;
+  text-align: center;
+  /*margin-top: 10vh;*/
+  padding-top: 6vh;
+  padding-bottom: 6vh;
+}
+footer p {
+  font-size: 13px;
+  line-height: 25px;
+  color: #919191;
+}
+footer a {
+  color: #595959;
+}
+footer .footer-menu {
+  padding-bottom: 25px;
+}
+footer .footer-menu ul {
+  margin: 0px;
+  padding: 0px;
+}
+footer .footer-menu ul li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+footer .footer-menu ul li a {
+  display: inline-block;
+  color: #494949;
+}
+footer .footer-menu ul li a:hover {
+  color: #000;
+}
+
+footer .container{
+  width:auto;
+}
+
+
 /* #############################################################################
 top-main class
 ############################################################################# */
