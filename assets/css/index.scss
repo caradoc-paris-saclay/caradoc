@@ -191,6 +191,14 @@ index-top
 	}
 }
 
+@medi (orientation: portrait){
+	.dialog-gif-box{
+		margin-right: 0 !important;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
 /* center gif only in portrait mode on small screens */
 @media (max-width: $md-width) and (orientation: portrait) {
 	.dialog-gif-box{
