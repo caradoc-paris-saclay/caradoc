@@ -20,6 +20,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+
 # Site settings
 title: CARadOC
 subtitle: "PhD Job Fair in Saclay"
