@@ -371,6 +371,7 @@ index-paris-saclay
   height: auto;
   margin-top: 0;
   @include padding-band; 
+  @include interpolate(font-size, $sm-width, $xl-width, 13px, 22px);
   background: $prussian-blue;
   /* Space around an element's content */
   /* Text alignent */
@@ -383,7 +384,28 @@ index-paris-saclay
 	//font-size: $big-font-size;
 }
 
+.index-paris-saclay .container{
+  width: 100%;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  max-width: 90vw;
+}
 
+.index-paris-saclay  .row > *{
+  height: 100%;
+}
+
+/* ##################################
+animated bar graph font-size
+################################## */
+
+.chart-headline{
+  @include interpolate(font-size, $sm-width, $xl-width, 8px, 18px);
+}
+
+/*.bars{
+  @include interpolate(line-height, $sm-width, $xl-width, 10px, 23px);
+}*/
 
 /* #############################################################################
 .index-registration
