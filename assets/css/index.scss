@@ -101,6 +101,13 @@ General rules
   border-color: inherit;
 }
 
+@mixin padding-band{
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+  padding-top: 2.5vh;
+  padding-bottom: 0; 
+}
+
 /* #############################################################################
 Scroll Down Animated Arrow
 ############################################################################# */
@@ -171,10 +178,7 @@ index-top
   min-height:$index-top-height;
   height: auto;
   margin-top: 0;
-  padding-left: 2.5vw;
-  padding-right: 2.5vw;
-  padding-top: 2.5vh;
-  padding-bottom: 0; 
+  @include padding-band; // see mixin for padding details
   background: $prussian-blue;
   text-align: center;
   z-index: 1; // for text to be by default on top of images in case of collisions
@@ -271,7 +275,7 @@ index-caradoc
   height: auto;
   background: $lapis-lazuli;
   margin-top: 0;
-  padding: 2.5vh 2.5vw; 
+  @include padding-band;
   @include interpolate(font-size, $sm-width, $xl-width, 13px, 22px); // set fontsize
   //font-size: $default-font-size;
 	/*background : linear-gradient(
@@ -326,7 +330,7 @@ shake hands gif
   }
 }
 
-@medi (orientation: portrait){
+@media (orientation: portrait){
   .shake-hands-gif-box{
     max-width: 90vw;
     margin-right: 0 !important;
@@ -355,7 +359,6 @@ shake hands gif
     //padding-left: 10vw;
   }
   .shake-hands-gif-box{
-    margin-left: 5vw;
     margin-bottom: auto;
   }
 }
@@ -364,9 +367,10 @@ shake hands gif
 index-paris-saclay
 ############################################################################# */
 .index-paris-saclay{
-  height:$index-top-height;
+  min-height:$index-top-height;
+  height: auto;
   margin-top: 0;
-  padding: 2.5vh 2.5vw; 
+  @include padding-band; 
   background: $prussian-blue;
   /* Space around an element's content */
   /* Text alignent */
@@ -391,9 +395,10 @@ $category-height-sm: 25vh;
 .index-registration{
 	color: $special-white;
 	background: $lapis-lazuli;
-	height: $index-top-height;
+	 min-height:$index-top-height;
+  height: auto;
 	margin-top: 0;
-  	padding: 2.5vh 2.5vw; 
+  padding: 2.5vh 2.5vw; 
 }
 
 .index-registration .title {
