@@ -28,6 +28,53 @@ $big-subtitle-font-size: 3.57vw;
 $big-font-size: 4vw;
 $huge-font-size: 5.71vw;
 
+/* #############################################################################
+Fluid typography
+from: https://codepen.io/MadeByMike/pen/vNrvdZ
+
++ Single property
+html {
+  @include interpolate(font-size, 320px, 1366px, 14px, 20px);
+}
+
++ Multiple properties example
+h1,h2,h3,h4,h5 {
+  @include interpolate((padding-top, padding-bottom), 20rem, 70rem, 0rem, .5rem);
+}
+############################################################################# */
+
+@mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value) {
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+
+    @media screen and (min-width: $min-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value); 
+      }
+    }
+
+    @media screen and (min-width: $max-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value);
+      }
+    }
+  }
+}
+
+// Requires the calc-interpolation function which can also be used independently
+@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value) {
+  $a: ($max-value - $min-value) / ($max-screen - $min-screen);
+  $b: $min-value - $a * $min-screen; 
+
+  $sign: "+";
+  @if ($b < 0) {
+    $sign: "-";
+    $b: abs($b);
+  }
+  @return calc(#{$a*100}vw #{$sign} #{$b});
+}
 
 /* #############################################################################
 General rules
@@ -35,7 +82,8 @@ General rules
 
 .index{
   color: $special-white;
-  font-size: $default-font-size; 
+  @include interpolate(font-size, $sm-width, $lg-width, 12px, 30px); // set fontsize
+  //font-size: $default-font-size; 
   font-weight: bold; 
 }
 
@@ -67,7 +115,8 @@ Scroll Down Animated Arrow
 }
 
 .arrow-suptitle{
-	font-size: $subtitle-font-size;
+  @include interpolate(font-size, $sm-width, $lg-width, 12px, 30px); 
+	//font-size: $subtitle-font-size;
 	color: $special-white;
  	border-bottom: 1px solid $special-white;
 }
@@ -119,14 +168,16 @@ index-top
 /* index-top corresponds to the welcome page first graphic band */
 
 .index-top {
-  height:$index-top-height;
+  min-height:$index-top-height;
+  height: auto;
   margin-top: 0;
-  padding: 2.5vh 2.5vw; 
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+  padding-top: 2.5vh;
+  padding-bottom: 0; 
   background: $prussian-blue;
-  /* Space around an element's content */
-  /* Text alignent */
   text-align: center;
-  z-index: 1;
+  z-index: 1; // for text to be by default on top of images in case of collisions
 }
 
 .d-flex.animated.fadeInUp{
@@ -135,15 +186,18 @@ index-top
 }
 
 .index-top .title{
-  font-size: $title-font-size;
+  @include interpolate(font-size, $sm-width, $lg-width, 35px, 70px); 
+  //font-size: $title-font-size;
 }
 
 .index-top .subtitle{
-  font-size: $subtitle-font-size;
+  @include interpolate(font-size, $sm-width, $lg-width, 15px, 35px); 
+  //font-size: $subtitle-font-size;
 }
 
 .index-top .date-and-place{
-  font-size: $big-font-size;
+  @include interpolate(font-size, $sm-width, $lg-width, 20px, 40px); 
+  //font-size: $big-font-size;
   color: $special-white;
 }
 
@@ -155,32 +209,9 @@ index-top
   border-bottom: 1px solid $naples-yellow;
 }
 
-@media screen and (max-width: $md-width) {
-  .index-top .title {
-    font-size: $big-title-font-size;
-  }
-  .index-top .subtitle{
-    font-size: $big-subtitle-font-size;
-  }
-  .index-top .date-and-place{
-  	font-size: $huge-font-size;
-  }
-}
-
-@media (min-width: $sm-width) and (orientation: landscape) {
-  .index-top .title {
-    font-size: $title-font-size;
-  }
-  .index-top .subtitle{
-    font-size: $subtitle-font-size;
-  }
-  .index-top .date-and-place{
-  	font-size: $big-font-size;
-  }
-
-}
-
-/* dialog gif */
+/* ##################################
+dialog gif
+################################## */
 
 .dialog-gif{
 	z-index: 0;
@@ -190,8 +221,8 @@ index-top
 	min-width: 40vw;
 	height: auto;
 	-o-object-fit: contain;
-    object-fit: contain;
-    overflow: hidden;
+  object-fit: contain;
+  overflow: hidden;
 }
 
 @media screen and (max-width: $md-width) {
@@ -199,7 +230,6 @@ index-top
 		//	bottom: 10vh;
 		max-width: 50vw;
 		max-height: $index-top-height / 2 - 10vh ;
-
 	}
 }
 
@@ -237,19 +267,97 @@ index-caradoc
 ############################################################################# */
 .index-caradoc{
 	color: $special_white;
-	height: $index-top-height;
-	background : linear-gradient(
+  min-height:$index-top-height;
+  height: auto;
+  background: $lapis-lazuli;
+  margin-top: 0;
+  padding: 2.5vh 2.5vw; 
+  @include interpolate(font-size, $sm-width, $xl-width, 13px, 22px); // set fontsize
+  //font-size: $default-font-size;
+	/*background : linear-gradient(
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)),
-    url("../img/slider-bg.jpg");
-	background-size: cover; /*Covers all background area*/
-  	background-attachment: fixed; /* Image will not scroll with the page*/
-  	background-position: center; /* Position of the background within an element */
-  	background-repeat: no-repeat; /* The background image is only shown once */
+    url("../img/slider-bg.jpg");*/
+	//background-size: cover; /*Covers all background area*/
+  	//background-attachment: fixed; /* Image will not scroll with the page*/
+  	//background-position: center; /* Position of the background within an element */
+  	//background-repeat: no-repeat; /* The background image is only shown once */
 }
 
 .index-caradoc .title {
-	font-size: $big-font-size;
+  @include interpolate(font-size, $sm-width, $lg-width, 20px, 40px); 
+	//font-size: $big-font-size;
+}
+
+.index-caradoc .container{
+  width: 100%;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  max-width: 90vw;
+}
+
+.container .row > *{
+  height: 100%;
+}
+
+/* ##################################
+shake hands gif
+################################## */
+
+.shake-hands-gif{
+  z-index: 0;
+  max-height: $index-top-height * 2 / 3 ;
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.shake-hands-gif-box{
+  width: 100%;
+}
+
+@media screen and (max-width: $md-width) {
+  .shake-hands-gif{
+    //  bottom: 10vh;
+    max-width: 50vw;
+    max-height: $index-top-height / 2 - 10vh ;
+  }
+}
+
+@medi (orientation: portrait){
+  .shake-hands-gif-box{
+    max-width: 90vw;
+    margin-right: 0 !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* center gif only in portrait mode on small screens */
+@media (max-width: $md-width) and (orientation: portrait) {
+  .shake-hands-gif-box{
+    margin-right: 0 !important;
+    align-items: center;
+    justify-content: center;
+  }
+  .container .row{
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: $sm-width) {
+  .shake-hands-gif{
+    //bottom: 10vh;
+    max-width: 60vw;
+    min-width: 0vw;
+    //padding-left: 10vw;
+  }
+  .shake-hands-gif-box{
+    margin-left: 5vw;
+    margin-bottom: auto;
+  }
 }
 
 /* #############################################################################
@@ -267,7 +375,8 @@ index-paris-saclay
 }
 
 .index-paris-saclay .title {
-	font-size: $big-font-size;
+  @include interpolate(font-size, $sm-width, $lg-width, 20px, 40px);
+	//font-size: $big-font-size;
 }
 
 
@@ -334,7 +443,8 @@ $category-height-sm: 25vh;
   margin-top: 4%;
   font-family: 'Google Sans','Roboto', sans-serif; /* Font type*/
   font-weight: 300; /* Sets boldness */
-  font-size: $default-font-size; /* 2% of viewport width */
+  @include interpolate(font-size, $sm-width, $lg-width, 12px, 30px); // set fontsize
+  //font-size: $default-font-size; /* 2% of viewport width */
   width: 30vw; /* Link width */
   /* Space around an element's content */
   padding:0.5em 1em; /* Xem = X times the size of current font */
