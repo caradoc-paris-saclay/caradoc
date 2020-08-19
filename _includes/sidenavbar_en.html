@@ -3,69 +3,24 @@
     <!-- Dropdown EventSubMenu -->
     <ul>
       <li class="nav-item">
+        <a href="{{ site.baseurl }}{% link assets/en/index.html %}">Event</a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ site.baseurl }}{% link assets/en/index.html %}">Registration</a>
+      </li>
+      <li class="nav-item">
         <div style="display: flex;">
-          <a href="{{ site.baseurl }}{% link assets/en/index.html %}">
-            Event
+          <a href="{{ site.baseurl }}{% link assets/en/contact.html %}">
+              About
           </a>
-          <a class="dropdown-toggle" href="#EventSubMenu" data-toggle="collapse" aria-expanded="false">
-          </a>
+          <a class="dropdown-toggle" href="#AboutSubMenu" data-toggle="collapse" aria-expanded="false">
+            </a>
         </div>
-        <ul class="collapse list-unstyled" id="EventSubMenu">
-          <li>
-            <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/registration.html %}">Registration</a>
-          </li>
-          <li>
-            <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/program.html %}">Program</a>
-          </li>
-          <li>
-            <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/workshops.html %}">Workshops</a>
-          </li>
-          <li>
-            <a class="nav-link" href="#careers">Company talks</a>
-          </li>
-          <li>
-            <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/talk.html %}">Keynote lecturers</a>
-          </li>
-          <li>
-            <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/poster.html %}">Poster contest</a>
-          </li>
-        </ul>
-    </li>
-    <li class="nav-item">
-      <a href="{{ site.baseurl }}{% link assets/en/companies.html %}">Companies</a>
-    </li>
-    <li class="nav-item">
-      <a href="#Offres" onclick="closeNav()">Job offers</a>
-    </li>
-    <li class="nav-item">
-      <a href="{{ site.baseurl }}{% link assets/en/map.html %}">Venue</a>
-    </li>
-    <li class="nav-item">
-      <div style="display: flex;">
-        <a href="{{ site.baseurl }}{% link assets/en/contact.html %}">
-            About
-        </a>
-        <a class="dropdown-toggle" href="#AboutSubMenu" data-toggle="collapse" aria-expanded="false">
-          </a>
-      </div>
+      </li>
       <ul class="collapse list-unstyled" id="AboutSubMenu">
         <li>
           <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/contact.html %}">Contact</a>
         </li>
-        <li>
-          <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/team.html %}">Team</a>
-        </li>
-        <li>
-          <a class="nav-link" href="{{ site.baseurl }}{% link assets/en/story.html %}">Story of CARaDOC</a>
-        </li>
       </ul>
-    </li>
-    <li class="nav-item">
-      <!--<a class="nav-lang" href="{{ site.baseurl }}{% link assets/fr/index.html %}">-->
-        <a class="nav-lang" href="#main">
-        <img class="lang-flag" src="{{ site.baseurl }}/assets/img/fr_flag.png" alt="flag">
-        FR
-      </a>
-    </li>
-  </ul>
+    </ul>
 </nav>
