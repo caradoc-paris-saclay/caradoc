@@ -101,6 +101,11 @@ General rules
   border-color: inherit;
 }
 
+.index img{
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
 @mixin padding-band{
   padding-left: 2.5vw;
   padding-right: 2.5vw;
@@ -224,8 +229,6 @@ dialog gif
 	max-height: $index-top-height * 2 / 3 ;
 	min-width: 40vw;
 	height: auto;
-	-o-object-fit: contain;
-  object-fit: contain;
   overflow: hidden;
 }
 
@@ -313,8 +316,7 @@ shake hands gif
   max-height: $index-top-height * 2 / 3 ;
   width: 100%;
   height: auto;
-  -o-object-fit: contain;
-  object-fit: contain;
+
   overflow: hidden;
 }
 
@@ -383,8 +385,6 @@ index-paris-saclay
 
 .index-paris-saclay .container{
   width: 100%;
-  margin-left: 5vw;
-  margin-right: 5vw;
   max-width: 90vw;
 }
 
@@ -401,6 +401,40 @@ animated bar graph font-size
   @include interpolate(font-size, $sm-width, $xl-width, 16px, 18px);
 }
 
+/* ##################################
+Bottom graphics
+################################## */
+
+.index-paris-saclay .row{
+  .graphics{
+    height: 15vh;
+    justify-content: center;
+    span{
+        position: absolute;
+        align-self: center;
+        transform: translateY(-2vh);
+    }
+    .text-medal{
+      background: url("{{ site.baseurl }}{% link assets/img/medal.svg %}");
+    }
+    .medal-box{
+      display: inline-block;
+      //width: 100%;
+
+      img{
+        height: 100%;
+      }
+      span{
+        left: 50%;
+        //right: 51%;
+        bottom: 45%;
+        transform: translate(-50%, -50%);  
+        text-align: center;    
+        margin: 0 auto;
+      }
+    }
+  }
+}
 /*.bars{
   @include interpolate(line-height, $sm-width, $xl-width, 10px, 23px);
 }*/
@@ -448,10 +482,8 @@ $category-height-sm: 25vh;
 	max-height: $category-width - 2.5vw;
 	max-width: $category-width - 2.5vw;
 	height: auto;
-	-o-object-fit: contain;
-    object-fit: contain;
-    overflow: hidden;
-    position: relative;
+  overflow: hidden;
+  position: relative;
 	height: 20vw;
 }
 
