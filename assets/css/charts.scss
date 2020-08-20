@@ -112,6 +112,10 @@ $graph-height: 20vh;
   }
 }
 
+.already-visible {
+  animation: none;
+}
+
 //STYLES
 
 @mixin flex{
@@ -162,6 +166,10 @@ $graph-height: 20vh;
     }
   }
 
+.bar-animation{
+  @include bar-animation($default-delay, width);
+}
+
   .bar-group {
     display: block;
     float: left;
@@ -173,7 +181,6 @@ $graph-height: 20vh;
      margin-right: 0; 
     }
     .bar {
-      @include bar-animation($default-delay, width);
       box-shadow: 1px 0 2px rgba(0,0,0,.15);
       border: 1px solid #2d2d2d; 
       border-radius: 0 3px 3px 0;
