@@ -373,9 +373,6 @@ index-paris-saclay
   @include padding-band; 
   @include interpolate(font-size, $sm-width, $xl-width, 13px, 22px);
   background: $prussian-blue;
-  /* Space around an element's content */
-  /* Text alignent */
-  text-align: center;
   z-index: 1;
 }
 
@@ -400,7 +397,8 @@ animated bar graph font-size
 ################################## */
 
 .chart-headline{
-  @include interpolate(font-size, $sm-width, $xl-width, 8px, 18px);
+  text-align: center;
+  @include interpolate(font-size, $sm-width, $xl-width, 16px, 18px);
 }
 
 /*.bars{

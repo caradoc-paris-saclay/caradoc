@@ -1,6 +1,13 @@
 ---
 ---
-/* colors */
+/* #############################################################################
+CSS Animated Charts
+Check also charts.js for triggers
+############################################################################# */
+
+/* #############################################################################
+General Rules
+############################################################################# */
 $special_black: black;
 $special-white: white;
 $prussian-blue: rgba(9, 41, 70, 1);
@@ -9,21 +16,23 @@ $naples-yellow: rgba(254, 221, 100, 1);
 $rusty-red: rgba(222, 60, 75, 1);
 $french-raspberry: rgba(196, 40, 71, 1);
 
-/* ##################################
+/* #############################################################################
 animated bar graph
-################################## */
-
+taken from: 
+https://codepen.io/baletsa/pen/oHcfr?editors=1100https://codepen.io/baletsa/pen/oHcfr?editors=1100
+Possibility to add x and y axes
+############################################################################# */
 // VARIABLES
 $default-delay: .2s;
 $bars: 4;
-$x-axis-height: 5% +  2%; // 5% heigh + 2% spacing
+$x-axis-height: 5% +  5%; // 5% heigh + 2% spacing
 $inter-bar-space: 2%;
 $bar-height:  (100%-$x-axis-height - ($bars - 1) * $inter-bar-space) / $bars ; 
 $step: $bar-height + $inter-bar-space; // in %
-$graph-width: 20vw;
+$graph-width: 100%;
+$graph-height: 20vh;
 
 // MIXINS
-
 //Horizontal Bar Color Mixin 
 @mixin stat-bar($color-dark, $color-light, $direction, $dir-webkit) {
   background-image: -webkit-linear-gradient($dir-webkit, $color-light 0%, $color-light 47%, $color-dark 50%, $color-dark 100%);
@@ -105,6 +114,15 @@ $graph-width: 20vw;
 
 //STYLES
 
+@mixin flex{
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+}
+
 #bar-chart {
   height: auto;
   width: 100%;
@@ -114,16 +132,36 @@ $graph-width: 20vw;
    box-sizing: border-box; 
   }
   .graph {
-    height: $graph-width;
+    height: $graph-height;
     position: relative; 
+    width: 100%;
+
+      &.with-labels{
+      list-style: none;
+      @include flex;
+
+      -webkit-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+
+      -ms-box-orient: horizontal;
+      padding: 0;
+      margin: 0;
+      
+    }
   }
+
   .bars {
     height: 100%;
-    //padding: 0 2%;
-    //position: absolute;
-    //width: $graph-width;
+    width: $graph-width;
     z-index: 1; 
+
+      &.with-labels{
+      box-sizing: border-box;
+      //width: auto;
+      margin-left: auto !important; 
+    }
   }
+
   .bar-group {
     display: block;
     float: left;
@@ -140,25 +178,27 @@ $graph-width: 20vw;
       border: 1px solid #2d2d2d; 
       border-radius: 0 3px 3px 0;
       bottom: $x-axis-height;
-      cursor: pointer;
+      //cursor: pointer;
       height: $bar-height;
       position: absolute;
       text-align: center;
       width: 0; 
-      &:nth-child(1) {
-        bottom: 3 * $step + $x-axis-height;
-      }
-      &:nth-child(2) {
-        bottom: 2 * $step + $x-axis-height;
-      }
-      &:nth-child(3) {
-        bottom: $step + $x-axis-height;
+      display: flex;
+      /* spacing between bars */
+      @for $i from 1 through $bars {
+        &:nth-child(#{$i}) {
+        bottom: ($bars - $i) * $step + $x-axis-height;
+        }
       }
       span {
-       display: none; 
+        margin: auto;
+        //margin-bottom: auto;
+        display: inline-block;
+        color: $prussian-blue;
+        font-size: 0.5 * $bar-height / 100% * $graph-height;
       }
     }
-    @for $i from 1 through 15 {
+    @for $i from 1 through $bars {
       .bar-#{$i} {
         animation-delay: $default-delay+.1*$i;
         -webkit-animation-delay: $default-delay+.1*$i;
@@ -193,33 +233,41 @@ $graph-width: 20vw;
       border-top: 1px solid #4e5464;
       display: block;
       height: 100%;
-      width: $graph-width / 4;
+      width: $graph-height / 4;
       span {
         display: block;
         font-size: 11px;
         //margin: -10px 0 0 -60px;
         //padding: 0 10px;
-        //width: 40px;  
+        width: 40px;  
       }
     }
   }
   .y-labels {
-    position: absolute;
+    box-sizing: border-box;
     text-align: right;
-    width: auto; 
-    height:100%;
+    margin-right: auto !important;
+    width: 100%; 
+    height: 100%;
     z-index: 10;
+    position: relative;
     li {
-      border-top: 1px solid #4e5464;
-      display: block;
-      //height: 100%;
-      width: auto;
+      bottom: $x-axis-height;
+      position: absolute;
+      right: 5%;
+      height: $bar-height;
+      display: flex;
+      @for $i from 1 through $bars {
+        &:nth-child(#{$i}) {
+        bottom: ($bars - $i) * $step + $x-axis-height;
+        }
+      }
       span {
-        display: block;
-        font-size: 11px;
-        //margin: -10px 0 0 -60px;
-        padding: 0 10px;
-        width: 40px;  
+        margin-top: auto;
+        margin-bottom: auto;
+        display: inline-block;
+        font-size: 0.5 * $bar-height / 100% * $graph-height;
+        line-height: 1;
       }
     }
   }
