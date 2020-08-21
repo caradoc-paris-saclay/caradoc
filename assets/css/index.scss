@@ -407,31 +407,22 @@ Bottom graphics
 
 .index-paris-saclay .row{
   .graphics{
-    height: 15vh;
-    justify-content: center;
+    height: 25vh; //style="width: 100%
     span{
         position: absolute;
         align-self: center;
-        transform: translateY(-2vh);
-    }
-    .text-medal{
-      background: url("{{ site.baseurl }}{% link assets/img/medal.svg %}");
+        transform: translateY(-3vh);
     }
     .medal-box{
-      display: inline-block;
-      //width: 100%;
-
-      img{
-        height: 100%;
-      }
-      span{
-        left: 50%;
-        //right: 51%;
-        bottom: 45%;
-        transform: translate(-50%, -50%);  
-        text-align: center;    
-        margin: 0 auto;
-      }
+      height: 80%
+    }
+   .medal-subtitle{
+        position: relative;
+        font-size: 11px;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
   }
 }
