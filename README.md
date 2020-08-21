@@ -56,6 +56,6 @@ $ bundle install
 
 And run the server:
 ```sh
-$ jekyll serve
+$ bundle exec jekyll serve
 ```
 
