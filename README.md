@@ -1,11 +1,5 @@
 # CARaDOC website
 
-## Credits
-
-We want to thank ndrewtl for the inspiration he gave us in order to get started. Check is project here:
-
-[Airspace Jekyll](https://github.com/ndrewtl/airspace-jekyll/fork), put in your content, and go!
-
 ## For developers
 
 Have a look at the project wiki to get started with the web development.
@@ -56,6 +50,6 @@ $ bundle install
 
 And run the server:
 ```sh
-$ jekyll serve
+$ bundle exec jekyll serve
 ```
 
