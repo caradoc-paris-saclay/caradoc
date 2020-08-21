@@ -1,3 +1,5 @@
+---
+---
 html {
   scroll-behavior: smooth;
 }
@@ -34,38 +36,39 @@ footer {
   /*margin-top: 10vh;*/
   padding-top: 6vh;
   padding-bottom: 6vh;
-}
-footer p {
-  font-size: 13px;
-  line-height: 25px;
-  color: #919191;
-}
-footer a {
+
+  p {
+    font-size: 13px;
+    line-height: 25px;
+    color: #919191;
+  }
+  a {
   color: #595959;
-}
-footer .footer-menu {
-  padding-bottom: 25px;
-}
-footer .footer-menu ul {
-  margin: 0px;
-  padding: 0px;
-}
-footer .footer-menu ul li {
-  display: inline-block;
-  padding: 0px 20px;
-}
-footer .footer-menu ul li a {
-  display: inline-block;
-  color: #494949;
-}
-footer .footer-menu ul li a:hover {
-  color: #000;
-}
+  }
+  .footer-menu {
+    padding-bottom: 25px;
+  }
 
-footer .container{
-  width:auto;
-}
+  .footer-menu ul {
+    margin: 0px;
+    padding: 0px;
+  }
+  .footer-menu ul li {
+    display: inline-block;
+    padding: 0px 20px;
+  }
+  .footer-menu ul li a {
+    display: inline-block;
+    color: #494949;
+  }
+  .footer-menu ul li a:hover {
+    color: #000;
+  }
 
+  .container{
+    width:auto;
+  }
+}
 
 /* #############################################################################
 top-main class
@@ -79,72 +82,58 @@ top-main class
   color: #fff;
   /* Text alignment */
   text-align: center;
-}
 
-.top-main h1 {
+  h1 {
   /* Font size */
   font-size: 4vw;
-}
-@media screen and (max-width: 768px) {
-  .top-main h1 {
-    /* Font size */
-    font-size: 7vw;
+  }
+  h2 {
+    font-size: 2.5vw; /* Font size */
+  }
+
+  @media screen and (max-width: 768px) {
+    h1 {
+      /* Font size */
+      font-size: 7vw;
+    }
+    h2 {
+      font-size: 5vw; /* Font size */
+    }
+  }
+
+  img {
+    width: 65vw;
   }
 }
-
-.top-main h2 {
-  font-size: 2.5vw; /* Font size */
-}
-@media screen and (max-width: 768px) {
-  .top-main h2 {
-    font-size: 5vw; /* Font size */
-  }
-}
-
-.top-main img {
-  width: 65vw;
-}
-
-
-
-
-
 
 /* #############################################################################
-falcon class
+top-2 class
 ############################################################################# */
-.falcon {
-  padding: 2.5vw 7vw; /* 5% of the viewport width */
-  /* Light blue */
-  background-color: #B1D8EC;
-  /* Dark blue */
-  color: #002E46;
-}
+.top-2 {
+  padding: 2.5vw 7vw;
+  background-color: #092a46;
+  color: #fff;
 
-.falcon h1 {
-  /* Font size */
-  font-size: 2.5vw;
-  /* Text alignment */
-  text-align: center;
-}
-@media screen and (max-width: 768px) {
-  .falcon h1 {
-    /* Font size */
-    font-size: 5vw;
+  h1 {
+    font-size: 2.5vw;
+    text-align: center;
   }
-}
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 5vw;
+    }
+  }
 
-.falcon li {
-  font-size: 1.5vw;
-  /* Text alignment */
-  /* text-align: left; */
-  text-align: justify;
-  text-justify: inter-word;
-}
-@media screen and (max-width: 768px) {
-  .falcon li {
-    /* Font size */
-    font-size: 4vw;
+  li {
+    font-size: 1.5vw;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  @media screen and (max-width: 768px) {
+    li {
+      /* Font size */
+      font-size: 4vw;
+    }
   }
 }
 
