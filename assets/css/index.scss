@@ -398,7 +398,7 @@ animated bar graph font-size
 
 .chart-headline{
   text-align: center;
-  @include interpolate(font-size, $sm-width, $xl-width, 16px, 18px);
+  @include interpolate(font-size, $sm-width, $xl-width, 14px, 25px);
 }
 
 /* ##################################
@@ -409,20 +409,28 @@ Bottom graphics
   .graphics{
     height: 25vh; //style="width: 100%
     span{
-        position: absolute;
-        align-self: center;
-        transform: translateY(-3vh);
+      position: absolute;
+      align-self: center;
+      transform: translateY(-3vh);
     }
     .medal-box{
       height: 80%
     }
-   .medal-subtitle{
-        position: relative;
-        font-size: 11px;
-        height: 20%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .medal-subtitle{
+      position: relative;
+      @include interpolate(font-size, $sm-width, $xl-width, 12px, 18px);
+      height: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .cup{
+      // to adjust heght with medal
+      padding-top: 1%;
+      padding-bottom: 1%;
+    }
+    .medal{
+      height: 100%;
     }
   }
 }
