@@ -74,9 +74,9 @@ top-main class
   margin-top: 0;
   padding: 6vw 7vw; /* X% of the viewport width */
   /* Dark blue */
-  background-color: #002E46;
+  background-color: #092a46;
   /* Light blue */
-  color: #B1D8EC;
+  color: #fff;
   /* Text alignment */
   text-align: center;
 }
