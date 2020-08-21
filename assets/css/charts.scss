@@ -286,7 +286,7 @@ $graph-height: 20vh;
       }
       @media (max-width: $lg-width) and (orientation: portrait) {
          span {
-          font-size: 0.5 * $bar-height / 100% * 20vw;
+          font-size: 0.5 * $bar-height / 100% * 25vw;
          }
       }
        @media (max-width: $md-width) and (orientation: portrait) {
