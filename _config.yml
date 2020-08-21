@@ -19,6 +19,8 @@ keep_files:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-minifier # Minifies HTML, XML, CSS, JSON and JavaScript both inline and as separate files utilising yui-compressor and htmlcompressor.
+
 
 
 # Site settings
