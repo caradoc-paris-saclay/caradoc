@@ -298,8 +298,8 @@ index-caradoc
 
 .index-caradoc .container{
   width: 100%;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  /*margin-left: 5vw;
+  margin-right: 5vw;*/
   max-width: 90vw;
 }
 
@@ -430,7 +430,8 @@ Bottom graphics
       padding-bottom: 1%;
     }
     .medal{
-      height: 100%;
+      width: 100%;
+      height: initial;
     }
   }
 }
