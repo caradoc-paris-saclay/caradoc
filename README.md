@@ -6,6 +6,16 @@ Have a look at the project wiki to get started with the web development.
 
 [CARaDOC Website WIKI](https://github.com/atacs-centralesupelec/caradoc/wiki)
 
+## Quick Start
+
+
+```sh
+$ git clone https://github.com/atacs-centralesupelec/caradoc.git
+$ cd caradoc
+$ bundle install
+$ bundle exec jekyll serve
+```
+
 ## Steps for Setup:
 
 ### Make sure you have Ruby
