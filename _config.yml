@@ -10,6 +10,9 @@ exclude:
   - "/firestore"
   - "/assets/img/email"
   - "/assets/img/jred"
+  - "/assets/css/uglify_airspace.sh"
+  - "/assets/img/*.sh"
+  - "/assets/img/reference"
 
 keep_files:
   - "CNAME"
