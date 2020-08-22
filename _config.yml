@@ -19,6 +19,8 @@ keep_files:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-minifier
+
 
 # Site settings
 title: CARadOC
