@@ -70,3 +70,10 @@ jekyll-minifier:
 
 sass:
   style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  blanklines: true
+  endings: all
+  startings: [html, head, body]
