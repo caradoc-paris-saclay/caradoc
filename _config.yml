@@ -12,7 +12,10 @@ exclude:
   - "/assets/img/jred"
   - "/assets/css/uglify_airspace.sh"
   - "/assets/img/*.sh"
-  - "/assets/img/reference"
+  - "/assets/img/references"
+  - "/assets/img/companies_old"
+  - "/assets/img/companies_not_comming"
+  - "/assets/img/team/originals"
 
 keep_files:
   - "CNAME"
