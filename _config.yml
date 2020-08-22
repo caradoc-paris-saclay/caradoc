@@ -21,6 +21,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-minifier # Minifies HTML, XML, CSS, JSON and JavaScript both inline and as separate files utilising yui-compressor and htmlcompressor.
 
+repository: atacs-centralesupelec/caradoc
 # Site settings
 title: CARadOC
 subtitle: "PhD Job Fair in Saclay"
