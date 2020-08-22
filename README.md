@@ -1,65 +1,26 @@
 # CARaDOC website
 
-## For developers
-
-Have a look at the project wiki to get started with the web development.
-
-[CARaDOC Website WIKI](https://github.com/atacs-centralesupelec/caradoc/wiki)
-
 ## Quick Start
 
+If you already have **jekyll** installed, you can just copy/paste and run the following lines :
 
 ```sh
-$ git clone https://github.com/atacs-centralesupelec/caradoc.git
-$ cd caradoc
-$ bundle install
-$ bundle exec jekyll serve
+git clone https://github.com/atacs-centralesupelec/caradoc.git
+cd caradoc
+bundle install
+bundle exec jekyll serve
 ```
 
-## Steps for Setup:
+## For installing Jekyll
 
-### Make sure you have Ruby
+Follow the steps proposed by the official Jekyll website. You will be asked to install **ruby** as well.
 
-First, make sure you have [Ruby](https://www.ruby-lang.org/en/) installed. You can confirm this by running `ruby -v` on the command line:
+[Official Jekyll Installation Guides](https://jekyllrb.com/docs/installation/)
 
-```sh
-$ ruby -v
-ruby [version number] (date) [your platform]
-```
+## For developers
 
-If you get something like `"Error, command not found"` visit the link above and install Ruby for your platform.
+If you want to contibute to the project, have a look at the project wiki to get started with the web development.
 
-
-### Make sure you have Jekyll
-
-Next, make sure you have [Jekyll](https://jekyllrb.com/) installed. Just like above, run `jekyll -v` on the command line:
-
-```sh
-$ jekyll -v
-jekyll [version number]
-```
-If you get `"Error, command not found"` run `gem install jekyll` to install it using RubyGems.
-
-### Run this repository
-- To download and develop go to the **wiki** to set up a ssh properly.
+You will also need to be authorized to write on the repository by one of the repository owners.
 
 [CARaDOC Website WIKI](https://github.com/atacs-centralesupelec/caradoc/wiki)
-
-- Otherwise, for a quick look you can just clone the repository, and `cd` into it:
-```sh
-$ git clone https://github.com/atacs-centralesupelec/caradoc.git
-$ cd caradoc
-```
-
-**Final Steps**
-
-Install Dependencies:
-```sh
-$ bundle install
-```
-
-And run the server:
-```sh
-$ bundle exec jekyll serve
-```
-
