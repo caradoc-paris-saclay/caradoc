@@ -1,3 +1,6 @@
+---
+layout: compress
+---
 <!DOCTYPE html>
 <html class="no-js">
   <head>
@@ -5,7 +8,13 @@
     {% seo %}
   </head>
   <body>
-    {% include header_event_fr.html %}
+    <!-- Header Start -->
+    <header class="sticky-top">
+    <div class="bg-image"></div>
+    {% include main_navbar_fr.html %}
+    {% include event_navbar_fr.html %}
+    </header>
+    <!-- header close -->
 
     {{ content }}
 

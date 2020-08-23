@@ -19,7 +19,11 @@ Follow the steps proposed by the official Jekyll website. You will be asked to i
 
 ## For developers
 
+<<<<<<< HEAD
 If you want to contibute to the project, have a look at the project wiki.
+=======
+If you want to contibute to the project, have a look at the project wiki to get started with the web development.
+>>>>>>> origin/nov_2020
 
 You will also need to be authorized to write on the repository by one of the repository owners.
 

@@ -1,0 +1,316 @@
+---
+---
+/* #############################################################################
+CSS Animated Charts
+Check also charts.js for triggers
+
+inspiration:
+https://codeburst.io/how-to-pure-css-pie-charts-w-css-variables-38287aea161e
+############################################################################# */
+
+/* #############################################################################
+General Rules
+############################################################################# */
+
+/* break points (according to bootstrap doc) */
+$sm-width: 576px;
+$md-width: 768px;
+$lg-width: 992px;
+$xl-width: 1200px;
+
+/* colors */
+$special_black: black;
+$special-white: white;
+$prussian-blue: rgba(9, 41, 70, 1);
+$lapis-lazuli: rgba(37, 95, 154, 1);
+$naples-yellow: rgba(254, 221, 100, 1);
+$rusty-red: rgba(222, 60, 75, 1);
+$french-raspberry: rgba(196, 40, 71, 1);
+
+/* #############################################################################
+animated bar graph
+taken from: 
+https://codepen.io/baletsa/pen/oHcfr?editors=1100https://codepen.io/baletsa/pen/oHcfr?editors=1100
+Possibility to add x and y axes
+############################################################################# */
+// VARIABLES
+$default-delay: .2s;
+$bars: 4;
+$x-axis-height: 5% +  5%; // 5% heigh + 2% spacing
+$inter-bar-space: 2%;
+$bar-height:  (100%-$x-axis-height - ($bars - 1) * $inter-bar-space) / $bars ; 
+$step: $bar-height + $inter-bar-space; // in %
+$graph-width: 100%;
+$graph-height: 20vh;
+
+// MIXINS
+//Horizontal Bar Color Mixin 
+@mixin stat-bar($color-dark, $color-light, $direction, $dir-webkit) {
+  background-image: -webkit-linear-gradient($dir-webkit, $color-light 0%, $color-light 47%, $color-dark 50%, $color-dark 100%);
+  background-image: linear-gradient($direction, $color-light 0%, $color-light 47%, $color-dark 50%, $color-dark 100%);
+}
+// Animation Mixin 
+@mixin bar-animation($time, $dimension) {
+  visibility: hidden;
+  @if $dimension == width {
+    width: 0;
+    -webkit-animation: animate-width; 
+    -moz-animation: animate-width;
+    animation: animate-width;
+  }
+  @if $dimension == height {
+    height: 0;
+    -webkit-animation: animate-height; 
+    -moz-animation: animate-height;
+    animation: animate-height;
+  }
+  animation-timing-function: cubic-bezier(.35,.95,.67,.99);
+  -webkit-animation-timing-function: cubic-bezier(.35,.95,.67,.99);
+  -moz-animation-timing-function: cubic-bezier(.35,.95,.67,.99);
+  animation-duration: $time*2;
+  -webkit-animation-duration: $time*2;
+  -moz-animation-duration: $time*2;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes animate-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@-moz-keyframes animate-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@keyframes animate-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@-webkit-keyframes animate-height {
+  0% {
+    height: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@-moz-keyframes animate-height {
+  0% {
+    height: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@keyframes animate-height {
+  0% {
+    height: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+.already-visible {
+  animation: none;
+}
+
+//STYLES
+
+@mixin flex{
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+}
+
+#bar-chart {
+  height: auto;
+  width: 100%;
+  position: relative;
+  //margin: 50px auto 0;
+  * {
+   box-sizing: border-box; 
+  }
+  .graph {
+    height: $graph-height;
+    position: relative; 
+    width: 100%;
+
+      &.with-labels{
+      list-style: none;
+      @include flex;
+
+      -webkit-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+
+      -ms-box-orient: horizontal;
+      padding: 0;
+      margin: 0;
+      
+    }
+  }
+
+  .bars {
+    height: 100%;
+    width: $graph-width;
+    z-index: 1; 
+
+      &.with-labels{
+      box-sizing: border-box;
+      //width: auto;
+      margin-left: auto !important; 
+    }
+  }
+
+.bar-animation{
+  @include bar-animation($default-delay, width);
+}
+
+  .bar-group {
+    display: block;
+    float: left;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-right: 10%;
+    &:last-child {
+     margin-right: 0; 
+    }
+    .bar {
+      box-shadow: 1px 0 2px rgba(0,0,0,.15);
+      border: 1px solid #2d2d2d; 
+      border-radius: 0 3px 3px 0;
+      bottom: $x-axis-height;
+      //cursor: pointer;
+      height: $bar-height;
+      position: absolute;
+      text-align: center;
+      width: 0; 
+      display: flex;
+      /* spacing between bars */
+      @for $i from 1 through $bars {
+        &:nth-child(#{$i}) {
+        bottom: ($bars - $i) * $step + $x-axis-height;
+        }
+      }
+      span {
+        margin: auto;
+        //margin-bottom: auto;
+        display: inline-block;
+        color: $prussian-blue;
+        font-size: 0.5 * $bar-height / 100% * $graph-height;
+      }
+    }
+    @for $i from 1 through $bars {
+      .bar-#{$i} {
+        animation-delay: $default-delay+.1*$i;
+        -webkit-animation-delay: $default-delay+.1*$i;
+      }
+    }
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .x-axis {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    li {
+      float: left;
+      margin-right: 10.5%;
+      font-size: 11px;
+      //width: 11.5%;
+      &:last-child {
+       margin-right: 0; 
+      }
+    }
+  }
+  .y-axis {
+    position: absolute;
+    text-align: right;
+    width: 100%; 
+    li {
+      border-top: 1px solid #4e5464;
+      display: block;
+      height: 100%;
+      width: $graph-height / 4;
+      span {
+        display: block;
+        font-size: 11px;
+        //margin: -10px 0 0 -60px;
+        //padding: 0 10px;
+        width: 40px;  
+      }
+    }
+  }
+  .y-labels {
+    box-sizing: border-box;
+    text-align: right;
+    margin-right: auto !important;
+    width: 100%; 
+    height: 100%;
+    z-index: 10;
+    position: relative;
+    li {
+      bottom: $x-axis-height;
+      position: absolute;
+      right: 5%;
+      height: $bar-height;
+      display: flex;
+      @for $i from 1 through $bars {
+        &:nth-child(#{$i}) {
+        bottom: ($bars - $i) * $step + $x-axis-height;
+        }
+      }
+      span {
+        margin-top: auto;
+        margin-bottom: auto;
+        display: inline-block;
+        font-size: 0.5 * $bar-height / 100% * $graph-height;
+        line-height: 1;
+      }
+      @media (max-width: $lg-width) and (orientation: portrait) {
+         span {
+          font-size: 0.5 * $bar-height / 100% * 25vw;
+         }
+      }
+       @media (max-width: $md-width) and (orientation: portrait) {
+         span {
+          font-size: 0.5 * $bar-height / 100% * 30vw;
+         }
+      }
+    }
+  }
+  .stat-1 {
+    @include stat-bar(#cf3a02, #ff4500, to bottom, top);
+    //@include stat-bar(#b7262d, $french-raspberry, to bottom, top);
+  }
+  .stat-2 {
+    @include stat-bar(#e0a94b, $naples-yellow, to bottom, top);
+  }
+  .stat-3 { 
+    @include stat-bar(#79a602, #b8f123, to bottom, top);
+  }
+  .stat-4 {
+    //@include stat-bar(#0052b9, $lapis-lazuli, to bottom, top);
+    @include stat-bar(#0383a9, #00c5ff, to bottom, top);
+  }
+}

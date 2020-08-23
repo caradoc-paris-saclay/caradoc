@@ -1,3 +1,7 @@
+---
+layout: compress
+sitemap: false
+---
 <!DOCTYPE html>
 <html class="no-js">
   <head>
@@ -7,7 +11,11 @@
     {% seo %}
   </head>
   <body>
-    {% include header_event_en.html %}
+    <!-- Header Start -->
+    <header class="sticky-top">
+    {% include main_navbar_en.html %}
+    </header>
+    <!-- header close -->
 
     {{ content }}
 

@@ -1,3 +1,6 @@
+---
+layout: compress
+---
 <!DOCTYPE html>
 <html class="no-js">
   <head>
@@ -5,7 +8,10 @@
     {% seo %}
   </head>
   <body>
-    {% include header_default_fr.html %}
+    <!-- Header Start -->
+    <header class="sticky-top">
+    {% include main_navbar_fr.html %}
+    </header><!-- header close -->
 
     {{ content }}
 
