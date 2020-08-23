@@ -9,7 +9,7 @@ repository: atacs-centralesupelec/caradoc # required for using JEKYLL_ENV=produc
 markdown: kramdown
 
 exclude:
-  - "/vendor/"
+  - "/vendor"
   - "Gemfile"
   - "Gemfile.lock"
   - "README.md"
@@ -17,10 +17,12 @@ exclude:
   - "*.gemspec"
   - "/firebase"
   - "/scripts"
+  - ".sh"
   - "/firestore"
+  - "/assets/css/uglify_airspace.sh"
+  - "/assets/en/old"
   - "/assets/img/email"
   - "/assets/img/jred"
-  - "/assets/css/uglify_airspace.sh"
   - "/assets/img/*.sh"
   - "/assets/img/references"
   - "/assets/img/companies_old"
@@ -41,7 +43,7 @@ plugins:
 
 compress_html:
   ignore:
-    envs: ["local"]
+    envs: ["local", "development"]
 
 
 # Google analytics
