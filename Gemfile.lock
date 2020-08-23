@@ -259,11 +259,6 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-<<<<<<< HEAD
-  jekyll-seo-tag
-  jekyll-sitemap
-=======
->>>>>>> origin/nov_2020
   kramdown (>= 2.3.0)
 
 BUNDLED WITH

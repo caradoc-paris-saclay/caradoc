@@ -48,7 +48,7 @@ plugins:
 # Configuration for HTML compression
 compress_html:
   ignore:
-    envs: ["local", "development"]
+    envs: ["development"]
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
