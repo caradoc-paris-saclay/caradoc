@@ -1,0 +1,596 @@
+---
+---
+/* #############################################################################
+index page
+############################################################################# */
+/* break points (according to bootstrap doc) */
+$sm-width: 576px;
+$md-width: 768px;
+$lg-width: 992px;
+$xl-width: 1200px;
+/* colors */
+$special_black: black;
+$special-white: white;
+$prussian-blue: rgba(9, 41, 70, 1);
+$lapis-lazuli: rgba(37, 95, 154, 1);
+$naples-yellow: rgba(254, 221, 100, 1);
+$rusty-red: rgba(222, 60, 75, 1);
+$french-raspberry: rgba(196, 40, 71, 1);
+/* block sizes */
+$navbar-height: 10vh; // defined in .navbar from my_navabr.scss
+$index-top-height: 90vh;
+/* Font size */
+$default-font-size: 2vw;
+$title-font-size: 7vw;
+$big-title-font-size: 10vw;
+$subtitle-font-size: 2.5vw;
+$big-subtitle-font-size: 3.57vw;
+$big-font-size: 4vw;
+$huge-font-size: 5.71vw;
+
+/* #############################################################################
+Fluid typography
+from: https://codepen.io/MadeByMike/pen/vNrvdZ
+
++ Single property
+html {
+  @include interpolate(font-size, 320px, 1366px, 14px, 20px);
+}
+
++ Multiple properties example
+h1,h2,h3,h4,h5 {
+  @include interpolate((padding-top, padding-bottom), 20rem, 70rem, 0rem, .5rem);
+}
+############################################################################# */
+
+@mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value) {
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+
+    @media screen and (min-width: $min-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value); 
+      }
+    }
+
+    @media screen and (min-width: $max-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value);
+      }
+    }
+  }
+}
+
+// Requires the calc-interpolation function which can also be used independently
+@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value) {
+  $a: ($max-value - $min-value) / ($max-screen - $min-screen);
+  $b: $min-value - $a * $min-screen; 
+
+  $sign: "+";
+  @if ($b < 0) {
+    $sign: "-";
+    $b: abs($b);
+  }
+  @return calc(#{$a*100}vw #{$sign} #{$b});
+}
+
+/* #############################################################################
+General rules
+############################################################################# */
+
+.index{
+  color: $special-white;
+  @include interpolate(font-size, $sm-width, $lg-width, 12px, 30px); // set fontsize
+  //font-size: $default-font-size; 
+  font-weight: bold; 
+}
+
+/* general behaviour of links in the index div */
+.index a:hover { 
+  background-color: inherit;
+  color: inherit;
+  border-color: inherit;
+  text-decoration: none;
+}
+
+.index a { 
+  background-color: inherit;
+  color: inherit;
+  border-color: inherit;
+}
+
+.index img{
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+@mixin padding-band{
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+  padding-top: 2.5vh;
+  padding-bottom: 0; 
+}
+
+/* #############################################################################
+Scroll Down Animated Arrow
+############################################################################# */
+
+/* text above arrow */
+.arrow-box{
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	//margin-bottom: 3vh;
+	z-index: 1;
+}
+
+.arrow-suptitle{
+  @include interpolate(font-size, $sm-width, $lg-width, 12px, 30px); 
+	//font-size: $subtitle-font-size;
+	color: $special-white;
+ 	border-bottom: 1px solid $special-white;
+}
+
+@media screen and (max-width: $md-width) {
+	.arrow-suptitle{
+  		font-size: $big-subtitle-font-size;
+  	}
+  	.arrow-box{
+		//margin-bottom: 2.5vh;
+	}
+}
+
+/* arrow animation and position */
+@keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 2vh;}
+    100% {bottom: 0;}
+}
+
+.arrow {
+    animation: bouncing 1s infinite ease-in-out;
+    bottom: 0;
+    display: block;
+    min-height: 50px;
+    min-width: 50px;
+    height: 4vw;
+    width: 4vw;
+    //left: 50%;
+    //margin-left: max(-2vw, 50px);
+    position: relative;
+    
+}
+
+/* #############################################################################
+Anchor
+############################################################################# */
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -1 * $navbar-height;
+    visibility: hidden;
+}
+
+/* #############################################################################
+index-top
+############################################################################# */
+/* index-top corresponds to the welcome page first graphic band */
+
+.index-top {
+  min-height:$index-top-height;
+  height: auto;
+  margin-top: 0;
+  @include padding-band; // see mixin for padding details
+  background: $prussian-blue;
+  text-align: center;
+  z-index: 1; // for text to be by default on top of images in case of collisions
+}
+
+.d-flex.animated.fadeInUp{
+	position: relative;
+	z-index: 1;
+}
+
+.index-top .title{
+  @include interpolate(font-size, $sm-width, $lg-width, 35px, 70px); 
+  //font-size: $title-font-size;
+}
+
+.index-top .subtitle{
+  @include interpolate(font-size, $sm-width, $lg-width, 15px, 35px); 
+  //font-size: $subtitle-font-size;
+}
+
+.index-top .date-and-place{
+  @include interpolate(font-size, $sm-width, $lg-width, 20px, 40px); 
+  //font-size: $big-font-size;
+  color: $special-white;
+}
+
+.index-top .d-flex.date{
+	margin-top: 5vh;
+}
+
+.index-top .d-flex.date > .date{
+  border-bottom: 1px solid $naples-yellow;
+}
+
+/* ##################################
+dialog gif
+################################## */
+
+.dialog-gif{
+	z-index: 0;
+	position: absolute;
+	bottom: 15vh;
+	max-height: $index-top-height * 2 / 3 ;
+	min-width: 40vw;
+	height: auto;
+  overflow: hidden;
+}
+
+@media screen and (max-width: $md-width) {
+	.dialog-gif{
+		//	bottom: 10vh;
+		max-width: 50vw;
+		max-height: $index-top-height / 2 - 10vh ;
+	}
+}
+
+@medi (orientation: portrait){
+	.dialog-gif-box{
+		margin-right: 0 !important;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+/* center gif only in portrait mode on small screens */
+@media (max-width: $md-width) and (orientation: portrait) {
+	.dialog-gif-box{
+		margin-right: 0 !important;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+@media screen and (max-width: $sm-width) {
+	.dialog-gif{
+		//bottom: 10vh;
+		max-width: 60vw;
+		min-width: 0vw;
+		//padding-left: 10vw;
+	}
+	.dialog-gif-box{
+		margin-left: 5vw;
+		margin-bottom: auto;
+	}
+}
+/* #############################################################################
+index-caradoc
+############################################################################# */
+.index-caradoc{
+	color: $special_white;
+  min-height:$index-top-height;
+  height: auto;
+  background: $lapis-lazuli;
+  margin-top: 0;
+  @include padding-band;
+  @include interpolate(font-size, $sm-width, $xl-width, 13px, 22px); // set fontsize
+  //font-size: $default-font-size;
+	/*background : linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)),
+    url("../img/slider-bg.jpg");*/
+	//background-size: cover; /*Covers all background area*/
+  	//background-attachment: fixed; /* Image will not scroll with the page*/
+  	//background-position: center; /* Position of the background within an element */
+  	//background-repeat: no-repeat; /* The background image is only shown once */
+}
+
+.index-caradoc .title {
+  @include interpolate(font-size, $sm-width, $lg-width, 20px, 40px); 
+	//font-size: $big-font-size;
+}
+
+.index-caradoc .container{
+  width: 100%;
+  /*margin-left: 5vw;
+  margin-right: 5vw;*/
+  max-width: 90vw;
+}
+
+.container .row > *{
+  height: 100%;
+}
+
+/* ##################################
+shake hands gif
+################################## */
+
+.shake-hands-gif{
+  z-index: 0;
+  max-height: $index-top-height * 2 / 3 ;
+  width: 100%;
+  height: auto;
+
+  overflow: hidden;
+}
+
+.shake-hands-gif-box{
+  width: 100%;
+}
+
+@media screen and (max-width: $md-width) {
+  .shake-hands-gif{
+    //  bottom: 10vh;
+    max-width: 50vw;
+    max-height: $index-top-height / 2 - 10vh ;
+  }
+}
+
+@media (orientation: portrait){
+  .shake-hands-gif-box{
+    max-width: 90vw;
+    margin-right: 0 !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* center gif only in portrait mode on small screens */
+@media (max-width: $md-width) and (orientation: portrait) {
+  .shake-hands-gif-box{
+    margin-right: 0 !important;
+    align-items: center;
+    justify-content: center;
+  }
+  .container .row{
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: $sm-width) {
+  .shake-hands-gif{
+    //bottom: 10vh;
+    max-width: 60vw;
+    min-width: 0vw;
+    //padding-left: 10vw;
+  }
+  .shake-hands-gif-box{
+    margin-bottom: auto;
+  }
+}
+
+/* #############################################################################
+index-paris-saclay
+############################################################################# */
+.index-paris-saclay{
+  min-height:$index-top-height;
+  height: auto;
+  margin-top: 0;
+  @include padding-band; 
+  @include interpolate(font-size, $sm-width, $xl-width, 13px, 22px);
+  background: $prussian-blue;
+  z-index: 1;
+}
+
+.index-paris-saclay .title {
+  @include interpolate(font-size, $sm-width, $lg-width, 20px, 40px);
+	//font-size: $big-font-size;
+}
+
+.index-paris-saclay .container{
+  width: 100%;
+  max-width: 90vw;
+}
+
+.index-paris-saclay  .row > *{
+  height: 100%;
+}
+
+/* ##################################
+animated bar graph font-size
+################################## */
+
+.chart-headline{
+  text-align: center;
+  @include interpolate(font-size, $sm-width, $xl-width, 14px, 25px);
+}
+
+/* ##################################
+Bottom graphics
+################################## */
+
+.index-paris-saclay .row{
+  .graphics{
+    height: 25vh; //style="width: 100%
+    span{
+      position: absolute;
+      align-self: center;
+      transform: translateY(-3vh);
+    }
+    .medal-box{
+      height: 80%
+    }
+    .medal-subtitle{
+      position: relative;
+      @include interpolate(font-size, $sm-width, $xl-width, 12px, 18px);
+      height: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .cup{
+      // to adjust heght with medal
+      padding-top: 1%;
+      padding-bottom: 1%;
+    }
+    .medal{
+      width: 100%;
+      height: initial;
+    }
+  }
+}
+/*.bars{
+  @include interpolate(line-height, $sm-width, $xl-width, 10px, 23px);
+}*/
+
+/* #############################################################################
+.index-registration
+############################################################################# */
+$category-width: 35vw;
+$category-width-sm: 90vw;
+$category-height-sm: 25vh;
+
+.index-registration{
+	color: $special-white;
+	background: $lapis-lazuli;
+	 min-height:$index-top-height;
+  height: auto;
+	margin-top: 0;
+  padding: 2.5vh 2.5vw; 
+}
+
+.index-registration .title {
+	font-size: $big-font-size;
+}
+
+.index-registration .d-flex.align-items-center{
+	color: $special-white;
+}
+
+.index-registration .category-title{
+	font-size: $big-font-size;
+}
+
+.index-registration .category-box{
+	width: $category-width;
+	height: $category-width;
+}
+
+/* required to bypass a marker and jump to next d-flex in html */
+.index-registration .category-box .d-flex{
+	height: inherit;
+	width: inherit;
+}
+
+.index-registration  .img-category{
+	max-height: $category-width - 2.5vw;
+	max-width: $category-width - 2.5vw;
+	height: auto;
+  overflow: hidden;
+  position: relative;
+	height: 20vw;
+}
+
+.index-registration .company{
+	/*background: rgba(9, 41, 70, 0.95);*/
+}
+
+.student a, .company a{
+	height: inherit;
+}
+
+/* registration buttons */
+.registration-btn {
+  margin-top: 4%;
+  font-family: 'Google Sans','Roboto', sans-serif; /* Font type*/
+  font-weight: 300; /* Sets boldness */
+  @include interpolate(font-size, $sm-width, $lg-width, 12px, 30px); // set fontsize
+  //font-size: $default-font-size; /* 2% of viewport width */
+  width: 30vw; /* Link width */
+  /* Space around an element's content */
+  padding:0.5em 1em; /* Xem = X times the size of current font */
+  text-align: center;
+  /* Vertical alignment of the element */
+  vertical-align: top;
+  /* */
+  display:inline-block; /* Margins/paddings are respected */
+  cursor: pointer; /* Mouse cursos */
+  box-sizing: border-box; /* Includes the padding and border in an element's total width and height. */
+  text-decoration: none;
+  -webkit-transition-duration: 0.2s; /* Safari */
+  transition-duration: 0.2s;
+  border-radius: 50px;
+}
+
+.student .registration-btn {
+	background-color: $naples-yellow;
+	color: $special_black;
+}
+
+.company .registration-btn {
+	background-color: $prussian-blue;
+	color: $special-white;
+}
+
+.student a:hover, .student a:active {
+	color: $naples-yellow;
+	background-color: $special_black;
+	border-color: $naples-yellow; 
+}
+
+.company a:hover, .company a:active  {
+	color: $prussian-blue;
+	background-color: $special-white;
+	border-color: $prussian-blue; 
+}
+
+.student a:active, .company a:active {
+  text-decoration: underline;
+  border-width: 2px;
+  border-style: solid;
+}
+
+@media (max-width: $md-width) and (orientation: portrait) {
+	
+	.index-registration .title {
+	font-size: $big-title-font-size;
+	}
+
+	.index-registration .category-title{
+	font-size: $title-font-size;
+	}
+
+	.index-registration .category-box{
+		width: $category-width-sm;
+		height: $category-height-sm;
+	}
+
+	.index-registration .student{
+		margin-bottom: 10vh;
+	}
+
+	.registration-btn{
+		font-size: 5vw;
+		width: $category-width-sm * 3/5;
+	}
+}
+
+
+/*@media screen and (max-width: 768px) {
+  .registration-btn a {
+    /* Font size 
+    font-size: 5vw;
+    width: 35vw;
+  }
+}*/
+
+/* text above arrow at the bottom of page */
+.show-more{
+	font-size: $subtitle-font-size;
+	color: $special-white;
+}
+
+@media screen and (max-width: $md-width) {
+	.show-more{
+  		font-size: $big-subtitle-font-size;
+  	}
+  	.index-registration .arrow-box{
+		margin-bottom: 1vh;
+	}
+}

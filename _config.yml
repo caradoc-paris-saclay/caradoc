@@ -1,5 +1,16 @@
+# Site settings
+title: CARadOC
+subtitle: "PhD Job Fair in Saclay"
+url: "https://www.caradoc-paris-saclay.fr" # the base hostname & protocol for your site
+baseurl: "" #important: start with /
+# required for using JEKYLL_ENV=production | by default JEKYLL_ENV=development
+repository: atacs-centralesupelec/caradoc 
+# Build settings
+markdown: kramdown
+
+# Files to be excluded from _site/
 exclude:
-  - "/vendor/"
+  - "/vendor"
   - "Gemfile"
   - "Gemfile.lock"
   - "README.md"
@@ -7,32 +18,37 @@ exclude:
   - "*.gemspec"
   - "/firebase"
   - "/scripts"
+  - ".sh"
   - "/firestore"
+  - "/assets/css/uglify_airspace.sh"
+  - "/assets/en/old"
   - "/assets/img/email"
   - "/assets/img/jred"
+  - "/assets/img/*.sh"
+  - "/assets/img/references"
+  - "/assets/img/companies_old"
+  - "/assets/img/companies_not_comming"
+  - "/assets/img/team/originals"
 
+# Files to be include in _site/ that Jekyll would otherwise exclude
 keep_files:
   - "CNAME"
-  - ".git"
-  - ".gitignore"
 
+# How to manage plugins:
+# 1) Either add plugin name here in plugins
+# 2) Either add plugin name in Gemfile (and specify group)
+# 3) Either add cutom .rb plugins in folder _plugins
+# Details: https://jekyllrb.com/docs/plugins/installation/
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-minifier
 
 
-# Site settings
-title: CARadOC
-subtitle: "PhD Job Fair in Saclay"
-url: "https://www.caradoc-paris-saclay.fr" # the base hostname & protocol for your site
-# baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
-baseurl: "" #important: start with /
-#cover: "/assets/img/cover_jred19.png"
-#logo: "/assets/img/caradoc_logo.png"
-# description: CARaDOC est un forum professionnel pour doctorant et jeunes chercheurs organisé par l'ATACS, l'association des thèsards et amis de CentraleSupélec.
-# Build settings
-markdown: kramdown
+# Configuration for HTML compression
+compress_html:
+  ignore:
+    envs: ["local", "development"]
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"

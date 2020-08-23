@@ -1,16 +1,10 @@
 var maxDeviceXidth = '(max-device-width:578px)';
-var minWidth = 768;
+var minWidth = 768; // in px
 var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 window.onresize = function(){
 	width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 }
-function myfunction(){
-	if (width < minWidth){
-		$('#collapsibleNavbar').html("" +
-   "<nav>MATTEO</div>");
-	}
-	console.log("Hello");
-}
+// this functions opens the left panel to disply the menu
 function showSideNav(){
 	document.getElementById("mySidenav").style.display = "inherit";
 	console.log("Showing SideNav");
@@ -22,7 +16,6 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
-//myfunction();
 function deactivateSubNav(){
 		document.getElementById("event-sub-nav").style.display = "none";
 		document.getElementById("about-sub-nav").style.display = "none";
@@ -75,8 +68,3 @@ function toggleDropDown() {
  $('#collapsibleNavbar').on('hidden.bs.collapse', function () {
    console.log("Closed")
 });
-
-
-/*document.getElementById("collapsibleNavbar").addEventListener("load", toggleDropDown);
-document.getElementById("EventMenu").addEventListener("click", activateEventSubNav);
-document.getElementById("AnyMenu").addEventListener("click", deactivateSubNav);*/
