@@ -1,3 +1,5 @@
+---
+---
 .niceday {
   /*background: #e4dfdf;*/
   
@@ -7,11 +9,12 @@
 }
 
 .niceday h1 {
+  color: #ffffff;
   font-size: 4em; /* Font size */
   font-weight: bold; /* Other */
   text-align: center;
    padding: 0.1em;
-   /*background-color: #092A46;*/
+   background-color: #092A46;
 }
 @media screen and (max-width: 768px) {
   .niceday h1 {
@@ -29,9 +32,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;  
     grid-template-rows: 300px 300px;  */
   justify-content: center;
-  height: auto;
-  width: 100%;
-  margin-bottom: 5vw;
+  height: 100%;
 }
 
 .container .card {
@@ -39,16 +40,15 @@
   cursor: pointer;
   /*background: #e4dfdf;*/
   margin: 0.5em;
-  width: 40vw;
-  max-height: 670px;
-  height: auto;
+  width: 35rem;
+  height: 30rem;
   border: 0px solid rgba(0,0,0,.125);
   background-color: rgba(0, 0, 0, 0);
 }
 
 .container .card .face {
     /*width: 35rem;*/
-  height: 35vw;
+  height: 30rem;
   transition: 0.5s;
   border: 2px solid #092A46;
 border-radius: 40px;
@@ -56,16 +56,14 @@ box-shadow: 0 20px 25px rgba(0, 0, 0, 0.4)
 }
 
 .container .card .face.face1 {
-  border-radius: 40px 40px 0px 0px;
-  box-shadow: none;
-  height: 14vw;
+
   position: relative;
   background: #092A46;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
-  transform: translateY(0px);
+  transform: translateY(9rem);
 }
 
 .container .card:hover .face.face1 {
@@ -74,16 +72,15 @@ box-shadow: 0 20px 25px rgba(0, 0, 0, 0.4)
 }
 
 .container .card .face.face2 {
-  border-radius: 0px 0px 40px 40px;
   position: relative;
   background: #fff;
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   padding: 1px;
   box-sizing: border-box;
   /*box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);*/
-  transform: translateY(0vw);
+  transform: translateY(-6rem);
   text-align: center;
 }
 
@@ -91,17 +88,11 @@ box-shadow: 0 20px 25px rgba(0, 0, 0, 0.4)
   transform: translateY(0px);
 }
 
-.container .card .face.face2 .content {
-  margin-bottom: auto;
-}
-
 .container .card .face.face2 .content p {
   margin: 0;
   padding: 10px;
   font-family: inherit;
-    text-align: justify;
-  text-justify: inter-word;
-  /*font-weight: bold;*/
+  font-weight: bold;
 }
 
 .container .card .face.face2 .content a {
@@ -113,33 +104,24 @@ box-shadow: 0 20px 25px rgba(0, 0, 0, 0.4)
   color: #fff;
   padding: 5px;
   border: 1px solid #333;
-    justify-content: center;
-
 }
 
 .container .card .face.face2 .content a:hover {
   background: #333;
   color: #fff;
-  justify-content: center;
-
 }
 
 .container .card .face.face1 .content {
   opacity: 1;
   transition: 0.5s;
-  justify-content: space-between;
 }
 
 .container .card:hover .face.face1 .content {
   opacity: 1;
-   justify-content: center;
 }
 
 .container .card .face.face1 .content img {
   max-width: 100px;
-  justify-content: center;
-    align-items: center;
-
 }
 
 .container .card .face.face1 .content h3 {
@@ -151,24 +133,21 @@ box-shadow: 0 20px 25px rgba(0, 0, 0, 0.4)
 }
 
 
-@media screen and (min-width: 768px) and (max-width: 1200px){
+@media screen and (min-width: 768px) and (max-width: 1000px){
   .container .card .face{
-    /*width: 100%;height: 20rem;*/
+    /*width: 100%;*/
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    
+    width: 40%;
+    height: 20rem;
     }
     .container .card {
       width: 100%;
         justify-content: center;
     align-items: center;
 }
-.container .card .face.face2 {
-  height: auto;
-  }
   }
 
   @media (max-width: 768px){
@@ -176,8 +155,6 @@ box-shadow: 0 20px 25px rgba(0, 0, 0, 0.4)
     width: 100%;
     flex-direction: column;
     align-items: center;
-    height: auto;
-    margin-bottom: 20vw;
   }
 .container .card .face{
     /*width: 100%;*/
@@ -185,39 +162,20 @@ box-shadow: 0 20px 25px rgba(0, 0, 0, 0.4)
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 95%;
+    width: 60%;
     height: 20rem;
     }
     .container .card {
-    width: 100%;
-     height: auto;
-    justify-content: center;
+      width: 100%;
+        justify-content: center;
     align-items: center;
 }
-.container .card .face.face2 {
-  height: auto;
-  }
-  .container .card .face.face1 .content img {
-    opacity: 0;
-    max-width: 0px;
-      }
-      .container .card .face.face1 .content h3 {
-        margin-top: 0vw;
-        margin-bottom: 5vw;
-      }
-      .container .card .face.face1{
-        height: auto;
-        margin-top: 9vw;
-      }
   }
 
-  @media (max-width: 1200px){
+  @media (max-width: 1000px){
   .container{
     /*width: 100%;*/
     flex-direction: column;
     align-items: center;
-  }
-  .container .card .face.face2 {
-  height: auto;
   }
     }

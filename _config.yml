@@ -1,3 +1,13 @@
+# Site settings
+title: CARadOC
+subtitle: "PhD Job Fair in Saclay"
+url: "https://www.caradoc-paris-saclay.fr" # the base hostname & protocol for your site
+baseurl: "" #important: start with /
+repository: atacs-centralesupelec/caradoc # required for using JEKYLL_ENV=production 
+
+# Build settings
+markdown: kramdown
+
 exclude:
   - "/vendor/"
   - "Gemfile"
@@ -22,22 +32,15 @@ keep_files:
   - ".git"
   - ".gitignore"
 
+# How to manage plugins:
+# either here in plugins, either in Gemfile, either in _plugins
+# Details: https://jekyllrb.com/docs/plugins/installation/
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-repository: atacs-centralesupelec/caradoc
-# Site settings
-title: CARadOC
-subtitle: "PhD Job Fair in Saclay"
-url: "https://www.caradoc-paris-saclay.fr" # the base hostname & protocol for your site
-# baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
-baseurl: "" #important: start with /
-#cover: "/assets/img/cover_jred19.png"
-#logo: "/assets/img/caradoc_logo.png"
-# description: CARaDOC est un forum professionnel pour doctorant et jeunes chercheurs organisé par l'ATACS, l'association des thèsards et amis de CentraleSupélec.
-# Build settings
-markdown: kramdown
+
+
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"

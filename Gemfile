@@ -1,5 +1,6 @@
 source "https://rubygems.org"
-gem "github-pages", group: :jekyll_plugins
-gem 'jekyll-seo-tag'
-gem 'jekyll-sitemap'
+# Gems included in the :jekyll-plugins group are activated regardless of the --safe mode setting
+group :jekyll_plugins do
+	gem "github-pages"
+end
 gem "kramdown", ">= 2.3.0"
