@@ -3,11 +3,12 @@ title: CARadOC
 subtitle: "PhD Job Fair in Saclay"
 url: "https://www.caradoc-paris-saclay.fr" # the base hostname & protocol for your site
 baseurl: "" #important: start with /
-repository: atacs-centralesupelec/caradoc # required for using JEKYLL_ENV=production 
-
+# required for using JEKYLL_ENV=production | by default JEKYLL_ENV=development
+repository: atacs-centralesupelec/caradoc 
 # Build settings
 markdown: kramdown
 
+# Files to be excluded from _site/
 exclude:
   - "/vendor"
   - "Gemfile"
@@ -29,22 +30,23 @@ exclude:
   - "/assets/img/companies_not_comming"
   - "/assets/img/team/originals"
 
+# Files to be include in _site/ that Jekyll would otherwise exclude
 keep_files:
   - "CNAME"
-  - ".git"
-  - ".gitignore"
 
 # How to manage plugins:
-# either here in plugins, either in Gemfile, either in _plugins
+# 1) Either add plugin name here in plugins
+# 2) Either add plugin name in Gemfile (and specify group)
+# 3) Either add cutom .rb plugins in folder _plugins
 # Details: https://jekyllrb.com/docs/plugins/installation/
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# Configuration for HTML compression
 compress_html:
   ignore:
     envs: ["local", "development"]
-
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
