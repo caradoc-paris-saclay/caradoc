@@ -39,7 +39,9 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-
+compress_html:
+  ignore:
+    envs: ["local"]
 
 
 # Google analytics
