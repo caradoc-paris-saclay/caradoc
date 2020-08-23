@@ -1,0 +1,26 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    {% include head.html %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/form.css" />
+    <link rel="stylesheet" href="{{site.baseurl }}/assets/css/contact.css" />
+    {% seo %}
+  </head>
+  <body>
+    <!-- Header Start -->
+    <header class="sticky-top">
+    {% include main_navbar_en.html %}
+    </header>
+    <!-- header close -->
+
+    {{ content }}
+
+    {% include footer_en.html %}
+    {% include foot_js.html %}
+    <script src="{{ site.baseurl }}/assets/js/registration_form_company.js"></script>
+    <!--script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script-->
+    </body>
+</html>
