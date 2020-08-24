@@ -30,8 +30,9 @@ h3 {
 /* #############################################################################
 footer class
 ############################################################################# */
+
 footer {
-  background: #F5F5F5;
+  background: #fff;
   text-align: center;
   /*margin-top: 10vh;*/
   padding-top: 6vh;
@@ -75,7 +76,7 @@ top-main class
 ############################################################################# */
 .top-main {
   margin-top: 0;
-  padding: 6vw 7vw; /* X% of the viewport width */
+  padding: 2.5vw 7vw; /* X% of the viewport width */
   /* Dark blue */
   background-color: #092a46;
   /* Light blue */
