@@ -334,7 +334,7 @@ div#about-sub-nav .nav-link{
   z-index: inherit;
   top: 0;
   right: 0;
-  background-color: #111;
+  background-color: #111; //#111
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -343,13 +343,13 @@ div#about-sub-nav .nav-link{
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #FFFFF0; //#818181;
   display: block;
   transition: 0.3s;
 }
 
 .sidenav a:hover {
-  color: #f1f1f1;
+  color: $naples-yellow; //#f1f1f1
 }
 .sidenav .closebtn {
   position: absolute;
