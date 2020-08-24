@@ -1,5 +1,5 @@
 ---
-layout: contact_en
+layout: contact_form_en
 title: Contact us!
 permalink: /en/contact
 ---
@@ -22,37 +22,65 @@ permalink: /en/contact
   </div>
 </section>
 -->
-
 <!-- contact form start -->
 <section id="contact-form">
   <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <div class="block">
-          <form>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Name">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="E-mail address">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Subject">
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-12">
-        <div class="block">
-          <form>
-            <div class="form-group-2">
-              <textarea class="form-control" rows="3" placeholder="Your Message"></textarea>
-            </div>
-            <button class="btn btn-default" type="submit">Send</button>
-          </form>
+    <!-- modify this form HTML and place wherever you want your form -->
+  <!-- your other form fields go here -->
+    <div class="modal fade" id="submission_msg" tabindex="-1" role="dialog" aria-labelledby="SubmissionMsg" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          </div>
+          <div class="modal-body">
+              <h3>Your submission has been sent</h3>
+              <br />
+              <p>Thank you for your registration!</p>
+              <p>We will get back to you shortly.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
+    <form class="row" id="contact_form" sendTo="https://formspree.io/maypzkky">
+      <div class="col-md-6 col-sm-12">
+        <div class="block">
+            <div class="form-group">
+              <input id="first_name" name="first_name" type="text" class="form-control" placeholder="First Name">
+            </div>
+            <div class="form-group">
+              <input id="last_name" name="last_name" type="text" class="form-control" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" class="form-control" placeholder="E-mail address">
+            </div>
+            <div class="inputWithMsg">
+              <div class="form-group">
+                <input type="email" id="email_confirmation" name="email_confirmation" class="form-control" value="" placeholder="Confirm E-mail address" required/>
+              </div>
+              <div class="p-2 formWarning" id="emailNoMatch">
+                  E-mails don't match.
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="block">
+          <form>
+            <div class="form-group">
+              <input type="text" name="_gotcha" style="display:none" />
+              <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject">
+            </div>
+            <div class="form-group-2">
+              <textarea  id="message" name="message" class="form-control" rows="3" placeholder="Your Message"></textarea>
+            </div>
+            <button class="btn btn-default" type="submit">Send</button>
+        </div>
+      </div>
+    </form>
     <div id="contact-box" class="row">
       <div class="col-md-6 col-sm-12">
         <div class="block">
@@ -61,31 +89,12 @@ permalink: /en/contact
             <li>
               <i class="fa fa-map-marker"></i>ATACS - 9 rue Joliot-Curie, 91190 Gif-Sur-Yvette, France
             </li>
-            <li>
-              <i class="fa fa-envelope-o"></i>Email: <a href="mailto:contact@caradoc-paris-saclay.fr">contact@caradoc-paris-saclay.fr</a>
-            </li>
             <!--<li>
               <i class="fa fa-phone"></i>Phone:+88 01672 506 744
             </li>-->
           </ul>
 
           <ul class="social-icons">
-            <!--<li>
-              <a href="http://www.themefisher.com"><i class="fa fa-google"></i></a>
-            </li>
-            <li>
-              <a href="http://www.themefisher.com"><i class="fa fa-linkedin"></i></a>
-            </li>
-            <li>
-              <a href="http://www.themefisher.com"><i class="fa fa-pinterest"></i></a>
-            </li>
-            <li>
-              <a href="http://www.themefisher.com"><i class="fa fa-dribbble"></i></a>
-            </li>
-            <li>
-              <a href="http://www.themefisher.com"><i class="fa fa-behance"></i></a>
-            </li>
-            <li>-->
               <li>
               <a href="https://www.linkedin.com/company/caradoc-event/"><i class="fa fa-linkedin"></i></a>
             </li>

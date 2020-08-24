@@ -208,7 +208,7 @@ index-top
 }
 
 .index-top .date-and-place{
-  @include interpolate(font-size, $sm-width, $lg-width, 20px, 40px); 
+  @include interpolate(font-size, $sm-width, $lg-width, 18px, 40px); 
   //font-size: $big-font-size;
   color: $special-white;
 }
