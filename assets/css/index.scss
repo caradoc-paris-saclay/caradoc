@@ -307,9 +307,12 @@ index-caradoc
 }
 
 .container .row > *{
+  height: 100%;
+}
+
+.index-caradoc .container .row > *{
   line-height: normal;
   text-align: justify;
-  height: 100%;
 }
 
 /* ##################################
