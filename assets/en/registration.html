@@ -75,7 +75,7 @@ permalink: /en/registration
 		<!-- ====================== Job position -->
 		<div class="form_item">
   		<label>Job Title (*)</label>
-  		<select id="position" name="position" required onchange="isPhDStudent(this.value);showPosition(this.value);changeWorkshopList();"/>
+  		<select id="position" name="position" required onchange="isPhDStudent(this.value);showPosition(this.value);"/>
 				<option value="" selected="" disabled="">-- Position --</option>
 				<option value="PhDStudent">PhD Student</option>
 				<option value="PostDoc">Post-Doc</option>
@@ -98,7 +98,7 @@ permalink: /en/registration
 
 		<div class="form_item phd_student_block">
  	    <label>PhD year (*)</label>
-  		<select id="phd_year" name="phd_year" onchange="changeWorkshopList()">
+  		<select id="phd_year" name="phd_year" onchange="">
 				<option value="" selected="" disabled="">-- PhD Year --</option>
 				<option value="YEAR_1">1st Year PhD Student</option>
 				<option value="YEAR_2">2nd Year PhD Student</option>
