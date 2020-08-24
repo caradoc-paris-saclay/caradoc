@@ -36,7 +36,7 @@ async function main() {
   exports.sendRegistrationEmail = functions
   .region('europe-west1')
   .firestore
-      .document('participants/{participantID}')
+      .document('participants_nov_2020/{participantID}')
       .onCreate((snap, context) => {
         // Get an object representing the document
         // e.g. {'name': 'Marie', 'age': 66}
@@ -80,23 +80,23 @@ async function main() {
   exports.sendModificationEmail = functions
   .region('europe-west1')
   .firestore
-      .document('participants/{participantID}')
+      .document('participants_nov_2020/{participantID}')
       .onUpdate((change, context) => {
         const participant = change.after.data();
         const participantOld = change.before.data();
         console.log("Looking at id: ", change.after.id);
         if (participant.contact.email != participantOld.contact.email){
-          db.collection('email').document(participantOld.contact.emailId).delete()
+          db.collection('email_nov_2020').document(participantOld.contact.emailId).delete()
           .then( function(snap){
               console.log("Old email document deleted.");
-              db.collection('email').document(participant.contact.emailId).get()
+              db.collection('email_nov_2020').document(participant.contact.emailId).get()
               .then(function(doc){
                 if (doc.exists){
                   console.log("New email doc found.")
                 }
                 else{
                   consol.log("Couldn't find new email doc. Creating one.")
-                  db.collection('email').document(participant.contact.emailId).set({
+                  db.collection('email_nov_2020').document(participant.contact.emailId).set({
                       refId:participantID
                   });
                 }
