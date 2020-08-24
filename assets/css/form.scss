@@ -20,7 +20,7 @@ Registration form
 
 form.reg_form {
   padding: 10px 15px;
-  background: #F5F5F5;
+  background: #fff;
   margin-bottom: 0;
   margin-left: 0;
 }
@@ -32,15 +32,15 @@ h1.reg_form {
 }
 
 form.reg_form button{
-  background:#63003C;
+  background:#092b46;
   color:#fff;
   border:0;
   text-transform: uppercase;
 }
 
 .reg_form button:hover,.reg_form button:focus{
-  background:#63003C;
-  color:#4093D1;
+  background:#e5ca61;
+  color:#092a46;
   outline:0;
   transition: background-color 2s ease-out;
 }

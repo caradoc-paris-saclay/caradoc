@@ -217,5 +217,323 @@ a{
 	}
 		
 }
+.nav .container {
 
+  min-width: 1300px;
+  margin-left: 35px;
+  padding-top: 5px;
+  font-weight: lighter;
+  background-color: #f6f6f6;
+  padding-bottom:-10px;
+}
+
+.nav .container .pull-left  {
+    color: #696969;
+    font-size: 35px;
+    font-weight: lighter;
+    margin-left: -10px;
+} 
+
+
+.nav .nav-pills .active  a:hover {
+    background-color: #dcdcdc;
+}
+
+.nav .fa:hover, .social-icons.icon-rotate .fa:active { 
+	-webkit-transform: scale(1.1) rotate(360deg);
+	-moz-transform: scale(1.1) rotate(360deg);
+	-ms-transform: scale(1.1) rotate(360deg);
+	-o-transform: scale(1.1) rotate(360deg);
+	transform: scale(1.1) rotate(360deg);
+}
+ 
+ 
+
+.nav .container .pull-right a {
+    color: #9900ff;
+    font-family: 'roboto';
+    font-size: 20px;
+    background-color: #f6f6f6;
+    word-spacing: 5px;
+}
+
+
+.nav li {
+  display: inline; 
+}
+
+
+
+
+.jumbotron { 
+  background-image:url('http://www.hiphophdwallpapers.com/wp-content/uploads/2015/02/Mexico-City-Wallpaper1.jpg');
+  position: relative;
+  height: 650px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron .container {
+  color: white; 
+  position: relative;
+  top:100px;
+  margin-top: -30px;
+}
+
+.jumbotron .container h1 { 
+  font-size: 75px;  
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: -10px;
+}
+
+.jumbotron .container p {
+    font: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-weight: lighter;
+    color: #ffffff;
+  
+}
+
+.glyphicons .container .row {
+  font-size: 40px;
+  color: #ff0066; 
+  text-align: center;
+  background-color: #fffff;
+  margin-top: 20px;
+  margin-left: -30px;
+}
+
+
+
+.learn-more .container { 
+  line-height: 2em;
+  background-color: #ffffff;
+  background-position: cover;
+  margin-bottom: 50px;
+  margin-top: -10px;
+
+}
+
+.learn-more h3 {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: -10px;
+}
+
+
+.learn-more p {
+    text-align: justify; 
+    position: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: lighter;
+    margin-right: 10px;
+    margin-left: -10px;
+}
+
+.learn-more .container .row {
+  
+  display: auto;
+  size: 100px 100px;
+  margin-bottom: -200px;
+}
+
+.jumbotron2 { 
+  background-image: url('https://i.imgur.com/zWfThaY.jpg');
+  position: relative;
+  height: 800px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.jumbotron2 h1 {
+  color: #ffffff;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 100px;
+  margin-top:200px;
+  margin-bottom: 50px;
+}
+
+.jumbotron2 a {
+ margin-left: 500px;
+ font-family: 'Roboto', sans-serif;
+ font-weight: lighter;
+ color: #ff0066;
+  
+}
+
+.team-pictures .container .row  {
+  text-align: center;
+  text-spacing: 10px;
+  margin-right: 45px;
+  margin-left: -45px;
+  margin-top: 40px;
+
+}
+
+.team-page-jumbotron .container .row {
+  margin-bottom:100px;
+}
+.team-page-jumbotron .container .row h1 {
+  font-family: 'roboto';
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 100px;
+  margin-bottom: 10px;
+  margin-left:-30px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.team-page-jumbotron .container .row h2 {
+  font-family: 'roboto';
+  font-size: 14px;
+  font-weight: lighter;
+  line-height: 2em;
+  margin-bottom: -50px;
+  margin-left:-30px;
+  margin-top: 50px;
+}
+
+.team-page-jumbotron .container .row h4 {
+  font-family: 'roboto';
+  font-size: 25px;
+  text-align: center;
+  margin-right:80px;
+  margin-left: -10px;
+  margin-top: -80px;
+}
+
+.team-page-jumbotron .container .row h5 {
+  font-size: 15px;
+  font-family: 'roboto';
+  text-align: center;
+  margin-top: -5px;
+  margin-right:80px;
+  margin-left: -10px;
+}
+
+.team-page-jumbotron .container .row p {
+  line-height: 1.8em;
+  font-family: 'roboto', sans-serif;
+  text-align: justify;
+  font-weight: lighter;
+  margin-top: 20px;
+  margin-left: -50px;
+  margin-right: 50px;
+}
+
+
+.team-page-jumbotron .container .row ul {
+  margin-left: 20px;
+  margin-top: 20px;
+  
+}
+
+.team-page-banner .container .row {
+  background-positon: cover;
+  background-color: black;
+  
+}
+
+.footer .container .row {
+  text-align: left;
+  font-family: 'roboto', sans-serif;
+  height: 1px;
+  margin-left: -100px;
+  border-top: 1px solid #dcdcdc;
+  margin-top: 10px;
+  padding-top: 10px;
+  background-color: #ffffff;
+}
+
+
+
+.network .container .row2 {
+  margin-left: -50px;  
+}
+
+.network-banner .container .row p {
+  font-type: "Roboto", sans-serif; 
+  font-weight: regular;
+  font-size: 15px;
+  margin-top: 30px;
+ margin-left: -30px;
+  margin-bottom:100px;
+    
+}
+
+.network-banner .container .row h1 {
+  font-family: 'roboto';
+  font-weight: bold;
+  margin-left: -30px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid #dcdcdc;
+  margin-top:-50px;
+  
+}
+
+.network-banner .container .row a {
+  margin-left:-28px;
+}
+
+.social-icons .fa {
+	font-size: 1em;
+}
+/*Change icons circle size and color here*/
+.social-icons .fa {
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #ffffff;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.social-icons.icon-circle .fa{ 
+	border-radius: 50%;
+}
+.social-icons.icon-rounded .fa{
+	border-radius:5px;
+}
+.social-icons.icon-flat .fa{
+	border-radius: 0;
+}
+
+.social-icons .fa:hover, .social-icons .fa:active {
+	color: #FFF;
+	-webkit-box-shadow: 1px 1px 3px #333;
+	-moz-box-shadow: 1px 1px 3px #333;
+	box-shadow: 1px 1px 3px #333; 
+}
+.social-icons.icon-zoom .fa:hover, .social-icons.icon-zoom .fa:active { 
+ 	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1); 
+}
+
+
+.social-icons ul {
+  margin-left:70px;
+}
+.social-icons .fa-linkedin,.social-icons .fa-linkedin-square {
+  background-color:#0085AE;} 
+
+.social-icons .fa-twitter,.social-icons .fa-twitter{background-color:#32CCFE;} 
+
+.social-icons .fa-skype{background-color:#01AEF2;}
+
+.social-icons .fa-google-plus,.social-icons .fa-google-plus-square{background-color:#CF3D2E;} 
 
