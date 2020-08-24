@@ -22,6 +22,7 @@ exclude:
   - "/firestore"
   - "/assets/css/uglify_airspace.sh"
   - "/assets/en/old"
+  - "/assets/fr"
   - "/assets/img/email"
   - "/assets/img/jred"
   - "/assets/img/*.sh"
