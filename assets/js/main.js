@@ -1,3 +1,9 @@
+$('img').each(function(){
+	if ($(this).data('delayedsrc')) {
+		$(this).attr('src', $(this).data('delayedsrc'));
+	}
+});
+
 $(document).ready(function(){
 
 	$('.header').height($(window).height());
