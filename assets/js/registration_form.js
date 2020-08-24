@@ -126,7 +126,7 @@ function submitForm(e){
     document.getElementById('emailNoMatch').style.display = "none";
   }
   var phone = getInputVal('phone');
-  var linkedIn = getInputVal('linkedin');
+  var linkedIn = ""; //getInputVal('linkedin'); // deleted from HTML
   var position = getInputVal('position');
   var workplace="";
   if (position.length == 0){
