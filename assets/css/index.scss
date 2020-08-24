@@ -282,7 +282,7 @@ index-caradoc
   background: $lapis-lazuli;
   margin-top: 0;
   @include padding-band;
-  @include interpolate(font-size, $sm-width, $xl-width, 10px, 21px); // set fontsize
+  @include interpolate(font-size, $sm-width, $xl-width, 13px, 21px); // set fontsize
   //font-size: $default-font-size;
 	/*background : linear-gradient(
     rgba(0, 0, 0, 0.5),
