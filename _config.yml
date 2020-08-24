@@ -30,6 +30,7 @@ exclude:
   - "/assets/img/companies_old"
   - "/assets/img/companies_not_comming"
   - "/assets/img/team/originals"
+  - "/assets/js/old"
 
 # Files to be include in _site/ that Jekyll would otherwise exclude
 keep_files:
