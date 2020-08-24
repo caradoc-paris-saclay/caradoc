@@ -111,6 +111,11 @@ General rules
   padding-right: 2.5vw;
   padding-top: 2.5vh;
   padding-bottom: 0; 
+   @media screen and (max-width: $md-width){
+    .padding-band{
+      padding-bottom: 2.5vh; 
+    }
+   }
 }
 
 /* #############################################################################
