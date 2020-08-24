@@ -2,8 +2,7 @@ import { db, getInputVal, setInputVal, loadLaboratories } from  './form.js';
 console.log(firebase);
 let provider = new firebase.auth.GoogleAuthProvider();
 var admin = firebase.auth();//('firebase-admin');
-var participant=null;
-var idRef=null;
+var participants =  new Array(); // list of participants
 //document.getElementById('login_form').addEventListener('submit', window.login);
 
 // window.updateForm 
@@ -39,7 +38,7 @@ function toggleSignIn() {
 	    if (password.length < 4) {
 	      alert('Please enter a password.');
 	      return;
-		    }
+		}
 	    // Sign in with email and pass.
 	    // [START authwithemail]
 	    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
@@ -65,7 +64,7 @@ function toggleSignIn() {
 function initApp() {
       // Listening for auth state changes.
       // [START authstatelistener]
-	firebase.auth().onAuthStateChanged(function(user) {
+	firebase.auth().onAuthStateChanged(async function(user) {
 
 		if (user) {
 		  // User is signed in.
@@ -81,9 +80,53 @@ function initApp() {
 			document.getElementById('admin_title').textContent = "Admin Dashboard";
 			document.getElementById('admin_subtitle').style.display = "none";
 			document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-			document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+			//document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
 			document.getElementById('username_div').style.display = "none";
 			document.getElementById('password_div').style.display = "none";
+			document.getElementById('dashboard').style.display = "block";
+			console.log("Fetching list or Participants.");
+			await loadParticipant()
+			.then( function(snap){
+				//console.log(labs.toJSON());
+				var csvContent = "data:text/csv;charset=utf-8,"; // csv file
+				if (snap != null){
+					document.getElementById("number_participant").textContent = snap.size;
+					let p;
+					snap.forEach(doc => {
+				    	p = doc.data();
+				    	participants.push(p);  
+					})
+					// to fill csv
+					//csvContent += ;
+					var json = participants
+					var fields = Object.keys(participants[0])
+					var replacer = function(key, value) { return value === null ? '' : value } 
+					var csv = json.map(function(row){
+					  return fields.map(function(fieldName){
+					    return JSON.stringify(row[fieldName], replacer)
+					  }).join(',')
+					})
+					csv.unshift(fields.join(',')) // add header column
+					csv = csv.join('\r\n');
+					//console.log(csv)
+				}
+				
+			var csvData = new Blob([csv], { type: 'text/csv' }); //new way
+			var csvUrl = URL.createObjectURL(csvData);
+			var a = document.createElement('a');
+			a.href        = csvUrl;
+			a.target      = '_blank';
+			a.download    = 'export.csv';
+			document.getElementById("dashboard").appendChild(a);
+			document.getElementById('download_participant').disabled = false;
+			document.getElementById('download_participant').addEventListener('click', downloadParticipantCSV, false);
+			function downloadParticipantCSV(){
+				a.click();
+			}	
+			})
+			.catch(function(error){
+				console.log(error);
+			});
 		  // [END_EXCLUDE]
 		} 
 		else {
@@ -93,9 +136,10 @@ function initApp() {
 			document.getElementById('admin_title').textContent = "Admin Log In Page";
 			document.getElementById('admin_subtitle').style.display = "block";
 			document.getElementById('quickstart-sign-in').textContent = 'Sign in';
-			document.getElementById('quickstart-account-details').textContent = 'null';
+			//document.getElementById('quickstart-account-details').textContent = 'null';
 			document.getElementById('username_div').style.display = "block";
 			document.getElementById('password_div').style.display = "block";
+			document.getElementById('dashboard').style.display = "none";
 			// [END_EXCLUDE]
 		}
 		// [START_EXCLUDE silent]
@@ -103,8 +147,13 @@ function initApp() {
 		// [END_EXCLUDE]
 	});
 	// [END authstatelistener]
+	console.log("Reached end of initApp");
     document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+
+    console.log("Reached end of initApp");
 }
+
+
 
 window.onload = function() {
   initApp();
@@ -129,4 +178,28 @@ window.login = function login(f){
   	// ...
 	});
 	return false;
+}
+
+function loadParticipant(){
+	console.log("Fetching list or participants.");
+	return new Promise((resolve, reject) => {
+		db.collection("participants").get()
+		.then(snapshot =>{
+			console.log("not empty?", !snapshot.empty);
+			console.log("empty?", snapshot.empty);
+			if (!snapshot.empty){
+				console.log("Not empty");
+				resolve(snapshot);
+				console.log("Participants list downloaded.");
+			}
+			else{
+				throw "failure";
+				reject(null)
+			}
+		})
+		.catch(err =>{
+			console.log("Failed to load list of Participants: ", err);
+			reject(null);
+		});
+	})
 }
