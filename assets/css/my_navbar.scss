@@ -18,6 +18,8 @@ $navbar-sticky-top: 9vh;
 $navbar-logo-height: 5vh; 
 $navbar-min-logo-height: 2.5em;
 /// colors
+$special_black: black;
+$special-white: white;
 $prussian-blue: rgba(9, 41, 70, 1);
 $lapis-lazuli: rgba(37, 95, 154, 1);
 $naples-yellow: rgba(254, 221, 100, 1);
@@ -303,6 +305,7 @@ div#event-sub-nav .nav-link{
   display: flex;
   justify-content: center;
   align-items: center;
+  color: $special-white;
 }
 div#about-sub-nav {
   height: 2.5em;
@@ -325,6 +328,7 @@ div#about-sub-nav .nav-link{
   display: flex;
   justify-content: center;
   align-items: center;
+  color: $special-white;
 }
 //sidenav
 .sidenav {

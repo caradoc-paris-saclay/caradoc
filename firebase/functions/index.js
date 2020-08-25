@@ -1,3 +1,44 @@
+/* #############################################################################
+Functions for transactionnal e-mails
+
+These functions are used on Firebase Cloud Functions
+They get triggered when an event is produced by Firebase Firestore
+
+Here we want to send an e-mail to participants when:
+1) a participant is added to Firestore (1st registration) 
+2) a participant modifies its data on Firestore (modify registration)
+
+The corresponding functions are:
+1) sendRegistrationEmail 
+2) sendModificationEmail
+
+IMPORTANT
+-> in order to run the code you need to set the credentials correctly
+You need 2 sorts of credentials
+1) To send the code to Firebase Cloud Functions
+2) For Firebase Cloud Function to use the gmail accound that will send the email
+
+To do so you need to run in a terminal after having `cd` in the folder containing this file:
+
+1) `firebase login``
+1 bis) Make sure that you have downloaded the file caradoc-b9cfd-firebase-adminsdk-7xt83-7e9adb6728.json
+and that it is present in the same folder as this code.
+
+2) `firebase functions:config:set gmail.email="name@gmail.com" gmail.password="pwd"`
+2 bis) In order to use option 2) you need  also to set the corresponding gmail account Security
+parameters to allow "Access to less secure apps"
+
+Remark:
+It is possible to enforce an authorization scheme that is more secure using OAuth2
+for step 2). => TODO + Explanation in the wiki
+
+To deploy the final code run in the terminal:
+Either:
+ ".\deploy_function.sh" (may need to run `chmod +x  deploy_function.sh` once)
+Or equivalently:
+`firebase deploy --only functions`
+############################################################################# */
+
 'use strict';
 const functions = require('firebase-functions');
 const nodemailer = require('nodemailer');
@@ -36,7 +77,7 @@ async function main() {
   exports.sendRegistrationEmail = functions
   .region('europe-west1')
   .firestore
-      .document('participants/{participantID}')
+      .document('participants_nov_2020/{participantID}')
       .onCreate((snap, context) => {
         // Get an object representing the document
         // e.g. {'name': 'Marie', 'age': 66}
@@ -54,7 +95,6 @@ async function main() {
 
 
     // Building Email message.
-    const myPosterChoice = participant.eventChoices.poster ? "Presenting a poster." : "Not presenting a poster.";
 
     mailOptions.subject = "Welcome to CARaDOC 2020!";
     mailOptions.text = "";
@@ -62,9 +102,7 @@ async function main() {
                          .toString()
                          .replace(/participantID/g, id)
                          .replace(/participantFirstName/g, participant.contact.firstName)
-                         .replace(/participantLastName/g, participant.contact.lastName)
-                         .replace(/WORKSHOP/g, participant.eventChoices.workshop)
-                         .replace(/POSTER/g, myPosterChoice);
+                         .replace(/participantLastName/g, participant.contact.lastName);
     
     try {
       async function test(){await mailTransport.sendMail(mailOptions);}
@@ -80,23 +118,23 @@ async function main() {
   exports.sendModificationEmail = functions
   .region('europe-west1')
   .firestore
-      .document('participants/{participantID}')
+      .document('participants_nov_2020/{participantID}')
       .onUpdate((change, context) => {
         const participant = change.after.data();
         const participantOld = change.before.data();
         console.log("Looking at id: ", change.after.id);
         if (participant.contact.email != participantOld.contact.email){
-          db.collection('email').document(participantOld.contact.emailId).delete()
+          db.collection('email_nov_2020').document(participantOld.contact.emailId).delete()
           .then( function(snap){
               console.log("Old email document deleted.");
-              db.collection('email').document(participant.contact.emailId).get()
+              db.collection('email_nov_2020').document(participant.contact.emailId).get()
               .then(function(doc){
                 if (doc.exists){
                   console.log("New email doc found.")
                 }
                 else{
                   consol.log("Couldn't find new email doc. Creating one.")
-                  db.collection('email').document(participant.contact.emailId).set({
+                  db.collection('email_nov_2020').document(participant.contact.emailId).set({
                       refId:participantID
                   });
                 }
@@ -122,16 +160,12 @@ async function main() {
         };
         mailOptions.subject = "Modifcation of your registration to CARaDOC 2020.";
 
-      const myPosterChoice = participant.eventChoices.poster ? "Presenting a poster." : "Not presenting a poster.";
-
       mailOptions.text = "";
       mailOptions.html = fs.readFileSync("./email_body_modify.html")
                            .toString()
                            .replace(/participantID/g, id)
                            .replace(/participantFirstName/g, participant.contact.firstName)
-                           .replace(/participantLastName/g, participant.contact.lastName)
-                           .replace(/WORKSHOP/g, participant.eventChoices.workshop)
-                           .replace(/POSTER/g, myPosterChoice);
+                           .replace(/participantLastName/g, participant.contact.lastName);
       
       try {
         async function test(){await mailTransport.sendMail(mailOptions);}
