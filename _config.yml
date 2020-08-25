@@ -10,17 +10,8 @@ markdown: kramdown
 
 # Files to be excluded from _site/
 exclude:
-  - "/vendor"
-  - "Gemfile"
-  - "Gemfile.lock"
-  - "README.md"
-  - "LICENSE.md"
-  - "*.gemspec"
-  - "/firebase"
-  - "/scripts"
-  - ".sh"
-  - "/firestore"
   - "/assets/css/uglify_airspace.sh"
+  - "/assets/doc/old"
   - "/assets/en/old"
   - "/assets/fr"
   - "/assets/img/email"
@@ -30,6 +21,17 @@ exclude:
   - "/assets/img/companies_old"
   - "/assets/img/companies_not_comming"
   - "/assets/img/team/originals"
+  - "/assets/js/old"
+  - "/firebase"
+  - "/firestore"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "*.gemspec"
+  - "LICENSE.md"
+  - "README.md"
+  - "/scripts"
+  - ".sh"
+  - "/vendor"
 
 # Files to be include in _site/ that Jekyll would otherwise exclude
 keep_files:
@@ -40,9 +42,10 @@ keep_files:
 # 2) Either add plugin name in Gemfile (and specify group)
 # 3) Either add cutom .rb plugins in folder _plugins
 # Details: https://jekyllrb.com/docs/plugins/installation/
+# remark: because of GitHub Pages, plugins used on GH Pages need to appear in both Gemfile and _config.yml 
 plugins:
   - jekyll-seo-tag
-  - jekyll-sitemap
+  - jekyll-sitemap 
   - jekyll-minifier
 
 
@@ -50,6 +53,10 @@ plugins:
 compress_html:
   ignore:
     envs: ["development"]
+
+# Configuration for sass/scss compression
+sass:
+    style: compressed
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"

@@ -47,7 +47,7 @@ function setCompanies(id){
 	});
 }
 
-//{{ site.baseurl }}{% link /assets/doc/programme_jred.pdf %}
+//{{ site.baseurl }}{% link /assets/doc/program_caradoc.pdf %}
 /*$(document).ready(function(){
 	textLoop("demo_companies");
 	setCompanies("#demo_companies");

@@ -42,7 +42,14 @@ function loadLaboratories(){
     });
   })
 }
-
+// workshop
+var yearAndWorkshops = {};
+yearAndWorkshops['YEAR_1'] = ['W1-Stress managemnet & co-working', 'W2-Public speaking' , 'W3-How to structure work and pose the problems'];
+yearAndWorkshops['YEAR_2'] = ['W1-Stress managemnet & co-working', 'W2-Public speaking' , 'W3-How to structure work and pose the problems'];
+yearAndWorkshops['YEAR_3'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
+yearAndWorkshops['YEAR_4'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
+yearAndWorkshops['YEAR_5'] = ['W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
+yearAndWorkshops['OTHER']  = ['None', 'W1-Stress managemnet & co-working', 'W2-Public speaking' , 'W3-How to structure work and pose the problems', 'W4-How to get a job in industry after your Ph.D.', 'W5-The transition from graduate student to Professor', 'RT1-Experiences and advices on launching a StartUp','RT2-Gender equality in big companies and public institutions'];
 const positionArray=["PhDStudent", "PostDoc", "AssistantProfessor", "Professor"];
 // Your web app's Firebase configuration
 var yearList = document.getElementById("phd_year");
@@ -69,7 +76,7 @@ function processUser(){
       if (temp[0] === "id"){
          idRef = decodeURI(temp[1])
          console.log("id: ", idRef);
-          db.collection("participants_nov_2020").doc(idRef).get()
+          db.collection("participants").doc(idRef).get()
           .then(function(doc){
             if (doc.exists){
               participant = doc.data();
@@ -96,6 +103,10 @@ function processUser(){
                 setInputVal('other_position_institution', participant.professional.workplace);
               }
               showSchool(participant.professional.doctoralSchool);
+              changeWorkshopList();
+              setInputVal('workshop', participant.eventChoices.workshopIndex);
+              setInputVal('poster', participant.eventChoices.poster);
+              setInputVal('concert', participant.eventChoices.concert);
             }
           });
       }
@@ -126,7 +137,7 @@ function submitForm(e){
     document.getElementById('emailNoMatch').style.display = "none";
   }
   var phone = getInputVal('phone');
-  var linkedIn = ""; //getInputVal('linkedin'); // deleted from HTML
+  var linkedIn = getInputVal('linkedin');
   var position = getInputVal('position');
   var workplace="";
   if (position.length == 0){
@@ -146,6 +157,19 @@ function submitForm(e){
   if (doctoralSchool.length == 0){
     doctoralSchool = getInputVal('other_doctoral_school');
   }
+  var workshopIndex = getInputVal('workshop'); // returns an int
+  if (position == "PostDoc"){
+    var workshop = yearAndWorkshops['YEAR_5'][workshopIndex];
+  }
+  if(position != 'PhDStudent' && position != 'PostDoc'){
+    var workshop = yearAndWorkshops['OTHER'][workshopIndex];
+  }
+  else{
+    var workshop = yearAndWorkshops[phdYear][workshopIndex];
+  }
+
+  var poster = getInputVal('poster') == "true" ? true : false;
+  var concert = getInputVal('concert') == "true" ? true : false;
 
   const newParticipant = {
     contact:{
@@ -162,6 +186,12 @@ function submitForm(e){
       phdYear: phdYear,
       doctoralSchool: doctoralSchool,
       workplace: workplace
+    },
+    eventChoices:{
+      workshopIndex: workshopIndex,
+      workshop: workshop,
+      poster: poster,
+      concert:concert
     }
   }
 
@@ -179,8 +209,8 @@ function submitForm(e){
 function saveParticipant(participant){
   console.log(participant);
   let userId = null;
-  let ps = db.collection('participants_nov_2020');
-  let es = db.collection('email_nov_2020');
+  let ps = db.collection('participants');
+  let es = db.collection('email');
   //First we check if particpant's e-mail already exsits in the databse
   es.doc(participant.contact.emailId).get()
   .then(function(doc) {
@@ -292,5 +322,45 @@ function showAdum(val) {
 function eraseOptions(select){ // select is the HTML select container
       while (select.options.length) {
       select.remove(0);
+    }
+}
+
+function changeWorkshopList() {
+    /*Retrieve existing lists*/
+    var workshopList = document.getElementById("workshop");
+    // Master list
+    var phdYear = getInputVal("phd_year");
+    // Check position and adapt workshop content accordingly
+    var position = getInputVal("position");
+    if (position == 'PhDStudent' && phdYear == ""){
+      eraseOptions(workshopList);
+      workshopList.options.add(new Option("-- Choose your PhD year first --", "", true, false));
+      return false;
+    }
+    else if (position == 'PostDoc'){
+      var currentYear = 'YEAR_5';
+    }
+    else if (position != 'PhDStudent' && position != 'PostDoc'){
+      console.log("not a PhDStudent");
+      var currentYear = 'OTHER';
+    }
+    else{
+      var currentYear = yearList.options[yearList.selectedIndex].value;
+    }
+    // Slave list
+    /* Retrive seleted item from master list*/
+    // we activate the function to detect if not PhDStudent
+    // else we need to wait for user to enter phd_year
+    // Clean slave list
+    eraseOptions(workshopList);
+    /*Retreive corresponding workshop list in function fof the current year*/
+    var slotsList = yearAndWorkshops[currentYear];
+    // Add workshop list to the corresponding <select> element
+    if (slotsList) {
+      var i;
+      for (i = 0; i < slotsList.length; i++) {
+        var slot = new Option(slotsList[i], i);
+        workshopList.options.add(slot);
+      }
     }
 }
