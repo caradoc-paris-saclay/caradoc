@@ -1,3 +1,44 @@
+/* #############################################################################
+Functions for transactionnal e-mails
+
+These functions are used on Firebase Cloud Functions
+They get triggered when an event is produced by Firebase Firestore
+
+Here we want to send an e-mail to participants when:
+1) a participant is added to Firestore (1st registration) 
+2) a participant modifies its data on Firestore (modify registration)
+
+The corresponding functions are:
+1) sendRegistrationEmail 
+2) sendModificationEmail
+
+IMPORTANT
+-> in order to run the code you need to set the credentials correctly
+You need 2 sorts of credentials
+1) To send the code to Firebase Cloud Functions
+2) For Firebase Cloud Function to use the gmail accound that will send the email
+
+To do so you need to run in a terminal after having `cd` in the folder containing this file:
+
+1) `firebase login``
+1 bis) Make sure that you have downloaded the file caradoc-b9cfd-firebase-adminsdk-7xt83-7e9adb6728.json
+and that it is present in the same folder as this code.
+
+2) `firebase functions:config:set gmail.email="name@gmail.com" gmail.password="pwd"`
+2 bis) In order to use option 2) you need  also to set the corresponding gmail account Security
+parameters to allow "Access to less secure apps"
+
+Remark:
+It is possible to enforce an authorization scheme that is more secure using OAuth2
+for step 2). => TODO + Explanation in the wiki
+
+To deploy the final code run in the terminal:
+Either:
+ ".\deploy_function.sh" (may need to run `chmod +x  deploy_function.sh` once)
+Or equivalently:
+`firebase deploy --only functions`
+############################################################################# */
+
 'use strict';
 const functions = require('firebase-functions');
 const nodemailer = require('nodemailer');
