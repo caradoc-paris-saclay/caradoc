@@ -16,19 +16,20 @@ main rules
 ############################################################################# */
 html {
   scroll-behavior: smooth;
+  font-family: 'Google Sans','Roboto', sans-serif;
 }
 ul {
   padding: 0;
   list-style: none;
-}
-h1,h2,h3,h4,h5,h6 {
-  font-family: 'Google Sans','Roboto', sans-serif;
 }
 h2 {
   font-weight: 400;
 }
 h3 {
   font-weight: 300;
+}
+body{
+  font-family: 'Google Sans','Roboto', sans-serif;
 }
 
 .main h2 {
