@@ -44,7 +44,7 @@ keep_files:
 # Details: https://jekyllrb.com/docs/plugins/installation/
 plugins:
   - jekyll-seo-tag
-  - jekyll-sitemap
+  - jekyll-sitemap # https://github.com/jekyll/jekyll-sitemap#note-on-use-with-github-pages-gem
   - jekyll-minifier
 
 
