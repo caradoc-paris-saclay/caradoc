@@ -472,7 +472,7 @@ $category-height-sm: 25vh;
 }
 
 .index-registration .category-title{
-	font-size: $big-font-size;
+	font-size: $subtitle-font-size;
 }
 
 .index-registration .category-box{
@@ -510,7 +510,8 @@ $category-height-sm: 25vh;
   font-weight: 300; /* Sets boldness */
   @include interpolate(font-size, $sm-width, $lg-width, 12px, 30px); // set fontsize
   //font-size: $default-font-size; /* 2% of viewport width */
-  width: 30vw; /* Link width */
+  width: 25vw; /* Link width */
+  max-height: 2 * $subtitle-font-size;
   /* Space around an element's content */
   padding:0.5em 1em; /* Xem = X times the size of current font */
   text-align: center;
@@ -574,7 +575,7 @@ $category-height-sm: 25vh;
 	}
 
 	.registration-btn{
-		font-size: 5vw;
+		font-size: $subtitle-font-size;
 		width: $category-width-sm * 3/5;
 	}
 }

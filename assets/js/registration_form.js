@@ -69,17 +69,18 @@ function processUser(){
       if (temp[0] === "id"){
          idRef = decodeURI(temp[1])
          console.log("id: ", idRef);
-          db.collection("participants_nov_2020").doc(idRef).get()
+         db.collection("participants_nov_2020").doc(idRef).get()
           .then(function(doc){
             if (doc.exists){
               participant = doc.data();
                 // Variables from input fields
+              console.log("HERE");
               setInputVal('first_name', participant.contact.firstName);
               setInputVal('last_name', participant.contact.lastName);
               setInputVal('email', participant.contact.email);
               setInputVal('email_confirmation', participant.contact.email);
               setInputVal('phone', participant.contact.phone);
-              setInputVal('linkedin', participant.contact.linkedIn);
+              // setInputVal('linkedin', participant.contact.linkedIn);
               //todo treat case of display and others
               //setInputVal('postion', participant.professional.position);
               console.log(participant.professional.position);
@@ -97,6 +98,10 @@ function processUser(){
               }
               showSchool(participant.professional.doctoralSchool);
             }
+          })
+          .catch(function(error){
+            console.log("Error during processing of data or ID not recognized.");
+            console.log(error);
           });
       }
       else{
@@ -217,6 +222,7 @@ function saveParticipant(participant){
 
 //form helper functions
 function showOther(val, id, idOther){
+  console.log("ShowOther", val, id, idOther);
   var main = document.getElementById(id);
   var other = document.getElementById(idOther);
   if(val === 'OTHER'){
