@@ -42,9 +42,10 @@ keep_files:
 # 2) Either add plugin name in Gemfile (and specify group)
 # 3) Either add cutom .rb plugins in folder _plugins
 # Details: https://jekyllrb.com/docs/plugins/installation/
+# remark: because of GitHub Pages, plugins used on GH Pages need to appear in both Gemfile and _config.yml 
 plugins:
   - jekyll-seo-tag
-  - jekyll-sitemap # https://github.com/jekyll/jekyll-sitemap#note-on-use-with-github-pages-gem
+  - jekyll-sitemap 
   - jekyll-minifier
 
 
@@ -52,6 +53,10 @@ plugins:
 compress_html:
   ignore:
     envs: ["development"]
+
+# Configuration for sass/scss compression
+sass:
+    style: compressed
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
