@@ -1,0 +1,48 @@
+---
+layout: admin_en
+sitemap: false
+title: Admin - Log In
+permalink: /dashboard
+---
+
+<section class="top-main">
+	<div>
+		<h1 class="animated fadeInUp" id="admin_title"><strong>Admin Dashboard</strong></h1>
+	</div>
+</section>
+
+<form  id="login_form" class="reg_form" action="#" onsubmit="return false">
+	<div class="wrapper">
+		<div class="full form_item">
+			<button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
+		</div>
+	</div>
+</form>
+
+	<div class="wrapper">
+		<div class="full form_item">
+			<button class="mdl-button mdl-js-button mdl-button--raised" type="button" value="clickme" onclick="loadParticipant();">LoadParticipant</button>
+		</div>
+	</div>
+
+
+
+
+<div id="dashboard" style="display: none;">
+<div class="quickstart-user-details-container">
+<h1> April 2020 Editions <h1>	
+<h2> Paricipants </h2>
+<p>Number of participants: <span id="number_participant"></span>
+</p>
+<button disabled class="mdl-button mdl-js-button mdl-button--raised" id="download_participant" name="signin">Download Participants (CSV)</button> 
+<pre><code id="quickstart-participant-details">null</code></pre>
+</div>
+<div class="quickstart-user-details-container">
+<h1> Nov 2020 Editions <h1>	
+<h2> Paricipants </h2>
+<p>Number of participants: <span id="number_participant_nov_2020"></span>
+</p>
+<button disabled class="mdl-button mdl-js-button mdl-button--raised" id="download_participant" name="signin">Download Participants (CSV)</button> 
+<pre><code id="quickstart-participant-details">null</code></pre>
+</div>
+</div>

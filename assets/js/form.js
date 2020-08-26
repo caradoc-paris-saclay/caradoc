@@ -1,3 +1,12 @@
+/* #############################################################################
+Javascript for registration forms
+
+This file contains:
+- login information for Firestore (Firebase cloud database)
+- helper functions to collect data from HTML
+- helper functions for fetching data from Firestore used in forms
+############################################################################# */
+
 var firebaseConfig = {
   apiKey: "AIzaSyCEMl2rBQqmY5YzqKGfYLy0VgLug7HQZ7o",
   authDomain: "caradoc-b9cfd.firebaseapp.com",
@@ -13,10 +22,22 @@ export const db = firebase.firestore();
 
 // helper function to get value from input forms
 export function getInputVal(id){
-  return document.getElementById(id).value;
+	try {
+		return document.getElementById(id).value;
+	}
+	catch(error){
+		console.log("Arguments: id", id);
+		console.error(error);
+	}
 }
 export function setInputVal(id, val){
-  document.getElementById(id).value = val;
+	try{
+  		document.getElementById(id).value = val;
+  	}
+	catch(error){
+		console.log("Arguments: id", id, " val:", val);
+		console.error(error);
+	}
 }
 
 export function loadLaboratories(){
