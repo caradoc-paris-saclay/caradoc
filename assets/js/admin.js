@@ -41,7 +41,21 @@ function toggleSignIn() {
 		}
 	    // Sign in with email and pass.
 	    // [START authwithemail]
-	    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+	    createSession(email, password)
+	    // [END authwithemail]
+	}
+  	document.getElementById('quickstart-sign-in').disabled = true;
+}
+
+function createSession(email, password){
+	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+	.then(function() {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+    return firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
 	      // Handle Errors here.
 	      var errorCode = error.code;
 	      var errorMessage = error.message;
@@ -55,10 +69,13 @@ function toggleSignIn() {
 	      console.log(error);
 	      document.getElementById('quickstart-sign-in').disabled = false;
       	// [END_EXCLUDE]
-    	});
-	    // [END authwithemail]
-	}
-  	document.getElementById('quickstart-sign-in').disabled = true;
+    	});;
+  })
+  .catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
 }
 
 function initApp() {
@@ -76,19 +93,23 @@ function initApp() {
 			var uid = user.uid;
 			var providerData = user.providerData;
 			// [START_EXCLUDE]
+			if (window.location.pathname == "admin"){
 			document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
 			document.getElementById('admin_title').textContent = "Admin Dashboard";
 			document.getElementById('admin_subtitle').style.display = "none";
 			document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-			//document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
 			document.getElementById('username_div').style.display = "none";
 			document.getElementById('password_div').style.display = "none";
-			document.getElementById('dashboard').style.display = "block";
+			}
+			else if (window.location.pathname == "dashboard"){
+				document.getElementById('dashboard').style.display = "block";
+			}
+			//document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
 			console.log("Fetching list or Participants.");
 			await loadParticipant()
 			.then( function(snap){
 				//console.log(labs.toJSON());
-				var csvContent = "data:text/csv;charset=utf-8,"; // csv file
+				/*var csvContent = "data:text/csv;charset=utf-8,"; // csv file
 				if (snap != null){
 					document.getElementById("number_participant").textContent = snap.size;
 					let p;
@@ -122,7 +143,7 @@ function initApp() {
 			document.getElementById('download_participant').addEventListener('click', downloadParticipantCSV, false);
 			function downloadParticipantCSV(){
 				a.click();
-			}	
+			}	*/
 			})
 			.catch(function(error){
 				console.log(error);
@@ -132,14 +153,18 @@ function initApp() {
 		else {
 			// User is signed out.
 			// [START_EXCLUDE]
-			document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
-			document.getElementById('admin_title').textContent = "Admin Log In Page";
-			document.getElementById('admin_subtitle').style.display = "block";
-			document.getElementById('quickstart-sign-in').textContent = 'Sign in';
-			//document.getElementById('quickstart-account-details').textContent = 'null';
-			document.getElementById('username_div').style.display = "block";
-			document.getElementById('password_div').style.display = "block";
-			document.getElementById('dashboard').style.display = "none";
+			if (window.location.pathname == "admin"){
+				document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
+				document.getElementById('admin_title').textContent = "Admin Log In Page";
+				document.getElementById('admin_subtitle').style.display = "block";
+				document.getElementById('quickstart-sign-in').textContent = 'Sign in';
+				//document.getElementById('quickstart-account-details').textContent = 'null';
+				document.getElementById('username_div').style.display = "block";
+				document.getElementById('password_div').style.display = "block";
+			}
+			else if (window.location.pathname == "dashboard"){
+				document.getElementById('dashboard').style.display = "none";
+			}
 			// [END_EXCLUDE]
 		}
 		// [START_EXCLUDE silent]
@@ -160,6 +185,7 @@ window.onload = function() {
 };
 
 window.login = function login(f){
+	console.log("Windo.login trigeered.")
 	//var email = document.getElementById("username").value;
 	//var password = document.getElementById("password").value;
 	var email = f.username.value;
@@ -180,7 +206,7 @@ window.login = function login(f){
 	return false;
 }
 
-function loadParticipant(){
+window.loadParticipant = function loadParticipant(){
 	console.log("Fetching list or participants.");
 	return new Promise((resolve, reject) => {
 		db.collection("participants").get()
@@ -202,4 +228,10 @@ function loadParticipant(){
 			reject(null);
 		});
 	})
+}
+
+function goToDashBoard(){
+	var xhr = new XMLHttpRequest();
+	let root_utl = document.location.origin;
+	window.location = root_url + '/dashboard';
 }

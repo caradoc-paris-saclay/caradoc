@@ -13,10 +13,22 @@ export const db = firebase.firestore();
 
 // helper function to get value from input forms
 export function getInputVal(id){
-  return document.getElementById(id).value;
+	try {
+		return document.getElementById(id).value;
+	}
+	catch(error){
+		console.log("Arguments: id", id);
+		console.error(error);
+	}
 }
 export function setInputVal(id, val){
-  document.getElementById(id).value = val;
+	try{
+  		document.getElementById(id).value = val;
+  	}
+	catch(error){
+		console.log("Arguments: id", id, " val:", val);
+		console.error(error);
+	}
 }
 
 export function loadLaboratories(){
