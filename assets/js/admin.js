@@ -1,3 +1,12 @@
+/* #############################################################################
+Javascript for admin page
+
+This file contains:
+- imports from forms.js for logging to Firestore (Firebase cloud database)
+- functions to collect login & pwd and authetify admins
+- helper functions for fetching data from Firestore used in forms
+############################################################################# */
+
 import { db, getInputVal, setInputVal, loadLaboratories } from  './form.js'; 
 console.log(firebase);
 let provider = new firebase.auth.GoogleAuthProvider();
@@ -205,6 +214,8 @@ window.login = function login(f){
 	});
 	return false;
 }
+
+
 
 window.loadParticipant = function loadParticipant(){
 	console.log("Fetching list or participants.");

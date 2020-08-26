@@ -1,3 +1,12 @@
+/* #############################################################################
+Javascript for registration forms
+
+This file contains:
+- login information for Firestore (Firebase cloud database)
+- helper functions to collect data from HTML
+- helper functions for fetching data from Firestore used in forms
+############################################################################# */
+
 var firebaseConfig = {
   apiKey: "AIzaSyCEMl2rBQqmY5YzqKGfYLy0VgLug7HQZ7o",
   authDomain: "caradoc-b9cfd.firebaseapp.com",
