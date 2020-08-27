@@ -3,6 +3,11 @@
 /* #############################################################################
 main css
 ############################################################################# */
+/* break points (according to bootstrap doc) */
+$sm-width: 576px;
+$md-width: 768px;
+$lg-width: 992px;
+$xl-width: 1200px;
 /* colors */
 $special_black: black;
 $special-white: white;
@@ -11,6 +16,47 @@ $lapis-lazuli: rgba(37, 95, 154, 1);
 $naples-yellow: rgba(254, 221, 100, 1);
 $rusty-red: rgba(222, 60, 75, 1);
 $french-raspberry: rgba(196, 40, 71, 1);
+/* Font size */
+$default-font-size: 2vw;
+$title-font-size: 7vw;
+$big-title-font-size: 10vw;
+$subtitle-font-size: 2.5vw;
+$big-subtitle-font-size: 3.57vw;
+$big-font-size: 4vw;
+$huge-font-size: 5.71vw;
+/* #############################################################################
+Fluid typography
+from: https://codepen.io/MadeByMike/pen/vNrvdZ
+
++ Single property
+html {
+  @include interpolate(font-size, 320px, 1366px, 14px, 20px);
+}
+
++ Multiple properties example
+h1,h2,h3,h4,h5 {
+  @include interpolate((padding-top, padding-bottom), 20rem, 70rem, 0rem, .5rem);
+}
+############################################################################# */
+@mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value) {
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+
+    @media screen and (min-width: $min-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value); 
+      }
+    }
+
+    @media screen and (min-width: $max-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value);
+      }
+    }
+  }
+}
 /* #############################################################################
 main rules
 ############################################################################# */
@@ -151,6 +197,26 @@ top-2 class
     }
   }
 }
+
+/* #############################################################################
+404 page - page-not-found class
+############################################################################# */
+.page-not-found{
+  height: 90vh;
+  background: $prussian-blue;
+  color: white;
+
+  h1{
+    @include interpolate(font-size, $sm-width, $lg-width, 35px, 70px); 
+  }
+  .msg-box{
+     margin-top:30vh;
+  }
+  .left-text{
+   @include interpolate(font-size, $sm-width, $lg-width, 100px, 200px);
+  }
+}
+
 
 /* #############################################################################
 story class
