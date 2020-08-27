@@ -43,7 +43,8 @@ function initApp() {
       // Listening for auth state changes.
       // [START authstatelistener]
 	firebase.auth().onAuthStateChanged(async function(user) {
-		console.log("Init App onAuthStateChanged")
+		console.log("Init App onAuthStateChanged");
+		console.log("user", user);
 		if (user) {
 			console.log("User signed in")
 		  	// Get user data from firebase
@@ -58,6 +59,9 @@ function initApp() {
 			document.getElementById("log-out-btn").disabled = false;
 			document.getElementById("log-out-btn").style.visibility = "visible"; 
 			// [START_EXCLUDE]
+			if (pageName == "admin"){
+				window.location.pathname = "/dashboard";
+			}
 			if (pageName == "dashboard"){
 				document.getElementById('dashboard').style.display = "block";
 			}
@@ -130,6 +134,9 @@ function initApp() {
 
 window.logout = function logout(){
 	firebase.auth().signOut();
+	if (pageName == "dashboard"){
+		window.location.pathname = "/admin";
+	}
 }
 
 window.signIn = function signIn() {
@@ -152,15 +159,13 @@ window.signIn = function signIn() {
 		}
 	    // Sign in with email and password
 	    // [START authwithemail]
-	    createSession(email, password)				
+	    createSession(email, password);				
 	    document.getElementById("login_form").reset();
-		window.location.pathname = "/dashboard";
 	    // [END authwithemail]
 	}
-  	document.getElementById('sign-in').disabled = true;
 }
 
-function createSession(email, password){
+async function createSession(email, password){
 	console.log("createSession")
 	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
 	.then(function() {
@@ -169,7 +174,7 @@ function createSession(email, password){
     // if a user forgets to sign out.
     // ...
     // New sign-in will be persisted with session persistence.
-    return firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    return firebase.auth().signInWithEmailAndPassword(email, password).catch(async function(error) {
 	      // Handle Errors here.
 	      var errorCode = error.code;
 	      var errorMessage = error.message;
