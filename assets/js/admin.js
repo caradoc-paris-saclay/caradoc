@@ -19,6 +19,11 @@ var admin = firebase.auth();//('firebase-admin');
 var participants =  new Array(); // list of participants
 var dlwdedCollections = {};
 const listCollections = ["participants", "participants_nov_2020", "laboratories"];
+var counter = {
+				"object": null,
+				"timestamp": Date()
+			  };
+const timeOut = 30 * 60 * 1000; // 30 min in millisecond
 //document.getElementById('login_form').addEventListener('submit', window.login);
 
 // window.updateForm 
@@ -254,16 +259,45 @@ function loadCollection(collection){
 	})
 }
 
-function updateNumbers(){
-	// code works but will download all the data
-	/*console.log("Updating numbers for all collections.");
+async function loadCounters(){
+
+	console.log("Fetching counters from Firestore")
+	return new Promise((resolve, reject) => {
+		//var docRef = db.collection("counters").doc("counters");
+		db.collection("counters").doc("counters").get()
+		.then(snapshot =>{
+			console.log("snapshot", snapshot);
+			console.log("snapshot.path", snapshot.path);
+			console.log("not empty?", !snapshot.empty);
+			console.log("empty?", snapshot.empty);
+			if (!snapshot.empty){
+				console.log("Not empty");
+				resolve(snapshot);
+				console.log("Counters downloaded.");
+			}
+			else{
+				throw "failure";
+				reject(null)
+			}
+		})
+		.catch(err =>{
+			console.log("Failed to load counters:", err);
+			reject(null);
+		});
+	})
+
+}
+
+async function updateNumbers(){
+	// Create a reference to the cities collection
+	if (counter["object"] == null || (Date() - counter["timestamp"]) < timeOut ){
+		counter["object"] = await loadCounters();
+	}
+	const data = counter["object"].data();
 	listCollections.forEach(async function (collection, index) {
-		if(dlwdedCollections[collection] == undefined){
-			dlwdedCollections[collection] = await loadCollection(collection);
-		}
-  		let snapID = "number_" + collection;
-		document.getElementById(snapID).textContent = dlwdedCollections[collection].size;
-	});*/
+		let snapID = "number_" + collection;
+		document.getElementById(snapID).textContent = data[collection];
+	});
 }
 
 function containsObject(obj, list) {
