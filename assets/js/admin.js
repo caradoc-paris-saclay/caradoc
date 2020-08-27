@@ -58,13 +58,7 @@ function initApp() {
 			document.getElementById("log-out-btn").disabled = false;
 			document.getElementById("log-out-btn").style.visibility = "visible"; 
 			// [START_EXCLUDE]
-			if (pageName== "admin"){
-				document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-				// collapse the form
-				document.getElementById("login_form").reset();
-				document.getElementById("login_form").style.display = "none";
-			}
-			else if (pageName == "dashboard"){
+			if (pageName == "dashboard"){
 				document.getElementById('dashboard').style.display = "block";
 			}
 			//document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
@@ -117,13 +111,7 @@ function initApp() {
 			// User is signed out.
 			// [START_EXCLUDE]
 			if (pageName == "admin"){
-				document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
 				document.getElementById('admin_title').textContent = "Admin Log In Page";
-				//document.getElementById('admin_subtitle').style.display = "block";
-				document.getElementById('quickstart-sign-in').textContent = 'Sign in';
-				//document.getElementById('quickstart-account-details').textContent = 'null';
-				document.getElementById('username_div').style.display = "block";
-				document.getElementById('password_div').style.display = "block";
 			}
 			else if (pageName == "dashboard"){
 				document.getElementById('dashboard').style.display = "none";
@@ -131,17 +119,20 @@ function initApp() {
 			// [END_EXCLUDE]
 		}
 		// [START_EXCLUDE silent]
-		document.getElementById('quickstart-sign-in').disabled = false;
+		if (pageName == "admin"){
+			document.getElementById('sign-in').disabled = false;
+		}
 		// [END_EXCLUDE]
 	});
 	// [END authstatelistener]
 	console.log("Reached end of initApp");
-    document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
-
-    console.log("Reached end of initApp");
 }
 
-function toggleSignIn() {
+window.logout = function logout(){
+	firebase.auth().signOut();
+}
+
+window.signIn = function signIn() {
 	console.log("toggleSignIn triggered");
  	if (firebase.auth().currentUser) {
 	    // [START signout]
@@ -161,10 +152,12 @@ function toggleSignIn() {
 		}
 	    // Sign in with email and password
 	    // [START authwithemail]
-	    createSession(email, password)
+	    createSession(email, password)				
+	    document.getElementById("login_form").reset();
+		window.location.pathname = "/dashboard";
 	    // [END authwithemail]
 	}
-  	document.getElementById('quickstart-sign-in').disabled = true;
+  	document.getElementById('sign-in').disabled = true;
 }
 
 function createSession(email, password){
@@ -188,7 +181,7 @@ function createSession(email, password){
 	        alert(errorMessage);
 	      }
 	      console.log(error);
-	      document.getElementById('quickstart-sign-in').disabled = false;
+	      document.getElementById('sign-in').disabled = false;
       	// [END_EXCLUDE]
     	});;
   })
