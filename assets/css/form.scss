@@ -177,38 +177,3 @@ div.alert{
     padding:2em;
   }*/
 }
-
-/* #############################################################################
-Admin form
-############################################################################# */
-
-.admin-header h1, h2{
-    line-height: inherit !important;
-    letter-spacing: inherit !important;
-    font-weight: bold;
-}
-.mdl-layout {
-  align-items: center;
-  justify-content: center;
-}
-.mdl-layout__content {
-  padding: 24px;
-  flex: none;
-}
-
-.admin-login {
-
-  text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  background-color: $prussian-blue;
-  color: $special-white;
-  
-  .card{
-    color: $special-black;
-    min-width: 30em;
-    @media (max-width:$md-width){
-      min-width: 50%;
-    }
-  }
-}
