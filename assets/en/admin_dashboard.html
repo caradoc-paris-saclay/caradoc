@@ -8,33 +8,33 @@ permalink: /dashboard
 	<div class="d-flex flex-column justify-content-between">
 		<h1 class="d-flex mx-auto animated fadeInUp" id="admin_title"><strong>Admin Dashboard</strong></h1>
 		<h2 class="d-flex mx-auto animated fadeInUp" id="admin_subtitle"><strong>Logging Status: <span id="logging-status"></span></strong></h2>
-		<button disabled class="d-flex mx-auto btn btn-danger btn-block" id="log-out-btn" style="visibility: hidden;" onclick="logout();">Log Out</button>
+		<button disabled class="d-flex mx-auto btn btn-danger" id="log-out-btn" style="visibility: hidden;" onclick="logout();">Log Out</button>
 	</div>
 </section>
 
-<div id="dashboard" style="display: none;">
-	<div>
+<div class="d-flex flex-column justify-content-between dashboard" id="dashboard" style="display: none;">
+	<div class="block-2">
 		<h1>Warning </h1>
 		<p>For now the numbers are not loaded by default because we need to download all the documents to get access to them. Being limited to 50 000 free reads / day, the numbers are only shown if you download the data. Please don't download the list if not needed.</p>
 	</div>
-	<div class="quickstart-user-details-container">
-		<h1> April 2020 Editions </h1>	
-		<h2> Paricipants </h2>
-		<p>Number of participants: <span id="number_participants"></span>
+	<div class="d-flex flex-column justify-content-between block-1">
+		<h1 class="my-auto"> April 2020 Editions </h1>	
+		<h2 class="my-auto"> Paricipants </h2>
+		<p class="my-auto">Number of participants: <span id="number_participants"></span>
 		</p>
-		<button class="btn btn-primary" id="download_participant" name="signin" onclick="dwldDatabase('participants');">Download Participants (CSV)</button> 
+		<button class="d-flex mx-auto btn btn-primary" id="download_participant" name="signin" onclick="dwldDatabase('participants');">Download Participants (CSV)</button> 
 	</div>
-	<div class="quickstart-user-details-container">
-		<h1> Nov 2020 Editions </h1>	
-		<h2> Paricipants </h2>
-		<p>Number of participants: <span id="number_participants_nov_2020"></span>
+	<div class="d-flex flex-column justify-content-between block-2">
+		<h1 class="my-auto"> Nov 2020 Editions </h1>	
+		<h2 class="my-auto"> Paricipants </h2>
+		<p class="my-auto">Number of participants: <span id="number_participants_nov_2020"></span>
 		</p>
-		<button class="btn btn-primary" id="download_participant" name="signin" onclick="dwldDatabase('participants_nov_2020');">Download Participants (CSV)</button> 
+		<button class="d-flex mx-auto btn btn-primary" id="download_participant" name="signin" onclick="dwldDatabase('participants_nov_2020');">Download Participants (CSV)</button> 
 	</div>
-	<div class="quickstart-user-details-container">
-		<h1> Paris-Saclay Laboratories & Contact </h1>	
-		<p>Number of labs in database: <span id="number_laboratories"></span>
+	<div class="d-flex flex-column justify-content-between block-1">
+		<h1 class="my-auto"> Paris-Saclay Laboratories & Contact </h1>	
+		<p class="my-auto">Number of labs in database: <span id="number_laboratories"></span>
 		</p>
-		<button class="btn btn-primary" id="download_labs" name="signin" onclick="dwldDatabase('laboratories');">Download Labs (CSV)</button> 
+		<button class="d-flex mx-auto btn btn-primary" id="download_labs" name="signin" onclick="dwldDatabase('laboratories');">Download Labs (CSV)</button> 
 	</div>
 </div>
