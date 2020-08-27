@@ -4,10 +4,11 @@ sitemap: false
 title: Admin - Log In
 permalink: /dashboard
 ---
-
 <section class="top-main">
-	<div>
-		<h1 class="animated fadeInUp" id="admin_title"><strong>Admin Dashboard</strong></h1>
+	<div class="d-flex flex-column justify-content-between">
+		<h1 class="d-flex mx-auto animated fadeInUp" id="admin_title"><strong>Admin Dashboard</strong></h1>
+		<h2 class="d-flex mx-auto animated fadeInUp" id="admin_subtitle"><strong>Logging Status: <span id="logging-status"></span></strong></h2>
+		<button disabled class="d-flex mx-auto mdl-button mdl-js-button mdl-button--raised" id="log-out-btn"  style="visibility: hidden;">Log Out</button>
 	</div>
 </section>
 

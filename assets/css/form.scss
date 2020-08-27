@@ -158,3 +158,21 @@ div.alert{
     padding:2em;
   }*/
 }
+
+/* #############################################################################
+Admin form
+############################################################################# */
+
+.admin-header h1, h2{
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+    font-weight: bold;
+}
+.mdl-layout {
+  align-items: center;
+  justify-content: center;
+}
+.mdl-layout__content {
+  padding: 24px;
+  flex: none;
+}
