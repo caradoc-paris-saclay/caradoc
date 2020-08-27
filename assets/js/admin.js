@@ -17,6 +17,8 @@ const pageName = window.location.pathname.replace(/^\/+/g, '').replace(/\/+$/, '
 let provider = new firebase.auth.GoogleAuthProvider();
 var admin = firebase.auth();//('firebase-admin');
 var participants =  new Array(); // list of participants
+var dlwdedCollections = {};
+const listCollections = ["participants", "participants_nov_2020", "laboratories"];
 //document.getElementById('login_form').addEventListener('submit', window.login);
 
 // window.updateForm 
@@ -31,6 +33,9 @@ window.onload = function() {
 	console.log("window.location.pathname: ", window.location.pathname );
 	console.log("pageName: ", pageName);
 	initApp();
+	if (pageName == "dashboard"){
+		updateNumbers();
+	}
 };
 /* #############################################################################
 initApp is called only once at window loading time.
@@ -42,9 +47,8 @@ function initApp() {
 	console.log("Init App")
       // Listening for auth state changes.
       // [START authstatelistener]
-	firebase.auth().onAuthStateChanged(async function(user) {
+	firebase.auth().onAuthStateChanged(function(user) {
 		console.log("Init App onAuthStateChanged");
-		console.log("user", user);
 		if (user) {
 			console.log("User signed in")
 		  	// Get user data from firebase
@@ -65,50 +69,6 @@ function initApp() {
 			if (pageName == "dashboard"){
 				document.getElementById('dashboard').style.display = "block";
 			}
-			//document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
-			console.log("Fetching list or Participants.");
-			await loadParticipant()
-			.then( function(snap){
-				//console.log(labs.toJSON());
-				/*var csvContent = "data:text/csv;charset=utf-8,"; // csv file
-				if (snap != null){
-					document.getElementById("number_participant").textContent = snap.size;
-					let p;
-					snap.forEach(doc => {
-				    	p = doc.data();
-				    	participants.push(p);  
-					})
-					// to fill csv
-					//csvContent += ;
-					var json = participants
-					var fields = Object.keys(participants[0])
-					var replacer = function(key, value) { return value === null ? '' : value } 
-					var csv = json.map(function(row){
-					  return fields.map(function(fieldName){
-					    return JSON.stringify(row[fieldName], replacer)
-					  }).join(',')
-					})
-					csv.unshift(fields.join(',')) // add header column
-					csv = csv.join('\r\n');
-					//console.log(csv)
-				}
-				
-			var csvData = new Blob([csv], { type: 'text/csv' }); //new way
-			var csvUrl = URL.createObjectURL(csvData);
-			var a = document.createElement('a');
-			a.href        = csvUrl;
-			a.target      = '_blank';
-			a.download    = 'export.csv';
-			document.getElementById("dashboard").appendChild(a);
-			document.getElementById('download_participant').disabled = false;
-			document.getElementById('download_participant').addEventListener('click', downloadParticipantCSV, false);
-			function downloadParticipantCSV(){
-				a.click();
-			}	*/
-			})
-			.catch(function(error){
-				console.log(error);
-			});
 		  // [END_EXCLUDE]
 		} 
 		else {
@@ -165,7 +125,10 @@ window.signIn = function signIn() {
 	}
 }
 
-async function createSession(email, password){
+/* #############################################################################
+createSession
+############################################################################# */
+function createSession(email, password){
 	console.log("createSession")
 	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
 	.then(function() {
@@ -197,43 +160,87 @@ async function createSession(email, password){
   });
 }
 
+/* #############################################################################
+dwldDatabase accesses the databse and download the collection from Firebase
+collection is the name of the Firestore collection
+the ouput file is in csv format
+############################################################################# */
 
-
-window.login = function login(f){
-	console.log("Windo.login trigeered.")
-	//var email = document.getElementById("username").value;
-	//var password = document.getElementById("password").value;
-	var email = f.username.value;
-	var password = f.password.value;
-	firebase.auth().signInWithEmailAndPassword(email, password)
-	.then(function(stuff){
-		console.log("Success? ", stuff);
-		//document.getElementById("login_form").style.display = "none";
-	})
-	.catch(function(error) {
-  	// Handle Errors here.
-  	var errorCode = error.code;
-  	var errorMessage = error.message;
-  	console.console(errorCode);
-  	console.alert(error.message);
-  	// ...
-	});
-	return false;
+window.dwldDatabase = async function dwldDatabase(collection){
+	//console.log(labs.toJSON());
+	if(dlwdedCollections[collection] !== undefined){
+		return dlwdedCollections[collection];
+	}
+	else{
+		await loadCollection(collection)
+		.then( function(snap){
+			if (snap != null){
+				let snapID = "number_" + collection;
+				console.log(snapID);
+				document.getElementById(snapID).textContent = snap.size;
+				let p;
+				dlwdedCollections[collection] = snap;
+			}
+		})
+		.catch(function(error){
+			console.log(error);
+		});
+	}
+	
+	var csvContent = "data:text/csv;charset=utf-8,"; // csv file
+	
+		/*snap.forEach(doc => {
+	    	p = doc.data();
+	    	participants.push(p);  
+		})
+		// to fill csv
+		//csvContent += ;
+		var json = participants
+		var fields = Object.keys(participants[0])
+		var replacer = function(key, value) { return value === null ? '' : value } 
+		var csv = json.map(function(row){
+		  return fields.map(function(fieldName){
+		    return JSON.stringify(row[fieldName], replacer)
+		  }).join(',')
+		})
+		csv.unshift(fields.join(',')) // add header column
+		csv = csv.join('\r\n');
+		//console.log(csv)
+	}
+		
+	var csvData = new Blob([csv], { type: 'text/csv' }); //new way
+	var csvUrl = URL.createObjectURL(csvData);
+	var a = document.createElement('a');
+	a.href        = csvUrl;
+	a.target      = '_blank';
+	a.download    = 'export.csv';
+	document.getElementById("dashboard").appendChild(a);
+	document.getElementById('download_participant').disabled = false;
+	document.getElementById('download_participant').addEventListener('click', downloadParticipantCSV, false);
+	function downloadParticipantCSV(){
+		a.click();*/
 }
 
-
-
-window.loadParticipant = function loadParticipant(){
-	console.log("Fetching list or participants.");
+function loadCollection(collection){
+	console.log("Fetching Firestore collection:", collection);
 	return new Promise((resolve, reject) => {
-		db.collection("participants").get()
+		db.collection(collection).get()
 		.then(snapshot =>{
+			console.log("snapshot", snapshot);
+			console.log("snapshot.path", snapshot.path);
 			console.log("not empty?", !snapshot.empty);
 			console.log("empty?", snapshot.empty);
+			try{
+				document
+			}
+			catch(error){
+				console.log("Arguments: id", id);
+				console.error(error);
+			}
 			if (!snapshot.empty){
 				console.log("Not empty");
 				resolve(snapshot);
-				console.log("Participants list downloaded.");
+				console.log("Collection ", collection, " downloaded.");
 			}
 			else{
 				throw "failure";
@@ -241,14 +248,31 @@ window.loadParticipant = function loadParticipant(){
 			}
 		})
 		.catch(err =>{
-			console.log("Failed to load list of Participants: ", err);
+			console.log("Failed to load collection ", collection, ":", err);
 			reject(null);
 		});
 	})
 }
 
-function goToDashBoard(){
-	var xhr = new XMLHttpRequest();
-	let root_utl = document.location.origin;
-	window.location = root_url + '/dashboard';
+function updateNumbers(){
+	// code works but will download all the data
+	/*console.log("Updating numbers for all collections.");
+	listCollections.forEach(async function (collection, index) {
+		if(dlwdedCollections[collection] == undefined){
+			dlwdedCollections[collection] = await loadCollection(collection);
+		}
+  		let snapID = "number_" + collection;
+		document.getElementById(snapID).textContent = dlwdedCollections[collection].size;
+	});*/
+}
+
+function containsObject(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i] === obj) {
+            return true;
+        }
+    }
+
+    return false;
 }
