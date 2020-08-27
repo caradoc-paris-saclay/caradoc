@@ -1,0 +1,78 @@
+---
+---
+/* #############################################################################
+admin css
+############################################################################# */
+/* break points (according to bootstrap doc) */
+$sm-width: 576px;
+$md-width: 768px;
+$lg-width: 992px;
+$xl-width: 1200px;
+/* colors */
+$special_black: black;
+$special-white: white;
+$prussian-blue: rgba(9, 41, 70, 1);
+$lapis-lazuli: rgba(37, 95, 154, 1);
+$naples-yellow: rgba(254, 221, 100, 1);
+$rusty-red: rgba(222, 60, 75, 1);
+$french-raspberry: rgba(196, 40, 71, 1);
+/* Font size */
+$default-font-size: 2vw;
+$title-font-size: 7vw;
+$big-title-font-size: 10vw;
+$subtitle-font-size: 2.5vw;
+$big-subtitle-font-size: 3.57vw;
+$big-font-size: 4vw;
+$huge-font-size: 5.71vw;
+/* #############################################################################
+Admin form
+############################################################################# */
+
+.admin-header h1, h2{
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+    font-weight: bold;
+}
+
+.admin-login {
+
+  text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  background-color: $prussian-blue;
+  color: $special-white;
+  
+  .card{
+    color: $special-black;
+    min-width: 30em;
+    @media (max-width:$md-width){
+      min-width: 50%;
+    }
+  }
+}
+
+/* #############################################################################
+Dashboard 
+############################################################################# */
+
+.dashboard{
+  color: $special-white;
+  background: $prussian-blue;
+  button{
+    margin-top: 0.5em;
+  }
+}
+
+.block-1{
+  padding-top: 1em;
+  padding-bottom: 1em;
+  min-height: 20vh;
+  background: $prussian-blue;
+}
+
+.block-2{
+  padding-top: 1em;
+  padding-bottom: 1em;
+  min-height: 20vh;
+  background: $lapis-lazuli;
+}
