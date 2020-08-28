@@ -19,17 +19,13 @@ var admin = firebase.auth();//('firebase-admin');
 var dlwdedCollections = {};
 const listCollections = ["participants", "participants_nov_2020", "laboratories"];
 // Counter class
-class Counter {
-	timestamp = 0; // timestamp will be initialised later
-	constructor(){
-		this.value = null;
-	}
+function Counter () {
+	var timestamp = null; // timestamp will be initialised later
+	this.value = null;
 };
-class CollectionData{
-	timestamp = 0; // timestamp will be initialised later
-	constructor(){
-		this.data = new Array;
-	}
+function CollectionData () {
+	var timestamp = null; // timestamp will be initialised later
+	this.data = new Array();
 };
 var counters = {};
 const timeOut = 30 * 60 * 1000; // 30 min in millisecond
@@ -252,7 +248,6 @@ window.dwldDatabase = async function dwldDatabase(collection){
 		a.click();
 	}
 }
-
 /* #############################################################################
 loadCollection accesses the database and downloads the collection from Firebase
 argument "collection" is the name of the Firestore collection
@@ -331,18 +326,23 @@ use loadCounters for retreiving data from Firestore.
 ############################################################################# */
 
 async function updateNumbers(){
+	console.log("Updating page numbers.")
 	// Create a reference to the cities collection
 	let flag = false;
-	listCollections.forEach(collection => {
+	listCollections.some(collection => {
 		let spanId = "number_" + collection;
 		let spinnerId = "spinner_" + collection;
 		document.getElementById(spanId).textContent = "Loading...";
 		document.getElementById(spinnerId).classList.add("spinner-border");
+		// for the 1st run, the variables are initialized at null => flag will be true
 		if(counters[collection].value == null){
 			flag = true;
+			return flag; // return from the local function "some" not from updateNumbers
+			// we use some instead of ForEach in order to "break" the loop with the return
 		}
 	});
 	if (flag || (Date() - Counter.timestamp) < timeOut ){
+		console.log("Here 1")
 		const object = await loadCounters();
 		const data = object.data();
 		listCollections.forEach(collection => {
