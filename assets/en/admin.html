@@ -31,7 +31,7 @@ For Chrome : name="username" & name="password" are required
 						<div class="input-group-prepend">
 						    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 						 </div>
-						<input id="username" name="username" class="form-control" spellcheck="false" autocapitalize="none" placeholder="E-mail" type="email">
+						<input id="username" name="username" class="form-control" spellcheck="false" autocapitalize="none" placeholder="E-mail" autocomplete="username email" type="email" required/>
 					</div> <!-- input-group.// -->
 				</div> <!-- form-group// -->
 				<div class="form-group">
@@ -39,11 +39,11 @@ For Chrome : name="username" & name="password" are required
 						<div class="input-group-prepend">
 						    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 						 </div>
-					    <input class="form-control" placeholder="Password" id="password" name='password' type="password">
+					    <input class="form-control" placeholder="Password" id="password" name='password' autocomplete="current-password" autocapitalize="off"  type="password" required/>
 					</div> <!-- input-group.// -->
 				</div> <!-- form-group// -->
 				<div class="form-group">
-					<button type="submit" class="btn btn-primary btn-block" id="sign-in" name="signin" onclick="signIn();"> Login </button>
+					<button type="submit" class="btn btn-primary btn-block" id="sign-in" name="signIn" onclick="signIn();"> Login </button>
 				</div> <!-- form-group// -->
 				<p class="text-center">
 					<a href="#" class="btn">Forgot password?</a>
@@ -52,18 +52,3 @@ For Chrome : name="username" & name="password" are required
 		</article>
 	</div> <!-- card.// -->
 </section>
-<!--form  id="login_form" class="reg_form" action="#" onsubmit="return false">
-	<div class="wrapper">
-		<div class="form_item" id="username_div">
-			<label for="email">Username (*)</label>
-			<input type="email" name="email" value="" id="username" spellcheck="false" autocapitalize="none" autocomplete="username email" placeholder="myname@mail.com" required/>
-		</div>
-		<div class="form_item" id="password_div">
-			<label for="password">Password (*)</label>
-			<input type="password" name="password" value="" id="password" autocomplete="current-password" spellcheck="false" autocapitalize="off" placeholder="XXXXXXX" required/>
-		</div>
-		<div class="full form_item">
-			<button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
-		</div>
-	</div>
-</form -->
