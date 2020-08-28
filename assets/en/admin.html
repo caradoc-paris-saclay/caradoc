@@ -14,6 +14,11 @@ permalink: /admin
 	</div>
 </section>
 
+<!-- To trigger web browser save password event. We will call it  'Save password'.
+In general,  'Save password' is triggered after it is redirected to the page.
+Some fields are requried.
+For Chrome : name="username" & name="password" are required
+ -->
 <section class="d-flex admin-login">
 	<div class="mt-5 mb-5 mx-auto card">
 		<article class="card-body">
@@ -26,7 +31,7 @@ permalink: /admin
 						<div class="input-group-prepend">
 						    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 						 </div>
-						<input id="username" name="" class="form-control" spellcheck="false" autocapitalize="none" placeholder="E-mail" type="email">
+						<input id="username" name="username" class="form-control" spellcheck="false" autocapitalize="none" placeholder="E-mail" type="email">
 					</div> <!-- input-group.// -->
 				</div> <!-- form-group// -->
 				<div class="form-group">
@@ -34,7 +39,7 @@ permalink: /admin
 						<div class="input-group-prepend">
 						    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 						 </div>
-					    <input class="form-control" placeholder="Password" id="password" type="password">
+					    <input class="form-control" placeholder="Password" id="password" name='password' type="password">
 					</div> <!-- input-group.// -->
 				</div> <!-- form-group// -->
 				<div class="form-group">
