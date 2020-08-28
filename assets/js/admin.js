@@ -19,10 +19,14 @@ var admin = firebase.auth();//('firebase-admin');
 var participants =  new Array(); // list of participants
 var dlwdedCollections = {};
 const listCollections = ["participants", "participants_nov_2020", "laboratories"];
-var counter = {
-				"object": null,
-				"timestamp": Date()
-			  };
+// Counter class
+class Counter {
+	timestamp = 0; // timestamp will be initialised later
+	constructor(){
+		this.value = null;
+	}
+};
+var counters = {};
 const timeOut = 30 * 60 * 1000; // 30 min in millisecond
 //document.getElementById('login_form').addEventListener('submit', window.login);
 
@@ -39,6 +43,10 @@ window.onload = function() {
 	console.log("pageName: ", pageName);
 	initApp();
 	if (pageName == "dashboard"){
+		listCollections.forEach(collection => {
+			counters[collection]= new Counter();		
+		});
+		Counter.timestamp = Date(); // ninitialize timestamp
 		updateNumbers();
 	}
 };
@@ -197,13 +205,17 @@ window.dwldDatabase = async function dwldDatabase(collection){
 	}
 	else{
 		await loadCollection(collection)
-		.then( function(snap){
+		.then(function(snap){
 			if (snap != null){
-				let snapID = "number_" + collection;
-				console.log(snapID);
-				document.getElementById(snapID).textContent = snap.size;
-				let p;
+				let spanId = "number_" + collection;
+				console.log(spanId);
+				document.getElementById(spanId).textContent = snap.size;
 				dlwdedCollections[collection] = snap;
+				let p;
+				snap.forEach(doc => {
+			    	p = doc.data();
+			    	participants.push(p);  
+				})
 			}
 		})
 		.catch(function(error){
@@ -324,13 +336,29 @@ use loadCounters for retreiving data from Firestore.
 
 async function updateNumbers(){
 	// Create a reference to the cities collection
-	if (counter["object"] == null || (Date() - counter["timestamp"]) < timeOut ){
-		counter["object"] = await loadCounters();
-	}
-	const data = counter["object"].data();
-	listCollections.forEach(async function (collection, index) {
-		let snapID = "number_" + collection;
-		document.getElementById(snapID).textContent = data[collection];
-		counter["timestamp"] = Date();
+	let flag = false;
+	listCollections.forEach(collection => {
+		let spanId = "number_" + collection;
+		let spinnerId = "spinner_" + collection;
+		document.getElementById(spanId).textContent = "Loading...";
+		document.getElementById(spinnerId).classList.add("spinner-border");
+		if(counters[collection].value == null){
+			flag = true;
+		}
 	});
+	if (flag || (Date() - Counter.timestamp) < timeOut ){
+		const object = await loadCounters();
+		const data = object.data();
+		listCollections.forEach(collection => {
+			counters[collection].value = data[collection];
+		});
+		Counter.timestamp = Date(); // update timestamp of Counter class
+	}
+	listCollections.forEach(async function (collection, index) {
+		let spanId = "number_" + collection;
+		let spinnerId = "spinner_" + collection;
+		document.getElementById(spinnerId).classList.remove("spinner-border");
+		document.getElementById(spanId).textContent = counters[collection].value;
+	});
+
 }
