@@ -4,33 +4,50 @@ sitemap: false
 title: Admin - Log In
 permalink: /dashboard
 ---
-<section class="top-main">
-	<div class="d-flex flex-column justify-content-between">
-		<h1 class="d-flex mx-auto animated fadeInUp" id="admin_title"><strong>Admin Dashboard</strong></h1>
-		<h2 class="d-flex mx-auto animated fadeInUp" id="admin_subtitle"><strong>Logging Status: <span id="logging-status"></span></strong></h2>
-		<button disabled class="d-flex mx-auto btn btn-danger" id="log-out-btn" style="visibility: hidden;" onclick="logout();">Log Out</button>
+<!--div class="spinner-box">
+	<div class="spinner-border spinner" role="status">
+	  <span class="sr-only">Loading...</span>
 	</div>
-</section>
+</div-->
 
-<div class="d-flex flex-column justify-content-between dashboard" id="dashboard" style="display: none;">
-	<div class="d-flex flex-column justify-content-between block-1">
-		<h1 class="my-auto"> April 2020 Editions </h1>	
-		<h2 class="my-auto"> Paricipants </h2>
-		<p class="my-auto">Number of participants: <span id="number_participants"></span>
-		</p>
-		<button class="d-flex mx-auto btn btn-primary" id="download_participant" name="signin" onclick="dwldDatabase('participants');">Download Participants (CSV)</button> 
-	</div>
-	<div class="d-flex flex-column justify-content-between block-2">
-		<h1 class="my-auto"> Nov 2020 Editions </h1>	
-		<h2 class="my-auto"> Paricipants </h2>
-		<p class="my-auto">Number of participants: <span id="number_participants_nov_2020"></span>
-		</p>
-		<button class="d-flex mx-auto btn btn-primary" id="download_participant" name="signin" onclick="dwldDatabase('participants_nov_2020');">Download Participants (CSV)</button> 
-	</div>
-	<div class="d-flex flex-column justify-content-between block-1">
-		<h1 class="my-auto"> Paris-Saclay Laboratories & Contact </h1>	
-		<p class="my-auto">Number of labs in database: <span id="number_laboratories"></span>
-		</p>
-		<button class="d-flex mx-auto btn btn-primary" id="download_labs" name="signin" onclick="dwldDatabase('laboratories');">Download Labs (CSV)</button> 
+<div class="preloader-wrapper">
+	<section class="top-main">
+		<div class="d-flex flex-column justify-content-between">
+			<h1 class="d-flex mx-auto animated fadeInUp" id="admin_title"><strong>Admin Dashboard</strong></h1>
+			<h2 class="d-flex mx-auto animated fadeInUp" id="admin_subtitle"><strong>Logging Status: <span id="logging-status"></span></strong></h2>
+			<button disabled class="d-flex mx-auto btn btn-danger" id="log-out-btn" style="visibility: hidden;" onclick="logout();">Log Out</button>
+		</div>
+	</section>
+
+	<div class="d-flex flex-column justify-content-between dashboard" id="dashboard" style="display: none;">
+		<div class="d-flex flex-column justify-content-between block-1">
+			<h1 class="my-auto"> April 2020 Editions </h1>	
+			<h2 class="my-auto"> Paricipants </h2>
+			<p class="my-auto">Number of participants: 
+				<span id="number_participants" class="number_display">Loading...</span>
+				<!-- admin.js will add class spinner-border to the next span -->
+				<span id="spinner_participants"class="spinner-border number-spinner" role="status"></span>
+			</p>
+			<button class="d-flex mx-auto btn btn-primary" id="download_participant" name="signin" onclick="dwldDatabase('participants');">Download Participants (CSV)</button> 
+		</div>
+		<div class="d-flex flex-column justify-content-between block-2">
+			<h1 class="my-auto"> Nov 2020 Editions </h1>	
+			<h2 class="my-auto"> Paricipants </h2>
+			<p class="my-auto">Number of participants: 
+				<span id="number_participants_nov_2020" class="number_display">Loading...</span>
+				<!-- admin.js will add class spinner-border to the next span -->
+				<span id="spinner_participants_nov_2020"class="number-spinner" role="status"></span>
+			</p>
+			<button class="d-flex mx-auto btn btn-primary" id="download_participant" name="signin" onclick="dwldDatabase('participants_nov_2020');">Download Participants (CSV)</button> 
+		</div>
+		<div class="d-flex flex-column justify-content-between block-1">
+			<h1 class="my-auto"> Paris-Saclay Laboratories & Contact </h1>	
+			<p class="my-auto">Number of labs in database: 
+				<span id="number_laboratories" class="number_display">Loading...</span>
+				<!-- admin.js will add class spinner-border to the next span -->
+				<span id="spinner_laboratories"class="number-spinner" role="status"></span>
+			</p>
+			<button class="d-flex mx-auto btn btn-primary" id="download_labs" name="signin" onclick="dwldDatabase('laboratories');">Download Labs (CSV)</button> 
+		</div>
 	</div>
 </div>
