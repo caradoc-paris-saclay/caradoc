@@ -16,7 +16,6 @@ import { db, getInputVal, setInputVal, loadLaboratories } from  './form.js';
 const pageName = window.location.pathname.replace(/^\/+/g, '').replace(/\/+$/, ''); 
 let provider = new firebase.auth.GoogleAuthProvider();
 var admin = firebase.auth();//('firebase-admin');
-var participants =  new Array(); // list of participants
 var dlwdedCollections = {};
 const listCollections = ["participants", "participants_nov_2020", "laboratories"];
 // Counter class
@@ -24,6 +23,12 @@ class Counter {
 	timestamp = 0; // timestamp will be initialised later
 	constructor(){
 		this.value = null;
+	}
+};
+class CollectionData{
+	timestamp = 0; // timestamp will be initialised later
+	constructor(){
+		this.data = new Array;
 	}
 };
 var counters = {};
@@ -44,9 +49,11 @@ window.onload = function() {
 	initApp();
 	if (pageName == "dashboard"){
 		listCollections.forEach(collection => {
-			counters[collection]= new Counter();		
+			counters[collection]= new Counter();
+			dlwdedCollections[collection] = new CollectionData();	
 		});
-		Counter.timestamp = Date(); // ninitialize timestamp
+		Counter.timestamp = Date(); // initialize timestamp of Counter class
+		CollectionData.timestamp = Date(); // initialize timestamp of CollectionData class
 		updateNumbers();
 	}
 };
@@ -195,66 +202,55 @@ Each query counts for 1 read and each document dowloaded counts for 1 read.
 "counters" which countains counters that track the number of elements in collections.
 This way we only pay for 1 read to know the number of documents in each collections.
 NB: the function actuallizing the counters is a Firebase Cloud Function => see Firebase folder
-
 ############################################################################# */
 
 window.dwldDatabase = async function dwldDatabase(collection){
 	//console.log(labs.toJSON());
-	if(dlwdedCollections[collection] !== undefined){
+	if(dlwdedCollections[collection] !== undefined  && (Date() - CollectionData.timestamp) < timeOut ){
 		return dlwdedCollections[collection];
 	}
 	else{
 		await loadCollection(collection)
 		.then(function(snap){
 			if (snap != null){
+				CollectionData.timestamp = Date();
 				let spanId = "number_" + collection;
-				console.log(spanId);
 				document.getElementById(spanId).textContent = snap.size;
-				dlwdedCollections[collection] = snap;
+				dlwdedCollections[collection].data = new Array(); // empty arrays
+				// fill array
 				let p;
 				snap.forEach(doc => {
 			    	p = doc.data();
-			    	participants.push(p);  
-				})
+			    	dlwdedCollections[collection].data.push(p);  
+				});
 			}
 		})
 		.catch(function(error){
 			console.log(error);
 		});
-	}
-	
-	var csvContent = "data:text/csv;charset=utf-8,"; // csv file
-	
-		/*snap.forEach(doc => {
-	    	p = doc.data();
-	    	participants.push(p);  
-		})
-		// to fill csv
-		//csvContent += ;
-		var json = participants
-		var fields = Object.keys(participants[0])
-		var replacer = function(key, value) { return value === null ? '' : value } 
+		// convert data to json
+		var json = dlwdedCollections[collection].data;
+		var fields = Object.keys(dlwdedCollections[collection].data[0]);
+		// replace null values by empty string
+		var replacer = function(key, value) { return value === null ? '' : value };
 		var csv = json.map(function(row){
-		  return fields.map(function(fieldName){
-		    return JSON.stringify(row[fieldName], replacer)
-		  }).join(',')
-		})
+			return fields.map(function(fieldName){
+				return JSON.stringify(row[fieldName], replacer)
+				}).join(',');
+		});
 		csv.unshift(fields.join(',')) // add header column
-		csv = csv.join('\r\n');
-		//console.log(csv)
+		csv = csv.join('\r\n'); // add lineskip ath the bottom
+		// ready data for download
+		var csvData = new Blob([csv], { type: 'text/csv' }); //new way
+		var csvUrl = URL.createObjectURL(csvData);
+		var a = document.createElement('a');
+		a.href        = csvUrl;
+		a.target      = '_blank';
+		a.download    = collection + '.csv';
+		document.getElementById("dashboard").appendChild(a);
+		document.getElementById('download_' + collection).disabled = false;
+		a.click();
 	}
-		
-	var csvData = new Blob([csv], { type: 'text/csv' }); //new way
-	var csvUrl = URL.createObjectURL(csvData);
-	var a = document.createElement('a');
-	a.href        = csvUrl;
-	a.target      = '_blank';
-	a.download    = 'export.csv';
-	document.getElementById("dashboard").appendChild(a);
-	document.getElementById('download_participant').disabled = false;
-	document.getElementById('download_participant').addEventListener('click', downloadParticipantCSV, false);
-	function downloadParticipantCSV(){
-		a.click();*/
 }
 
 /* #############################################################################
