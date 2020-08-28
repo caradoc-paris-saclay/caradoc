@@ -97,13 +97,19 @@ function initApp() {
 	console.log("Reached end of initApp");
 }
 
+/* #############################################################################
+logout
+winwow.functionName is for accessing functionName with htmn onclik
+############################################################################# */
 window.logout = function logout(){
 	firebase.auth().signOut();
 	if (pageName == "dashboard"){
 		window.location.pathname = "/admin";
 	}
 }
-
+/* #############################################################################
+signIn
+############################################################################# */
 window.signIn = function signIn() {
 	console.log("toggleSignIn triggered");
  	if (firebase.auth().currentUser) {
@@ -166,9 +172,22 @@ function createSession(email, password){
 }
 
 /* #############################################################################
-dwldDatabase accesses the databse and download the collection from Firebase
-collection is the name of the Firestore collection
-the ouput file is in csv format
+dwldDatabase calls loadCollection to retreive data from Firebase
+ARGUMENT "collection" is the name of the Firestore collection
+OUTPUT file is in csv format
+
+Remark about accessing data:
+
+At the same time, since we spend "reads" for getting the data, we update the numbers.
+
+It is important to know that Firebase allows only a certain amount of reads / day for free.
+Each query counts for 1 read and each document dowloaded counts for 1 read.
+=> If you query a collection containing 100 documents, it will be counted as 100 reads
+=> Since there is no way to know the size of a collection, we use a special class called
+"counters" which countains counters that track the number of elements in collections.
+This way we only pay for 1 read to know the number of documents in each collections.
+NB: the function actuallizing the counters is a Firebase Cloud Function => see Firebase folder
+
 ############################################################################# */
 
 window.dwldDatabase = async function dwldDatabase(collection){
@@ -226,6 +245,11 @@ window.dwldDatabase = async function dwldDatabase(collection){
 		a.click();*/
 }
 
+/* #############################################################################
+loadCollection accesses the database and downloads the collection from Firebase
+argument "collection" is the name of the Firestore collection
+############################################################################# */
+
 function loadCollection(collection){
 	console.log("Fetching Firestore collection:", collection);
 	return new Promise((resolve, reject) => {
@@ -259,6 +283,11 @@ function loadCollection(collection){
 	})
 }
 
+/* #############################################################################
+loadCounters accesses the database and downloads the "counters" collection from Firebase
+it is used to update the numbers of documents per collection displayed on the dashboard
+############################################################################# */
+
 async function loadCounters(){
 
 	console.log("Fetching counters from Firestore")
@@ -288,6 +317,11 @@ async function loadCounters(){
 
 }
 
+/* #############################################################################
+updates the numbers of documents per collection displayed on the dashboard
+use loadCounters for retreiving data from Firestore.
+############################################################################# */
+
 async function updateNumbers(){
 	// Create a reference to the cities collection
 	if (counter["object"] == null || (Date() - counter["timestamp"]) < timeOut ){
@@ -297,16 +331,6 @@ async function updateNumbers(){
 	listCollections.forEach(async function (collection, index) {
 		let snapID = "number_" + collection;
 		document.getElementById(snapID).textContent = data[collection];
+		counter["timestamp"] = Date();
 	});
-}
-
-function containsObject(obj, list) {
-    var i;
-    for (i = 0; i < list.length; i++) {
-        if (list[i] === obj) {
-            return true;
-        }
-    }
-
-    return false;
 }
