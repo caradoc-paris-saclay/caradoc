@@ -141,8 +141,10 @@ window.signIn = function signIn() {
 		}
 	    // Sign in with email and password
 	    // [START authwithemail]
-	    createSession(email, password);				
-	    document.getElementById("login_form").reset();
+	    createSession(email, password);
+	    document.getElementById('username').required = false;
+	    document.getElementById('password').required = false;
+	    document.getElementById("login_form").reset(); // clear form
 	    // [END authwithemail]
 	}
 }
