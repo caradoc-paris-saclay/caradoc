@@ -16,13 +16,18 @@ import { db, getInputVal, setInputVal, loadLaboratories } from  './form.js';
 const pageName = window.location.pathname.replace(/^\/+/g, '').replace(/\/+$/, ''); 
 let provider = new firebase.auth.GoogleAuthProvider();
 var admin = firebase.auth();//('firebase-admin');
-var participants =  new Array(); // list of participants
 var dlwdedCollections = {};
 const listCollections = ["participants", "participants_nov_2020", "laboratories"];
-var counter = {
-				"object": null,
-				"timestamp": Date()
-			  };
+// Counter class
+function Counter () {
+	var timestamp = null; // timestamp will be initialised later
+	this.value = null;
+};
+function CollectionData () {
+	var timestamp = null; // timestamp will be initialised later
+	this.data = new Array();
+};
+var counters = {};
 const timeOut = 30 * 60 * 1000; // 30 min in millisecond
 //document.getElementById('login_form').addEventListener('submit', window.login);
 
@@ -39,6 +44,12 @@ window.onload = function() {
 	console.log("pageName: ", pageName);
 	initApp();
 	if (pageName == "dashboard"){
+		listCollections.forEach(collection => {
+			counters[collection]= new Counter();
+			dlwdedCollections[collection] = new CollectionData();	
+		});
+		Counter.timestamp = Date(); // initialize timestamp of Counter class
+		CollectionData.timestamp = Date(); // initialize timestamp of CollectionData class
 		updateNumbers();
 	}
 };
@@ -97,13 +108,19 @@ function initApp() {
 	console.log("Reached end of initApp");
 }
 
+/* #############################################################################
+logout
+winwow.functionName is for accessing functionName with htmn onclik
+############################################################################# */
 window.logout = function logout(){
 	firebase.auth().signOut();
 	if (pageName == "dashboard"){
 		window.location.pathname = "/admin";
 	}
 }
-
+/* #############################################################################
+signIn
+############################################################################# */
 window.signIn = function signIn() {
 	console.log("toggleSignIn triggered");
  	if (firebase.auth().currentUser) {
@@ -124,8 +141,10 @@ window.signIn = function signIn() {
 		}
 	    // Sign in with email and password
 	    // [START authwithemail]
-	    createSession(email, password);				
-	    document.getElementById("login_form").reset();
+	    createSession(email, password);
+	    document.getElementById('username').required = false;
+	    document.getElementById('password').required = false;
+	    document.getElementById("login_form").reset(); // clear form
 	    // [END authwithemail]
 	}
 }
@@ -166,65 +185,75 @@ function createSession(email, password){
 }
 
 /* #############################################################################
-dwldDatabase accesses the databse and download the collection from Firebase
-collection is the name of the Firestore collection
-the ouput file is in csv format
+dwldDatabase calls loadCollection to retreive data from Firebase
+ARGUMENT "collection" is the name of the Firestore collection
+OUTPUT file is in csv format
+
+Remark about accessing data:
+
+At the same time, since we spend "reads" for getting the data, we update the numbers.
+
+It is important to know that Firebase allows only a certain amount of reads / day for free.
+Each query counts for 1 read and each document dowloaded counts for 1 read.
+=> If you query a collection containing 100 documents, it will be counted as 100 reads
+=> Since there is no way to know the size of a collection, we use a special class called
+"counters" which countains counters that track the number of elements in collections.
+This way we only pay for 1 read to know the number of documents in each collections.
+NB: the function actuallizing the counters is a Firebase Cloud Function => see Firebase folder
 ############################################################################# */
 
 window.dwldDatabase = async function dwldDatabase(collection){
 	//console.log(labs.toJSON());
-	if(dlwdedCollections[collection] !== undefined){
+	if(dlwdedCollections[collection] !== undefined  && (Date() - CollectionData.timestamp) < timeOut ){
 		return dlwdedCollections[collection];
 	}
 	else{
 		await loadCollection(collection)
-		.then( function(snap){
+		.then(function(snap){
 			if (snap != null){
-				let snapID = "number_" + collection;
-				console.log(snapID);
-				document.getElementById(snapID).textContent = snap.size;
+				CollectionData.timestamp = Date();
+				let spanId = "number_" + collection;
+				document.getElementById(spanId).textContent = snap.size;
+				dlwdedCollections[collection].data = new Array(); // empty arrays
+				// fill array
 				let p;
-				dlwdedCollections[collection] = snap;
+				snap.forEach(doc => {
+			    	p = doc.data();
+			    	dlwdedCollections[collection].data.push(p);  
+				});
 			}
 		})
 		.catch(function(error){
 			console.log(error);
 		});
-	}
-	
-	var csvContent = "data:text/csv;charset=utf-8,"; // csv file
-	
-		/*snap.forEach(doc => {
-	    	p = doc.data();
-	    	participants.push(p);  
-		})
-		// to fill csv
-		//csvContent += ;
-		var json = participants
-		var fields = Object.keys(participants[0])
-		var replacer = function(key, value) { return value === null ? '' : value } 
+		// convert data to json
+		var json = dlwdedCollections[collection].data;
+		var fields = Object.keys(dlwdedCollections[collection].data[0]);
+		// replace null values by empty string
+		var replacer = function(key, value) { return value === null ? '' : value };
 		var csv = json.map(function(row){
-		  return fields.map(function(fieldName){
-		    return JSON.stringify(row[fieldName], replacer)
-		  }).join(',')
-		})
+			return fields.map(function(fieldName){
+				return JSON.stringify(row[fieldName], replacer)
+				}).join(',');
+		});
 		csv.unshift(fields.join(',')) // add header column
-		csv = csv.join('\r\n');
-		//console.log(csv)
+		csv = csv.join('\r\n'); // add lineskip ath the bottom
+		// ready data for download
+		var csvData = new Blob([csv], { type: 'text/csv' }); //new way
+		var csvUrl = URL.createObjectURL(csvData);
+		var a = document.createElement('a');
+		a.href        = csvUrl;
+		a.target      = '_blank';
+		a.download    = collection + '.csv';
+		document.getElementById("dashboard").appendChild(a);
+		document.getElementById('download_' + collection).disabled = false;
+		a.click();
 	}
-		
-	var csvData = new Blob([csv], { type: 'text/csv' }); //new way
-	var csvUrl = URL.createObjectURL(csvData);
-	var a = document.createElement('a');
-	a.href        = csvUrl;
-	a.target      = '_blank';
-	a.download    = 'export.csv';
-	document.getElementById("dashboard").appendChild(a);
-	document.getElementById('download_participant').disabled = false;
-	document.getElementById('download_participant').addEventListener('click', downloadParticipantCSV, false);
-	function downloadParticipantCSV(){
-		a.click();*/
 }
+/* #############################################################################
+loadCollection accesses the database and downloads the collection from Firebase
+argument "collection" is the name of the Firestore collection
+############################################################################# */
 
 function loadCollection(collection){
 	console.log("Fetching Firestore collection:", collection);
@@ -259,6 +288,11 @@ function loadCollection(collection){
 	})
 }
 
+/* #############################################################################
+loadCounters accesses the database and downloads the "counters" collection from Firebase
+it is used to update the numbers of documents per collection displayed on the dashboard
+############################################################################# */
+
 async function loadCounters(){
 
 	console.log("Fetching counters from Firestore")
@@ -288,25 +322,41 @@ async function loadCounters(){
 
 }
 
+/* #############################################################################
+updates the numbers of documents per collection displayed on the dashboard
+use loadCounters for retreiving data from Firestore.
+############################################################################# */
+
 async function updateNumbers(){
+	console.log("Updating page numbers.")
 	// Create a reference to the cities collection
-	if (counter["object"] == null || (Date() - counter["timestamp"]) < timeOut ){
-		counter["object"] = await loadCounters();
-	}
-	const data = counter["object"].data();
-	listCollections.forEach(async function (collection, index) {
-		let snapID = "number_" + collection;
-		document.getElementById(snapID).textContent = data[collection];
+	let flag = false;
+	listCollections.some(collection => {
+		let spanId = "number_" + collection;
+		let spinnerId = "spinner_" + collection;
+		document.getElementById(spanId).textContent = "Loading...";
+		document.getElementById(spinnerId).classList.add("spinner-border");
+		// for the 1st run, the variables are initialized at null => flag will be true
+		if(counters[collection].value == null){
+			flag = true;
+			return flag; // return from the local function "some" not from updateNumbers
+			// we use some instead of ForEach in order to "break" the loop with the return
+		}
 	});
-}
+	if (flag || (Date() - Counter.timestamp) < timeOut ){
+		console.log("Here 1")
+		const object = await loadCounters();
+		const data = object.data();
+		listCollections.forEach(collection => {
+			counters[collection].value = data[collection];
+		});
+		Counter.timestamp = Date(); // update timestamp of Counter class
+	}
+	listCollections.forEach(async function (collection, index) {
+		let spanId = "number_" + collection;
+		let spinnerId = "spinner_" + collection;
+		document.getElementById(spinnerId).classList.remove("spinner-border");
+		document.getElementById(spanId).textContent = counters[collection].value;
+	});
 
-function containsObject(obj, list) {
-    var i;
-    for (i = 0; i < list.length; i++) {
-        if (list[i] === obj) {
-            return true;
-        }
-    }
-
-    return false;
 }
