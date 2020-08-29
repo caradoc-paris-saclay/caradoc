@@ -1,9 +1,12 @@
 /* #############################################################################
-Functions for transactionnal e-mails
+Functions used as Firebase Clound Functions.
+Functions below are for:
+- transactionnal e-mails
+- counters of documents in collections
 
-These functions are used on Firebase Cloud Functions
 They get triggered when an event is produced by Firebase Firestore
 
+Transactionnal e-mail :
 Here we want to send an e-mail to participants when:
 1) a participant is added to Firestore (1st registration) 
 2) a participant modifies its data on Firestore (modify registration)
@@ -11,6 +14,10 @@ Here we want to send an e-mail to participants when:
 The corresponding functions are:
 1) sendRegistrationEmail 
 2) sendModificationEmail
+
+Counters:
+- increment -> add 1 to counters.counters when file is created
+- decrement -> subtract 1 to counters.counters when file is deleted
 
 IMPORTANT
 -> in order to run the code you need to set the credentials correctly
@@ -20,7 +27,7 @@ You need 2 sorts of credentials
 
 To do so you need to run in a terminal after having `cd` in the folder containing this file:
 
-1) `firebase login``
+1) `firebase login`
 1 bis) Make sure that you have downloaded the file caradoc-b9cfd-firebase-adminsdk-7xt83-7e9adb6728.json
 and that it is present in the same folder as this code.
 
@@ -54,6 +61,7 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
+const counters = db.collection("counters").doc("counters");
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 
@@ -73,6 +81,14 @@ async function main() {
         pass: emailPassword // generated ethereal password
       }
   });
+  /* #############################################################################
+  Javascript for registration forms
+
+  This file contains:
+  - login information for Firestore (Firebase cloud database)
+  - helper functions to collect data from HTML
+  - helper functions for fetching data from Firestore used in forms
+  ############################################################################# */
   // Sends an email confirmation when a user changes his mailing list subscription.
   exports.sendRegistrationEmail = functions
   .region('europe-west1')
@@ -176,6 +192,150 @@ async function main() {
         console.error('There was an error while sending the email:', error);
       }
       return null;
+  });
+
+  exports.incrementParticipantsNov2020 = functions
+  .region('europe-west1')
+  .firestore
+  .document('participants_nov_2020/{participantID}')
+  .onCreate((snap, context) => {
+    counters.get().then(snapshot =>{
+    try{
+        let c = snapshot.data()["participants_nov_2020"];
+        console.log("Counter value before update", c);
+        c++;
+        console.log("Counter value after update", c);
+        counters.update({"participants_nov_2020": c});
+    }
+    catch(error){
+      console.log(error);
+    }
+    })
+    .catch(err =>{
+      console.log("Failed to update counters:", err);
+      reject(null);
+    });
+    return null;
+  });
+
+  exports.decrementParticipantsNov2020 = functions
+  .region('europe-west1')
+  .firestore
+  .document('participants_nov_2020/{participantID}')
+  .onDelete((snap, context) => {
+    counters.get().then(snapshot =>{
+    try{
+        let c = snapshot.data()["participants_nov_2020"];
+        console.log("Counter value before update", c);
+        c--;
+        console.log("Counter value after update", c);
+        counters.update({"participants_nov_2020": c});
+    }
+    catch(error){
+      console.log(error);
+    }
+    })
+    .catch(err =>{
+      console.log("Failed to update counters:", err);
+      reject(null);
+    });
+    return null;
+  });
+
+  exports.incrementParticipants = functions
+  .region('europe-west1')
+  .firestore
+  .document('participants/{participantID}')
+  .onDelete((snap, context) => {
+    counters.get().then(snapshot =>{
+    try{
+        let c = snapshot.data()["participants"];
+        console.log("Counter value before update", c);
+        c++;
+        console.log("Counter value after update", c);
+        counters.update({"participants": c});
+    }
+    catch(error){
+      console.log(error);
+    }
+    })
+    .catch(err =>{
+      console.log("Failed to update counters:", err);
+      reject(null);
+    });
+    return null;
+  });
+
+  exports.decrementParticipants = functions
+  .region('europe-west1')
+  .firestore
+  .document('participants/{participantID}')
+  .onDelete((snap, context) => {
+    counters.get().then(snapshot =>{
+    try{
+        let c = snapshot.data()["participants"];
+        console.log("Counter value before update", c);
+        c--;
+        console.log("Counter value after update", c);
+        counters.update({"participants": c});
+    }
+    catch(error){
+      console.log(error);
+    }
+    })
+    .catch(err =>{
+      console.log("Failed to update counters:", err);
+      reject(null);
+    });
+    return null;
+  });
+
+  exports.incrementLaboratories = functions
+  .region('europe-west1')
+  .firestore
+  .document('laboratories/{laboratoryID}')
+  .onDelete((snap, context) => {
+    counters.get().then(snapshot =>{
+    try{
+        let c = snapshot.data()["laboratories"];
+        console.log("Counter value before update", c);
+        c++;
+        console.log("Counter value after update", c);
+        counters.update({"laboratories": c});
+    }
+    catch(error){
+      console.log(error);
+    }
+    })
+    .catch(err =>{
+      console.log("Failed to update counters:", err);
+      reject(null);
+    });
+    return null;
+  });
+
+  exports.decrementLaboratories = functions
+  .region('europe-west1')
+  .firestore
+  .document('laboratories/{laboratoryID}')
+  .onDelete((snap, context) => {
+    counters.get().then(snapshot =>{
+    try{
+        let c = snapshot.data()["laboratories"];
+        console.log("Counter value before update", c);
+        c--;
+        console.log("Counter value after update", c);
+        counters.update({"laboratories": c});
+    }
+    catch(error){
+      console.log(error);
+    }
+    })
+    .catch(err =>{
+      console.log("Failed to update counters:", err);
+      reject(null);
+    });
+    return null;
   });
 
 
