@@ -62,13 +62,15 @@ admin.initializeApp({
 
 const db = admin.firestore();
 const counters = db.collection("counters").doc("counters");
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
+/* #############################################################################
+ Create and Deploy Your First Cloud Functions
+ https://firebase.google.com/docs/functions/write-firebase-functions
 
-// Configure the email transport using the default SMTP transport and a GMail account.
-// For other types of transports such as Sendgrid see https://nodemailer.com/transports/
-// TODO: Configure the `gmail.email` and `gmail.password` Google Cloud environment variables.
-// async..await is not allowed in global scope, must use a wrapper
+ Configure the email transport using the default SMTP transport and a GMail account.
+ For other types of transports such as Sendgrid see https://nodemailer.com/transports/
+ TODO: Configure the `gmail.email` and `gmail.password` Google Cloud environment variables.
+ async..await is not allowed in global scope, must use a wrapper
+############################################################################# */
 async function main() {
   //const emailAddress = functions.config().ovh.email;
   //const emailPassword = functions.config().ovh.password;
@@ -82,14 +84,11 @@ async function main() {
       }
   });
   /* #############################################################################
-  Javascript for registration forms
-
-  This file contains:
-  - login information for Firestore (Firebase cloud database)
-  - helper functions to collect data from HTML
-  - helper functions for fetching data from Firestore used in forms
+  sendRegistrationEmail
+  Sends an email confirmation when a user registers for the 1st time.
+  It correponds to the creation of a document in the collection participants_nov_2020
+  Don't forget to change the name of the collection in the functions
   ############################################################################# */
-  // Sends an email confirmation when a user changes his mailing list subscription.
   exports.sendRegistrationEmail = functions
   .region('europe-west1')
   .firestore
@@ -131,6 +130,10 @@ async function main() {
     return null;
   });
 
+  /* #############################################################################
+  sendModificationEmail
+  Sends an email confirmation when a user updates data sent for registration
+  ############################################################################# */
   exports.sendModificationEmail = functions
   .region('europe-west1')
   .firestore
@@ -193,7 +196,10 @@ async function main() {
       }
       return null;
   });
-
+  /* #############################################################################
+  incrementParticipantsNov2020
+  Add 1 to counter when a document is added to the collection participants_nov_2020
+  ############################################################################# */
   exports.incrementParticipantsNov2020 = functions
   .region('europe-west1')
   .firestore
@@ -217,7 +223,10 @@ async function main() {
     });
     return null;
   });
-
+  /* #############################################################################
+  decrementParticipantsNov2020
+  Subtract 1 to counter when a document is deleted from the collection participants_nov_2020
+  ############################################################################# */
   exports.decrementParticipantsNov2020 = functions
   .region('europe-west1')
   .firestore
@@ -241,7 +250,10 @@ async function main() {
     });
     return null;
   });
-
+  /* #############################################################################
+  incrementParticipants
+  Add 1 to counter when a document is added to the collection participants
+  ############################################################################# */
   exports.incrementParticipants = functions
   .region('europe-west1')
   .firestore
@@ -266,6 +278,10 @@ async function main() {
     return null;
   });
 
+  /* #############################################################################
+  decrementParticipants
+  Subtract 1 to counter when a document is deleted from the collection participants
+  ############################################################################# */
   exports.decrementParticipants = functions
   .region('europe-west1')
   .firestore
@@ -289,7 +305,10 @@ async function main() {
     });
     return null;
   });
-
+  /* #############################################################################
+  incrementLaboratories
+  Add 1 to counter when a document is added to the collection laboratories
+  ############################################################################# */
   exports.incrementLaboratories = functions
   .region('europe-west1')
   .firestore
@@ -313,7 +332,10 @@ async function main() {
     });
     return null;
   });
-
+  /* #############################################################################
+  decrementLaboratories
+  Subtract 1 to counter when a document is deleted from the collection laboratories
+  ############################################################################# */
   exports.decrementLaboratories = functions
   .region('europe-west1')
   .firestore
