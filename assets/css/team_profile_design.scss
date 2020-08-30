@@ -1,100 +1,222 @@
----
----
-
-.team {
-    text-align: center
+--- 
+--- 
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+body {
+	background: #f9f9f9;
+	font-size: 16px;
+	font-family: 'Raleway', sans-serif
 }
 
-.section {
-    padding: 60px 0
+.container {
+	margin-top: 100px
 }
 
-.section-title {
-    text-align: center;
-    font-size: 40px;
-    position: relative;
-    margin-bottom: 40px;
-    margin-top: 0
+.title {
+	color: #1a1a1a;
+	text-align: center;
+	margin-bottom: 10px
 }
 
-.team .team-item {
-    text-align: left;
-    margin-bottom: 30px
+.content {
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	margin: auto;
+	overflow: hidden
 }
 
-.team .team-item figure {
-    position: relative;
-    overflow: hidden
+.content .content-overlay {
+	background: rgba(0, 0, 0, 0.7);
+	position: absolute;
+	height: auto;
+	width: 100%;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	opacity: 0;
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	-moz-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s
+}
+
+.content:hover .content-overlay {
+	opacity: 1
+}
+
+.content-image {
+	width: 100%
 }
 
 img {
-    max-width: 100%
+	box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+	border-radius: 5px
 }
 
-.team .team-item figure figcaption {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    background: rgba(9, 9, 9, .6);
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    transition: all .5s ease
+.content-details {
+	position: absolute;
+	text-align: center;
+	padding-left: 1em;
+	padding-right: 1em;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	opacity: 0;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	-webkit-transition: all 0.3s ease-in-out 0s;
+	-moz-transition: all 0.3s ease-in-out 0s;
+	transition: all 0.3s ease-in-out 0s
 }
 
-.team .team-item figure figcaption .info {
-    position: absolute;
-    color: #fff;
-    float: left;
-    bottom: 10px;
-    left: 20px;
-    margin-left: -80px;
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    transition: all .5s ease
+.content:hover .content-details {
+	top: 50%;
+	left: 50%;
+	opacity: 1
 }
 
-.team .team-item figure:hover figcaption {
-    opacity: 1
+.content-details h3 {
+	color: #fff;
+	font-weight: 500;
+	letter-spacing: 0.15em;
+	margin-bottom: 0.5em;
+	text-transform: uppercase
 }
 
-.team .team-item figure:hover figcaption .info {
-    margin-left: 0
+.content-details p {
+	color: #fff;
+	font-size: 0.8em
 }
 
-.team .team-item figure figcaption .info h3 {
-    font-size: 20px
+.fadeIn-bottom {
+	top: 80%
 }
 
-.team .team-item figure figcaption .info p {
-    color: #fff
+.team-title {
+	position: static;
+	/*    padding: 20px 0;*/
+	display: inline-block;
+	letter-spacing: 2px;
+	width: 100%;
 }
 
-.team .team-item figure:hover figcaption .social {
-    margin-bottom: 0
+.team-title h5 {
+	margin-bottom: 0px;
+	display: block;
+	text-transform: uppercase;
 }
 
-.team .team-item figure figcaption .social {
-    position: absolute;
-    float: right;
-    bottom: 28px;
-    margin-bottom: -80px;
-    right: 20px;
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    transition: all .5s ease
+.team-title span {
+	font-size: 12px;
+	text-transform: uppercase;
+	color: #a5a5a5;
+	letter-spacing: 1px;
 }
 
-.team .team-item figure figcaption .social a {
-    color: #fff;
-    font-size: 15px;
-    width: 36px;
-    height: 36px;
-    background: #3f51b5;
-    display: inline-block;
-    text-align: center;
-    line-height: 36px;
-    border-radius: 2px
+
+/*Social Icon*/
+
+ul.social-network {
+	list-style: none;
+	display: inline;
+	margin-left: 0 !important;
+	padding: 0px;
+}
+
+ul.social-network li {
+	display: inline;
+	margin: 0 5px;
+}
+
+.social-network a.icoRss:hover {
+	background-color: #F56505;
+}
+
+.social-network a.icoFacebook:hover {
+	background-color: #3B5998;
+}
+
+.social-network a.icoTwitter:hover {
+	background-color: #33ccff;
+}
+
+.social-network a.icoGoogle:hover {
+	background-color: #BD3518;
+}
+
+.social-network a.icoVimeo:hover {
+	background-color: #0590B8;
+}
+
+.social-network a.icoLinkedin:hover {
+	background-color: #007bb7;
+}
+
+.social-network a.icoRss:hover i,
+.social-network a.icoFacebook:hover i,
+.social-network a.icoTwitter:hover i,
+.social-network a.icoGoogle:hover i,
+.social-network a.icoVimeo:hover i,
+.social-network a.icoLinkedin:hover i {
+	color: #fff;
+}
+
+a.socialIcon:hover,
+.socialHoverClass {
+	color: #44BCDD;
+}
+
+.social-circle li a {
+	display: inline-block;
+	position: relative;
+	margin: 0 auto 0 auto;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	text-align: center;
+	width: 40px;
+	height: 40px;
+	font-size: 20px;
+	background-color: #D3D3D3;
+}
+
+.social-circle li i {
+	margin: 0;
+	line-height: 40px;
+	text-align: center;
+}
+
+.social-circle li a:hover i,
+.triggeredHover {
+	-moz-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	-ms--transform: rotate(360deg);
+	transform: rotate(360deg);
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+.social-circle i {
+	color: #fff;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+	-o-transition: all 0.8s;
+	-ms-transition: all 0.8s;
+	transition: all 0.8s;
+}
+
+.row-m-t {
+	margin-top: 30px
+}
+
+.imgBorder {
+	padding: 15px 15px 0;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+	-moz-box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+	-webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 }
