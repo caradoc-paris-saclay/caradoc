@@ -15,13 +15,29 @@ $(document).ready(function (){
 $(document).ready(function (){
     $("#arrow-paris-saclay").click(function (){
         $('html, body').animate({
-            scrollTop: $("#index-paris-saclay-top ").offset().top - $(".navbar").outerHeight()
+            scrollTop: $("#index-paris-saclay-top").offset().top - $(".navbar").outerHeight()
         }, 500);
     });
 });
 
 $(document).ready(function (){
     $("#arrow-registration").click(function (){
+        $('html, body').animate({
+            scrollTop: $("#program-d1-top").offset().top - $(".navbar").outerHeight()
+        }, 500);
+    });
+});
+
+$(document).ready(function (){
+    $("#arrow-program-d1").click(function (){
+        $('html, body').animate({
+            scrollTop: $("#program-d2-top").offset().top - $(".navbar").outerHeight()
+        }, 500);
+    });
+});
+
+$(document).ready(function (){
+    $("#arrow-program-d2").click(function (){
         $('html, body').animate({
             scrollTop: $("#index-registration-top").offset().top - $(".navbar").outerHeight()
         }, 500);
