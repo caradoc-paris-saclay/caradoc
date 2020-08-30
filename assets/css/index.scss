@@ -481,9 +481,9 @@ program
     border-radius: 50%;
     width: auto;
     @include interpolate((height, width), $sm-width, $lg-width, 36px, 54px);
-    background: #fff;
-    border: 2px solid #666;
-    color: #666;
+    background: $special-white;
+    //border: 2px solid $prussian-blue;
+    color: $lapis-lazuli;
     @media (max-width: $md-width) and (orientation: portrait) {
       margin-right: 1vw;
       margin-left: 0;
@@ -509,6 +509,25 @@ program
   @media (max-width: $md-width) and (orientation: portrait) {
     margin-bottom: 4vh;
   }
+
+  ul {
+    list-style-type: disc;
+  }
+  // to change the color of the bullet
+  /*ul li::before {
+  content: "\2022";
+  color: red;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+}
+  ul li::before {
+    color: $special-white;
+  }*/
+}
+
+.program-item.with-bullet{
+  padding-left: calc(1rem + 0.5em);
 }
 
 
@@ -543,11 +562,15 @@ program
   background: $prussian-blue;
   z-index: 1;
  // padding: 2.5vh 2.5vw; 
+  .title {
+    font-size: $big-font-size;
+  }
+
+  .program-time{
+    padding: 0;
+  }
 }
 
-.index-program-2 .title {
-  font-size: $big-font-size;
-}
 
 /* #############################################################################
 .index-registration
