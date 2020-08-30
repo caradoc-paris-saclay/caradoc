@@ -481,9 +481,9 @@ program
     border-radius: 50%;
     width: auto;
     @include interpolate((height, width), $sm-width, $lg-width, 36px, 54px);
-    background: $special-white;
+    background: $prussian-blue ;
     //border: 2px solid $prussian-blue;
-    color: $lapis-lazuli;
+    color: $special-white;
     @media (max-width: $md-width) and (orientation: portrait) {
       margin-right: 1vw;
       margin-left: 0;
@@ -512,22 +512,43 @@ program
 
   ul {
     list-style-type: disc;
+    li{
+      margin-bottom: 1em;
+    }
   }
-  // to change the color of the bullet
-  /*ul li::before {
-  content: "\2022";
-  color: red;
-  display: inline-block; 
-  width: 1em;
-  margin-left: -1em;
-}
-  ul li::before {
-    color: $special-white;
-  }*/
+
+  img{
+    width: 100%;
+    height: auto;
+    margin-top: 5vh;
+  }
 }
 
 .program-item.with-bullet{
   padding-left: calc(1rem + 0.5em);
+}
+
+.program-top{
+  background: $prussian-blue;
+  color: $special-white;
+  margin: 0 -2.5vw;
+  margin-top:-2.5vh;  
+  padding: 0 2.5vw;
+  padding-top: 2.5vh;
+}
+
+.program-header{
+  height: 100%;
+  width: 100%;
+  margin-top: -1.25vh;
+  padding: 2rem 0;
+  @media (max-width: $md-width) and (orientation: portrait) {
+    flex-direction: column;
+    div:first-of-type {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
 }
 
 
@@ -540,13 +561,18 @@ program
   margin-top: 0;
   @include padding-band; 
   @include interpolate(font-size, $sm-width, $xl-width, 13px, 22px);
-  background: $lapis-lazuli;
+  background: $special-white;
   z-index: 1;
+  color: $prussian-blue;
   //padding: 2.5vh 2.5vw; 
-}
+  
+  .title {
+    @include interpolate(font-size, $sm-width, $lg-width, 18px, 32px); 
+  }
 
-.index-program-1, .title {
-  font-size: $big-font-size;
+  .arrow-suptitle{
+    color: $prussian-blue;
+  }
 }
 
 /* #############################################################################
@@ -559,18 +585,24 @@ program
   margin-top: 0;
   @include padding-band; 
   @include interpolate(font-size, $sm-width, $xl-width, 13px, 22px);
-  background: $prussian-blue;
+  background: $special-white;
   z-index: 1;
+  color: $prussian-blue;
  // padding: 2.5vh 2.5vw; 
+
   .title {
-    font-size: $big-font-size;
+    @include interpolate(font-size, $sm-width, $lg-width, 18px, 32px); 
   }
 
   .program-time{
+    @include interpolate(font-size, $sm-width, $lg-width, 16px, 23px);
     padding: 0;
   }
-}
 
+  .arrow-suptitle{
+    color: $prussian-blue;
+  }
+}
 
 /* #############################################################################
 .index-registration
