@@ -448,6 +448,108 @@ Bottom graphics
 }*/
 
 /* #############################################################################
+program
+############################################################################# */
+.program-text{
+  @include interpolate(font-size, $sm-width, $lg-width, 12px, 16px);
+  text-align: justify;
+}
+
+.program-text-title{
+  @include interpolate(font-size, $sm-width, $lg-width, 14px, 20px);
+  @include interpolate(min-height, $sm-width, $lg-width, 50px, 80px);
+
+  @media (max-width: $md-width) and (orientation: portrait) {
+      min-height: 0;
+      text-align: center;
+  }
+}
+
+.program-box{
+  margin-bottom: auto;
+  margin-bottom: 2vh;
+}
+
+@media (max-width: $md-width) and (orientation: portrait) {
+  .program-box{
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+}
+
+.numberCircle {
+    border-radius: 50%;
+    width: auto;
+    @include interpolate((height, width), $sm-width, $lg-width, 36px, 54px);
+    background: #fff;
+    border: 2px solid #666;
+    color: #666;
+    @media (max-width: $md-width) and (orientation: portrait) {
+      margin-right: 1vw;
+      margin-left: 0;
+    }
+}
+
+.program-time{
+  padding: 0 1rem;
+  @include interpolate(font-size, $sm-width, $lg-width, 16px, 25px);
+}
+
+@media (max-width: $md-width) and (orientation: portrait) {
+  .program-number-box{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.program-item{
+  margin-bottom: auto;
+  padding: 0 1rem;
+
+  @media (max-width: $md-width) and (orientation: portrait) {
+    margin-bottom: 4vh;
+  }
+}
+
+
+/* #############################################################################
+.index-program-1
+############################################################################# */
+.index-program-1{
+  min-height:$index-top-height;
+  height: auto;
+  margin-top: 0;
+  @include padding-band; 
+  @include interpolate(font-size, $sm-width, $xl-width, 13px, 22px);
+  background: $lapis-lazuli;
+  z-index: 1;
+  //padding: 2.5vh 2.5vw; 
+}
+
+.index-program-1, .title {
+  font-size: $big-font-size;
+}
+
+/* #############################################################################
+.index-program-2
+############################################################################# */
+
+.index-program-2{
+  min-height:$index-top-height;
+  height: auto;
+  margin-top: 0;
+  @include padding-band; 
+  @include interpolate(font-size, $sm-width, $xl-width, 13px, 22px);
+  background: $prussian-blue;
+  z-index: 1;
+ // padding: 2.5vh 2.5vw; 
+}
+
+.index-program-2 .title {
+  font-size: $big-font-size;
+}
+
+/* #############################################################################
 .index-registration
 ############################################################################# */
 $category-width: 35vw;
@@ -457,7 +559,7 @@ $category-height-sm: 25vh;
 .index-registration{
 	color: $special-white;
 	background: $lapis-lazuli;
-	 min-height:$index-top-height;
+	min-height:$index-top-height;
   height: auto;
 	margin-top: 0;
   padding: 2.5vh 2.5vw; 
@@ -579,15 +681,6 @@ $category-height-sm: 25vh;
 		width: $category-width-sm * 3/5;
 	}
 }
-
-
-/*@media screen and (max-width: 768px) {
-  .registration-btn a {
-    /* Font size 
-    font-size: 5vw;
-    width: 35vw;
-  }
-}*/
 
 /* text above arrow at the bottom of page */
 .show-more{
