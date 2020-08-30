@@ -108,7 +108,7 @@ var labelElement = $(".y-label");
 win.scroll(function(event) {
   labelElement.each(function(i, el) {
     var el = $(el);
-    console.log(el.visible(true));
+    //console.log(el.visible(true));
     if (el.visible(true)) {
       el.addClass("animate__fadeInLeft"); 
     } 
@@ -118,7 +118,7 @@ win.scroll(function(event) {
   });
   barElement.each(function(i, el) {
     var el = $(el);
-    console.log(el.visible(true));
+    //console.log(el.visible(true));
     if (el.visible(true)) {
       el.addClass("bar-animation"); 
     } 
