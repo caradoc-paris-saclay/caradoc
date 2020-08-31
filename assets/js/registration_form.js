@@ -176,7 +176,12 @@ function submitForm(e){
   saveParticipant(newParticipant);
   document.getElementById('submission_msg').style.display = "block";
   document.getElementById('registration_form').reset();
+  // Show modal popup to say registration as been submitted
   $(function() {$('#submission_msg').modal("show");});
+  // redirect to homepage to create transition after registration.
+  $("#submission_msg").on("hidden.bs.modal", function () {
+    window.location.pathname="/"
+  });
     //data-toggle="modal" data-target="#submission_msg"
 }
 
