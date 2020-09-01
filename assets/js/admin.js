@@ -8,10 +8,16 @@ This file contains:
 
 What happens here?
 -> when the page loads, the function window.onload is called.
+
+A good tutorial:
+https://developers.google.com/web/fundamentals/security/credential-management/save-forms
+
+NB: do not use Private Session for developping login forms
+otherwise password saving prompt will be disabled
 ############################################################################# */
 
 import { db, getInputVal, setInputVal, loadLaboratories } from  './form.js'; 
-// pathname without leading nor trailing "/" 
+// pageName = pathname without leading nor trailing "/" 
 // eg. turns /admin or /admin/ into admin
 const pageName = window.location.pathname.replace(/^\/+/g, '').replace(/\/+$/, ''); 
 let provider = new firebase.auth.GoogleAuthProvider();
@@ -23,13 +29,15 @@ function Counter () {
 	var timestamp = null; // timestamp will be initialised later
 	this.value = null;
 };
+// CollectionData class
 function CollectionData () {
 	var timestamp = null; // timestamp will be initialised later
 	this.data = new Array();
 };
 var counters = {};
+// timeout for when to refresh data when clicking on download
+// refreshing the page resets the counter
 const timeOut = 30 * 60 * 1000; // 30 min in millisecond
-//document.getElementById('login_form').addEventListener('submit', window.login);
 
 // window.updateForm 
 console.log("firebase:", firebase);
@@ -38,6 +46,7 @@ console.log("firebase.app().name:", firebase.app.name);
 /* #############################################################################
 window.onload
 => called when page is loaded
+=> define the default behavior of sign in page when submitting form
 ############################################################################# */
 window.onload = function() {
 	console.log("window.location.pathname: ", window.location.pathname );
@@ -52,7 +61,33 @@ window.onload = function() {
 		CollectionData.timestamp = Date(); // initialize timestamp of CollectionData class
 		updateNumbers();
 	}
+	else if (pageName == "admin"){
+		// we override the default behavior of the form submit action
+		var form = document.querySelector('#login_form');
+		form.addEventListener('submit', async e => { 
+			console.log("Signing In");
+			e.preventDefault(); 
+			// here we use form.name (i.e. name="username" html attribute)
+		    var email = form.username.value; 
+		    var password = form.password.value; 
+		    console.log(email);
+		    if (email.length < 4) {
+		      alert('Please enter an email address.');
+		      return;
+		    }
+		    if (password.length < 4) {
+		      alert('Please enter a password.');
+		      return;
+			}
+		    // Sign in Firebase with email and password
+		    // Password prompt are activated by respecting 
+		    // the chain of events managed by createSession
+		    await createSession(email, password, e);
+			return false;
+		});
+	}
 };
+
 /* #############################################################################
 initApp is called only once at window loading time.
 However, once called firebase.auth().onAuthStateChanged() will be stay active.
@@ -65,52 +100,38 @@ function initApp() {
       // [START authstatelistener]
 	firebase.auth().onAuthStateChanged(function(user) {
 		console.log("Init App onAuthStateChanged");
+		// see Firebase doc to explore user attributes
 		if (user) {
-			console.log("User signed in")
-		  	// Get user data from firebase
-			var displayName = user.displayName;
-			var email = user.email;
-			var emailVerified = user.emailVerified;
-			var photoURL = user.photoURL;
-			var isAnonymous = user.isAnonymous;
-			var uid = user.uid;
-			var providerData = user.providerData;
+			// User is signed in.
 			document.getElementById('logging-status').textContent='Signed in';
 			document.getElementById("log-out-btn").disabled = false;
 			document.getElementById("log-out-btn").style.visibility = "visible"; 
-			// [START_EXCLUDE]
-			if (pageName == "admin"){
-				window.location.pathname = "/dashboard";
-			}
 			if (pageName == "dashboard"){
 				document.getElementById('dashboard').style.display = "block";
 			}
-		  // [END_EXCLUDE]
 		} 
 		else {
 			// User is signed out.
-			// [START_EXCLUDE]
 			if (pageName == "admin"){
 				document.getElementById('admin_title').textContent = "Admin Log In Page";
+				document.getElementById("log-out-btn").disabled = true;
+				document.getElementById("log-out-btn").style.visibility = "hidden"; 
+				document.getElementById("login_form").reset(); 
 			}
 			else if (pageName == "dashboard"){
 				document.getElementById('dashboard').style.display = "none";
 			}
-			// [END_EXCLUDE]
 		}
-		// [START_EXCLUDE silent]
 		if (pageName == "admin"){
 			document.getElementById('sign-in').disabled = false;
 		}
-		// [END_EXCLUDE]
 	});
-	// [END authstatelistener]
-	console.log("Reached end of initApp");
+	console.log("End of initApp");
 }
 
 /* #############################################################################
 logout
-winwow.functionName is for accessing functionName with htmn onclik
+winwow.functionName is for accessing functionName with html onclik action
 ############################################################################# */
 window.logout = function logout(){
 	firebase.auth().signOut();
@@ -118,64 +139,59 @@ window.logout = function logout(){
 		window.location.pathname = "/admin";
 	}
 }
-/* #############################################################################
-signIn
-############################################################################# */
-window.signIn = function signIn() {
-	console.log("toggleSignIn triggered");
- 	if (firebase.auth().currentUser) {
-	    // [START signout]
-	    firebase.auth().signOut();
-	    // [END signout]
-  	} 
-  	else {
-	    var email = document.getElementById('username').value;
-	    var password = document.getElementById('password').value;
-	    if (email.length < 4) {
-	      alert('Please enter an email address.');
-	      return;
-	    }
-	    if (password.length < 4) {
-	      alert('Please enter a password.');
-	      return;
-		}
-	    // Sign in with email and password
-	    // [START authwithemail]
-	    createSession(email, password);
-	    document.getElementById('username').required = false;
-	    document.getElementById('password').required = false;
-	    document.getElementById("login_form").reset(); // clear form
-	    // [END authwithemail]
-	}
-}
 
 /* #############################################################################
 createSession
+read Firebase authentification doc for knowing more about Persistence
+Option chosen: SESSIOn
+=> Existing and future Auth states are now persisted in the current
+session only. Closing the window would clear any existing state even
+if a user forgets to sign out.
 ############################################################################# */
-function createSession(email, password){
+function createSession(email, password, e){
 	console.log("createSession")
 	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
 	.then(function() {
-    // Existing and future Auth states are now persisted in the current
-    // session only. Closing the window would clear any existing state even
-    // if a user forgets to sign out.
-    // ...
-    // New sign-in will be persisted with session persistence.
-    return firebase.auth().signInWithEmailAndPassword(email, password).catch(async function(error) {
-	      // Handle Errors here.
-	      var errorCode = error.code;
-	      var errorMessage = error.message;
-	      // [START_EXCLUDE]
-	      if (errorCode === 'auth/wrong-password') {
-	        alert('Wrong password.');
-	      } 
-	      else {
-	        alert(errorMessage);
-	      }
-	      console.log(error);
-	      document.getElementById('sign-in').disabled = false;
-      	// [END_EXCLUDE]
-    	});;
+		console.log("Firebase signIn.")
+	    // return below is optional could be deleted (IMO)
+	    // signInWithEmailAndPassword query Firebase server to know if
+	    // user(email, password) is authorized
+	    // authorizations are set via the Firebase Console
+    	return firebase.auth().signInWithEmailAndPassword(email, password)
+    	.then(profile => {
+    		// Here we propose to the web browser to save the resutls
+    		// if sign in was successful
+    		try{
+	    		if (window.PasswordCredential) {
+			   		var c = navigator.credentials.create({password: e.target});
+			   		return navigator.credentials.store(c);
+				} 
+				else {
+				 	return Promise.resolve(profile);
+				}
+			}
+			catch(error){
+				console.log("Error when proposing web browser to save login credentials.")
+				console.log(error);
+			}
+		})
+		.then(profile => {
+			// we redirect to dashboard after the browser had time to save the credentials
+			// this will only work if user succeeded to log ing
+			window.location.pathname = "/dashboard";
+		})
+    	.catch(async function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			if (errorCode === 'auth/wrong-password') {
+				alert('Wrong password.');
+			} 
+			else {
+				alert(errorMessage);
+			}
+			console.log(error);
+    	});
   })
   .catch(function(error) {
     // Handle Errors here.
@@ -201,9 +217,7 @@ Each query counts for 1 read and each document dowloaded counts for 1 read.
 This way we only pay for 1 read to know the number of documents in each collections.
 NB: the function actuallizing the counters is a Firebase Cloud Function => see Firebase folder
 ############################################################################# */
-
 window.dwldDatabase = async function dwldDatabase(collection){
-	//console.log(labs.toJSON());
 	if(dlwdedCollections[collection] !== undefined  && (Date() - CollectionData.timestamp) < timeOut ){
 		return dlwdedCollections[collection];
 	}
@@ -231,13 +245,16 @@ window.dwldDatabase = async function dwldDatabase(collection){
 		var fields = Object.keys(dlwdedCollections[collection].data[0]);
 		// replace null values by empty string
 		var replacer = function(key, value) { return value === null ? '' : value };
+		// convert json to csv
 		var csv = json.map(function(row){
 			return fields.map(function(fieldName){
 				return JSON.stringify(row[fieldName], replacer)
 				}).join(',');
 		});
 		csv.unshift(fields.join(',')) // add header column
-		csv = csv.join('\r\n'); // add lineskip ath the bottom
+		// add lineskip ath the bottom
+		// remove brackets (easier to load with Excel)
+		csv = csv.join('\r\n').replace(/[\{\}]/g, ''); 
 		// ready data for download
 		var csvData = new Blob([csv], { type: 'text/csv' }); //new way
 		var csvUrl = URL.createObjectURL(csvData);
@@ -261,9 +278,6 @@ function loadCollection(collection){
 		db.collection(collection).get()
 		.then(snapshot =>{
 			console.log("snapshot", snapshot);
-			console.log("snapshot.path", snapshot.path);
-			console.log("not empty?", !snapshot.empty);
-			console.log("empty?", snapshot.empty);
 			try{
 				document
 			}
@@ -292,20 +306,16 @@ function loadCollection(collection){
 loadCounters accesses the database and downloads the "counters" collection from Firebase
 it is used to update the numbers of documents per collection displayed on the dashboard
 ############################################################################# */
-
 async function loadCounters(){
 
 	console.log("Fetching counters from Firestore")
 	return new Promise((resolve, reject) => {
-		//var docRef = db.collection("counters").doc("counters");
 		db.collection("counters").doc("counters").get()
 		.then(snapshot =>{
 			console.log("snapshot", snapshot);
 			console.log("snapshot.path", snapshot.path);
-			console.log("not empty?", !snapshot.empty);
-			console.log("empty?", snapshot.empty);
 			if (!snapshot.empty){
-				console.log("Not empty");
+				console.log("Counter snapshot is not empty");
 				resolve(snapshot);
 				console.log("Counters downloaded.");
 			}
@@ -326,7 +336,6 @@ async function loadCounters(){
 updates the numbers of documents per collection displayed on the dashboard
 use loadCounters for retreiving data from Firestore.
 ############################################################################# */
-
 async function updateNumbers(){
 	console.log("Updating page numbers.")
 	// Create a reference to the cities collection
