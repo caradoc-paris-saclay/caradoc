@@ -105,7 +105,7 @@ a:active {
   font-weight: 600;*/
   margin-bottom: 2vh;
   display: flex;
-  align-items: left;
+  align-items: self-start;
   justify-content: left;
 }
 #poster ul {
@@ -421,8 +421,8 @@ a:active {
   height: auto;
 }
 #portfolio-work .block .portfolio-contant .TBC {
-  opacity: 0.2;
   filter: alpha(opacity=20); /* For IE8 and earlier */
+  opacity: 0.2;
 }
 #portfolio-work .block .portfolio-contant .overly {
   position: absolute;
