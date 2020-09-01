@@ -161,18 +161,15 @@ function createSession(email, password, e){
     	.then(profile => {
     		// Here we propose to the web browser to save the resutls
     		// if sign in was successful
-    		try{
-	    		if (window.PasswordCredential) {
-			   		var c = navigator.credentials.create({password: e.target});
-			   		return navigator.credentials.store(c);
-				} 
-				else {
-				 	return Promise.resolve(profile);
-				}
-			}
-			catch(error){
-				console.log("Error when proposing web browser to save login credentials.")
-				console.log(error);
+    		if (window.PasswordCredential) {
+		   		var c = navigator.credentials.create({password: e.target});
+		   		return navigator.credentials.store(c).catch( error =>{
+		   			console.log("Error while trying to store credentials.")
+		   			console.log(error);
+		   		});
+			} 
+			else {
+			 	return Promise.resolve(profile);
 			}
 		})
 		.then(profile => {
