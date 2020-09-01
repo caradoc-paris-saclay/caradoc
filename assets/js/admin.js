@@ -8,10 +8,16 @@ This file contains:
 
 What happens here?
 -> when the page loads, the function window.onload is called.
+
+A good tutorial:
+https://developers.google.com/web/fundamentals/security/credential-management/save-forms
+
+NB: do not use Private Session for developping login forms
+otherwise password saving prompt will be disabled
 ############################################################################# */
 
 import { db, getInputVal, setInputVal, loadLaboratories } from  './form.js'; 
-// pathname without leading nor trailing "/" 
+// pageName = pathname without leading nor trailing "/" 
 // eg. turns /admin or /admin/ into admin
 const pageName = window.location.pathname.replace(/^\/+/g, '').replace(/\/+$/, ''); 
 let provider = new firebase.auth.GoogleAuthProvider();
@@ -23,13 +29,15 @@ function Counter () {
 	var timestamp = null; // timestamp will be initialised later
 	this.value = null;
 };
+// CollectionData class
 function CollectionData () {
 	var timestamp = null; // timestamp will be initialised later
 	this.data = new Array();
 };
 var counters = {};
+// timeout for when to refresh data when clicking on download
+// refreshing the page resets the counter
 const timeOut = 30 * 60 * 1000; // 30 min in millisecond
-//document.getElementById('login_form').addEventListener('submit', window.login);
 
 // window.updateForm 
 console.log("firebase:", firebase);
@@ -38,7 +46,7 @@ console.log("firebase.app().name:", firebase.app.name);
 /* #############################################################################
 window.onload
 => called when page is loaded
-=> define the default behavior of sign in page
+=> define the default behavior of sign in page when submitting form
 ############################################################################# */
 window.onload = function() {
 	console.log("window.location.pathname: ", window.location.pathname );
@@ -79,6 +87,7 @@ window.onload = function() {
 		});
 	}
 };
+
 /* #############################################################################
 initApp is called only once at window loading time.
 However, once called firebase.auth().onAuthStateChanged() will be stay active.
@@ -122,7 +131,7 @@ function initApp() {
 
 /* #############################################################################
 logout
-winwow.functionName is for accessing functionName with htmn onclik
+winwow.functionName is for accessing functionName with html onclik action
 ############################################################################# */
 window.logout = function logout(){
 	firebase.auth().signOut();
@@ -133,30 +142,37 @@ window.logout = function logout(){
 
 /* #############################################################################
 createSession
+read Firebase authentification doc for knowing more about Persistence
+Option chosen: SESSIOn
+=> Existing and future Auth states are now persisted in the current
+session only. Closing the window would clear any existing state even
+if a user forgets to sign out.
 ############################################################################# */
 function createSession(email, password, e){
 	console.log("createSession")
 	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
 	.then(function() {
 		console.log("Firebase signIn.")
-	    // Existing and future Auth states are now persisted in the current
-	    // session only. Closing the window would clear any existing state even
-	    // if a user forgets to sign out.
-	    // 
-	    // New sign-in will be persisted with session persistence.
 	    // return below is optional could be deleted (IMO)
 	    // signInWithEmailAndPassword query Firebase server to know if
 	    // user(email, password) is authorized
-	    // authorizations on set on via the Firebase Console
+	    // authorizations are set via the Firebase Console
     	return firebase.auth().signInWithEmailAndPassword(email, password)
     	.then(profile => {
     		// Here we propose to the web browser to save the resutls
-    		if (window.PasswordCredential) {
-		   		var c = navigator.credentials.create({password: e.target});
-		   		return navigator.credentials.store(c);
-			} 
-			else {
-			 	return Promise.resolve(profile);
+    		// if sign in was successful
+    		try{
+	    		if (window.PasswordCredential) {
+			   		var c = navigator.credentials.create({password: e.target});
+			   		return navigator.credentials.store(c);
+				} 
+				else {
+				 	return Promise.resolve(profile);
+				}
+			}
+			catch(error){
+				console.log("Error when proposing web browser to save login credentials.")
+				console.log(error);
 			}
 		})
 		.then(profile => {
@@ -201,9 +217,7 @@ Each query counts for 1 read and each document dowloaded counts for 1 read.
 This way we only pay for 1 read to know the number of documents in each collections.
 NB: the function actuallizing the counters is a Firebase Cloud Function => see Firebase folder
 ############################################################################# */
-
 window.dwldDatabase = async function dwldDatabase(collection){
-	//console.log(labs.toJSON());
 	if(dlwdedCollections[collection] !== undefined  && (Date() - CollectionData.timestamp) < timeOut ){
 		return dlwdedCollections[collection];
 	}
@@ -231,13 +245,16 @@ window.dwldDatabase = async function dwldDatabase(collection){
 		var fields = Object.keys(dlwdedCollections[collection].data[0]);
 		// replace null values by empty string
 		var replacer = function(key, value) { return value === null ? '' : value };
+		// convert json to csv
 		var csv = json.map(function(row){
 			return fields.map(function(fieldName){
 				return JSON.stringify(row[fieldName], replacer)
 				}).join(',');
 		});
 		csv.unshift(fields.join(',')) // add header column
-		csv = csv.join('\r\n'); // add lineskip ath the bottom
+		// add lineskip ath the bottom
+		// remove brackets (easier to load with Excel)
+		csv = csv.join('\r\n').replace(/[\{\}]/g, ''); 
 		// ready data for download
 		var csvData = new Blob([csv], { type: 'text/csv' }); //new way
 		var csvUrl = URL.createObjectURL(csvData);
