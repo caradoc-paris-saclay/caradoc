@@ -282,6 +282,9 @@ dialog gif
   @media (orientation: portrait){
     width: 60vw;
   }
+  @media screen and (max-width: $sm-width){
+    padding-top: 1.5rem;
+  } 
 }
 
 /* #############################################################################
