@@ -199,27 +199,59 @@ index-top
 
 .index-top .title{
   @include interpolate(font-size, $sm-width, $lg-width, 35px, 70px); 
+  line-height: 1.4;
   //font-size: $title-font-size;
 }
 
 .index-top .subtitle{
   @include interpolate(font-size, $sm-width, $lg-width, 15px, 35px); 
+  line-height: 1.3;
   //font-size: $subtitle-font-size;
 }
 
 .index-top .date-and-place{
-  @include interpolate(font-size, $sm-width, $lg-width, 18px, 40px); 
+  @include interpolate(font-size, $sm-width, $lg-width, 18px, 37.5px); 
   //font-size: $big-font-size;
   color: $special-white;
 }
 
 .index-top .d-flex.date{
-	margin-top: 5vh;
+	margin-top: 2.5vh;
 }
 
 .index-top .d-flex.date > .date{
   border-bottom: 1px solid $naples-yellow;
 }
+
+.index-top .sponsors{
+  width: inherit;
+  .sponsor-title{
+    @include interpolate(font-size, $sm-width, $lg-width, 10px, 16px); 
+    padding-right: 0.2em;
+  }
+  .sponsor-img{
+    max-width: 35vw;
+    min-width: 20vw;
+    @include interpolate(margin-top, $sm-width, $lg-width, 15px, 12px);
+  }
+  .sponsor-img-link{
+  }
+  @media (max-width: $md-width) and (orientation: portrait) {
+    flex-direction: column;
+    //align-items: center;
+    justify-content: center;
+    .sponsor-title{
+      margin-top: 1vh;
+      padding-right: 0;
+      //margin-right: auto;
+    }
+    .sponsor-img{
+      max-width: 50vw;
+    }
+  }
+}
+
+
 
 /* ##################################
 dialog gif
@@ -228,7 +260,7 @@ dialog gif
 .dialog-gif{
 	z-index: 0;
 	position: absolute;
-	bottom: 15vh;
+	bottom: 17vh;
 	max-height: $index-top-height * 2 / 3 ;
 	min-width: 40vw;
 	height: auto;
