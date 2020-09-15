@@ -187,9 +187,16 @@ index-top
   height: auto;
   margin-top: 0;
   @include padding-band; // see mixin for padding details
+  padding-top: 0;
   background: $prussian-blue;
   text-align: center;
   z-index: 1; // for text to be by default on top of images in case of collisions
+}
+
+.index-title-gif-box{
+  @media (orientation: portrait){
+    flex-direction: column-reverse;
+  }
 }
 
 .d-flex.animated.fadeInUp{
@@ -251,60 +258,32 @@ index-top
   }
 }
 
-
-
 /* ##################################
 dialog gif
 ################################## */
 
+.dialog-gif-box{
+  z-index: 0;
+  -o-object-fit: contain;
+  object-fit: contain;
+  @media (orientation: portrait){
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
 .dialog-gif{
-	z-index: 0;
-	position: absolute;
-	bottom: 17vh;
 	max-height: $index-top-height * 2 / 3 ;
-	min-width: 40vw;
-	height: auto;
+	//min-width: 40vw;
+  width: 45vw;
+	height: 100%;
   overflow: hidden;
+  padding-top: 3rem;
+  @media (orientation: portrait){
+    width: 60vw;
+  }
 }
 
-@media screen and (max-width: $md-width) {
-	.dialog-gif{
-		//	bottom: 10vh;
-		max-width: 50vw;
-		max-height: $index-top-height / 2 - 10vh ;
-    bottom: 12vh;
-	}
-}
-
-@medi (orientation: portrait){
-	.dialog-gif-box{
-		margin-right: 0 !important;
-		align-items: center;
-		justify-content: center;
-	}
-}
-
-/* center gif only in portrait mode on small screens */
-@media (max-width: $md-width) and (orientation: portrait) {
-	.dialog-gif-box{
-		margin-right: 0 !important;
-		align-items: center;
-		justify-content: center;
-	}
-}
-
-@media screen and (max-width: $sm-width) {
-	.dialog-gif{
-		//bottom: 10vh;
-		max-width: 60vw;
-		min-width: 0vw;
-		//padding-left: 10vw;
-	}
-	.dialog-gif-box{
-		margin-left: 5vw;
-		margin-bottom: auto;
-	}
-}
 /* #############################################################################
 index-caradoc
 ############################################################################# */
