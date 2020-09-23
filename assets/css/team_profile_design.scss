@@ -33,7 +33,7 @@ body {
 	.content {
 		position: relative;
 		width: 100%;
-		max-width: 400px;
+		max-width: 310px;
 		margin: auto;
 		overflow: hidden;
 	}
@@ -41,7 +41,7 @@ body {
 	.content .content-overlay {
 		background: rgba(0, 0, 0, 0.7);
 		position: absolute;
-		height: auto;
+		height: 360px;
 		width: 100%;
 		left: 0;
 		top: 0;
@@ -63,7 +63,7 @@ body {
 
 	img {
 		box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
-		border-radius: 5px;
+		// border-radius: 5px;
 	}
 
 	.content-details {
@@ -232,7 +232,7 @@ body {
 	}
 
 	.imgBorder {
-		padding: 15px 15px 0;
+		padding: 15px 15px 15px;
 		background-color: white;
 		box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 		-moz-box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
