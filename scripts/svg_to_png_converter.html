@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--
+
+1. Works with Chrome
+
+2. Erase existing svg withing the "<div id="svg-container"> </div>" element
+
+3. run the code in Chrome
+
+-->
+
+<div id="svg-container">
+<svg viewBox="0 0 300 100" class="jss17"><defs><linearGradient id="a" spreadMethod="pad" gradientTransform="matrix(102.17432 0 0 -102.17432 188.763 484.673)" gradientUnits="userSpaceOnUse" y2="0" x2="1" y1="0" x1="0"><stop offset="0" stop-color="#08a"></stop><stop offset="0.499" stop-color="#0cf"></stop><stop offset="1" stop-color="#80e5ff"></stop></linearGradient></defs><g stroke-width="0.871"><path d="M189.997 21.294h-9.374v57.412h33.536v-8.73H190.09z"></path><path d="M230.635 69.946l-.057-15.267 18.685-.001v-8.975l-18.628.002V30.307h25.73v-9.013h-34.678v57.412h34.679v-8.73z" stroke-width="0.783"></path><path d="M82.593 31.01l4.087-9.716h-9.39l-7.498 17.832-4.698 11.168-2.847 6.77V44.312l.134-23.017h-9.253v.04h-.168l.085 57.372h9.474l7.271-17.291 7.346 17.29h9.467L74.51 50.234l3.41-8.102zM25.655 21.294c-10.662 0-17.944 6.511-18.024 16.277 0 9.44 4.718 14.404 15.542 16.764 5.37 1.3 11.556 2.277 11.556 8.543 0 5.047-4.477 7.242-10.58 7.242-3.823-.16-20.445-.3-20.445-.3L0 78.705h25.655c11.88 0 18.92-6.469 19.002-16.398-.082-9.356-5.207-14.728-15.87-17.089-4.883-1.057-11.066-2.604-11.066-7.567 0-2.85 1.465-7.243 9.765-7.243 3.242 0 8.741.023 13.324.034l3.847-9.149zM280.997 21.294c-10.66 0-17.944 6.511-18.023 16.277 0 9.44 4.718 14.404 15.541 16.764 5.37 1.3 11.556 2.277 11.556 8.543 0 5.047-4.477 7.242-10.58 7.242-3.823-.16-12.707-.12-12.707-.12l-3.82 8.706h18.033c11.882 0 18.92-6.469 19.003-16.398-.083-9.356-5.208-14.728-15.87-17.09-4.883-1.056-11.066-2.603-11.066-7.566 0-2.85 1.464-7.243 9.765-7.243 3.242 0 8.741.024 13.323.034L300 21.294z" stroke-width="0.785"></path><path d="M108.838 78.706h30.424l-18.054-7.663 12-28.27 5.38 12.828 9.873 23.105h9.133l-24.386-57.412z" fill="#00b16a" stroke-width="0.782"></path><g stroke-width="0.314" fill="#009fc7"><path d="M95.398 79.502c-.76 0-2.886-17.794-2.076-42.796.136-4.323.36-9.142 1.15-13.967.185-2.275.687-5.532 3.188-8.408 2.876-2.5 6.133-3.003 8.408-3.188 4.825-.79 9.644-1.014 13.967-1.15 25.002-.81 42.796 1.316 42.796 2.076 0 1.648-17.881 1.574-42.549 3.13-4.266.273-8.904.576-13.296 1.352-2.483.624-4.772.666-5.421 1.685-1.02.649-1.061 2.938-1.685 5.421-.776 4.392-1.08 9.03-1.352 13.296-1.556 24.668-1.482 42.549-3.13 42.549zM171.26 20.498c.76 0 2.886 17.794 2.076 42.796-.136 4.323-.36 9.142-1.15 13.967-.185 2.275-.687 5.532-3.188 8.408-2.876 2.5-6.133 3.003-8.408 3.188-4.825.79-9.644 1.014-13.967 1.15-25.002.81-42.796-1.316-42.796-2.076 0-1.648 17.88-1.574 42.548-3.13 4.267-.273 8.905-.576 13.297-1.352 2.482-.624 4.772-.666 5.421-1.685 1.02-.649 1.061-2.938 1.685-5.421.776-4.392 1.08-9.03 1.352-13.296 1.556-24.668 1.482-42.549 3.13-42.549z"></path></g></g></svg>
+</div>
+
+<canvas id="canvas" width="800" height="400"></canvas>
+<div id="png-container"></div>
+
+
+<script>
+var svgString = new XMLSerializer().serializeToString(document.querySelector('svg'));
+
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var DOMURL = self.URL || self.webkitURL || self;
+var img = new Image();
+var svg = new Blob([svgString], {type: "image/svg+xml;charset=utf-8"});
+var url = DOMURL.createObjectURL(svg);
+img.onload = function() {
+    ctx.drawImage(img, 0, 0);
+    var png = canvas.toDataURL("image/png");
+    document.querySelector('#png-container').innerHTML = '<img src="'+png+'"/>';
+    DOMURL.revokeObjectURL(png);
+};
+img.src = url;
+
+</script>
+
+</body>
+</html>

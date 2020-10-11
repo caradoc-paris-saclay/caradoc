@@ -18,7 +18,6 @@ exclude:
   - "/assets/img/jred"
   - "/assets/img/*.sh"
   - "/assets/img/references"
-  - "/assets/img/companies_old"
   - "/assets/img/companies_not_comming"
   - "/assets/img/team/originals"
   - "/assets/js/old"
