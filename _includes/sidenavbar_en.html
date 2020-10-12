@@ -2,9 +2,27 @@
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <!-- Dropdown EventSubMenu -->
     <ul>
-      <li class="nav-item">
-        <a href="{{ site.baseurl }}{% link assets/en/corporations.html %}">Event</a>
       </li>
+      <li class="nav-item">
+        <div style="display: flex;">
+          <a href="{{ site.baseurl }}{% link assets/en/corporations.html %}">
+              Event
+          </a>
+          <a class="dropdown-toggle" href="#EventSubMenu" data-toggle="collapse" aria-expanded="false">
+            </a>
+        </div>
+      </li>
+      <ul class="collapse list-unstyled" id="EventSubMenu">
+        <li>
+          <a href="{{ site.baseurl }}{% link assets/en/corporations.html %}">Corporations</a>
+        </li>
+        <li>
+          <a href="{{ site.baseurl }}{% link assets/en/program.html %}">Program</a>
+        </li>
+        <li>
+          <a href="{{ site.baseurl }}{% link assets/en/previous_edition.html %}">Previous Edition</a>
+        </li>
+      </ul>
       <li class="nav-item">
         <a href="{{ site.baseurl }}{% link assets/en/index.html %}#registration-anchor" onclick="closeNav()">Registration</a>
       </li>
