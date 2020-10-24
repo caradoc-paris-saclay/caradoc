@@ -53,7 +53,7 @@ const QRCode = require('qrcode');
 const fs = require('fs');
 const admin = require('firebase-admin');
 
-var serviceAccount = require("./caradoc-b9cfd-firebase-adminsdk-7xt83-7e9adb6728.json");
+var serviceAccount = require("./caradoc-b9cfd-firebase-adminsdk-7xt83-e9768dd696.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
