@@ -111,7 +111,7 @@ async function main() {
 
     // Building Email message.
 
-    mailOptions.subject = "[Action Required] Welcome to CARaDOC 2020!";
+    mailOptions.subject = "[Regsitration - Almost Done] Welcome to CARaDOC 2020!";
     mailOptions.text = "";
     mailOptions.html = fs.readFileSync("./email_body_register.html")
                          .toString()
