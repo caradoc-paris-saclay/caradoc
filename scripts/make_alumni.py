@@ -6,16 +6,16 @@ import numpy as np
 import unidecode
 
 root_dir = dirname(dirname(abspath(__file__)))
-
+n_cards_per_row = 4
 card = """
-<div class="col-xl-3 col-sm-6 mb-5">
-          <div class="image-flip" >
-              <div class="mainflip flip-0">
+        <div class="col-xl-3 col-sm-6 mb-5">
+            <div class="image-flip" >
+                <div class="mainflip flip-0">
                   <div class="frontside">
                       <div class="card">
                           <div class="card-body text-center">
                               <p><img class=" img-fluid" src="{{ site.baseurl }}{% link IMG %}" alt="card image"></p>
-                              <h4 class="card-title">FISRTNAME LASTNAME</h4>
+                              <h4 class="card-title">FIRSTNAME LASTNAME</h4>
                               <p class="card-text">Last Role: LASTROLE</p>
                               <p class="card-text">DATEBEGIN - DATEEND</p>
                               <!-- <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a> -->
@@ -40,10 +40,9 @@ card = """
                           </div>
                       </div>
                   </div>
-              </div>
-          </div>
-        </div>
-"""
+                </div>
+            </div>
+        </div>"""
 
 def find_img(firstname, lastname):
     '''
@@ -76,6 +75,8 @@ def find_img(firstname, lastname):
 def make_html_array(excel_sheet, html_file):
 
     global root_dir
+    global n_cards_per_row
+    global card
     html = open(html_path, "w")
     # use panda to read excel (1st tab)
     df = pd.read_excel(excel_sheet)
@@ -97,14 +98,29 @@ def make_html_array(excel_sheet, html_file):
     # keep only alumni
     team_members = df[df["Status"] == "alumni"]
     # iterate over team members and fill html
+    len_alumni = len(team_members)
+    print("len_alumni", len_alumni)
+    n = 0
     for index, row in team_members.iterrows():
+        tc = card
         firstname =  row[col_firstname]
         lastname = row[col_lastname]
         # find image matching member
         img_name = find_img(firstname, lastname)
         if img_name is None:
             img_name = "no-avatar.png"
-        print(row["First Name"], "-->", img_name)
+        print(firstname, "-->", img_name)
+        tc = tc.replace("FIRSTNAME", firstname).replace("LASTNAME", lastname)
+        tc = tc.replace("IMG", "assets/img/alumni/" + img_name)
+        if n == 0:
+            tc = """    <div class="row">""" + tc
+        elif n % n_cards_per_row == 0:
+            tc = """\n    </div>\n    <div class="row">""" + tc 
+        elif n == len_alumni - 1:
+            tc += """\n    </div>""" 
+        html.write(tc)
+        n += 1
+
 
 
 
