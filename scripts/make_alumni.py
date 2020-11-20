@@ -112,6 +112,12 @@ def make_html_array(excel_sheet, html_file):
         print(firstname, "-->", img_name)
         tc = tc.replace("FIRSTNAME", firstname).replace("LASTNAME", lastname)
         tc = tc.replace("IMG", "assets/img/alumni/" + img_name)
+        date_begin = ""
+        teams = ""
+        tc = tc.replace("DATEBEGIN", date_begin)
+        tc = tc.replace("DATEEND", date_end)
+        tc = tc.replace("TEAMS", teams)
+        # add cols when completing a row
         if n == 0:
             tc = """    <div class="row">""" + tc
         elif n % n_cards_per_row == 0:
