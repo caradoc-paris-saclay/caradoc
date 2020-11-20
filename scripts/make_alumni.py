@@ -112,11 +112,14 @@ def make_html_array(excel_sheet, html_file):
         print(firstname, "-->", img_name)
         tc = tc.replace("FIRSTNAME", firstname).replace("LASTNAME", lastname)
         tc = tc.replace("IMG", "assets/img/alumni/" + img_name)
-        date_begin = ""
-        teams = ""
+        date_begin = "Date begin"
+        date_end = "Date end"
+        teams = "Teams"
+        last_role = "Last Role"
         tc = tc.replace("DATEBEGIN", date_begin)
         tc = tc.replace("DATEEND", date_end)
         tc = tc.replace("TEAMS", teams)
+        tc = tc.replace("LASTROLE", last_role)
         # add cols when completing a row
         if n == 0:
             tc = """    <div class="row">""" + tc
