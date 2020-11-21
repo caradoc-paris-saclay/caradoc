@@ -130,6 +130,7 @@ section .section-title {
 .frontside .card,
 .backside .card {
     min-height: 312px;
+    width: 100%
 }
 
 .backside .card a {
@@ -146,4 +147,8 @@ section .section-title {
     width: 120px;
     height: 120px;
     border-radius: 50%;
+}
+
+.backside {
+    width: 100%;
 }
