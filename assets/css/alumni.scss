@@ -97,7 +97,7 @@ section .section-title {
 .backside {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 5%;
     background: white;
     -webkit-transform: rotateY(-180deg);
     -moz-transform: rotateY(-180deg);
@@ -150,5 +150,5 @@ section .section-title {
 }
 
 .backside {
-    width: 100%;
+    width: 95%;
 }
