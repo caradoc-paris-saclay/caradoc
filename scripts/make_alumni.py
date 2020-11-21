@@ -1,12 +1,19 @@
+###
+# author: Arnaud Gallant
+# date: 20th november 2020
+###
+
 from os import walk, listdir
 from os.path import abspath, join, dirname, basename, isfile
-from shutil import copyfile
-import pandas as pd
-import numpy as np
-import unidecode
+from shutil import copyfile # to move images
+import pandas as pd # to hand excel + parse content
+import unidecode # to take care of accents in names
 
+# root directory (root of the git project)
 root_dir = dirname(dirname(abspath(__file__)))
+# number of cards per row
 n_cards_per_row = 4
+# card template
 card = """
         <div class="col-xl-3 col-sm-6 mb-5">
             <div class="image-flip" >
@@ -147,9 +154,11 @@ def make_html_array(excel_sheet, html_file):
         img_name = find_img(firstname, lastname)
         if img_name is None:
             img_name = "no-avatar.png"
-        print(firstname, "-->", img_name)
-        date_begin = "Date begin"
-        date_end = "Date end"
+        # print(firstname, "-->", img_name)
+        date_begin = row["Joining Date"].month_name()
+        date_begin = f"{date_begin} {row['Joining Date'].year}" if isinstance(date_begin, str) else ""
+        date_end = row["Leaving Date"].month_name()
+        date_end = f"{date_end} {row['Leaving Date'].year}" if isinstance(date_end, str) else ""
         # get the non empty columns
         teams = []
         last_role = "Officer"
@@ -167,8 +176,6 @@ def make_html_array(excel_sheet, html_file):
                     elif last_role == "Officer" and row[c] != "L" and row[c] != "C": 
                         last_role = fullnames[c] + " Officer"
         teams = "\n".join(teams)
-        print(teams)
-        print(last_role)
         linkedin = row["LinkedIn"] if isinstance(row["LinkedIn"] , str) else ""
 
         tc = tc.replace("FIRSTNAME", firstname).replace("LASTNAME", lastname) \
