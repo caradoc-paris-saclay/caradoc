@@ -200,7 +200,7 @@ def make_html_array(excel_sheet, html_file):
 
 
 # For current edition
-csv_sheet_name = "Team_info_CARaDOC.xlsx"
+csv_sheet_name = "Alumni_CARaDOC_for_export.xlsx"
 csv_sheet_path = join(dirname(root_dir), csv_sheet_name)
 html_path = join(root_dir, "_includes/alumni_array.html")
 make_html_array(csv_sheet_path, html_path)
