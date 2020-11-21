@@ -26,8 +26,7 @@ card = """
                       <div class="card">
                           <div class="card-body text-center mt-4">
                               <h4 class="card-title">FIRSTNAME LASTNAME</h4>
-                              <p class="card-text">Worked in:  
-                                TEAMS
+                              <p class="card-text">Worked in: </br>TEAMS
                               </p>
                               <ul class="list-inline">
                                   
@@ -72,6 +71,41 @@ def find_img(firstname, lastname):
         if lastname in i or firstname in i:
             return i # file found return
 
+def get_team_fullnames(df, team_initials):
+    '''
+    get the fullnames of the teams provided the dataframe df mapping the original excel sheet
+    and the list of initials to find.
+    the excel should be built such as:
+          COl 1 -   COL 2
+    ROW 1 IN 1  - FULLNAME 1
+    ROW 2 IN 2  - FULLNAME 2
+    ...     ...         ...
+    ROW N IN N  - FULLNAME N
+    '''
+    # search the column COL 1 of initials by looking for the 1st one
+    res = df.eq(team_initials[0]).any(0)
+    col1 = ""
+    col2 = ""
+    columns = df.columns.to_list()
+    for i,c in enumerate(columns):
+        if res[c]:
+            col1 = c
+            col2 = columns[i+1]
+            break
+    # get the rows of all the initials
+    fullnames = {}
+    for t in team_initials:
+        # row of intial
+        tmp = df.loc[df[col1] == t]
+        # if search worked, copy adjecent cell in col2
+        # else return empty string
+        if len(tmp)>0:
+            i = tmp.index[0]
+            fullnames[t] = df[col2][i]
+        else:
+            fullnames[t] = ""
+    return fullnames
+
 def make_html_array(excel_sheet, html_file):
 
     global root_dir
@@ -87,6 +121,9 @@ def make_html_array(excel_sheet, html_file):
     col_firstname = columns[0]
     col_lastname = columns[1]
     team_cols = df.columns[col_team_start:col_team_stop + 1].to_list()
+    # get dictionnary of {initials: fullnames} where initials match team_cols
+    # This will be usefeul to convert team initials into full team names
+    fullnames = get_team_fullnames(df, team_cols)
     # last column containing data
     last_col_index = df.columns.to_list().index("Status")
     # we cut the dataframe after the last column which is supposed to be named "Status"
@@ -101,6 +138,7 @@ def make_html_array(excel_sheet, html_file):
     len_alumni = len(team_members)
     print("len_alumni", len_alumni)
     n = 0
+
     for index, row in team_members.iterrows():
         tc = card
         firstname =  row[col_firstname]
@@ -110,16 +148,36 @@ def make_html_array(excel_sheet, html_file):
         if img_name is None:
             img_name = "no-avatar.png"
         print(firstname, "-->", img_name)
-        tc = tc.replace("FIRSTNAME", firstname).replace("LASTNAME", lastname)
-        tc = tc.replace("IMG", "assets/img/alumni/" + img_name)
         date_begin = "Date begin"
         date_end = "Date end"
-        teams = "Teams"
-        last_role = "Last Role"
-        tc = tc.replace("DATEBEGIN", date_begin)
-        tc = tc.replace("DATEEND", date_end)
-        tc = tc.replace("TEAMS", teams)
-        tc = tc.replace("LASTROLE", last_role)
+        # get the non empty columns
+        teams = []
+        last_role = "Officer"
+        # check if the string is not equal to "" or filled with spaces
+        for c in team_cols:
+            if isinstance(row[c], str):
+                if row[c].strip() != "":
+                    teams.append(fullnames[c])
+                    if c == "EM":
+                        last_role = "Event Manager"
+                    elif row[c] == "L":
+                        last_role = fullnames[c] + " Team Leader"
+                    elif row[c] == "O":
+                        last_role = fullnames[c] + " Officer"
+                    elif last_role == "Officer" and row[c] != "L" and row[c] != "C": 
+                        last_role = fullnames[c] + " Officer"
+        teams = "\n".join(teams)
+        print(teams)
+        print(last_role)
+        linkedin = row["LinkedIn"] if isinstance(row["LinkedIn"] , str) else ""
+
+        tc = tc.replace("FIRSTNAME", firstname).replace("LASTNAME", lastname) \
+               .replace("IMG", "assets/img/alumni/" + img_name) \
+               .replace("DATEBEGIN", date_begin) \
+               .replace("DATEEND", date_end) \
+               .replace("TEAMS", teams) \
+               .replace("LASTROLE", last_role) \
+               .replace("LINKEDIN", linkedin)
         # add cols when completing a row
         if n == 0:
             tc = """    <div class="row">""" + tc
@@ -130,48 +188,6 @@ def make_html_array(excel_sheet, html_file):
         html.write(tc)
         n += 1
 
-
-
-
-        #buffer = "<li class=\"mix " + newroot + "\">\n" +\
-        #                                 "  <img src=\"{{ site.baseurl }}{% link " +\
-        #                                    join(companies_folder_relative_path, 
-        #                                        join(basename(root),basename(f))
-        #                                        ) + " %}\" " +\
-        #                                    "alt=\"" + name + "\">\n" +\
-        #                                  tbc_html +\
-        #                                  "</li>\n"
-        #html.write(buffer)
-
-    
-
-    
-    #for root, dirs, files in walk(image_folder):
-    #
-    #        for f in sorted(files, key=str.lower):
-    #
-    #                if "DS_Store" in f:
-    #                        pass
-    #                else:
-    #                        newroot = basename(root)
-    #                        newroot = basename(root) if "TBC" in newroot else "Confirmed " + newroot
-    #                        name = basename(f)
-    #                        name = name[0].upper() + name[1:-4]
-    #                        tbc_html = "" # "  <div class=center>On hold</div>\n" if "TBC" in newroot else ""
-    #                        if "_" in name:
-    #                                name = name.replace("_", " ")
-    #
-    #                        buffer[name]="<li class=\"mix " + newroot + "\">\n" +\
-    #                                     "  <img src=\"{{ site.baseurl }}{% link " +\
-    #                                        join(companies_folder_relative_path, 
-    #                                            join(basename(root),basename(f))
-    #                                            ) + " %}\" " +\
-    #                                        "alt=\"" + name + "\">\n" +\
-    #                                      tbc_html +\
-    #                                      "</li>\n"
-    
-    #for k in sorted(buffer.keys(), key=str.lower):
-    #    html.write(buffer[k])
     html.close()
 
 
