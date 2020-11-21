@@ -186,12 +186,13 @@ def make_html_array(excel_sheet, html_file):
                .replace("LASTROLE", last_role) \
                .replace("LINKEDIN", linkedin)
         # add cols when completing a row
-        if n == 0:
-            tc = """    <div class="row">""" + tc
-        elif n % n_cards_per_row == 0:
-            tc = """\n    </div>\n    <div class="row">""" + tc 
-        elif n == len_alumni - 1:
-            tc += """\n    </div>""" 
+        #if n == 0:
+        #    tc = """    <div class="row">""" + tc
+        #elif n % n_cards_per_row == 0:
+        #    tc = "\n" +tc
+        #    tc = """\n    </div>\n    <div class="row">""" + tc 
+        #elif n == len_alumni - 1:
+        #    tc += """\n    </div>""" 
         html.write(tc)
         n += 1
 
