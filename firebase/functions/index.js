@@ -53,7 +53,7 @@ const QRCode = require('qrcode');
 const fs = require('fs');
 const admin = require('firebase-admin');
 
-var serviceAccount = require("./caradoc-b9cfd-firebase-adminsdk-7xt83-7e9adb6728.json");
+var serviceAccount = require("./caradoc-b9cfd-firebase-adminsdk-7xt83-e9768dd696.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -111,7 +111,7 @@ async function main() {
 
     // Building Email message.
 
-    mailOptions.subject = "[Action Required] Welcome to CARaDOC 2020!";
+    mailOptions.subject = "[Regsitration - Almost Done] Welcome to CARaDOC 2020!";
     mailOptions.text = "";
     mailOptions.html = fs.readFileSync("./email_body_register.html")
                          .toString()
