@@ -1,6 +1,13 @@
 ###
 # author: Arnaud Gallant
 # date: 20th november 2020
+#
+# To run the script:
+# you will need the file Alumni_CARaDOC_for_export.xlsx
+# place the file just outside of the git project main folder
+# then cd to the folder containing this script and run
+# python make_alumni.py
+#
 ###
 
 from os import walk, listdir
