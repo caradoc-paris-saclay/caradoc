@@ -1,0 +1,24 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    {% include head.html %}
+    <link href="{{ site.baseurl }}/assets/css/alumni.css" rel="stylesheet">
+    {% seo %}
+  </head>
+  <body>
+    <!-- Header Start -->
+    <header class="sticky-top">
+    {% include main_navbar_en.html %}
+    {% include about_navbar_en.html %}
+    </header>
+    <!-- header close -->
+
+    {{ content }}
+
+    {% include footer_en.html %}
+    {% include foot_js.html %}
+    </body>
+</html>
