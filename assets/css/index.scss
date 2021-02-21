@@ -27,6 +27,10 @@ $subtitle-font-size: 2.5vw;
 $big-subtitle-font-size: 3.57vw;
 $big-font-size: 4vw;
 $huge-font-size: 5.71vw;
+/* page inner-padding */
+$page-padding-lateral: 10vw;
+$page-padding-top: 2.5vh;
+$page-padding-bottom: 0;
 
 /* #############################################################################
 Fluid typography
@@ -82,7 +86,7 @@ General rules
 
 .index{
   color: $special-white;
-  @include interpolate(font-size, $sm-width, $lg-width, 12px, 30px); // set fontsize
+  @include interpolate(font-size, $sm-width, $lg-width, 12px, 28px); // set fontsize
   //font-size: $default-font-size; 
   font-weight: bold; 
 }
@@ -107,10 +111,10 @@ General rules
 }
 
 @mixin padding-band{
-  padding-left: 2.5vw;
-  padding-right: 2.5vw;
-  padding-top: 2.5vh;
-  padding-bottom: 0; 
+  padding-left: $page-padding-lateral;
+  padding-right: $page-padding-lateral;
+  padding-top: $page-padding-top;
+  padding-bottom: $page-padding-bottom; 
    @media screen and (max-width: $md-width){
       padding-bottom: 2.5vh; 
     }
@@ -205,19 +209,19 @@ index-top
 }
 
 .index-top .title{
-  @include interpolate(font-size, $sm-width, $lg-width, 35px, 70px); 
+  @include interpolate(font-size, $sm-width, $lg-width, 35px, 55px); 
   line-height: 1.4;
   //font-size: $title-font-size;
 }
 
 .index-top .subtitle{
-  @include interpolate(font-size, $sm-width, $lg-width, 15px, 35px); 
+  @include interpolate(font-size, $sm-width, $lg-width, 15px, 25px); 
   line-height: 1.3;
   //font-size: $subtitle-font-size;
 }
 
 .index-top .date-and-place{
-  @include interpolate(font-size, $sm-width, $lg-width, 18px, 37.5px); 
+  @include interpolate(font-size, $sm-width, $lg-width, 18px, 30px); 
   //font-size: $big-font-size;
   color: $special-white;
 }
@@ -546,7 +550,7 @@ program
 .program-top{
   background: $prussian-blue;
   color: $special-white;
-  margin: 0 -2.5vw;
+  margin: 0 -$page-padding-lateral;
   margin-top:-2.5vh;  
   padding: 0 2.5vw;
   padding-top: 2.5vh;
@@ -583,6 +587,7 @@ program
   
   .title {
     @include interpolate(font-size, $sm-width, $lg-width, 18px, 32px); 
+
   }
 
   .arrow-suptitle{
@@ -699,9 +704,15 @@ $category-height-sm: 25vh;
   border-radius: 50px;
 }
 
-.student .registration-btn {
+
+.student .registration-btn, .news .registration-btn {
 	background-color: $naples-yellow;
 	color: $special_black;
+}
+
+.news .registration-btn {
+  width: auto;
+  //max-width: 50vw;
 }
 
 .company .registration-btn {
@@ -709,7 +720,7 @@ $category-height-sm: 25vh;
 	color: $special-white;
 }
 
-.student a:hover, .student a:active {
+.student a:hover, .student a:active, .student a:hover, .student a:active {
 	color: $naples-yellow;
 	background-color: $special_black;
 	border-color: $naples-yellow; 

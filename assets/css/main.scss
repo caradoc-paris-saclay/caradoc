@@ -151,6 +151,9 @@ top-main class
   h2 {
     font-size: 2.5vw; /* Font size */
   }
+  a{
+    color: $naples-yellow;
+  }
 
   @media screen and (max-width: 768px) {
     h1 {
@@ -225,7 +228,7 @@ top-2 class
 story class
 ############################################################################# */
 .story {
-  padding: 2.5vw 7vw; /* X% of the viewport width */
+  padding: 2.5vw 15vw; /* X% of the viewport width */
   /* Dark blue */
   background-color: #092a46;
   /* Light blue */
