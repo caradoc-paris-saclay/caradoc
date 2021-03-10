@@ -12,4 +12,5 @@ group :jekyll_plugins do
 #  	gem "jekyll-minifier"
 end
 
-gem "kramdown" #, ">= 2.3.0"
+gem "kramdown-parser-gfm"
+#gem "kramdown" #, ">= 2.3.0"
