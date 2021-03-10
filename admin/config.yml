@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: caradoc-paris-saclay/caradoc 
+  branch: 'nocode'
 
 media_folder: "/assets/img"
 
