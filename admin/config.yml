@@ -5,6 +5,15 @@ backend:
 media_folder: "/assets/img"
 
 collections:
+  - name: "website-settings"
+    label: "website settings"
+    files:
+      - label: "Website settings"
+        name: "site"
+        file: "_data/site.yml"
+        fields:
+          - { label: "Website description", name: "description", widget: 'string' }
+
   - name: 'blog'
     label: 'Blog'
     folder: '_posts/'
