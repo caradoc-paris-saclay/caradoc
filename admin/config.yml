@@ -13,6 +13,12 @@ collections:
         file: "_data/site.yml"
         fields:
           - { label: "Website description", name: "description", widget: 'string' }
+      - label: "Home Page"
+        name: "site"
+        file: "_data/homepage.yml"
+        fields:
+          - { label: "Homepage title", name: "title", widget: 'string' }
+          - { label: "Homepage subtitle", name: "subtitle", widget: 'string' }
 
   - name: 'blog'
     label: 'Blog'
