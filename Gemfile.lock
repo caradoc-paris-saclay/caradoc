@@ -81,6 +81,7 @@ DEPENDENCIES
   jekyll-minifier
   jekyll-seo-tag
   jekyll-sitemap
+  kramdown
   kramdown-parser-gfm
 
 BUNDLED WITH
