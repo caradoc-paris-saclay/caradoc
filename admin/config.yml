@@ -7,15 +7,16 @@ media_folder: "/assets/img"
 collections:
   - name: "website-settings"
     label: "website settings"
+    folder: "_data/"
     files:
       - label: "Website settings"
         name: "site"
-        file: "_data/site.yml"
+        file: "site.yml"
         fields:
           - { label: "Website description", name: "description", widget: 'string' }
       - label: "Home Page"
         name: "homepage"
-        file: "_data/homepage.yml"
+        file: "homepage.yml"
         fields:
           - { label: "Homepage title", name: "title", widget: 'string' }
           - { label: "Homepage subtitle", name: "subtitle", widget: 'string' }
