@@ -4,12 +4,4 @@ source "https://rubygems.org"
 
 gem "jekyll"
 
-group :jekyll_plugins do
-	gem "github-pages"
-	gem "jekyll-sitemap"
-	gem "jekyll-seo-tag"
-  	gem "jekyll-sitemap" 
-  	gem "jekyll-minifier"
-end
 
-gem "kramdown", ">= 2.3.0"
