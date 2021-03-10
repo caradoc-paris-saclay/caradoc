@@ -14,7 +14,7 @@ collections:
         fields:
           - { label: "Website description", name: "description", widget: 'string' }
       - label: "Home Page"
-        name: "site"
+        name: "homepage"
         file: "_data/homepage.yml"
         fields:
           - { label: "Homepage title", name: "title", widget: 'string' }
