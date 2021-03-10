@@ -45,7 +45,7 @@ keep_files:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap 
-#  - jekyll-minifier
+  - jekyll-minifier
 
 
 # Configuration for HTML compression

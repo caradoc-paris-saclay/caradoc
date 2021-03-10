@@ -8,8 +8,7 @@ group :jekyll_plugins do
 #	gem "github-pages"
 	gem "jekyll-sitemap"
 	gem "jekyll-seo-tag"
-#  	gem "jekyll-sitemap" 
-#  	gem "jekyll-minifier"
+  	gem "jekyll-minifier"
 end
 
 gem "kramdown-parser-gfm"
