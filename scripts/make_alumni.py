@@ -136,7 +136,7 @@ def make_html_array(excel_sheet, html_file):
     df = pd.read_excel(excel_sheet)
     # columns corresponding to the 
     col_team_start = 2
-    col_team_stop = 9
+    col_team_stop = 10
     columns = df.columns.to_list()
     col_firstname = columns[0]
     col_lastname = columns[1]
@@ -156,7 +156,7 @@ def make_html_array(excel_sheet, html_file):
     team_members = df[df["Status"] == "alumni"]
     # iterate over team members and fill html
     len_alumni = len(team_members)
-    print("len_alumni", len_alumni)
+    print("There are ", len_alumni, "alumni!")
     n = 0
 
     for index, row in team_members.iterrows():
@@ -217,6 +217,7 @@ csv_sheet_name = "Alumni_CARaDOC_for_export.xlsx"
 csv_sheet_path = join(dirname(root_dir), csv_sheet_name)
 html_path = join(root_dir, "_includes/alumni_array.html")
 make_html_array(csv_sheet_path, html_path)
+print("Script has run successfully!")
 
 
 
