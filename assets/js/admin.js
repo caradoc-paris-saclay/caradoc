@@ -61,7 +61,7 @@ window.onload = function() {
 		CollectionData.timestamp = Date(); // initialize timestamp of CollectionData class
 		updateNumbers();
 	}
-	else if (pageName == "admin"){
+	else if (pageName == "admin_board"){
 		// we override the default behavior of the form submit action
 		var form = document.querySelector('#login_form');
 		form.addEventListener('submit', async e => { 
@@ -112,7 +112,7 @@ function initApp() {
 		} 
 		else {
 			// User is signed out.
-			if (pageName == "admin"){
+			if (pageName == "admin_board"){
 				document.getElementById('admin_title').textContent = "Admin Log In Page";
 				document.getElementById("log-out-btn").disabled = true;
 				document.getElementById("log-out-btn").style.visibility = "hidden"; 
@@ -122,7 +122,7 @@ function initApp() {
 				document.getElementById('dashboard').style.display = "none";
 			}
 		}
-		if (pageName == "admin"){
+		if (pageName == "admin_board"){
 			document.getElementById('sign-in').disabled = false;
 		}
 	});
@@ -136,7 +136,7 @@ winwow.functionName is for accessing functionName with html onclik action
 window.logout = function logout(){
 	firebase.auth().signOut();
 	if (pageName == "dashboard"){
-		window.location.pathname = "/admin";
+		window.location.pathname = "/admin_board";
 	}
 }
 
