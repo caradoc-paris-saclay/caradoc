@@ -17,13 +17,17 @@ permalink: /news
 
 <section class="news">
 	<div class="post-list">
-		<ul>
+		<div class="d-flex flex-column">
 		  {% for post in site.posts %}
-		    <li>
-		      <a href="{{ post.url }}">{{ post.title }}</a>
+		    <li class="d-flex flex-column mx-auto">
+		      <h1 class="post-title my-auto">
+		      	<a href="{{ post.url }}">{{ post.title }}</a>
+		  	  </h1>
+		  	  <div class="summary my-auto">
+		  	  </div>
 		    </li>
 		  {% endfor %}
-		</ul>
+		</div>
 	</div>
 
 </section>

@@ -38,7 +38,7 @@ $page-padding-bottom: 0;
 }
 
 .post{
-  background-color: $prussian-blue;
+  //background-color: $prussian-blue;
   @include padding-band; // see mixin for padding details
 }
 
@@ -47,6 +47,10 @@ $page-padding-bottom: 0;
   background-color: $special-white;
   display: block;
   height: auto;
+}
+
+.post-title{
+  margin-top: 3rem;
 }
 
 .post-content{
