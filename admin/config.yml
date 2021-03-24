@@ -3,11 +3,21 @@ backend:
   repo: caradoc-paris-saclay/caradoc 
   branch: 'nocode'
 
+# https://www.netlifycms.org/docs/configuration-options/
+site_url: https://www.caradoc-paris-saclay.fr/
+logo_url: https://www.caradoc-paris-saclay.fr/assets/img/caradoc_logo_yellow.png
 media_folder: "/assets/img"
+
+# slug = clean and standardize new filenames
+slug:
+  encoding: "unicode"
+  clean_accents: true
+  sanitize_replacement: "_"
+
 
 collections:
   - name: "website-settings"
-    label: "website settings"
+    label: "Website settings"
     files:
       - label: "Website settings"
         name: "site"
@@ -22,7 +32,8 @@ collections:
           - { label: "Homepage subtitle", name: "subtitle", widget: 'string' }
 
   - name: 'blog'
-    label: 'Blog'
+    label: 'News'
+    description: "News post manager for publishing about CARaDOC's activity."
     folder: '_posts/'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
