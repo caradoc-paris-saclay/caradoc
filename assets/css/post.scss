@@ -1,0 +1,58 @@
+---
+---
+/* #############################################################################
+post css
+############################################################################# */
+/* break points (according to bootstrap doc) */
+$sm-width: 576px;
+$md-width: 768px;
+$lg-width: 992px;
+$xl-width: 1200px;
+/* colors */
+$special_black: black;
+$special-white: white;
+$prussian-blue: rgba(9, 41, 70, 1);
+$lapis-lazuli: rgba(37, 95, 154, 1);
+$naples-yellow: rgba(254, 221, 100, 1);
+$rusty-red: rgba(222, 60, 75, 1);
+$french-raspberry: rgba(196, 40, 71, 1);
+/* block sizes */
+$navbar-height: 10vh; // defined in .navbar from my_navabr.scss
+$index-top-height: 90vh;
+/* Font size */
+$default-font-size: 2vw;
+$title-font-size: 7vw;
+$big-title-font-size: 10vw;
+$subtitle-font-size: 2.5vw;
+$big-subtitle-font-size: 3.57vw;
+$big-font-size: 4vw;
+$huge-font-size: 5.71vw;
+/* page inner-padding */
+$page-padding-lateral: 10vw;
+$page-padding-top: 2.5vh;
+$page-padding-bottom: 0;
+
+@mixin padding-band{
+  padding-left: $page-padding-lateral;
+  padding-right: $page-padding-lateral;
+}
+
+.post{
+  background-color: $prussian-blue;
+  @include padding-band; // see mixin for padding details
+}
+
+.post-background{
+  padding: 1rem;
+  background-color: $special-white;
+  display: block;
+  height: auto;
+}
+
+.post-content{
+  min-height: 1000 px;
+}
+
+.post-foot-nav{
+
+}

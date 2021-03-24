@@ -1,0 +1,46 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    {% include head.html %}
+     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/post.css" />
+    {% seo %}
+  </head>
+  <body>
+    <!-- Header Start -->
+    <header class="sticky-top">
+        {% include main_navbar_en.html %}
+        {% include about_navbar_en.html %}
+    </header>
+    <!-- header close -->
+    <section class="post">
+      <div class="post-background d-flex flex-column rounded">
+        <div class="shadow d-flex flex-column shadow-lg rounded">
+        <h1 class="post-title mx-auto">
+          {{ page.title }}
+        </h1>
+        <h4 class="post-date mx-auto">
+          {{ page.date | date: "%A %e, %B %Y  (%H:%M)" }}
+        </h4>
+        <div class="post-content mx-auto">
+          {{ content }}
+        </div>
+
+        <div class="post-foot-nav d-flex flex-row justify-content-between">
+          <div class="button previous">
+            {{ page.previous }} 
+          </div>
+          <div class="button next">
+            {{ page.next }} 
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    {% include footer_en.html %}
+    {% include foot_js.html %}
+    </body>
+</html>

@@ -1,0 +1,24 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    {% include head.html %}
+    {% seo %}
+  </head>
+  <body>
+    <!-- Header Start -->
+    <header class="sticky-top">
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/index.css" />
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/news.css" />
+      {% include main_navbar_en.html %}
+    </header>
+    <!-- header close -->
+
+    {{ content }}
+
+    {% include footer_en.html %}
+    {% include foot_js.html %}
+  </body>
+</html>
