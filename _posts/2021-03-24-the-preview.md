@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Frist Post
+title: First Post
 date: 2021-03-24T19:32:54.383Z
 ---
 Hello world!
