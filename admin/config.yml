@@ -28,11 +28,11 @@ collections:
         file: "_data/homepage.yml"
         fields:
           - { label: "Homepage Title", name: "title", widget: 'string' }
-          - { label: "Homepage Title Fontsize (min)", name: "title-font-size-min", widget: 'number' }
-          - { label: "Homepage Title Fontsize (max)", name: "title-font-size-max", widget: 'number' }
+          - { label: "Homepage Title Fontsize For Small Screens (min)", name: "title-font-size-min", widget: 'number' }
+          - { label: "Homepage Title Fontsize For Large Screens (max)", name: "title-font-size-max", widget: 'number' }
           - { label: "Homepage Subtitle", name: "subtitle", widget: 'string' }
-          - { label: "Homepage SubTitle Fontsize (min)", name: "subtitle-font-size-min", widget: 'number' }
-          - { label: "Homepage SubTitle Fontsize (max)", name: "subtitle-font-size-max", widget: 'number' }
+          - { label: "Homepage SubTitle Fontsize For Small Screens (min)", name: "subtitle-font-size-min", widget: 'number' }
+          - { label: "Homepage SubTitle Fontsize For Large Screens (max)", name: "subtitle-font-size-max", widget: 'number' }
 
   - name: 'blog'
     label: 'News'
