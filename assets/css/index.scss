@@ -209,13 +209,19 @@ index-top
 }
 
 .index-top .title{
-  @include interpolate(font-size, $sm-width, $lg-width, 35px, 55px); 
+  @include interpolate(font-size, $sm-width, $lg-width,    
+   {{site.data.homepage.title-font-size-min}} * 1px, 
+   {{site.data.homepage.title-font-size-max}} * 1px
+  ); 
   line-height: 1.4;
   //font-size: $title-font-size;
 }
 
 .index-top .subtitle{
-  @include interpolate(font-size, $sm-width, $lg-width, 15px, 25px); 
+  @include interpolate(font-size, $sm-width, $lg-width,    
+   {{site.data.homepage.subtitle-font-size-min}} * 1px, 
+   {{site.data.homepage.subtitle-font-size-max}} * 1px
+  ); 
   line-height: 1.3;
   //font-size: $subtitle-font-size;
 }

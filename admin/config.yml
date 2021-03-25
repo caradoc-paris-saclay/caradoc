@@ -27,8 +27,12 @@ collections:
         name: "homepage"
         file: "_data/homepage.yml"
         fields:
-          - { label: "Homepage title", name: "title", widget: 'string' }
-          - { label: "Homepage subtitle", name: "subtitle", widget: 'string' }
+          - { label: "Homepage Title", name: "title", widget: 'string' }
+          - { label: "Homepage Title Fontsize (min)", name: "title-font-size-min", widget: 'number' }
+          - { label: "Homepage Title Fontsize (max)", name: "title-font-size-max", widget: 'number' }
+          - { label: "Homepage Subtitle", name: "subtitle", widget: 'string' }
+          - { label: "Homepage SubTitle Fontsize (min)", name: "subtitle-font-size-min", widget: 'number' }
+          - { label: "Homepage SubTitle Fontsize (max)", name: "subtitle-font-size-max", widget: 'number' }
 
   - name: 'blog'
     label: 'News'
