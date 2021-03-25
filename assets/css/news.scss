@@ -79,8 +79,8 @@ Mixin
 /* #############################################################################
 Properties
 ############################################################################# */
-.news{
-	background-color: $prussian-blue; 
+section.news{
+	background-color: $special-white;
 	@include padding-band; // see mixin for padding details
 }
 
@@ -92,7 +92,11 @@ Properties
 
 .post-title{
 	a{
+		color: $prussian-blue;
 		@include interpolate(font-size, $sm-width, $lg-width, 25px, 30px);  
+	}
+	a:hover{
+		color: $rusty-red;
 	}
 }
 .post-date{
