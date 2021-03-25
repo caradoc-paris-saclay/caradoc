@@ -14,7 +14,6 @@ slug:
   clean_accents: true
   sanitize_replacement: "_"
 
-
 collections:
   - name: "website-settings"
     label: "Website settings"
