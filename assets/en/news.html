@@ -16,13 +16,18 @@ permalink: /news
 </section>
 
 <section class="news">
-	<div class="post-list">
+	<div class="post-list rounded">
 		<div class="d-flex flex-column">
 		  {% for post in site.posts %}
-		    <li class="d-flex flex-column mx-auto">
-		      <h1 class="post-title my-auto">
-		      	<a href="{{ post.url }}">{{ post.title }}</a>
-		  	  </h1>
+		    <li class="d-flex flex-column mx-auto mb-5">
+		      <div class="post-title-box d-flex flex-row">
+		      	<p class="post-title my-auto">
+		      		<a href="{{ post.url }}">{{ post.title }}&nbsp</a>
+		      	<p>
+		      	<p class="post-date my-auto"> 
+		      		({{ post.date | date: "%d/%m/%y" }})
+		      	</p>
+		  	  </div>
 		  	  <div class="summary my-auto">
 		  	  	{{ post.content | strip_html | truncatewords:75 }}
 		  	  </div>

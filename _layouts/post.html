@@ -15,33 +15,47 @@ layout: compress
     </header>
     <!-- header close -->
     <section class="post">
-      <div class="post-background d-flex flex-column">
-        <div class="shadow d-flex flex-column shadow-lg rounded">
+      <div class="post-background d-flex flex-column shadow-lg rounded">
         <div class="post-title-box d-flex flex-column">
           <h1 class="post-title mx-auto">
             {{ page.title }}
           </h1>
-          <h4 class="post-date mx-auto">
+          <h5 class="post-date mx-auto">
             {{ page.date | date: "%A %e, %B %Y" }}
-          </h4>
+          </h5>
         </div>
         <div class="post-content mx-auto">
           {{ content }}
-        </div>
-
-        <div class="post-foot-nav d-flex flex-row justify-content-between">
-          <div class="button previous">
-            <a href="{{ page.previous }}">Previous</a>
+          <div class="post-foot-nav d-flex flex-row justify-content-between mb-5">
+            <!-- See also post.js -->
+            <div class="button previous">
+              <a href="{{ page.previous.url }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                </svg>
+                Previous
+                <span class="previous-title">
+                  ({{ page.previous.title | truncatewords: 10  }})
+                </span>
+              </a>
+            </div>
+            <div class="button next">
+              <a href="{{ page.next.url }} ">Next
+                <span class="next-title">
+                  ({{ page.next.title | truncatewords: 10 }})
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                </svg>
+              </a>
+            </div>
           </div>
-          <div class="button next">
-            {{ page.next }} 
-          </div>
         </div>
-      </div>
       </div>
     </section>
 
     {% include footer_en.html %}
     {% include foot_js.html %}
+     <script type="module" src="{{ site.baseurl }}/assets/js/post.js"></script>
     </body>
 </html>

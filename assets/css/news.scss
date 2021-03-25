@@ -31,6 +31,41 @@ $huge-font-size: 5.71vw;
 $page-padding-lateral: 10vw;
 $page-padding-top: 2.5vh;
 $page-padding-bottom: 0;
+/* #############################################################################
+Mixin
+############################################################################# */
+@mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value) {
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+
+    @media screen and (min-width: $min-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value); 
+      }
+    }
+
+    @media screen and (min-width: $max-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value);
+      }
+    }
+  }
+}
+
+// Requires the calc-interpolation function which can also be used independently
+@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value) {
+  $a: ($max-value - $min-value) / ($max-screen - $min-screen);
+  $b: $min-value - $a * $min-screen; 
+
+  $sign: "+";
+  @if ($b < 0) {
+    $sign: "-";
+    $b: abs($b);
+  }
+  @return calc(#{$a*100}vw #{$sign} #{$b});
+}
 
 @mixin padding-band{
   padding-left: $page-padding-lateral;
@@ -41,7 +76,9 @@ $page-padding-bottom: 0;
       padding-bottom: 2.5vh; 
     }
 }
-
+/* #############################################################################
+Properties
+############################################################################# */
 .news{
 	background-color: $prussian-blue; 
 	@include padding-band; // see mixin for padding details
@@ -51,4 +88,14 @@ $page-padding-bottom: 0;
 	padding: 2rem;
 	background-color: $special-white;
 	min-height: 50vh;
+}
+
+.post-title{
+	a{
+		@include interpolate(font-size, $sm-width, $lg-width, 25px, 30px);  
+	}
+}
+.post-date{
+	color: $prussian-blue; 
+	@include interpolate(font-size, $sm-width, $lg-width, 15px, 18px); 
 }

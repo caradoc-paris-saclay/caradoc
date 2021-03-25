@@ -57,6 +57,18 @@ h1,h2,h3,h4,h5 {
     }
   }
 }
+// Requires the calc-interpolation function which can also be used independently
+@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value) {
+  $a: ($max-value - $min-value) / ($max-screen - $min-screen);
+  $b: $min-value - $a * $min-screen; 
+
+  $sign: "+";
+  @if ($b < 0) {
+    $sign: "-";
+    $b: abs($b);
+  }
+  @return calc(#{$a*100}vw #{$sign} #{$b});
+}
 /* #############################################################################
 main rules
 ############################################################################# */
@@ -149,7 +161,7 @@ top-main class
 
   h1 {
   /* Font size */
-  font-size: 4vw;
+    font-size: 4vw;
   }
   h2 {
     font-size: 2.5vw; /* Font size */

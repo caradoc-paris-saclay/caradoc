@@ -53,6 +53,18 @@ Mixins
     }
   }
 }
+// Requires the calc-interpolation function which can also be used independently
+@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value) {
+  $a: ($max-value - $min-value) / ($max-screen - $min-screen);
+  $b: $min-value - $a * $min-screen; 
+
+  $sign: "+";
+  @if ($b < 0) {
+    $sign: "-";
+    $b: abs($b);
+  }
+  @return calc(#{$a*100}vw #{$sign} #{$b});
+}
 /* #############################################################################
 classes
 ############################################################################# */
@@ -63,38 +75,35 @@ classes
 
 .post{
   //background-color: $prussian-blue;
-  @include interpolate(padding-left, $sm-width, $lg-width, 0, $page-padding-lateral);
-  @include interpolate(padding-right, $sm-width, $lg-width, 0, $page-padding-lateral);
+  //@include interpolate(padding-left, $sm-width, $md-width, 0vw, $page-padding-lateral);
+  //@include interpolate(padding-right, $sm-width, $md-width, 0vw, $page-padding-lateral);
 }
 
 .post-background{
-  @include interpolate(margin ,$sm-width,$lg-width, 0, 10vw);
-  @include interpolate(padding ,$sm-width,$lg-width, 1vw, 10vw);
+  //@include interpolate(margin ,$sm-width,$lg-width, 2vw, 20vw);
+  //@include interpolate(padding ,$sm-width,$lg-width, 1vw, 10vw);
   background-color: $special-white;
   display: block;
   height: auto;
 }
 
 .post-title-box {
- @include interpolate(padding-top ,$sm-width,$lg-width, 4vw, 0); 
+ @include interpolate(margin-top, $sm-width,$lg-width, 0.04*$sm-width, 0.04*$lg-width); 
+ @include interpolate(margin-bottom, $sm-width,$lg-width, 0.04*$sm-width, 0.04*$lg-width); 
 }
 
 .post-title{
-  //margin-top: 3rem;
+  color: $prussian-blue;
 }
 
-$min-font-size: 12px;
-$max-font-size: 28px;
-$n-char-phone: 75;
-$n-char-desktop: 75;
+.post-date{
+  color: $prussian-blue;
+}
 
 .post-content{
   min-height: 90vh;
-  @include interpolate(padding ,$sm-width,$lg-width, 4vw, 0);
-  @include interpolate(max-width ,$sm-width, $lg-width, 
-    calc(#{$min-font-size * $n-char-phone}),
-    calc(#{$max-font-size * $n-char-desktop})
-    ); 
+  @include interpolate(padding, $sm-width, $lg-width, $sm-width*0.04, 0px);
+  @include interpolate(max-width, $sm-width, $lg-width, 0.9*$sm-width, 0.66*$lg-width);
   img{
     display: block;
     margin-left: auto;
@@ -105,5 +114,16 @@ $n-char-desktop: 75;
 }
 
 .post-foot-nav{
-
+  svg{
+    margin: 0;
+    padding: 0;
+    vertical-align: unset;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    $svg-yshift: -55%;
+    -webkit-transform: translateY($svg-yshift);
+    -ms-transform: translateY($svg-yshift);
+    transform: translateY($svg-yshift);
+  }
 }
