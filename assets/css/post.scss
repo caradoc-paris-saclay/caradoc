@@ -75,12 +75,30 @@ classes
 
 .post{
   //background-color: $prussian-blue;
-  //@include interpolate(padding-left, $sm-width, $md-width, 0vw, $page-padding-lateral);
-  //@include interpolate(padding-right, $sm-width, $md-width, 0vw, $page-padding-lateral);
 }
 
 .post-background{
-  //@include interpolate(margin ,$sm-width,$lg-width, 2vw, 20vw);
+  $lr-margin-pct-sm: 0.02;
+  $lr-margin-pct-lg: 0.1;
+  @include interpolate(margin-left, $sm-width, $lg-width,
+    $lr-margin-pct-sm * $sm-width,
+    $lr-margin-pct-lg * $lg-width
+  );
+  @include interpolate(margin-right, $sm-width, $lg-width, 
+    $lr-margin-pct-sm * $sm-width, 
+    $lr-margin-pct-lg * $lg-width
+  );
+  $tb-margin-pct-sm: 0.02;
+  $tb-margin-pct-lg: 0.02;
+  @include interpolate(margin-bottom, $sm-width, $lg-width, 
+    $tb-margin-pct-sm * $sm-width, 
+    $tb-margin-pct-lg * $lg-width
+  );
+  @include interpolate(margin-top, $sm-width, $lg-width, 
+    $tb-margin-pct-sm * $sm-width, 
+    $tb-margin-pct-lg * $lg-width
+  );
+
   //@include interpolate(padding ,$sm-width,$lg-width, 1vw, 10vw);
   background-color: $special-white;
   display: block;
@@ -88,8 +106,15 @@ classes
 }
 
 .post-title-box {
- @include interpolate(margin-top, $sm-width,$lg-width, 0.04*$sm-width, 0.04*$lg-width); 
- @include interpolate(margin-bottom, $sm-width,$lg-width, 0.04*$sm-width, 0.04*$lg-width); 
+  $title-box-lr-margin-pct: 0.04;
+  @include interpolate(margin-top, $sm-width, $lg-width,
+    $title-box-lr-margin-pct * $sm-width, 
+    $title-box-lr-margin-pct * $lg-width
+  ); 
+  @include interpolate(margin-bottom, $sm-width, $lg-width, 
+    $title-box-lr-margin-pct * $sm-width, 
+    $title-box-lr-margin-pct * $lg-width
+  ); 
 }
 
 .post-title{
