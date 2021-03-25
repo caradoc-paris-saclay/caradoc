@@ -31,7 +31,31 @@ $huge-font-size: 5.71vw;
 $page-padding-lateral: 10vw;
 $page-padding-top: 2.5vh;
 $page-padding-bottom: 0;
+/* #############################################################################
+Mixins
+############################################################################# */
+@mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value) {
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
 
+    @media screen and (min-width: $min-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value); 
+      }
+    }
+
+    @media screen and (min-width: $max-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value);
+      }
+    }
+  }
+}
+/* #############################################################################
+classes
+############################################################################# */
 @mixin padding-band{
   padding-left: $page-padding-lateral;
   padding-right: $page-padding-lateral;
@@ -39,23 +63,41 @@ $page-padding-bottom: 0;
 
 .post{
   //background-color: $prussian-blue;
-  @include padding-band; // see mixin for padding details
+  @include interpolate(padding-left, $sm-width, $lg-width, 0, $page-padding-lateral);
+  @include interpolate(padding-right, $sm-width, $lg-width, 0, $page-padding-lateral);
 }
 
 .post-background{
-  padding: 1rem;
+  @include interpolate(margin ,$sm-width,$lg-width, 0, 10vw);
+  @include interpolate(padding ,$sm-width,$lg-width, 1vw, 10vw);
   background-color: $special-white;
   display: block;
   height: auto;
 }
 
 .post-title{
+  @include interpolate(padding ,$sm-width,$lg-width, 4vw, 0);
   margin-top: 3rem;
 }
 
+$min-font-size: 12px;
+$max-font-size: 28px;
+$n-char-phone: 75;
+$n-char-desktop: 75;
+
 .post-content{
-  padding: 2rem;
-  min-height: 1000 px;
+  min-height: 90vh;
+  @include interpolate(padding ,$sm-width,$lg-width, 4vw, 0);
+  @include interpolate(max-width ,$sm-width, $lg-width, 
+    calc(#{$min-font-size * $n-char-phone}),
+    calc(#{$max-font-size * $n-char-desktop})
+    ); 
+  img{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 95%;
+
+  }
 }
 
 .post-foot-nav{

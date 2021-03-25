@@ -92,7 +92,10 @@ footer class
 ############################################################################# */
 
 footer {
-  background: #fff;
+  border-style: solid none none none;
+  border-width: 1px;
+  border-color: #E8E8E8; // or #F5F5F5
+  background: inherit; // or #fff
   text-align: center;
   /*margin-top: 10vh;*/
   padding-top: 6vh;
