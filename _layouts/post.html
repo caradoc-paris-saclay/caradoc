@@ -17,19 +17,21 @@ layout: compress
     <section class="post">
       <div class="post-background d-flex flex-column">
         <div class="shadow d-flex flex-column shadow-lg rounded">
-        <h1 class="post-title mx-auto">
-          {{ page.title }}
-        </h1>
-        <h4 class="post-date mx-auto">
-          {{ page.date | date: "%A %e, %B %Y  (%H:%M)" }}
-        </h4>
+        <div class="post-title-box d-flex flex-column">
+          <h1 class="post-title mx-auto">
+            {{ page.title }}
+          </h1>
+          <h4 class="post-date mx-auto">
+            {{ page.date | date: "%A %e, %B %Y" }}
+          </h4>
+        </div>
         <div class="post-content mx-auto">
           {{ content }}
         </div>
 
         <div class="post-foot-nav d-flex flex-row justify-content-between">
           <div class="button previous">
-            {{ page.previous }} 
+            <a href="{{ page.previous }}">Previous</a>
           </div>
           <div class="button next">
             {{ page.next }} 

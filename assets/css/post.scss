@@ -75,9 +75,12 @@ classes
   height: auto;
 }
 
+.post-title-box {
+ @include interpolate(padding-top ,$sm-width,$lg-width, 4vw, 0); 
+}
+
 .post-title{
-  @include interpolate(padding ,$sm-width,$lg-width, 4vw, 0);
-  margin-top: 3rem;
+  //margin-top: 3rem;
 }
 
 $min-font-size: 12px;
@@ -93,6 +96,7 @@ $n-char-desktop: 75;
     calc(#{$max-font-size * $n-char-desktop})
     ); 
   img{
+    display: block;
     margin-left: auto;
     margin-right: auto;
     max-width: 95%;
