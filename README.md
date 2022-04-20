@@ -17,6 +17,10 @@ Follow the steps proposed by the official Jekyll website. You will be asked to i
 
 [Official Jekyll Installation Guides](https://jekyllrb.com/docs/installation/)
 
+## Updating gems
+
+On macos, `jekyll` recommends to use `chruby`. `chruby` detects automatically the required version of ruby, by looking into the file `.ruby-version` in the project root folder.
+
 ## For developers
 
 If you want to contibute to the project, have a look at the project wiki.
