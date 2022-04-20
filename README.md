@@ -11,6 +11,10 @@ bundle install
 bundle exec jekyll serve
 ```
 
+## Recommended Terminal for MacOs
+
+We recommend using ITerm on MacOs.
+
 ## For installing Jekyll
 
 Follow the steps proposed by the official Jekyll website. You will be asked to install **ruby** as well.

@@ -226,13 +226,18 @@ index-top
   color: $special-white;
 }
 
-.index-top .d-flex.date{
+.index-top .d-flex.date-and-place{
 	margin-top: 2.5vh;
 }
 
-.index-top .d-flex.date > .date{
+.index-top .d-flex.date-and-place > .date{
   border-bottom: 1px solid $naples-yellow;
 }
+
+.index-top .d-flex.date-and-place > .place{
+  margin-bottom: 1vh;
+}
+
 
 .index-top .sponsors{
   width: inherit;
