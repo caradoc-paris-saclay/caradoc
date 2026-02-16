@@ -11,10 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "firebase-tools": "^7.16.2"
+    "firebase-tools": "^15.6.0"
   },
   "devDependencies": {
-    "@firebase/testing": "^0.16.14",
+    "@firebase/testing": "^0.20.11",
     "filesystem": "^1.0.1",
     "mocha": "^7.2.0",
     "prettier": "^1.19.1"
